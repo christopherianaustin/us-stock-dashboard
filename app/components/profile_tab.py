@@ -58,7 +58,7 @@ def render_profile_tab(h: HeaderData, on_pick_ticker) -> None:
     csv_rows = []
     for label, gkey, dp, fmt in rows:
         tip = tooltip(gkey, ui.lang()) if gkey else ""
-        label_html = html.escape(label) + (f" <span title='{html.escape(tip)}' style='cursor:help'>ⓘ</span>" if tip else "")
+        label_html = html.escape(label) + (f" <span title='{ui.attr(tip)}' style='cursor:help'>ⓘ</span>" if tip else "")
         value_html = ui.text_value(dp, fmt)
         if label == "Website" and dp.available and not ui.hidden_by_safe_mode(dp):
             url = dp.value if str(dp.value).startswith("http") else f"https://{dp.value}"

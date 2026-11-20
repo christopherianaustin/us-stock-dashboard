@@ -1,17 +1,21 @@
 # Interface text (English)
 tabs:
-  summary: Summary
-  price: Price & Technicals
+  summary: Overview
+  price: Price
   earnings: Earnings
   financials: Financials
   valuation: Valuation
-  health: Profitability & Health
+  health: Health
   dividends: Dividends
-  ownership: Ownership & Sentiment
-  news: News & Filings
-  coverage: Data Coverage
-  profile: Company Profile
+  ownership: Ownership
+  news: News
+  coverage: Data sources
+  profile: About
 sidebar:
+  title: Settings
+  subtitle: US Stock Dashboard · Nanovest demo
+  show_sources: Show data sources
+  show_sources_help: Show where every number comes from and whether it is licensed for commercial use.
   ticker: Ticker
   ticker_help: Type a US ticker and press Enter.
   search: …or search by company name
@@ -20,11 +24,11 @@ sidebar:
   language: Language
   safe_mode: Production-safe mode
   safe_help: Hide every 'Demo data' (orange) item to see what the app looks like with only commercially licensed data.
-  refresh: 🔄 Refresh data
+  refresh: Refresh data
   refresh_help: Clear cached data for this ticker and reload it.
   sources: Data sources
 header:
-  scorecard: "Scorecard (our view per category, not a recommendation)"
+  scorecard: "Our read by category"
 loading:
   lookup: "Looking up {symbol}…"
   data: "Loading {symbol}: financials, prices, earnings, dividends, ownership and news…"
@@ -48,3 +52,17 @@ summary:
   points: Points (0-100)
   not_used: not available
   safe_note: "Production-safe mode: scores use licensed-safe data only, so some categories have fewer metrics."
+search:
+  label: Search
+  placeholder: "Search a company or ticker, e.g. Apple or AAPL"
+  placeholder_plain: "Type a ticker, e.g. AAPL, and press Enter"
+  recent: Recent
+overview:
+  short_title: The short version
+  short_sub: "What stands out in {name}'s numbers right now. Facts from the data, not advice."
+  good: What looks good
+  watch: What to watch
+  numbers_title: Key numbers, explained
+  numbers_sub: "Each number with what it means in everyday words."
+  numbers_note: "Labels like 'Low debt' describe the data using common rules of thumb. They are not recommendations."
+  more_title: The full picture

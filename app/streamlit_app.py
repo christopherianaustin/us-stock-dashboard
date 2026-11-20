@@ -23,7 +23,7 @@ from app.components.news_tab import render_news_tab  # noqa: E402
 from app.components.ownership_tab import render_ownership_tab  # noqa: E402
 from app.components.price_tab import render_price_tab  # noqa: E402
 from app.components.profile_tab import render_profile_tab  # noqa: E402
-from app.components.sidebar import add_recent, init_state, render_sidebar, set_ticker  # noqa: E402
+from app.components.sidebar import add_recent, init_state, render_search, render_sidebar, set_ticker  # noqa: E402
 from app.components.summary_tab import render_summary_tab  # noqa: E402
 from app.components.valuation_tab import render_valuation_tab  # noqa: E402
 from core.bundle import load_bundle  # noqa: E402
@@ -38,7 +38,7 @@ TAB_KEYS = ["summary", "price", "earnings", "financials", "valuation", "health",
 PART_NAMES = {"financials": "Financial statements", "ratios": "Ratios", "prices": "Prices and technicals",
               "earnings": "Earnings", "dividends": "Dividends", "ownership": "Ownership", "news": "News and filings"}
 
-st.set_page_config(page_title="US Stock Dashboard", page_icon="📈", layout="wide")
+st.set_page_config(page_title="US Stock Dashboard", page_icon="📈", layout="wide", initial_sidebar_state="collapsed")
 ui.inject_css()
 init_state()
 
@@ -58,7 +58,8 @@ def main() -> None:
             resolved = resolve_ticker(raw)
     except TickerNotFound as exc:
         render_sidebar()
-        st.error(f"🔎 {exc}")
+        render_search()
+        st.error(str(exc))
         st.info("Try one of these:")
         cols = st.columns(6)
         for i, sym in enumerate(["AAPL", "MSFT", "NVDA", "JPM", "KO", "BRK.B"]):
@@ -67,6 +68,7 @@ def main() -> None:
 
     add_recent(resolved.symbol)
     render_sidebar(resolved.cik)
+    render_search()
     if st.session_state.pop("force_reload", False):
         cached_bundle.clear()
     with st.spinner(t("loading.data", lang, symbol=resolved.symbol)):
@@ -83,7 +85,7 @@ def main() -> None:
     # Lazy tabs: with on_change="rerun" only the selected tab's code runs (Streamlit's lazy execution).
     tabs = st.tabs([t(f"tabs.{k}", lang) for k in TAB_KEYS], key=f"main_tab_{lang}", on_change="rerun")
     renderers = {
-        "summary": lambda: render_summary_tab(sc, b.analysis, b.price, b.dividends, b.ownership),
+        "summary": lambda: render_summary_tab(sc, b.analysis, b.price, b.dividends, b.ownership, b.header),
         "price": lambda: render_price_tab(b.price),
         "earnings": lambda: render_earnings_tab(b.earnings),
         "financials": lambda: render_financials_tab(b.fin),

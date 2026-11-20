@@ -1,18 +1,20 @@
 """Tab 1: Summary - scorecard radar, strengths & risks, key stats, mini chart, analysts' view."""
 from __future__ import annotations
 
+import html
 from typing import Optional
 
 import pandas as pd
 import streamlit as st
 
 from app.components import charts, ui
+from core import plain_language as pl
 from core.glossary import tooltip
 from core.i18n import t
 from core.models import DataPoint, LicenseTag, Source
 from core.scorecard import PILLARS, Scorecard, insight_texts, scoring_config
 
-LEVEL_ICON = {"strong": "🟢", "neutral": "🟡", "weak": "🔴", None: "⚪", "not_applicable": "⚪"}
+PILL_CSS = {"strong": "strong", "neutral": "neutral", "weak": "weak"}
 
 
 def pillar_label(sc_pillar, lang: str) -> str:
@@ -54,17 +56,16 @@ def _scorecard(sc: Scorecard, lang: str) -> None:
     with c2:
         for p in PILLARS:
             ps = sc.pillars[p]
-            icon = LEVEL_ICON.get(ps.level, "⚪")
-            score = f"{ps.score:.0f}/100" if ps.score is not None else "—"
-            note = ""
+            css = PILL_CSS.get(ps.level, "na")
+            score = f"<span class='pill-score'>{ps.score:.0f}/100</span>" if ps.score is not None else ""
             if ps.level == "not_applicable":
                 note = txt["levels"]["not_applicable"]
             elif ps.level is None:
                 note = txt["levels"]["na"]
             else:
                 note = txt["based_on"].format(n=ps.used, total=ps.total)
-            st.markdown(f"{icon} **{pillar_label(ps, lang)}** · {score}  \n"
-                        f"<span style='opacity:.7;font-size:0.85rem'>{note}</span>", unsafe_allow_html=True,
+            st.markdown(f"<span class='pill {css}'>{html.escape(pillar_label(ps, lang))}{score}</span>"
+                        f"<span class='subtle'>{html.escape(note)}</span>", unsafe_allow_html=True,
                         help=txt["pillar_help"][p])
     with st.expander(t("summary.details", lang)):
         cfg = scoring_config()["pillars"]
@@ -187,17 +188,96 @@ def _analysts(ownership, analysis, lang: str) -> None:
                        else Source.YFINANCE, license_tag=LicenseTag.DEMO_ONLY, note="Wall Street analysts' ratings"))
 
 
-def render_summary_tab(sc: Optional[Scorecard], analysis, price, dividends, ownership) -> None:
+def _short_version(sc: Scorecard, name: str, lang: str) -> None:
+    """Two plain lists: what looks good, what to watch (from the scorecard rules)."""
+    txt = insight_texts(lang)
+
+    def block(title: str, items, css: str, empty: str) -> str:
+        if items:
+            lis = "".join(f"<li>{html.escape(i.text)}</li>" for i in items[:3])
+            body = f"<ul class='nv-list {css}'>{lis}</ul>"
+        else:
+            body = f"<div class='nv-empty'>{html.escape(empty)}</div>"
+        return f"<div class='nv-card'><h4>{html.escape(title)}</h4>{body}</div>"
+
+    st.markdown(
+        f"<div class='nv-section-title'>{html.escape(t('overview.short_title', lang))}</div>"
+        f"<div class='nv-section-sub'>{html.escape(t('overview.short_sub', lang, name=name))}</div>"
+        f"<div class='nv-two'>{block(t('overview.good', lang), sc.strengths, 'good', txt['none_strengths'])}"
+        f"{block(t('overview.watch', lang), sc.risks, 'watch', txt['none_risks'])}</div>",
+        unsafe_allow_html=True)
+
+
+def _key_numbers(analysis, price, dividends, is_financial: bool, lang: str) -> None:
+    """Six numbers a beginner can read: value, plain label and one everyday sentence."""
+    if analysis is None:
+        return
+    s = analysis.snapshot
+
+    def val(key):
+        dp = s.get(key)
+        return dp.value if dp is not None and dp.available else None
+
+    cards = []
+
+    def card(label: str, gkey: str, value: str, ex: pl.Explained, hidden: bool = False) -> None:
+        tip = ui.attr(tooltip(gkey, ui.lang()))
+        if hidden:
+            value, tone, label_txt, sentence = "—", "na", ui.SAFE_MODE_TEXT, ""
+        else:
+            tone, label_txt, sentence = ex.tone, ex.label, ex.sentence
+        cards.append(f"<div class='nv-num'><div class='nv-num-label' title='{tip}'>{html.escape(label)} ⓘ</div>"
+                     f"<div class='nv-num-value'>{html.escape(value)}</div>"
+                     f"<span class='nv-tone {tone}'>{html.escape(label_txt)}</span>"
+                     f"<div class='nv-num-text'>{html.escape(sentence)}</div></div>")
+
+    pe = val("pe")
+    pe_pct = analysis.stats["pe"].percentile if "pe" in analysis.stats else None
+    neg = s.get("pe") is not None and (s["pe"].na_reason or "").startswith("N/A (negative")
+    card("Price vs profit (P/E)", "pe", f"{pe:.1f}×" if pe else "—", pl.pe_ratio(pe, pe_pct, lang, neg),
+         ui.hidden_by_safe_mode(s["pe"]))
+    g = val("revenue_yoy")
+    card("Sales growth vs last year", "growth", f"{g * 100:+.1f}%" if g is not None else "—", pl.revenue_growth(g, lang))
+    m = val("net_margin")
+    card("Profit margin", "margins", f"{m * 100:.1f}%" if m is not None else "—", pl.net_margin(m, lang))
+    de = val("debt_to_equity")
+    card("Debt vs owners' money", "debt_to_equity", f"{de:.2f}×" if de is not None and not is_financial else "—",
+         pl.debt_to_equity(de, lang, is_financial))
+    pays = dividends is not None and dividends.summary.pays
+    y = dividends.summary.yield_ttm if pays else None
+    card("Dividend yield", "dividend_yield", f"{y * 100:.2f}%" if y is not None else "—",
+         pl.dividend_yield(y, pays, lang), ui.safe_mode())
+    b = price.risk.beta if price is not None else None
+    card("Ups and downs vs the market", "beta", f"{b:.2f}" if b is not None else "—", pl.beta(b, lang), ui.safe_mode())
+
+    st.markdown(
+        f"<div class='nv-section-title'>{html.escape(t('overview.numbers_title', lang))}</div>"
+        f"<div class='nv-section-sub'>{html.escape(t('overview.numbers_sub', lang))}</div>"
+        f"<div class='nv-grid'>{''.join(cards)}</div>"
+        f"<div class='nv-note'>{html.escape(t('overview.numbers_note', lang))}</div>",
+        unsafe_allow_html=True)
+
+
+def render_summary_tab(sc: Optional[Scorecard], analysis, price, dividends, ownership, header=None) -> None:
     lang = ui.lang()
     if sc is None:
         st.info("The scorecard needs financial data, which is not available for this company.")
         return
+    if header is None:
+        name = "this company"
+    elif header.profile.display_name.available and not ui.safe_mode():
+        name = str(header.profile.display_name.value)
+    else:
+        name = str(header.profile.name.value or header.symbol)
+    is_fin = bool(header.profile.is_financial_company) if header is not None else False
+    _short_version(sc, name, lang)
+    _key_numbers(analysis, price, dividends, is_fin, lang)
+
+    st.markdown(f"<div class='nv-section-title'>{html.escape(t('overview.more_title', lang))}</div>",
+                unsafe_allow_html=True)
     _scorecard(sc, lang)
-    st.divider()
-    _insights(sc, lang)
-    st.divider()
-    _key_stats(analysis, price, dividends, lang)
-    st.divider()
+    with st.expander("Compared with similar companies"):
+        _key_stats(analysis, price, dividends, lang)
     c1, c2 = st.columns([1.2, 1])
     with c1:
         _mini_chart(price, lang)

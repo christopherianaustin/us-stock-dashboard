@@ -1,17 +1,21 @@
 # Teks antarmuka (Bahasa Indonesia)
 tabs:
   summary: Ringkasan
-  price: Harga & Teknikal
-  earnings: Laporan Laba
-  financials: Laporan Keuangan
+  price: Harga
+  earnings: Laba
+  financials: Keuangan
   valuation: Valuasi
-  health: Profitabilitas & Kesehatan
+  health: Kesehatan
   dividends: Dividen
-  ownership: Kepemilikan & Sentimen
-  news: Berita & Laporan SEC
-  coverage: Cakupan Data
-  profile: Profil Perusahaan
+  ownership: Kepemilikan
+  news: Berita
+  coverage: Sumber data
+  profile: Tentang
 sidebar:
+  title: Pengaturan
+  subtitle: Dasbor Saham AS · demo Nanovest
+  show_sources: Tampilkan sumber data
+  show_sources_help: Tampilkan asal setiap angka dan apakah berlisensi untuk penggunaan komersial.
   ticker: Kode saham
   ticker_help: Ketik kode saham AS lalu tekan Enter.
   search: …atau cari berdasarkan nama perusahaan
@@ -20,11 +24,11 @@ sidebar:
   language: Bahasa
   safe_mode: Mode aman produksi
   safe_help: Sembunyikan semua item 'Data demo' (oranye) untuk melihat tampilan aplikasi hanya dengan data berlisensi komersial.
-  refresh: 🔄 Muat ulang data
+  refresh: Muat ulang data
   refresh_help: Hapus data tersimpan untuk saham ini lalu muat ulang.
   sources: Sumber data
 header:
-  scorecard: "Penilaian (pandangan kami per kategori, bukan rekomendasi)"
+  scorecard: "Penilaian kami per kategori"
 loading:
   lookup: "Mencari {symbol}…"
   data: "Memuat {symbol}: laporan keuangan, harga, laba, dividen, kepemilikan, dan berita…"
@@ -48,3 +52,17 @@ summary:
   points: Poin (0-100)
   not_used: tidak tersedia
   safe_note: "Mode aman produksi: skor hanya memakai data berlisensi aman, jadi beberapa kategori memakai lebih sedikit metrik."
+search:
+  label: Cari
+  placeholder: "Cari perusahaan atau kode saham, mis. Apple atau AAPL"
+  placeholder_plain: "Ketik kode saham, mis. AAPL, lalu tekan Enter"
+  recent: Terakhir dilihat
+overview:
+  short_title: Versi singkatnya
+  short_sub: "Hal yang menonjol dari angka {name} saat ini. Fakta dari data, bukan saran."
+  good: Yang terlihat baik
+  watch: Yang perlu diperhatikan
+  numbers_title: Angka utama, dijelaskan
+  numbers_sub: "Setiap angka beserta artinya dalam bahasa sehari-hari."
+  numbers_note: "Label seperti 'Utang rendah' menggambarkan data dengan patokan umum. Bukan rekomendasi."
+  more_title: Gambaran lengkap

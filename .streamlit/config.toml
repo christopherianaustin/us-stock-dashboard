@@ -1,0 +1,40 @@
+# Visual theme (Apple-style, light only). Streamlit reads this file automatically, locally and on Streamlit Cloud.
+
+[theme]
+base = "light"
+primaryColor = "#0071E3"            # the one accent: links, focus, selected controls
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F5F5F7" # soft surfaces (cards, inputs)
+textColor = "#1D1D1F"
+borderColor = "#D2D2D7"              # hairlines
+showWidgetBorder = true
+linkColor = "#0066CC"
+linkUnderline = false
+
+# Up / down colors match the charts (validated palette)
+greenColor = "#0A7D0A"
+redColor = "#C4302B"
+orangeColor = "#B25E00"
+blueColor = "#0071E3"
+grayColor = "#6E6E73"
+
+font = "Geist:https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap, sans-serif"
+headingFont = "Geist, sans-serif"
+codeFont = "Geist Mono:https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap, monospace"
+baseFontSize = 16
+headingFontWeights = [600, 600, 600, 600, 600, 600]
+headingFontSizes = ["1.875rem", "1.5rem", "1.25rem", "1.125rem", "1rem", "0.875rem"]
+metricValueFontSize = "1.5rem"
+metricValueFontWeight = 600
+
+baseRadius = "12px"
+buttonRadius = "full"
+
+chartCategoricalColors = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#6250d6", "#e34948"]
+
+dataframeHeaderBackgroundColor = "#F5F5F7"
+dataframeBorderColor = "#E5E5EA"
+
+[theme.sidebar]
+backgroundColor = "#F5F5F7"
+secondaryBackgroundColor = "#FFFFFF"

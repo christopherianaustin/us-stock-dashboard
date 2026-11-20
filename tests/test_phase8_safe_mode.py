@@ -10,7 +10,7 @@ APP = str(Path(__file__).resolve().parent.parent / "app" / "streamlit_app.py")
 
 
 def _walk(node):
-    if type(node).__name__ == "Tab" and getattr(node, "label", "") in ("Data Coverage", "Cakupan Data"):
+    if type(node).__name__ == "Tab" and getattr(node, "label", "") in ("Data sources", "Sumber data"):
         return   # the coverage report lists license categories on purpose (values there are hidden)
     proto = getattr(node, "proto", None)
     if proto is not None:
@@ -19,8 +19,8 @@ def _walk(node):
         yield from _walk(ch)
 
 
-TAB_LABELS = ["Summary", "Price & Technicals", "Earnings", "Financials", "Valuation", "Profitability & Health",
-              "Dividends", "Ownership & Sentiment", "News & Filings", "Company Profile"]
+TAB_LABELS = ["Overview", "Price", "Earnings", "Financials", "Valuation", "Health",
+              "Dividends", "Ownership", "News", "About"]
 
 
 def demo_leaks(ticker: str) -> tuple[list, list]:
