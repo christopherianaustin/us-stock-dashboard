@@ -122,6 +122,9 @@ def _altman(a: Analysis, fin: Financials) -> None:
     if z.z is None:
         st.caption(f"N/A ({z.reason})")
         return
+    if ui.safe_mode():
+        st.caption(f"{ui.SAFE_MODE_TEXT} (the Altman Z-score uses market cap, which needs a licensed price).")
+        return
     zones = [(0, 1.81, charts.STATUS_CRIT), (1.81, 2.99, charts.STATUS_WARN), (2.99, 6, charts.STATUS_GOOD)]
     st.plotly_chart(charts.zone_gauge(z.z, zones, 6, "Z-score (scale capped at 6)"), key=f"{a.symbol}_altman",
                     config={"displayModeBar": False})

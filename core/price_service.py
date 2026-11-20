@@ -93,7 +93,7 @@ def load_price_analysis(symbol: str, sector: Optional[str]) -> Optional[PriceAna
         f_spy = pool.submit(yf.get_history_raw, market, "5y")
         f_etf = pool.submit(yf.get_history_raw, etf, "5y") if etf else None
         f_rf = pool.submit(yf.get_history_raw, rf_symbol, "1y")
-        f_earn = pool.submit(yf.get_earnings_dates, symbol)
+        f_earn = pool.submit(yf.get_earnings_dates, symbol, 60)  # same call as the Earnings tab -> cached once
         hist, provider = f_hist.result()
         spy_raw, etf_raw, rf_raw = f_spy.result(), (f_etf.result() if f_etf else None), f_rf.result()
         try:

@@ -1,42 +1,35 @@
 # US Stock Analysis Dashboard (Nanovest demo)
 
-A demo web page where you type a US stock ticker (for example `AAPL`) and see
-information about the company. It is built in phases. The full plan is in `SPEC.md`.
-
-**Status: Phases 1 to 7 are done.**
-- **Scorecard:** 7 categories scored 0–100 and shown as Strong / Neutral / Weak pills in the header.
-- **Summary** tab:
-  - Radar chart of the 7 scores, plus automatic Strengths and Risks.
-  - Key stats compared with peers.
-  - 1-year chart with the nearest support and resistance.
-  - Wall Street analysts' view, labeled as third-party.
-- **Languages:** English and Bahasa Indonesia for tabs, sidebar, header, scorecard, strengths/risks and all tooltips.
-- **Dividends** tab:
-  - Yield, payout ratios, dividend growth and growth streak, next ex-dividend date.
-  - Dividend history, yield over 5 years, payout ratio over time.
-  - Companies without a dividend show "This company does not pay a dividend".
-- **Ownership & Sentiment** tab:
-  - Holder breakdown, top institutions, insider buying/selling.
-  - Wall Street analysts' ratings (clearly labeled as third-party opinions) and recent rating changes.
-  - Short interest.
-- **News & Filings** tab: news from the last 7 or 30 days, and the SEC filings feed (8-K, 10-Q, 10-K, Form 4) with links.
-- **Earnings** tab:
-  - EPS actual vs expected for 12 quarters (beat / miss colors), beat rate, the price move after each report, GAAP vs adjusted EPS.
-  - Revenue vs estimate, analyst estimate revisions, and the next earnings date with expectations.
-  - A table with links to each quarter's SEC filings and press release.
-- **Price & Technicals** tab:
-  - Candlestick chart with volume, RSI and MACD; switchable overlays (moving averages, Bollinger Bands, support/resistance, pivot points, earnings dates).
-  - Trend signals stated as facts.
-  - Returns vs SPY and the sector ETF, beta, volatility, drawdowns, Sharpe ratio, monthly returns heatmap.
-- Header: price, market cap, 52-week range, next earnings date, data freshness.
-- **Company Profile** tab.
-- **Financials** tab: income statement, balance sheet and cash flow, quarterly or annual, with charts and full tables.
-- **Valuation** tab: ratios compared with the stock's own 5-year history and with peers, plus fair value estimates (Graham number, DCF with sliders, analyst targets).
-- **Profitability & Health** tab: ROE / ROA / ROIC, DuPont breakdown, Piotroski F-score, Altman Z-score, debt ratios.
-
-The other tabs say which phase will add them.
+A working demo of a stock detail page for Nanovest: type a US ticker (for example `AAPL`) and get a full
+dashboard. Every number shows where it came from and whether it may be used commercially. The same data is
+also available as a JSON API for the mobile team. The full build spec is in `SPEC.md`; all 8 phases are done.
 
 > This information is for educational purposes only and is not investment advice.
+
+**What's in it**
+- **Header:**
+  - Price, market cap, 52-week range, next earnings date, data freshness.
+  - 7 scorecard pills (Strong / Neutral / Weak).
+- **Tabs:**
+  - **Summary:** radar of the 7 scores, strengths and risks in plain language, key stats vs peers, 1-year chart with support/resistance, Wall Street analysts' view (labeled as third-party).
+  - **Price & Technicals:** candlesticks, volume, RSI, MACD, moving averages, Bollinger Bands, support/resistance, pivots, earnings markers; trend signals stated as facts; returns vs SPY and the sector ETF; beta, volatility, drawdowns, Sharpe; monthly returns heatmap.
+  - **Earnings:** 12 quarters of EPS actual vs expected, beat rate, price move after each report, GAAP vs adjusted EPS, revisions, the next report, links to SEC filings.
+  - **Financials:** income statement, balance sheet and cash flow from official SEC filings, quarterly or annual.
+  - **Valuation:** ratios vs the stock's own 5-year history and peers; fair value estimates (Graham number, DCF with sliders, analyst targets).
+  - **Profitability & Health:** ROE / ROA / ROIC, DuPont breakdown, Piotroski F-score, Altman Z-score, debt ratios.
+  - **Dividends:** yield, payout ratios, dividend growth and streak, history. Companies without a dividend say so.
+  - **Ownership & Sentiment:** holders, insider buying/selling, analysts' ratings, short interest.
+  - **News & Filings:** company news and the SEC filings feed.
+  - **Company Profile:** business description, company facts, clickable peers.
+  - **Data Coverage:** every field, its source, its license, and whether it loaded.
+- **Languages:** English and Bahasa Indonesia.
+- **Production-safe mode:** hides everything that comes from demo-only data sources.
+
+![API documentation page](docs/screenshots/api_docs.png)
+
+<!-- App screenshot: open the app, take a screenshot (Win+Shift+S), save it as docs/screenshots/summary.png,
+     then uncomment the next line. (Automatic capture doesn't work: headless browsers stop before Streamlit finishes loading.)
+![Summary tab](docs/screenshots/summary.png) -->
 
 ---
 
@@ -63,32 +56,95 @@ In `.env`, fill in:
 | `SEC_USER_AGENT` | App name + **your real email**. The SEC requires a contact email. |
 | `FINNHUB_API_KEY` | Free key from https://finnhub.io (optional: leave empty to skip Finnhub) |
 | `PRICE_PROVIDER` | `yfinance` for now (later `nanovest`) |
-| `PRODUCTION_SAFE_MODE` | `true` hides all "Demo data" fields |
-| `LANGUAGE` | `en` or `id` |
+| `PRODUCTION_SAFE_MODE` | `true` hides all "Demo data" fields (app and API) |
+| `LANGUAGE` | `en` or `id` (starting language; switchable in the sidebar) |
 
-`.env` is private and is never shared (it is listed in `.gitignore`).
-`env.template` (also copied as `.env.example`) is the safe, shareable template.
+`.env` is private and is never shared (it is listed in `.gitignore`). `env.template` is the safe, shareable template.
 
-## 3. Run the app
+## 3. Run the dashboard
 
 ```powershell
 .venv\Scripts\python -m streamlit run app/streamlit_app.py
 ```
 
-Your browser opens at http://localhost:8501. To stop the app, press **Ctrl+C** in the terminal.
+Your browser opens at http://localhost:8501. To stop it, press **Ctrl+C** in the terminal.
 
-## 4. Run the tests
+## 4. Run the API
 
 ```powershell
-.venv\Scripts\python -m pytest              # fast tests, no internet needed
-.venv\Scripts\python -m pytest -m network   # live tests against SEC / Yahoo / Finnhub
+.venv\Scripts\python -m uvicorn api.main:app
 ```
+
+Then open http://127.0.0.1:8000/docs. It's interactive documentation: click an endpoint, then **Try it out**, then **Execute**.
+
+| Endpoint | What it returns |
+|---|---|
+| `GET /stocks/{ticker}/summary?lang=en` | Header, scorecard, key stats, strengths and risks |
+| `GET /stocks/{ticker}/financials?period=quarterly&statement=income` | Statement rows (also `annual`; `balance`, `cashflow`) |
+| `GET /stocks/{ticker}/ratios` | Every ratio, Piotroski checks, Altman Z |
+| `GET /stocks/{ticker}/valuation?growth=0.08` | Valuation history, peers, Graham number, DCF (optional assumptions), analyst targets |
+| `GET /stocks/{ticker}/technicals?range=1y` | Daily bars with indicators, signals, support/resistance, pivots, risk, returns |
+| `GET /stocks/{ticker}/earnings` | EPS actual vs expected, beat rates, price moves, revisions, upcoming report |
+| `GET /stocks/{ticker}/dividends` | Dividend summary and history |
+| `GET /stocks/{ticker}/ownership` | Holders, insiders, Wall Street analysts' ratings, short interest |
+| `GET /stocks/{ticker}/news?days=7` | Company news and SEC filings |
+| `GET /stocks/{ticker}/profile` | Company profile |
+| `GET /coverage/{ticker}` | Data coverage report |
+
+How responses work:
+- **Every value carries its origin:** `{"value", "source", "license_tag", "as_of", "derived", "na_reason"}`.
+- **Safe mode:** add `?safe_mode=true` to any request to see it as production-safe mode would. Every `DEMO_ONLY` value becomes `null` with `"na_reason": "Requires a licensed data provider"`.
+- **Errors:** an unknown ticker returns 404 with a friendly message; a bad parameter returns 422 with the allowed values.
+- **Speed:** the first call for a ticker loads everything; later calls within 2 minutes take about 20–100 ms.
+- **Windows tip:** use `127.0.0.1` rather than `localhost`. `localhost` adds about 2 seconds per call.
+
+## 5. Run the tests
+
+```powershell
+.venv\Scripts\python -m pytest              # 122 fast tests, no internet needed
+.venv\Scripts\python -m pytest -m network   # 61 live tests against SEC / Yahoo / Finnhub (about 2 minutes)
+```
+
+The live tests include the acceptance checks of every phase. Highlights:
+- AAPL quarterly numbers match the official reports.
+- KO's 63-year dividend streak is found.
+- No buy/sell wording appears anywhere in our own text.
+- Production-safe mode is audited: the whole app is rendered tab by tab, and every API response is scanned, to confirm no demo item is shown.
+
+---
+
+## Production-safe mode
+
+Turn it on in the sidebar (or with `PRODUCTION_SAFE_MODE=true`). The app then shows only:
+- 🟢 **Licensed-safe** data: SEC EDGAR, and the Nanovest price feed once connected.
+- 🔵 **Calculated** data built only from licensed-safe inputs.
+
+Every 🟠 demo item is replaced by "Requires a licensed data provider". That includes values *derived* from demo data, such as the Altman Z-score (it uses the demo price) and the DCF's analyst-based growth; in safe mode the DCF uses SEC-based growth instead. This shows exactly what the app looks like with free commercial data, and what a paid vendor would add. **`DATA_SOURCES.md`** lists every field with its suggested production replacement.
+
+## Performance
+
+| Situation | Measured |
+|---|---|
+| Cached load (ticker opened in the last 2 minutes, or its data is still in the disk cache) | **0.5–1.1 s** |
+| Switching tabs / language / toggles | 0.2–1.5 s (only the selected tab is computed, using lazy tabs) |
+| API call after the first one for a ticker | 20–100 ms |
+| Completely cold first load (all caches for that ticker cleared) | 9–17 s, depending on the company and on Yahoo / SEC response times |
+
+How the load is kept down:
+- **Parallel loading:** sources load in parallel ([core/bundle.py](core/bundle.py)), and the financial statements start right away instead of waiting for the header.
+- **Disk cache:** each source has its own cache, with the TTLs from SPEC Section 10.
+- **Lazy tabs:** only the selected tab's code runs.
+- **Timing logs:** `logs/app.log` has one timing line per source call, per loading step and per tab.
+
+In normal use the SEC data (cached 24 hours) and profile data (7 days) are already stored, so a first visit of the day mostly refreshes prices.
 
 ---
 
 ## Where each field comes from
 
-Every value shows a colored badge. Hover over the badge to see its source and date.
+Every value shows a colored badge. Hover over the badge to see its source and date. The complete list, with
+production replacements, is in **`DATA_SOURCES.md`** (generated from `core/coverage.py` by
+`python scripts/make_data_sources.py`) and in the app's **Data Coverage** tab.
 
 | Badge | Meaning |
 |---|---|
@@ -212,16 +268,30 @@ Rules (in `core/dividends.py` and `core/sentiment.py`, tests in `tests/test_divi
 ## Project layout
 
 ```
-config/      settings.py (reads .env), glossary_en.yaml / glossary_id.yaml (tooltips)
-core/        data layer, reusable by Nanovest's real app
-  providers/ base.py (interfaces), sec_edgar.py, yfinance_provider.py,
-             finnhub_provider.py, nanovest_price.py (stub), registry.py (source priority)
-  models.py  every value carries source + license tag
-  company.py builds the header + profile from all sources
-  cache.py   disk cache (.cache folder) with per-ticker refresh
-app/         Streamlit page and components
-tests/       pytest tests
-logs/app.log one line per data-source call, with timing and success or failure
+SPEC.md              the build specification
+DATA_SOURCES.md      every field: source, license tag, production replacement (generated)
+config/              everything editable without coding
+  settings.py          reads .env (keys, cache times, safe mode)
+  xbrl_tags.yaml       SEC tags per financial line, in priority order
+  scoring.yaml         scorecard thresholds, weights, strengths/risks rules
+  sector_etfs.yaml     sector -> ETF benchmark
+  glossary_*.yaml      tooltips (en / id)        insights_*.yaml   strengths/risks text (en / id)
+  ui_*.yaml            interface text (en / id)
+core/                data + calculation layer (no UI), reusable by Nanovest's real app
+  providers/           base.py (interfaces), sec_edgar.py, yfinance_provider.py, finnhub_provider.py,
+                       nanovest_price.py (stub), registry.py (source priority)
+  models.py            every value carries source + license tag + as_of
+  financials.py        SEC facts -> quarterly/annual statements, Q4 derivation, YTD fix, TTM
+  ratios.py  valuation.py  quality_scores.py  technicals.py  risk.py  earnings.py  dividends.py  sentiment.py
+  scorecard.py         pillar scores and strengths / risks
+  coverage.py          the field catalog behind the Data Coverage tab, /coverage and DATA_SOURCES.md
+  bundle.py            loads everything for one ticker in parallel (used by the app and the API)
+  cache.py             disk cache (.cache folder) with per-ticker refresh
+api/main.py          FastAPI endpoints (/docs)
+app/                 Streamlit page (streamlit_app.py) and one component file per tab
+scripts/             make_data_sources.py
+tests/               unit tests (offline) and live acceptance tests (pytest -m network)
+logs/app.log         one line per source call / loading step / tab with time taken
 ```
 
 ## Plugging in Nanovest's price feed later
@@ -229,26 +299,33 @@ logs/app.log one line per data-source call, with timing and success or failure
 Fill in the TODOs in `core/providers/nanovest_price.py`, then set `PRICE_PROVIDER="nanovest"` in `.env`.
 If the Nanovest feed fails, the app falls back to yfinance automatically.
 
+Every price-based number (ratios, technicals, risk, valuation history, Altman Z) then turns from 🟠 Demo data into
+🔵 Calculated automatically, because the license tag is derived from the inputs.
+
 ## Known limitations
 
-- The API, data coverage page and the final performance pass come in Phase 8.
-- In Bahasa Indonesia, the detailed chart titles and table headers inside the deeper tabs are still in English. Everything a first-time user reads is translated: tabs, sidebar, header, scorecard, strengths/risks and every tooltip.
-- In production-safe mode the Dividends, Ownership and News sections are hidden (demo sources). The SEC filings feed and SEC-based payout ratio remain.
-- Past revenue estimates need a paid data provider; the free sources only cover the latest quarter.
-- In production-safe mode the Earnings tab is hidden (estimates and surprises are demo data). GAAP EPS and revenue stay visible on the Financials tab.
-- In production-safe mode the whole Price & Technicals tab is hidden, because every number on it comes from demo price data until the Nanovest feed is connected.
-- Our ratios can differ from Yahoo's:
-  - **Timing:** right after a company reports earnings, Yahoo may already include the new quarter before the official SEC filing is out (for example NVDA in November 2026).
-  - **Definitions:** Yahoo counts leases as debt and uses a different ROA formula.
-  - A "Data check" panel at the bottom of the Valuation tab shows these differences.
-- Peer ratios come from Yahoo while this stock's own row uses our SEC-based calculation, so the two methods can differ slightly.
+**Data**
+- 42 of the 73 fields come from demo-only sources (yfinance, Finnhub free tier). They must be replaced before a commercial launch; see `DATA_SOURCES.md`.
+- yfinance is unofficial and can fail or rate-limit. The app then shows "N/A" with a reason instead of crashing.
+- Past revenue estimates need a paid provider; the free sources only cover the latest quarter.
+- Banks and insurers:
+  - Gross profit, EBITDA, ROIC, current ratio, the Altman Z-score, the DCF and the Financial health score show N/A with a reason.
+  - Proper bank measures, such as capital ratios, aren't in free data.
+- Multi-class companies (e.g. BRK) report shares per class, which the free SEC API doesn't split out, so their market cap uses Yahoo's number.
+- MSFT and TSLA report only plain depreciation (no amortization), so their EBITDA is slightly understated.
+- Very long dividend streaks can be undercounted (e.g. PG, JNJ), because Yahoo's records from the 1960s–80s are incomplete.
 - Stock split dates come from yfinance.
-- "Revenue bars + net margin line" is drawn as two stacked panels on the same time axis, not one chart with two y-axes. Two y-axes on one chart can suggest a link between the lines that isn't there.
-- MSFT and TSLA now report only plain depreciation (no amortization), so their EBITDA is slightly understated.
-- For some companies SEC and yfinance define revenue differently (e.g. JPM, BRK). The data quality check shows these differences; SEC is the official number.
-- The first time the Financials tab opens for a ticker it takes about 5–10 seconds to build the statements. After that it is cached for 24 hours.
-- The language toggle currently switches tooltips, metric labels and the disclaimer. All other text follows in Phase 7.
-- Peer fallback uses Yahoo industry groups. "Same SEC SIC code" peers need a bulk SEC index (planned).
-- Berkshire Hathaway (and other multi-class companies) report shares per class, which the free SEC API does not split out, so their market cap uses Yahoo's number.
-- yfinance is unofficial and can sometimes fail or rate-limit. The app then shows "N/A" with a reason.
+
+**Differences with Yahoo's numbers**
+- **Timing:** right after an earnings report, Yahoo may include the new quarter before the official SEC filing exists (e.g. NVDA in November 2026).
+- **Definitions:** Yahoo counts leases as debt and uses a different ROA formula; JPM's and BRK's revenue are defined differently.
+- **Where to see them:** the "Data check" panels on the Valuation and Financials tabs list these differences. SEC is the official source.
+- **Peers:** peer ratios come from Yahoo, while the stock's own row uses our SEC-based calculation.
+
+**App**
+- In Bahasa Indonesia, detailed chart titles and table headers inside the deeper tabs are still English. Translated: tabs, sidebar, header, scorecard, strengths/risks and every tooltip.
+- A completely cold first load of a ticker takes 9–17 s, above the 10 s target for some companies. Cached loads take under about 1 s.
+- Peer fallback uses Yahoo industry groups. Same-SIC-code peers from the SEC would need a bulk SEC index.
+- "Revenue bars + net margin line" is two stacked panels sharing a time axis, not one chart with two y-axes.
 - `pydantic` is pinned to 2.12.5 because Windows Application Control blocked the newer version's compiled file on this PC.
+- The README's app screenshot has to be taken by hand (see the note at the top).

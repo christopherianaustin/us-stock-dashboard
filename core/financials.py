@@ -264,16 +264,20 @@ def quarters_from_durations(d: pd.DataFrame, additive: bool = True) -> dict[pd.T
         return quarters
 
     longs = d[(d["days"] > QUARTER_DAYS[1]) & (d["days"] <= ANNUAL_DAYS[1])].sort_values("end")
+    # Lookup table: start date -> facts with that start (built once; much faster than filtering per row)
+    by_start: dict[pd.Timestamp, list] = {}
+    for r in d.itertuples():
+        by_start.setdefault(r.start, []).append(r)
     for L in longs.itertuples():
         if L.end in quarters:
             continue
         is_year = L.days >= ANNUAL_DAYS[0]
-        prev = d[(d["start"] == L.start) & (d["end"] < L.end)]
-        prev = prev[(L.end - prev["end"]).dt.days.between(*QUARTER_DAYS)]
-        if not prev.empty:
-            p = prev.iloc[0]
-            val, q_start = L.val - p["val"], p["end"] + DAY
-            filed, first = max(L.filed, p["filed"]), max(L.first_filed, p["first_filed"])
+        prev = [p for p in by_start.get(L.start, ())
+                if p.end < L.end and QUARTER_DAYS[0] <= (L.end - p.end).days <= QUARTER_DAYS[1]]
+        if prev:
+            p = prev[0]
+            val, q_start = L.val - p.val, p.end + DAY
+            filed, first = max(L.filed, p.filed), max(L.first_filed, p.first_filed)
             method = "Full year minus 9-month YTD" if is_year else "YTD minus previous YTD"
         else:
             chain = _chain(quarters, L.start, L.end)
@@ -651,6 +655,15 @@ class Financials:
     def available(self) -> bool:
         return not self.tidy.empty
 
+    def _index(self) -> dict:
+        """(field, period_type) -> rows indexed by period_end, built once (big speed-up for the UI)."""
+        idx = self.__dict__.get("_row_index")
+        if idx is None:
+            idx = {key: g.set_index("period_end").sort_index()
+                   for key, g in self.tidy.groupby(["field", "period_type"], sort=False)}
+            self.__dict__["_row_index"] = idx
+        return idx
+
     def periods(self, period_type: str, n: int) -> pd.DataFrame:
         """Last n periods (oldest -> newest): period_end, label, fiscal_year, fiscal_quarter."""
         t = self.tidy[self.tidy["period_type"] == period_type]
@@ -664,12 +677,12 @@ class Financials:
         return p.reset_index(drop=True)
 
     def series(self, field_name: str, period_type: str) -> pd.Series:
-        t = self.tidy[(self.tidy["field"] == field_name) & (self.tidy["period_type"] == period_type)]
-        return t.set_index("period_end")["value"].sort_index()
+        r = self._index().get((field_name, period_type))
+        return r["value"] if r is not None else pd.Series(dtype=float, name="value")
 
     def rows(self, field_name: str, period_type: str) -> pd.DataFrame:
-        t = self.tidy[(self.tidy["field"] == field_name) & (self.tidy["period_type"] == period_type)]
-        return t.set_index("period_end").sort_index()
+        r = self._index().get((field_name, period_type))
+        return r if r is not None else self.tidy.iloc[0:0].set_index("period_end")
 
     def license_for(self, fields: list[str]) -> LicenseTag:
         t = self.tidy[self.tidy["field"].isin(fields)]

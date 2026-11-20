@@ -225,7 +225,7 @@ def _cashflow(ctx: _Ctx) -> None:
 
 
 def _data_quality(fin: Financials) -> None:
-    if fin.crosscheck is None or fin.crosscheck.empty:
+    if fin.crosscheck is None or fin.crosscheck.empty or ui.safe_mode():
         return
     bad = int((fin.crosscheck["status"] == "Differs > 2%").sum())
     with st.expander(f"Data quality check: SEC vs yfinance, last 4 quarters ({bad} difference(s) above 2%)"):

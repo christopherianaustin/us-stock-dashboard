@@ -11,7 +11,7 @@ from core.analysis import Analysis
 from core.glossary import tooltip
 from core.models import DataPoint, LicenseTag, Source
 from core.ratios import METRICS
-from core.valuation import dcf, dcf_scenarios, percentile_sentence
+from core.valuation import dcf, dcf_default_growth, dcf_scenarios, percentile_sentence
 
 CARDS = ["pe", "forward_pe", "peg", "ps", "pb", "ev_ebitda", "ev_revenue", "p_fcf", "fcf_yield", "earnings_yield"]
 HIST = {"pe": "P/E", "ps": "P/S", "ev_ebitda": "EV/EBITDA"}
@@ -144,7 +144,7 @@ def _fair_value(a: Analysis) -> None:
         g = a.graham
         if g.available:
             st.metric("Graham number (classic formula, estimate)", ui.fmt_money(g.value))
-            if price:
+            if price and not ui.safe_mode():
                 st.caption(f"Price is {price / g.value - 1:+.0%} vs the Graham number.")
             ui.badge(g)
             rows.append(("Graham number", None, g.value, None))
@@ -167,7 +167,13 @@ def _fair_value(a: Analysis) -> None:
             st.caption("N/A (no analyst price targets available)")
 
     # ----- DCF -----
-    d = a.dcf_inputs
+    d = dict(a.dcf_inputs)
+    if ui.safe_mode():
+        # Analyst growth estimates are demo data: fall back to the SEC-based 3-year FCF CAGR (or 5%), and don't
+        # compare with the (demo) price.
+        cagr = a.snapshot["fcf_cagr_3y"].value if a.snapshot["fcf_cagr_3y"].available else None
+        d["growth"], d["growth_source"] = dcf_default_growth(None, cagr)
+        price = None
     st.markdown("##### Simple DCF (discounted cash flow)", help=tooltip("dcf", ui.lang()))
     if d.get("not_meaningful"):
         st.caption(f"N/A ({d['not_meaningful']})")
@@ -217,7 +223,7 @@ def _fair_value(a: Analysis) -> None:
 
 def _yahoo_check(a: Analysis) -> None:
     df = a.yahoo_compare
-    if df.empty:
+    if df.empty or ui.safe_mode():
         return
     with st.expander("Data check: our ratios vs Yahoo Finance"):
         st.caption("Differences usually come from timing (Yahoo may include a quarter that is not yet filed with "

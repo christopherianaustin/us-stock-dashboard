@@ -134,18 +134,22 @@ class YFinanceProvider(PriceProvider, ProfileProvider, EstimatesProvider):
     def get_statements(self, symbol: str) -> Optional[dict[str, pd.DataFrame]]:
         """{'income_q','income_a','balance_q','balance_a','cashflow_q','cashflow_a'} -> DataFrames
         (rows = line items, columns = period end dates)."""
-        t = yf.Ticker(for_yfinance(symbol))
+        from concurrent.futures import ThreadPoolExecutor
         attrs = {"income_q": "quarterly_income_stmt", "income_a": "income_stmt",
                  "balance_q": "quarterly_balance_sheet", "balance_a": "balance_sheet",
                  "cashflow_q": "quarterly_cashflow", "cashflow_a": "cashflow"}
-        out: dict[str, pd.DataFrame] = {}
-        for key, attr in attrs.items():
+
+        def fetch(attr: str):
+            t = yf.Ticker(for_yfinance(symbol))   # one Ticker per thread
             try:
-                df = _retry(lambda a=attr: getattr(t, a), f"{attr} {symbol}")
-                if df is not None and not df.empty:
-                    out[key] = df
+                return _retry(lambda: getattr(t, attr), f"{attr} {symbol}")
             except ProviderError as exc:
                 log.warning("%s", exc)
+                return None
+
+        with ThreadPoolExecutor(max_workers=6) as pool:   # the 6 tables in parallel instead of one by one
+            results = dict(zip(attrs, pool.map(fetch, attrs.values())))
+        out = {k: df for k, df in results.items() if df is not None and not df.empty}
         return out or None
 
     # ---------- estimates / calendar ----------

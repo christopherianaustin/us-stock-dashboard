@@ -9,6 +9,7 @@ tabs:
   dividends: Dividends
   ownership: Ownership & Sentiment
   news: News & Filings
+  coverage: Data Coverage
   profile: Company Profile
 sidebar:
   ticker: Ticker

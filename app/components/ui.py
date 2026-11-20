@@ -124,6 +124,8 @@ def badge_html(dp: DataPoint, show_source: bool = True) -> str:
 
 
 def dot_html(dp: DataPoint) -> str:
+    if hidden_by_safe_mode(dp):
+        return f'<span class="dot na" title="{SAFE_MODE_TEXT}"></span>'
     css = BADGES[dp.license_tag][2] if dp.available and dp.license_tag else "na"
     return f'<span class="dot {css}" title="{html.escape(source_text(dp))}"></span>'
 

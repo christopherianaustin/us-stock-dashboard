@@ -82,6 +82,8 @@ def render_sidebar(current_cik: str | None = None) -> None:
 
         if st.button(t("sidebar.refresh", lang), help=t("sidebar.refresh_help", lang)):
             cache.clear_ticker(st.session_state.ticker, extra_tags=(current_cik,) if current_cik else ())
+            st.session_state.force_reload = True
+            st.rerun()
             st.toast(f"Cleared cached data for {st.session_state.ticker}")
 
         st.divider()
