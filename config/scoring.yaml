@@ -1,0 +1,97 @@
+# Scorecard configuration (SPEC Section 7). Editable without coding.
+#
+# Each pillar is scored 0-100 from the metrics below.
+#   higher_better: [bad, good]  -> 0 points at/below "bad", 100 at/above "good", straight line in between
+#   lower_better:  [good, bad]  -> 100 points at/below "good", 0 at/above "bad"
+# weight: how much the metric counts inside its pillar.
+# Missing metrics are skipped; the pillar shows "based on X of Y metrics".
+# Labels: Strong >= 70, Neutral 40-69, Weak < 40.
+
+levels:
+  strong: 70
+  neutral: 40
+
+pillars:
+  valuation:
+    metrics:
+      pe_vs_history:      {rule: lower_better,  range: [0.85, 1.25], weight: 1}   # P/E / own 5-year median
+      pe_vs_peers:        {rule: lower_better,  range: [0.80, 1.30], weight: 1}   # P/E / peer median
+      ev_ebitda_vs_peers: {rule: lower_better,  range: [0.80, 1.30], weight: 1}
+      fcf_yield:          {rule: higher_better, range: [0.01, 0.06], weight: 1}
+      peg:                {rule: lower_better,  range: [1.0, 2.5],   weight: 0.5}
+  growth:
+    metrics:
+      revenue_yoy:        {rule: higher_better, range: [-0.05, 0.15], weight: 1}
+      eps_yoy:            {rule: higher_better, range: [-0.10, 0.20], weight: 1}
+      revenue_cagr_3y:    {rule: higher_better, range: [0.0, 0.12],   weight: 1}
+      forward_growth:     {rule: higher_better, range: [0.0, 0.15],   weight: 0.5}  # analysts' expected EPS growth
+  profitability:
+    metrics:
+      net_margin:         {rule: higher_better, range: [0.02, 0.20], weight: 1}
+      roe:                {rule: higher_better, range: [0.05, 0.20], weight: 1}
+      roic:               {rule: higher_better, range: [0.05, 0.15], weight: 1}
+      net_margin_change:  {rule: higher_better, range: [-0.03, 0.02], weight: 0.5}  # TTM net margin vs a year ago
+  financial_health:
+    metrics:
+      debt_to_equity:     {rule: lower_better,  range: [0.5, 2.0],  weight: 1}
+      current_ratio:      {rule: higher_better, range: [0.8, 1.5],  weight: 1}
+      interest_coverage:  {rule: higher_better, range: [2.0, 10.0], weight: 1}
+      altman_z:           {rule: higher_better, range: [1.81, 2.99], weight: 1}
+      net_debt_to_ebitda: {rule: lower_better,  range: [0.0, 3.0],  weight: 1}    # negative = net cash
+  earnings_quality:
+    metrics:
+      piotroski:          {rule: higher_better, range: [3, 7],     weight: 1}    # F-score scaled to 9 tests
+      cash_conversion:    {rule: higher_better, range: [0.7, 1.1], weight: 1}
+      beat_rate_8:        {rule: higher_better, range: [0.5, 0.875], weight: 1}
+      estimate_change_90d: {rule: higher_better, range: [-0.03, 0.03], weight: 0.5}  # next-FY EPS estimate vs 90 days ago
+  momentum:
+    metrics:
+      vs_sma50:           {rule: higher_better, range: [-0.05, 0.05], weight: 1}
+      vs_sma200:          {rule: higher_better, range: [-0.10, 0.10], weight: 1}
+      rel_strength_6m:    {rule: higher_better, range: [-0.10, 0.10], weight: 1}  # 6-month return minus SPY's
+      from_52w_high:      {rule: higher_better, range: [-0.30, -0.03], weight: 1}
+  dividend:            # excluded from any overall view; "Not applicable" if no dividend
+    metrics:
+      yield_vs_5y_avg:    {rule: higher_better, range: [0.8, 1.2], weight: 1}
+      payout_ratio:       {rule: lower_better,  range: [0.5, 1.0], weight: 1}
+      growth_streak:      {rule: higher_better, range: [0, 10],    weight: 1}
+
+# Strengths and risks: rules evaluated on the same facts. Text lives in config/insights_<lang>.yaml.
+# "when" = list of conditions that must ALL be true. Higher priority = shown first. Max 5 of each.
+strengths:
+  - {id: revenue_growth,      pillar: growth,           priority: 8, when: [[revenue_yoy, ">=", 0.10]]}
+  - {id: eps_growth,          pillar: growth,           priority: 6, when: [[eps_yoy, ">=", 0.15], [net_income_ttm, ">", 0]]}
+  - {id: beat_streak,         pillar: earnings_quality, priority: 7, when: [[beats_8, ">=", 6], [quarters_8, ">=", 6]]}
+  - {id: high_margin,         pillar: profitability,    priority: 6, when: [[net_margin, ">=", 0.20]]}
+  - {id: high_roe,            pillar: profitability,    priority: 5, when: [[roe, ">=", 0.20], [debt_to_equity_or_zero, "<=", 2.0]]}
+  - {id: net_cash,            pillar: financial_health, priority: 6, when: [[net_debt, "<", 0]]}
+  - {id: cheap_vs_history,    pillar: valuation,        priority: 7, when: [[pe_percentile, "<=", 0.25]]}
+  - {id: cheap_vs_peers,      pillar: valuation,        priority: 5, when: [[pe_vs_peers, "<=", 0.80]]}
+  - {id: strong_fscore,       pillar: earnings_quality, priority: 5, when: [[piotroski_score, ">=", 7]]}
+  - {id: dividend_streak,     pillar: dividend,         priority: 5, when: [[growth_streak, ">=", 10]]}
+  - {id: outperform_market,   pillar: momentum,         priority: 4, when: [[rel_strength_6m, ">=", 0.05]]}
+  - {id: high_fcf_yield,      pillar: valuation,        priority: 4, when: [[fcf_yield, ">=", 0.05]]}
+  - {id: estimates_rising,    pillar: earnings_quality, priority: 4, when: [[estimate_change_90d, ">=", 0.03]]}
+  - {id: altman_safe,         pillar: financial_health, priority: 2, when: [[altman_z, ">", 2.99]]}
+  - {id: good_cash_conversion, pillar: earnings_quality, priority: 3, when: [[cash_conversion, ">=", 1.1]]}
+
+risks:
+  - {id: losing_money,        pillar: profitability,    priority: 10, when: [[net_income_ttm, "<", 0]]}
+  - {id: expensive_vs_history, pillar: valuation,       priority: 8, when: [[pe_percentile, ">=", 0.80]]}
+  - {id: expensive_vs_peers,  pillar: valuation,        priority: 5, when: [[pe_vs_peers, ">=", 1.40]]}
+  - {id: revenue_decline,     pillar: growth,           priority: 8, when: [[revenue_yoy, "<", 0]]}
+  - {id: eps_decline,         pillar: growth,           priority: 6, when: [[eps_yoy, "<", -0.10]]}
+  - {id: high_debt,           pillar: financial_health, priority: 7, when: [[net_debt_to_ebitda, ">", 3.0]]}
+  - {id: low_coverage,        pillar: financial_health, priority: 7, when: [[interest_coverage, "<", 3.0], [interest_coverage, ">=", 0]]}
+  - {id: no_coverage,         pillar: financial_health, priority: 8, when: [[interest_coverage, "<", 0]]}
+  - {id: altman_distress,     pillar: financial_health, priority: 9, when: [[altman_z, "<", 1.81]]}
+  - {id: altman_grey,         pillar: financial_health, priority: 4, when: [[altman_z, ">=", 1.81], [altman_z, "<=", 2.99]]}
+  - {id: misses_estimates,    pillar: earnings_quality, priority: 6, when: [[beat_rate_8, "<=", 0.5], [quarters_8, ">=", 4]]}
+  - {id: below_sma200,        pillar: momentum,         priority: 5, when: [[vs_sma200, "<", 0]]}
+  - {id: estimates_falling,   pillar: earnings_quality, priority: 5, when: [[estimate_change_90d, "<=", -0.03]]}
+  - {id: high_payout,         pillar: dividend,         priority: 6, when: [[payout_ratio, ">", 0.9]]}
+  - {id: high_volatility,     pillar: momentum,         priority: 4, when: [[volatility, ">", 0.5]]}
+  - {id: deep_drawdown,       pillar: momentum,         priority: 5, when: [[current_drawdown, "<", -0.30]]}
+  - {id: high_short_interest, pillar: momentum,         priority: 4, when: [[short_pct, ">", 0.10]]}
+  - {id: weak_cash_conversion, pillar: earnings_quality, priority: 4, when: [[cash_conversion, "<", 0.7], [net_income_ttm, ">", 0]]}
+  - {id: weak_fscore,         pillar: earnings_quality, priority: 5, when: [[piotroski_score, "<=", 3]]}

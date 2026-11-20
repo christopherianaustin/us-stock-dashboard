@@ -1,0 +1,17 @@
+# Sector (as named by Yahoo Finance) -> SPDR sector ETF used as the sector benchmark.
+# Edit freely; unknown sectors fall back to SPY only.
+Technology: XLK
+Financial Services: XLF
+Healthcare: XLV
+Consumer Cyclical: XLY
+Consumer Defensive: XLP
+Energy: XLE
+Industrials: XLI
+Basic Materials: XLB
+Real Estate: XLRE
+Utilities: XLU
+Communication Services: XLC
+
+# Market benchmark and risk-free rate (13-week US T-bill yield, in %)
+_market: SPY
+_risk_free: ^IRX

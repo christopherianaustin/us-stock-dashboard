@@ -1,0 +1,98 @@
+# Text for the scorecard and the Strengths / Risks lists (English).
+# Placeholders in {braces} are filled from calculated facts. Keep sentences simple.
+# NEVER use buy / sell wording here: these are facts, not advice.
+
+levels: {strong: Strong, neutral: Neutral, weak: Weak, na: "Not enough data", not_applicable: "Not applicable"}
+
+pillars:
+  valuation: Valuation
+  growth: Growth
+  profitability: Profitability
+  financial_health: Financial health
+  earnings_quality: Earnings quality
+  momentum: Momentum
+  dividend: Dividend
+
+pillar_help:
+  valuation: "How expensive the stock is compared with its own history, its peers and the cash it generates. Strong = relatively cheap."
+  growth: "How fast revenue and earnings are growing, and what analysts expect next."
+  profitability: "How much profit the company makes from its sales and from the money invested in it."
+  financial_health: "How safe the balance sheet is: debt, ability to pay bills and interest, distress risk."
+  earnings_quality: "How reliable the profits look: cash backing, consistency, beating estimates, estimate trend."
+  momentum: "How the share price has been trending compared with its averages and the market."
+  dividend: "How attractive and safe the dividend looks. Not counted for companies that don't pay one."
+
+metrics:
+  pe_vs_history: "P/E vs its 5-year median"
+  pe_vs_peers: "P/E vs peer median"
+  ev_ebitda_vs_peers: "EV/EBITDA vs peer median"
+  fcf_yield: "Free cash flow yield"
+  peg: "PEG ratio"
+  revenue_yoy: "Revenue growth (YoY)"
+  eps_yoy: "EPS growth (YoY)"
+  revenue_cagr_3y: "Revenue growth, 3-year CAGR"
+  forward_growth: "Analysts' expected EPS growth"
+  net_margin: "Net margin (TTM)"
+  roe: "Return on equity"
+  roic: "Return on invested capital"
+  net_margin_change: "Net margin change vs a year ago"
+  debt_to_equity: "Debt to equity"
+  current_ratio: "Current ratio"
+  interest_coverage: "Interest coverage"
+  altman_z: "Altman Z-score"
+  net_debt_to_ebitda: "Net debt / EBITDA"
+  piotroski: "Piotroski F-score"
+  cash_conversion: "Cash conversion"
+  beat_rate_8: "EPS beat rate (8 quarters)"
+  estimate_change_90d: "Next-year EPS estimate change (90 days)"
+  vs_sma50: "Price vs 50-day average"
+  vs_sma200: "Price vs 200-day average"
+  rel_strength_6m: "6-month return vs SPY"
+  from_52w_high: "Distance from 52-week high"
+  yield_vs_5y_avg: "Yield vs 5-year average"
+  payout_ratio: "Payout ratio"
+  growth_streak: "Years of dividend raises"
+
+based_on: "based on {n} of {total} metrics"
+na_reason_financial: "Banks and insurers are judged with measures (like capital ratios) that free data doesn't provide."
+
+strengths:
+  revenue_growth: "Revenue grew {revenue_yoy_pct} compared with the same quarter last year."
+  eps_growth: "Earnings per share grew {eps_yoy_pct} compared with the same quarter last year."
+  beat_streak: "The company beat EPS estimates in {beats_8} of the last {quarters_8} quarters."
+  high_margin: "The company keeps {net_margin_pct} of its revenue as profit, a high margin."
+  high_roe: "Return on equity is {roe_pct}: the company earns a lot on shareholders' money."
+  net_cash: "The company has more cash than debt (net cash of {net_cash_money})."
+  cheap_vs_history: "P/E is lower than {pe_percentile_low_pct} of the last 5 years, so the stock is priced more cheaply than usual."
+  cheap_vs_peers: "P/E is {pe_vs_peers_discount_pct} below the median of similar companies."
+  strong_fscore: "Financial strength checklist (Piotroski) scores {piotroski_score}/9."
+  dividend_streak: "The dividend has been raised for {growth_streak} years in a row."
+  outperform_market: "The stock beat the market (SPY) by {rel_strength_6m_pct} over the last 6 months."
+  high_fcf_yield: "Free cash flow yield is {fcf_yield_pct}: the business generates a lot of cash for its price."
+  estimates_rising: "Analysts raised their next-year EPS estimate by {estimate_change_90d_pct} in the last 90 days."
+  altman_safe: "Altman Z-score of {altman_z_num} is in the safe zone (low distress risk)."
+  good_cash_conversion: "Operating cash flow is {cash_conversion_x} net income, so profits are backed by cash."
+
+risks:
+  losing_money: "The company lost money over the last 12 months ({net_income_ttm_money})."
+  expensive_vs_history: "P/E is higher than {pe_percentile_pct} of the last 5 years, so the stock is priced more expensively than usual."
+  expensive_vs_peers: "P/E is {pe_vs_peers_x} the median of similar companies."
+  revenue_decline: "Revenue fell {revenue_yoy_abs_pct} compared with the same quarter last year."
+  eps_decline: "Earnings per share fell {eps_yoy_abs_pct} compared with the same quarter last year."
+  high_debt: "Net debt is {net_debt_to_ebitda_x} its yearly EBITDA, which is high."
+  low_coverage: "Operating profit covers interest only {interest_coverage_x}, which leaves little room."
+  no_coverage: "The core business made an operating loss, so it does not cover its interest payments."
+  altman_distress: "Altman Z-score of {altman_z_num} is in the distress zone (higher financial risk)."
+  altman_grey: "Altman Z-score of {altman_z_num} is in the grey zone (some financial risk)."
+  misses_estimates: "The company beat EPS estimates in only {beats_8} of the last {quarters_8} quarters."
+  below_sma200: "The price is {vs_sma200_abs_pct} below its 200-day average, a sign of a weak trend."
+  estimates_falling: "Analysts cut their next-year EPS estimate by {estimate_change_90d_abs_pct} in the last 90 days."
+  high_payout: "The company pays out {payout_ratio_pct} of its profit as dividends, which may be hard to sustain."
+  high_volatility: "The price is very volatile ({volatility_pct} a year), so big swings are common."
+  deep_drawdown: "The price is {current_drawdown_abs_pct} below its highest level in the last 5 years."
+  high_short_interest: "{short_pct_pct} of tradable shares are sold short: many investors are betting on a fall."
+  weak_cash_conversion: "Operating cash flow is only {cash_conversion_x} net income, so less of the profit arrives as cash."
+  weak_fscore: "Financial strength checklist (Piotroski) scores only {piotroski_score}/9."
+
+none_strengths: "No clear strengths stand out from the available data."
+none_risks: "No major risks stand out from the available data."

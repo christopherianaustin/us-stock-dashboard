@@ -1,0 +1,49 @@
+# Interface text (English)
+tabs:
+  summary: Summary
+  price: Price & Technicals
+  earnings: Earnings
+  financials: Financials
+  valuation: Valuation
+  health: Profitability & Health
+  dividends: Dividends
+  ownership: Ownership & Sentiment
+  news: News & Filings
+  profile: Company Profile
+sidebar:
+  ticker: Ticker
+  ticker_help: Type a US ticker and press Enter.
+  search: …or search by company name
+  search_placeholder: Start typing a name
+  recent: Recently viewed
+  language: Language
+  safe_mode: Production-safe mode
+  safe_help: Hide every 'Demo data' (orange) item to see what the app looks like with only commercially licensed data.
+  refresh: 🔄 Refresh data
+  refresh_help: Clear cached data for this ticker and reload it.
+  sources: Data sources
+header:
+  scorecard: "Scorecard (our view per category, not a recommendation)"
+loading:
+  lookup: "Looking up {symbol}…"
+  data: "Loading {symbol}: financials, prices, earnings, dividends, ownership and news…"
+summary:
+  scorecard: Scorecard by category
+  scorecard_help: "Each category is scored 0-100 from several metrics (thresholds in config/scoring.yaml). Strong = 70+, Neutral = 40-69, Weak = below 40. This describes the data; it is not a recommendation."
+  radar: Category scores (0-100)
+  strengths: Strengths
+  risks: Risks
+  insights_note: "Generated automatically from the data with simple rules. Facts, not advice."
+  key_stats: Key stats
+  vs_peers: "vs peers {value}"
+  mini_chart: "Price over the last year, with the nearest support and resistance"
+  analysts: Wall Street analysts' view
+  analysts_note: "Third-party opinions from Wall Street analysts, not our view."
+  consensus: Analyst consensus (1 = strong buy … 5 = strong sell)
+  targets: Analysts' price targets vs today's price
+  details: "How each score was calculated"
+  metric: Metric
+  value: Value
+  points: Points (0-100)
+  not_used: not available
+  safe_note: "Production-safe mode: scores use licensed-safe data only, so some categories have fewer metrics."

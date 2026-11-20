@@ -1,0 +1,49 @@
+# Teks antarmuka (Bahasa Indonesia)
+tabs:
+  summary: Ringkasan
+  price: Harga & Teknikal
+  earnings: Laporan Laba
+  financials: Laporan Keuangan
+  valuation: Valuasi
+  health: Profitabilitas & Kesehatan
+  dividends: Dividen
+  ownership: Kepemilikan & Sentimen
+  news: Berita & Laporan SEC
+  profile: Profil Perusahaan
+sidebar:
+  ticker: Kode saham
+  ticker_help: Ketik kode saham AS lalu tekan Enter.
+  search: …atau cari berdasarkan nama perusahaan
+  search_placeholder: Mulai ketik nama
+  recent: Baru dilihat
+  language: Bahasa
+  safe_mode: Mode aman produksi
+  safe_help: Sembunyikan semua item 'Data demo' (oranye) untuk melihat tampilan aplikasi hanya dengan data berlisensi komersial.
+  refresh: 🔄 Muat ulang data
+  refresh_help: Hapus data tersimpan untuk saham ini lalu muat ulang.
+  sources: Sumber data
+header:
+  scorecard: "Penilaian (pandangan kami per kategori, bukan rekomendasi)"
+loading:
+  lookup: "Mencari {symbol}…"
+  data: "Memuat {symbol}: laporan keuangan, harga, laba, dividen, kepemilikan, dan berita…"
+summary:
+  scorecard: Penilaian per kategori
+  scorecard_help: "Setiap kategori dinilai 0-100 dari beberapa metrik (ambang batas di config/scoring.yaml). Kuat = 70+, Netral = 40-69, Lemah = di bawah 40. Ini menggambarkan data, bukan rekomendasi."
+  radar: Skor kategori (0-100)
+  strengths: Kekuatan
+  risks: Risiko
+  insights_note: "Dibuat otomatis dari data dengan aturan sederhana. Fakta, bukan saran."
+  key_stats: Statistik utama
+  vs_peers: "vs sejenis {value}"
+  mini_chart: "Harga selama setahun terakhir, dengan support dan resistance terdekat"
+  analysts: Pandangan analis Wall Street
+  analysts_note: "Opini pihak ketiga dari analis Wall Street, bukan pandangan kami."
+  consensus: Konsensus analis (1 = strong buy … 5 = strong sell)
+  targets: Target harga analis dibanding harga hari ini
+  details: "Cara setiap skor dihitung"
+  metric: Metrik
+  value: Nilai
+  points: Poin (0-100)
+  not_used: tidak tersedia
+  safe_note: "Mode aman produksi: skor hanya memakai data berlisensi aman, jadi beberapa kategori memakai lebih sedikit metrik."

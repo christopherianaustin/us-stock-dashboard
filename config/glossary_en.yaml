@@ -1,0 +1,509 @@
+# Tooltips for beginners (English). Each entry: what it means, how it's calculated,
+# and what is generally considered good or bad. More entries are added each phase.
+
+_ui:
+  disclaimer: "This information is for educational purposes only and is not investment advice. Past performance does not guarantee future results. Data may be delayed or inaccurate."
+  what: "What it means"
+  how: "How it's calculated"
+  good_bad: "Good or bad?"
+
+price:
+  label: "Price"
+  what: "The latest price of one share."
+  how: "Last traded price from the price provider. May be delayed."
+  good_bad: "A price alone is not good or bad. Compare it with the company's earnings and history."
+
+change_today:
+  label: "Change today"
+  what: "How much the price moved since yesterday's close."
+  how: "Latest price minus previous close (and the same as a %)."
+  good_bad: "Daily moves are mostly noise. Moves above about 5% usually have news behind them."
+
+market_cap:
+  label: "Market cap"
+  what: "The total value of all the company's shares, i.e. what the market thinks the whole company is worth."
+  how: "Share price x number of shares outstanding."
+  good_bad: "Not good or bad. Large companies (over $10B) are usually more stable; small ones can grow faster but are riskier."
+
+week52_range:
+  label: "52-week range"
+  what: "The lowest and highest price in the last year, and where today's price sits between them."
+  how: "Lowest daily low and highest daily high over the last 252 trading days."
+  good_bad: "Near the high = strong recent momentum but possibly expensive. Near the low = weak momentum, possibly cheap or in trouble."
+
+next_earnings:
+  label: "Next earnings"
+  what: "The next date the company reports its quarterly results."
+  how: "From the company's announced or expected earnings calendar."
+  good_bad: "Prices often move a lot around earnings days. Know the date before you act."
+
+shares_outstanding:
+  label: "Shares outstanding"
+  what: "How many shares of the company exist."
+  how: "Reported by the company on the cover of its latest 10-Q or 10-K filing."
+  good_bad: "A falling number (buybacks) is usually good for shareholders; a rising number (new shares) dilutes them."
+
+data_freshness:
+  label: "Data freshness"
+  what: "The latest financial report the numbers come from."
+  how: "Most recent 10-Q (quarterly) or 10-K (annual) filing on SEC EDGAR."
+  good_bad: "Companies file every 3 months. A report older than about 4 months may mean a filing is late."
+
+employees:
+  label: "Employees"
+  what: "Number of full-time employees."
+  how: "As reported by the company."
+  good_bad: "Useful for scale. Revenue per employee helps compare efficiency between similar companies."
+
+fiscal_year_end:
+  label: "Fiscal year end"
+  what: "The day the company's financial year ends. Not always December 31."
+  how: "From the company's SEC registration data."
+  good_bad: "Not good or bad. It explains why, for example, Apple's 'Q1' is October to December."
+
+sic_code:
+  label: "SIC code"
+  what: "A government industry code the SEC uses to classify the company."
+  how: "From the company's SEC registration data."
+  good_bad: "Not good or bad. Useful to find similar companies."
+
+ipo_date:
+  label: "IPO date"
+  what: "When the company's shares first started trading on the stock market."
+  how: "From the data provider's company profile."
+  good_bad: "Older listed companies have a longer track record to study."
+
+# ---------- Phase 2: financial statements ----------
+revenue:
+  label: "Revenue"
+  what: "All the money the company earned from selling its products and services, before any costs."
+  how: "Reported in the income statement (10-Q / 10-K)."
+  good_bad: "Steadily rising revenue is a good sign. Falling revenue for several quarters is a warning."
+gross_profit:
+  label: "Gross profit"
+  what: "What is left from revenue after paying the direct cost of making the products."
+  how: "Revenue minus cost of revenue."
+  good_bad: "Higher is better. It shows pricing power. Banks and insurers don't have it."
+operating_income:
+  label: "Operating income"
+  what: "Profit from the core business, after running costs like R&D and marketing, before interest and tax."
+  how: "Gross profit minus operating expenses."
+  good_bad: "Positive and growing is good. Negative means the core business loses money."
+ebitda:
+  label: "EBITDA"
+  what: "A rough measure of cash profit from operations, ignoring interest, taxes and non-cash write-downs."
+  how: "Operating income + depreciation & amortization (calculated by us)."
+  good_bad: "Useful to compare companies with different debt. Not meaningful for banks and insurers."
+pretax_income:
+  label: "Pretax income (EBT)"
+  what: "Profit before income tax."
+  how: "Reported in the income statement."
+  good_bad: "Positive and growing is good."
+net_income:
+  label: "Net income"
+  what: "The final profit after all costs, interest and taxes. The 'bottom line'."
+  how: "Reported in the income statement."
+  good_bad: "Positive and growing is good. One-off items can make a single quarter look unusual."
+eps_diluted:
+  label: "EPS (diluted, GAAP)"
+  what: "Profit per share: how much of the net income belongs to each share."
+  how: "Net income / diluted share count (official GAAP number)."
+  good_bad: "Growing EPS is good. Note: analysts often quote an 'adjusted' EPS that can differ."
+margins:
+  label: "Profit margins"
+  what: "How many cents of each $1 of revenue are kept as profit, at each level of the income statement."
+  how: "Gross, operating, EBITDA or net profit / revenue."
+  good_bad: "Higher and rising margins are good. Compare with similar companies: software has higher margins than retail."
+growth:
+  label: "Growth vs last year"
+  what: "How much revenue and EPS changed compared with the same period one year earlier."
+  how: "(This period / same period last year) - 1. Comparing the same quarter removes seasonal effects."
+  good_bad: "Positive is good. Steady growth is usually better than big swings."
+expense_breakdown:
+  label: "Expense breakdown"
+  what: "How the company spends its revenue: making products (COGS), research (R&D), and selling/admin (SG&A)."
+  how: "Each expense / revenue."
+  good_bad: "Falling percentages mean the company is getting more efficient."
+total_assets:
+  label: "Total assets"
+  what: "Everything the company owns: cash, buildings, inventory, investments."
+  how: "Reported in the balance sheet. Always equals liabilities + equity."
+  good_bad: "Not good or bad alone. Compare it with what the company owes."
+total_debt:
+  label: "Total debt"
+  what: "All borrowed money the company must repay."
+  how: "Short-term debt + long-term debt."
+  good_bad: "Lower is safer. Debt is fine if profits easily cover the interest."
+net_debt:
+  label: "Net debt"
+  what: "Debt left over if the company used all its cash to repay it."
+  how: "Total debt - cash - short-term investments."
+  good_bad: "Negative net debt (more cash than debt) is a very strong position."
+current_ratio:
+  label: "Current ratio"
+  what: "Can the company pay bills due within a year using assets it can turn into cash within a year?"
+  how: "Current assets / current liabilities."
+  good_bad: "Above 1.5 is comfortable. Below 1.0 can be a warning (except for very strong companies like Apple)."
+debt_to_equity:
+  label: "Debt to equity"
+  what: "How much the company borrows compared with the money owned by shareholders."
+  how: "Total debt / shareholders' equity."
+  good_bad: "Below 1.0 is generally conservative; above 2.0 is high. Large buybacks can make equity small and this ratio look high."
+operating_cash_flow:
+  label: "Operating cash flow"
+  what: "Actual cash generated by the business (not accounting profit)."
+  how: "Reported in the cash flow statement. 10-Q filings report it year-to-date, so we subtract to get single quarters."
+  good_bad: "Positive and above net income is a sign of high-quality earnings."
+capex:
+  label: "Capital expenditure (capex)"
+  what: "Cash spent on buildings, equipment and other long-term assets."
+  how: "Reported in the cash flow statement."
+  good_bad: "Needed to grow, but very high capex leaves less cash for shareholders."
+fcf:
+  label: "Free cash flow (FCF)"
+  what: "Cash left after running and investing in the business. This can pay dividends, buy back shares or repay debt."
+  how: "Operating cash flow - capex."
+  good_bad: "Positive and growing is very good. Negative FCF for a long time is a warning."
+shareholder_returns:
+  label: "Shareholder returns"
+  what: "Cash the company gave back to shareholders."
+  how: "Dividends paid + money spent buying back its own shares."
+  good_bad: "Steady returns are good if they are paid from free cash flow, not new debt."
+derived:
+  label: "Derived values (✱)"
+  what: "Numbers we calculated because the company doesn't report them directly."
+  how: "Q4 = full year minus Q1 to Q3. Quarterly cash flow = year-to-date minus the previous year-to-date."
+  good_bad: "They are exact for most items. Q4 EPS and share counts are close approximations."
+
+# ---------- Phase 3: valuation, profitability, health ----------
+pe:
+  label: "P/E (TTM)"
+  what: "How many dollars investors pay for each $1 of yearly profit."
+  how: "Share price / earnings per share of the last 12 months. N/A when earnings are negative."
+  good_bad: "Lower can mean cheaper, higher means investors expect more growth. Compare with the stock's own history and its peers."
+forward_pe:
+  label: "Forward P/E"
+  what: "Like P/E, but using analysts' profit estimate for the next fiscal year."
+  how: "Share price / expected EPS for the next fiscal year (analyst estimate)."
+  good_bad: "Lower than today's P/E means profits are expected to grow. Estimates can be wrong."
+peg:
+  label: "PEG"
+  what: "P/E adjusted for expected growth."
+  how: "P/E / expected yearly EPS growth in % (uses analyst estimates)."
+  good_bad: "Around 1 is often seen as fair; below 1 can be cheap for its growth; above 2 expensive."
+ps:
+  label: "P/S (TTM)"
+  what: "How much investors pay for each $1 of yearly sales."
+  how: "Market cap / revenue of the last 12 months."
+  good_bad: "Useful when profits are small or negative. High-margin businesses usually have higher P/S."
+pb:
+  label: "P/B"
+  what: "Price compared with the company's accounting net worth (book value)."
+  how: "Market cap / shareholders' equity."
+  good_bad: "Most useful for banks and insurers (around 1-2 is typical). Big buybacks can make P/B very high for tech companies."
+ev_ebitda:
+  label: "EV/EBITDA"
+  what: "Price of the whole business (including debt) compared with its operating cash profit."
+  how: "Enterprise value / EBITDA of the last 12 months."
+  good_bad: "Lower is cheaper. Around 10 is common for mature companies. Not meaningful for banks."
+ev_revenue:
+  label: "EV/Revenue"
+  what: "Price of the whole business (including debt) compared with its yearly sales."
+  how: "Enterprise value / revenue of the last 12 months."
+  good_bad: "Lower is cheaper; compare with similar companies."
+p_fcf:
+  label: "P/FCF"
+  what: "How much investors pay for each $1 of yearly free cash flow."
+  how: "Market cap / free cash flow of the last 12 months."
+  good_bad: "Below about 20 is often considered reasonable; very high means investors expect strong growth."
+fcf_yield:
+  label: "FCF yield"
+  what: "Free cash flow as a percentage of the company's market value. Like an 'interest rate' the business earns for owners."
+  how: "Free cash flow (TTM) / market cap."
+  good_bad: "Higher is better. Above about 5% is attractive; negative means the company burns cash."
+earnings_yield:
+  label: "Earnings yield"
+  what: "Profit as a percentage of the share price: the inverse of P/E."
+  how: "EPS (TTM) / price, i.e. 1 / P/E."
+  good_bad: "Compare with bond yields: a stock earning less than safe bonds needs strong growth to be worth it."
+enterprise_value:
+  label: "Enterprise value (EV)"
+  what: "The price to buy the whole company, including its debt, minus its cash."
+  how: "Market cap + total debt - cash and short-term investments."
+  good_bad: "Not good or bad alone; used in EV/EBITDA and EV/Revenue."
+target_upside:
+  label: "Analyst target upside"
+  what: "How far the average Wall Street analyst price target is above or below today's price."
+  how: "(Mean analyst price target / price) - 1. Third-party opinion, not our view."
+  good_bad: "Targets are often wrong and change often. Treat as one opinion, not a forecast."
+roe:
+  label: "ROE (return on equity)"
+  what: "How much profit the company makes with the money owned by shareholders."
+  how: "Net income (TTM) / average shareholders' equity."
+  good_bad: "Above 15% is generally strong. Very high ROE can come from large debt or buybacks (small equity)."
+roa:
+  label: "ROA (return on assets)"
+  what: "How much profit the company makes from everything it owns."
+  how: "Net income (TTM) / average total assets. (Yahoo uses a slightly different formula, so numbers can differ.)"
+  good_bad: "Above 5% is good for most companies; banks are usually around 1%."
+roic:
+  label: "ROIC (return on invested capital)"
+  what: "Profit from operations compared with all the money invested in the business (by lenders and owners)."
+  how: "NOPAT / (debt + equity - cash). NOPAT = operating income x (1 - tax rate)."
+  good_bad: "Above about 10-15% means the company creates value. Not meaningful for banks."
+dupont:
+  label: "DuPont breakdown"
+  what: "Splits ROE into three drivers: profitability, efficiency and leverage (debt)."
+  how: "ROE = net margin x asset turnover (revenue / assets) x equity multiplier (assets / equity)."
+  good_bad: "ROE driven by margin and turnover is healthier than ROE driven mostly by debt."
+effective_tax_rate:
+  label: "Effective tax rate"
+  what: "The share of pretax profit paid as income tax."
+  how: "Income tax / pretax income."
+  good_bad: "The US federal rate is 21%. Very low rates may not last."
+cagr:
+  label: "CAGR (compound annual growth)"
+  what: "The average yearly growth rate over several years."
+  how: "(Last value / first value)^(1 / years) - 1, from annual reports."
+  good_bad: "Higher is better. N/A when a start or end value is negative."
+bvps:
+  label: "Book value per share"
+  what: "The company's accounting net worth per share."
+  how: "Shareholders' equity / shares outstanding."
+  good_bad: "Growing book value is good. Compare with price using P/B."
+quick_ratio:
+  label: "Quick ratio"
+  what: "Like the current ratio, but without inventory (which can be hard to sell fast)."
+  how: "(Current assets - inventory) / current liabilities."
+  good_bad: "Above 1.0 is comfortable."
+debt_to_ebitda:
+  label: "Debt to EBITDA"
+  what: "How many years of operating cash profit it would take to repay all debt."
+  how: "Total debt / EBITDA (TTM)."
+  good_bad: "Below 2 is comfortable, above 4 is high."
+interest_coverage:
+  label: "Interest coverage"
+  what: "How many times operating profit covers the interest on debt."
+  how: "Operating income (TTM) / interest expense (TTM)."
+  good_bad: "Above 5x is comfortable; below 2x is risky."
+cash_conversion:
+  label: "Cash conversion"
+  what: "How much of the reported profit actually arrives as cash."
+  how: "Operating cash flow (TTM) / net income (TTM)."
+  good_bad: "Around 1.0 or higher is healthy. Far below 1 for a long time can be a warning about earnings quality."
+valuation_history:
+  label: "Valuation history"
+  what: "How expensive the stock was on each day of the last 5 years."
+  how: "Daily price vs the 12-month earnings/sales known on that day (using filing dates, so no future data is used)."
+  good_bad: "Above the median line = more expensive than usual; below = cheaper than usual. History doesn't have to repeat."
+peers:
+  label: "Peer comparison"
+  what: "The same ratios for similar companies."
+  how: "Peer list from Finnhub; peer ratios from Yahoo Finance (demo data). Peer median = middle value."
+  good_bad: "Being cheaper than peers can mean a bargain or a weaker business. Look at growth and margins too."
+graham:
+  label: "Graham number"
+  what: "A classic, very conservative 'fair price' formula by Benjamin Graham."
+  how: "Square root of 22.5 x EPS x book value per share. Estimate, not a prediction."
+  good_bad: "Built for stable, asset-heavy companies. Most growth companies trade far above it."
+dcf:
+  label: "DCF (discounted cash flow)"
+  what: "An estimate of value from the cash the business might generate in the future."
+  how: "Project free cash flow 5 years, add a terminal value, discount back to today, subtract net debt, divide by shares."
+  good_bad: "Very sensitive to the assumptions. Use it to understand what the price implies, not as a prediction."
+piotroski:
+  label: "Piotroski F-score"
+  what: "A 0-9 checklist of financial strength: profitability, debt, and efficiency, each compared with the year before."
+  how: "One point for each of 9 tests passed, using annual SEC data."
+  good_bad: "7-9 is strong, 4-6 is average, 0-3 is weak."
+altman:
+  label: "Altman Z-score"
+  what: "A formula that estimates the risk of financial distress (bankruptcy) within about 2 years."
+  how: "1.2 x working capital/assets + 1.4 x retained earnings/assets + 3.3 x EBIT/assets + 0.6 x market cap/liabilities + 1.0 x sales/assets."
+  good_bad: "Above 2.99 = safe zone, 1.81-2.99 = grey zone, below 1.81 = distress zone. Not used for banks and insurers."
+
+# ---------- Phase 4: price, technicals, risk ----------
+price_chart:
+  label: "Price chart"
+  what: "Each candle shows one day: the body runs from open to close (green = closed higher, red = closed lower), the thin lines show the day's high and low."
+  how: "Daily prices. Panels below: trading volume, RSI and MACD."
+  good_bad: "Charts show what happened, not what will happen."
+sma:
+  label: "Moving averages (SMA 20 / 50 / 200)"
+  what: "The average closing price of the last 20, 50 or 200 trading days. Smooths out daily noise to show the trend."
+  how: "Sum of the last N closing prices / N."
+  good_bad: "Price above the 200-day average is commonly read as a long-term uptrend; below as a downtrend."
+rsi:
+  label: "RSI (14)"
+  what: "Measures how fast and how much the price moved recently, on a 0-100 scale."
+  how: "Wilder's formula: 100 - 100 / (1 + average gain / average loss) over 14 days."
+  good_bad: "Above 70 = 'overbought zone' (rose fast), below 30 = 'oversold zone' (fell fast). Strong trends can stay there for a long time."
+macd:
+  label: "MACD (12, 26, 9)"
+  what: "Shows changes in momentum by comparing a fast and a slow moving average."
+  how: "MACD = 12-day EMA - 26-day EMA. Signal = 9-day EMA of MACD. Histogram = MACD - signal."
+  good_bad: "MACD crossing above the signal line = momentum turning up; below = turning down. Many false signals in sideways markets."
+bollinger:
+  label: "Bollinger Bands (20, 2)"
+  what: "A band around the 20-day average that widens when prices are volatile and narrows when calm."
+  how: "20-day average +/- 2 standard deviations."
+  good_bad: "Touching a band shows a big move relative to recent volatility, not a reversal by itself."
+atr:
+  label: "ATR (14)"
+  what: "The average daily price range (how much the stock typically moves in a day)."
+  how: "Average of the 'true range' over 14 days (Wilder smoothing)."
+  good_bad: "Higher ATR = bigger daily swings = more risk. Shown also as % of price."
+volume:
+  label: "Volume vs average"
+  what: "How many shares traded today compared with a normal day."
+  how: "Today's volume / 20-day average volume."
+  good_bad: "Above 1.5x means unusual interest, often around news or earnings."
+support_resistance:
+  label: "Support and resistance"
+  what: "Price areas where the stock turned around before. Support is below the price, resistance above."
+  how: "Find swing highs and lows (5 days each side) plus the window's highest high and lowest low, group prices within max(0.5 x ATR, 1.5%), rank by number of touches (recent and high-volume touches count more)."
+  good_bad: "Support and resistance are areas where price reacted before. They are not guarantees."
+pivots:
+  label: "Pivot points (weekly)"
+  what: "Reference levels for this week calculated from last week's high, low and close."
+  how: "P = (High + Low + Close) / 3; R1 = 2P - Low; S1 = 2P - High; R2 = P + (High - Low); S2 = P - (High - Low)."
+  good_bad: "Many short-term traders watch them, which is why price sometimes reacts there. Not guarantees."
+trend_signals:
+  label: "Trend signals"
+  what: "Simple facts about the current trend, with the date they happened."
+  how: "Price vs 50/200-day averages, golden/death cross (50-day crossing the 200-day) in the last 60 days, RSI zone, MACD crossover."
+  good_bad: "Facts, not advice. Signals often contradict each other."
+returns:
+  label: "Returns"
+  what: "How much the stock gained or lost over each period, compared with the market (SPY) and its sector ETF."
+  how: "Price at the end / price at the start - 1, using prices adjusted for dividends and splits."
+  good_bad: "Beating the market over 1-5 years is a good sign; short periods are mostly noise."
+relative_performance:
+  label: "Relative performance"
+  what: "The stock, the market (SPY) and its sector ETF, all starting at 100, so you can compare them directly."
+  how: "Each line = price / price on the first day x 100 (dividend-adjusted)."
+  good_bad: "A rising gap above SPY means the stock beat the market over the period."
+beta:
+  label: "Beta"
+  what: "How much the stock tends to move when the market moves."
+  how: "From 2 years of weekly returns: covariance(stock, SPY) / variance(SPY)."
+  good_bad: "1.0 = moves like the market; 1.5 = 50% bigger swings; below 1 = calmer than the market."
+volatility:
+  label: "Volatility (1 year)"
+  what: "How much the price bounces around, expressed per year."
+  how: "Standard deviation of daily returns over 1 year x square root of 252."
+  good_bad: "Below 20% is calm, 20-40% typical for single stocks, above 50% very volatile."
+max_drawdown:
+  label: "Maximum drawdown"
+  what: "The biggest fall from a peak to a later low in the period."
+  how: "Lowest value of (price / highest price so far - 1)."
+  good_bad: "Shows the pain an investor could have felt. -20% is common; -50% or worse is severe."
+sharpe:
+  label: "Sharpe ratio (1 year)"
+  what: "Return earned per unit of risk taken, above a risk-free investment."
+  how: "(1-year return - 13-week T-bill rate) / 1-year volatility."
+  good_bad: "Above 1 is good, above 2 very good, below 0 means a T-bill did better."
+monthly_returns:
+  label: "Monthly returns"
+  what: "The return of each calendar month, to spot seasonal patterns."
+  how: "Month-end price / previous month-end price - 1 (dividend-adjusted)."
+  good_bad: "Patterns in the past may not repeat."
+drawdown:
+  label: "Drawdown chart"
+  what: "How far below its previous high the stock was on each day."
+  how: "Price / highest price so far - 1 (dividend-adjusted)."
+  good_bad: "Deep and long 'underwater' periods show how risky the stock has been."
+
+# ---------- Phase 5: earnings ----------
+eps_surprise:
+  label: "EPS actual vs expected"
+  what: "Compares the profit per share the company reported with what Wall Street analysts expected."
+  how: "Surprise % = (reported EPS - average analyst estimate) / |estimate|. Beat = above +1%, miss = below -1%, otherwise inline. 'Reported EPS' is usually the adjusted (non-GAAP) number analysts track."
+  good_bad: "Regular beats suggest the company sets beatable expectations or is doing better than expected. The price reaction matters as much as the beat itself."
+beat_rate:
+  label: "Beat rate"
+  what: "How often the company beat analysts' EPS estimates."
+  how: "Number of beats / number of quarters (last 8 and last 12)."
+  good_bad: "Most large US companies beat about 70-80% of the time, so a high beat rate is normal; a low one stands out."
+earnings_reaction:
+  label: "Post-earnings price move"
+  what: "How much the stock moved right after each earnings report."
+  how: "From the last close BEFORE the market could react (previous close if reported before the open; same-day close if after the close) to the close 1 day and 5 days later."
+  good_bad: "'Typical earnings move' (average absolute 1-day move) shows how much risk an earnings day usually brings."
+gaap_vs_adjusted:
+  label: "GAAP EPS vs reported (adjusted) EPS"
+  what: "GAAP EPS is the official number in the SEC filing. 'Reported' EPS from data providers is usually adjusted, excluding one-off items."
+  how: "GAAP diluted EPS from SEC EDGAR; reported EPS from yfinance."
+  good_bad: "A big, lasting gap (adjusted much higher than GAAP) deserves a closer look at what is being excluded."
+estimate_revisions:
+  label: "Estimate revisions"
+  what: "How analysts' EPS estimates changed over the last 90 days."
+  how: "Average analyst estimate now vs 7, 30, 60 and 90 days ago, plus the number of analysts who raised or lowered their estimate."
+  good_bad: "Rising estimates usually mean business is going better than expected; falling estimates the opposite."
+upcoming_earnings:
+  label: "Upcoming earnings"
+  what: "The next scheduled earnings report and what analysts expect."
+  how: "Date and analyst averages from data providers. Dates can change until the company confirms them."
+  good_bad: "Prices often move a lot around earnings. Know the date and the expectations."
+revenue_surprise:
+  label: "Revenue actual vs expected"
+  what: "Reported revenue (from the SEC filing) compared with the analyst estimate, where an estimate is available."
+  how: "Actual revenue from SEC EDGAR; estimates from Finnhub (free data covers only the most recent quarter)."
+  good_bad: "Beating on revenue shows real demand; beating only on EPS can come from cost cuts or lower taxes."
+
+# ---------- Phase 6: dividends, ownership, sentiment, news ----------
+dividend_yield:
+  label: "Dividend yield (TTM)"
+  what: "The yearly cash dividend as a percentage of the share price."
+  how: "Dividends per share paid in the last 12 months / current price."
+  good_bad: "2-4% is typical for mature companies. A very high yield can be a warning that the market expects a cut."
+payout_ratio:
+  label: "Payout ratio"
+  what: "The share of profit paid out as dividends."
+  how: "Dividends paid (last 12 months) / net income (last 12 months), from SEC filings."
+  good_bad: "Below about 60% is comfortable; above 100% means the company pays more than it earns, which can't last."
+fcf_payout:
+  label: "FCF payout ratio"
+  what: "The share of free cash flow paid out as dividends: dividends are paid from cash, not profit."
+  how: "Dividends paid (TTM) / free cash flow (TTM)."
+  good_bad: "Below about 70% leaves room to keep raising the dividend."
+dividend_growth:
+  label: "Dividend growth"
+  what: "How fast the dividend per share has grown, and for how many years in a row it was raised."
+  how: "CAGR of yearly dividends per share (3 and 5 years). Streak = consecutive calendar years in which the regular dividend was raised (special one-off dividends ignored). Based on Yahoo's dividend history; very old records can be incomplete, so long streaks may be undercounted."
+  good_bad: "A long streak (25+ years = 'dividend aristocrat') shows a strong commitment to the dividend."
+ex_dividend:
+  label: "Ex-dividend date"
+  what: "You must own the shares BEFORE this date to receive the next dividend."
+  how: "Announced by the company."
+  good_bad: "The price usually drops by about the dividend amount on this date."
+holders:
+  label: "Who owns the shares"
+  what: "How the shares are split between company insiders, institutions (funds, pensions) and everyone else."
+  how: "Latest filings collected by Yahoo Finance."
+  good_bad: "High institutional ownership means professional investors are involved; meaningful insider ownership aligns management with shareholders."
+insiders:
+  label: "Insider transactions"
+  what: "Shares bought or sold by the company's own directors and officers (reported on SEC Form 4)."
+  how: "Purchases and sales by month. Stock awards, gifts and option exercises are listed but not counted as buys or sells."
+  good_bad: "Insiders sell for many reasons (taxes, diversification). Open-market buying is rarer and more meaningful."
+analyst_ratings:
+  label: "Wall Street analysts' ratings"
+  what: "How many Wall Street analysts rate the stock 'buy', 'hold' or 'sell'. This is a third-party opinion, not ours."
+  how: "Monthly counts from data providers (Finnhub first, then Yahoo)."
+  good_bad: "Analysts are often too optimistic and change views late. Use ratings as one input, not a decision."
+short_interest:
+  label: "Short interest"
+  what: "Shares sold short by investors betting the price will fall."
+  how: "% of float = shares sold short / shares available to trade. Days to cover = shares short / average daily volume."
+  good_bad: "Below 5% of float is normal; above 20% means many investors are betting against the stock (and sharp 'short squeezes' are possible)."
+news:
+  label: "News"
+  what: "Recent articles about the company from news providers."
+  how: "Finnhub company news first, then Yahoo Finance. Duplicate headlines removed."
+  good_bad: "Headlines are not verified by us. Read the original article and check the official SEC filings."
+sec_filings:
+  label: "SEC filings"
+  what: "The company's official reports to the US regulator."
+  how: "10-K = annual report, 10-Q = quarterly report, 8-K = important event (e.g. earnings), Form 4 = insider trade."
+  good_bad: "The most reliable source: what the company must legally disclose."

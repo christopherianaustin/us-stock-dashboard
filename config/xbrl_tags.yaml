@@ -1,0 +1,238 @@
+# Field -> XBRL tags in priority order (SPEC Section 5).
+# For each period we use the FIRST tag that has a value for that period
+# (companies switch tags over the years, e.g. Apple: SalesRevenueNet -> RevenueFromContract...).
+#
+# statement: income | balance | cashflow
+# kind:      duration (has start + end date) | instant (balance-sheet date)
+# unit:      USD | USD/shares | shares
+# special:   eps (Q4 = net income / diluted shares) | weighted_shares (Q4 = 4 x FY - Q1-Q2-Q3)
+# Tags without a prefix are us-gaap; "dei:" tags come from the filing cover page.
+
+revenue:
+  label: Revenue
+  statement: income
+  kind: duration
+  unit: USD
+  tags:
+    - RevenuesNetOfInterestExpense   # banks (e.g. JPM) - not in the original spec list
+    - Revenues
+    - RevenueFromContractWithCustomerExcludingAssessedTax
+    - RevenueFromContractWithCustomerIncludingAssessedTax
+    - SalesRevenueNet
+cost_of_revenue:
+  label: Cost of revenue
+  statement: income
+  kind: duration
+  unit: USD
+  tags: [CostOfRevenue, CostOfGoodsAndServicesSold, CostOfGoodsSold]
+gross_profit:
+  label: Gross profit
+  statement: income
+  kind: duration
+  unit: USD
+  tags: [GrossProfit]
+rnd:
+  label: Research & development
+  statement: income
+  kind: duration
+  unit: USD
+  tags: [ResearchAndDevelopmentExpense]
+sga:
+  label: Selling, general & admin
+  statement: income
+  kind: duration
+  unit: USD
+  tags: [SellingGeneralAndAdministrativeExpense]
+# Some companies (e.g. MSFT) report these two separately; SG&A is then their sum (calculated)
+selling_marketing:
+  label: Sales & marketing
+  statement: income
+  kind: duration
+  unit: USD
+  tags: [SellingAndMarketingExpense]
+general_admin:
+  label: General & administrative
+  statement: income
+  kind: duration
+  unit: USD
+  tags: [GeneralAndAdministrativeExpense]
+operating_income:
+  label: Operating income
+  statement: income
+  kind: duration
+  unit: USD
+  tags: [OperatingIncomeLoss]
+interest_expense:
+  label: Interest expense
+  statement: income
+  kind: duration
+  unit: USD
+  tags: [InterestExpense, InterestExpenseNonoperating]
+pretax_income:
+  label: Pretax income (EBT)
+  statement: income
+  kind: duration
+  unit: USD
+  tags:
+    - IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest
+    - IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments
+income_tax:
+  label: Income tax
+  statement: income
+  kind: duration
+  unit: USD
+  tags: [IncomeTaxExpenseBenefit]
+net_income:
+  label: Net income
+  statement: income
+  kind: duration
+  unit: USD
+  tags: [NetIncomeLoss, ProfitLoss]
+eps_basic:
+  label: EPS (basic)
+  statement: income
+  kind: duration
+  unit: USD/shares
+  special: eps
+  tags: [EarningsPerShareBasic]
+eps_diluted:
+  label: EPS (diluted, GAAP)
+  statement: income
+  kind: duration
+  unit: USD/shares
+  special: eps
+  tags: [EarningsPerShareDiluted]
+diluted_shares:
+  label: Diluted shares (weighted avg.)
+  statement: income
+  kind: duration
+  unit: shares
+  special: weighted_shares
+  tags: [WeightedAverageNumberOfDilutedSharesOutstanding]
+
+total_assets:
+  label: Total assets
+  statement: balance
+  kind: instant
+  unit: USD
+  tags: [Assets]
+current_assets:
+  label: Current assets
+  statement: balance
+  kind: instant
+  unit: USD
+  tags: [AssetsCurrent]
+cash:
+  label: Cash & equivalents
+  statement: balance
+  kind: instant
+  unit: USD
+  tags: [CashAndCashEquivalentsAtCarryingValue, CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents]
+short_term_investments:
+  label: Short-term investments
+  statement: balance
+  kind: instant
+  unit: USD
+  tags: [ShortTermInvestments, MarketableSecuritiesCurrent]
+receivables:
+  label: Receivables
+  statement: balance
+  kind: instant
+  unit: USD
+  tags: [AccountsReceivableNetCurrent]
+inventory:
+  label: Inventory
+  statement: balance
+  kind: instant
+  unit: USD
+  tags: [InventoryNet]
+total_liabilities:
+  label: Total liabilities
+  statement: balance
+  kind: instant
+  unit: USD
+  tags: [Liabilities]
+current_liabilities:
+  label: Current liabilities
+  statement: balance
+  kind: instant
+  unit: USD
+  tags: [LiabilitiesCurrent]
+short_term_debt:
+  label: Short-term debt
+  statement: balance
+  kind: instant
+  unit: USD
+  tags: [DebtCurrent, LongTermDebtCurrent, ShortTermBorrowings, CommercialPaper]
+long_term_debt:
+  label: Long-term debt
+  statement: balance
+  kind: instant
+  unit: USD
+  tags: [LongTermDebtNoncurrent, LongTermDebt]
+equity:
+  label: Shareholders' equity
+  statement: balance
+  kind: instant
+  unit: USD
+  tags: [StockholdersEquity, StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest]
+equity_incl_nci:
+  label: Equity incl. minority interest
+  statement: balance
+  kind: instant
+  unit: USD
+  tags: [StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest, StockholdersEquity]
+retained_earnings:
+  label: Retained earnings
+  statement: balance
+  kind: instant
+  unit: USD
+  tags: [RetainedEarningsAccumulatedDeficit]
+shares_outstanding:
+  label: Shares outstanding
+  statement: balance
+  kind: instant
+  unit: shares
+  tags: ["dei:EntityCommonStockSharesOutstanding", CommonStockSharesOutstanding]
+
+operating_cash_flow:
+  label: Operating cash flow
+  statement: cashflow
+  kind: duration
+  unit: USD
+  tags: [NetCashProvidedByUsedInOperatingActivities]
+capex:
+  label: Capital expenditure
+  statement: cashflow
+  kind: duration
+  unit: USD
+  tags: [PaymentsToAcquirePropertyPlantAndEquipment, PaymentsToAcquireProductiveAssets]
+da:
+  label: Depreciation & amortization
+  statement: cashflow
+  kind: duration
+  unit: USD
+  tags:
+    - DepreciationDepletionAndAmortization
+    - DepreciationAndAmortization
+    - DepreciationAmortizationAndAccretionNet
+    - DepreciationAmortizationAndOther   # e.g. MSFT (older years)
+    - Depreciation                       # last resort (MSFT, TSLA now): excludes amortization, so EBITDA is slightly understated
+dividends_paid:
+  label: Dividends paid
+  statement: cashflow
+  kind: duration
+  unit: USD
+  tags: [PaymentsOfDividends, PaymentsOfDividendsCommonStock]
+buybacks:
+  label: Share buybacks
+  statement: cashflow
+  kind: duration
+  unit: USD
+  tags: [PaymentsForRepurchaseOfCommonStock]
+dividends_per_share:
+  label: Dividends per share (declared)
+  statement: cashflow
+  kind: duration
+  unit: USD/shares
+  tags: [CommonStockDividendsPerShareDeclared, CommonStockDividendsPerShareCashPaid]

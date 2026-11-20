@@ -1,0 +1,97 @@
+# Teks scorecard dan daftar Kekuatan / Risiko (Bahasa Indonesia).
+# JANGAN memakai kata beli / jual: ini fakta, bukan saran.
+
+levels: {strong: Kuat, neutral: Netral, weak: Lemah, na: "Data belum cukup", not_applicable: "Tidak berlaku"}
+
+pillars:
+  valuation: Valuasi
+  growth: Pertumbuhan
+  profitability: Profitabilitas
+  financial_health: Kesehatan keuangan
+  earnings_quality: Kualitas laba
+  momentum: Momentum
+  dividend: Dividen
+
+pillar_help:
+  valuation: "Seberapa mahal saham dibanding riwayatnya sendiri, perusahaan sejenis, dan kas yang dihasilkan. Kuat = relatif murah."
+  growth: "Seberapa cepat pendapatan dan laba tumbuh, dan apa yang diperkirakan analis."
+  profitability: "Seberapa besar laba dari penjualan dan dari modal yang diinvestasikan."
+  financial_health: "Seberapa aman neraca: utang, kemampuan membayar tagihan dan bunga, risiko kesulitan keuangan."
+  earnings_quality: "Seberapa andal laba: didukung kas, konsisten, melampaui estimasi, arah estimasi."
+  momentum: "Tren harga saham dibanding rata-ratanya dan pasar."
+  dividend: "Seberapa menarik dan aman dividennya. Tidak dihitung untuk perusahaan tanpa dividen."
+
+metrics:
+  pe_vs_history: "P/E dibanding median 5 tahun"
+  pe_vs_peers: "P/E dibanding median sejenis"
+  ev_ebitda_vs_peers: "EV/EBITDA dibanding median sejenis"
+  fcf_yield: "Imbal hasil arus kas bebas"
+  peg: "Rasio PEG"
+  revenue_yoy: "Pertumbuhan pendapatan (YoY)"
+  eps_yoy: "Pertumbuhan EPS (YoY)"
+  revenue_cagr_3y: "Pertumbuhan pendapatan, CAGR 3 tahun"
+  forward_growth: "Perkiraan pertumbuhan EPS analis"
+  net_margin: "Margin bersih (TTM)"
+  roe: "Imbal hasil ekuitas"
+  roic: "Imbal hasil modal yang diinvestasikan"
+  net_margin_change: "Perubahan margin bersih dibanding tahun lalu"
+  debt_to_equity: "Utang terhadap ekuitas"
+  current_ratio: "Rasio lancar"
+  interest_coverage: "Cakupan bunga"
+  altman_z: "Skor Z Altman"
+  net_debt_to_ebitda: "Utang bersih / EBITDA"
+  piotroski: "Skor F Piotroski"
+  cash_conversion: "Konversi kas"
+  beat_rate_8: "Tingkat beat EPS (8 kuartal)"
+  estimate_change_90d: "Perubahan estimasi EPS tahun depan (90 hari)"
+  vs_sma50: "Harga dibanding rata-rata 50 hari"
+  vs_sma200: "Harga dibanding rata-rata 200 hari"
+  rel_strength_6m: "Imbal hasil 6 bulan dibanding SPY"
+  from_52w_high: "Jarak dari harga tertinggi 52 minggu"
+  yield_vs_5y_avg: "Imbal hasil dibanding rata-rata 5 tahun"
+  payout_ratio: "Rasio pembayaran"
+  growth_streak: "Tahun kenaikan dividen"
+
+based_on: "berdasarkan {n} dari {total} metrik"
+na_reason_financial: "Bank dan asuransi dinilai dengan ukuran (seperti rasio modal) yang tidak tersedia di data gratis."
+
+strengths:
+  revenue_growth: "Pendapatan tumbuh {revenue_yoy_pct} dibanding kuartal yang sama tahun lalu."
+  eps_growth: "Laba per saham tumbuh {eps_yoy_pct} dibanding kuartal yang sama tahun lalu."
+  beat_streak: "Perusahaan melampaui estimasi EPS di {beats_8} dari {quarters_8} kuartal terakhir."
+  high_margin: "Perusahaan mempertahankan {net_margin_pct} dari pendapatannya sebagai laba, margin yang tinggi."
+  high_roe: "Imbal hasil ekuitas {roe_pct}: perusahaan menghasilkan banyak dari modal pemegang saham."
+  net_cash: "Perusahaan memiliki kas lebih banyak dari utang (kas bersih {net_cash_money})."
+  cheap_vs_history: "P/E lebih rendah dari {pe_percentile_low_pct} periode 5 tahun terakhir, jadi saham dihargai lebih murah dari biasanya."
+  cheap_vs_peers: "P/E {pe_vs_peers_discount_pct} di bawah median perusahaan sejenis."
+  strong_fscore: "Daftar periksa kekuatan keuangan (Piotroski) bernilai {piotroski_score}/9."
+  dividend_streak: "Dividen telah dinaikkan {growth_streak} tahun berturut-turut."
+  outperform_market: "Saham mengungguli pasar (SPY) sebesar {rel_strength_6m_pct} dalam 6 bulan terakhir."
+  high_fcf_yield: "Imbal hasil arus kas bebas {fcf_yield_pct}: bisnis menghasilkan banyak kas dibanding harganya."
+  estimates_rising: "Analis menaikkan estimasi EPS tahun depan sebesar {estimate_change_90d_pct} dalam 90 hari terakhir."
+  altman_safe: "Skor Z Altman {altman_z_num} berada di zona aman (risiko kesulitan keuangan rendah)."
+  good_cash_conversion: "Arus kas operasi {cash_conversion_x} laba bersih, jadi laba didukung kas."
+
+risks:
+  losing_money: "Perusahaan merugi dalam 12 bulan terakhir ({net_income_ttm_money})."
+  expensive_vs_history: "P/E lebih tinggi dari {pe_percentile_pct} periode 5 tahun terakhir, jadi saham dihargai lebih mahal dari biasanya."
+  expensive_vs_peers: "P/E {pe_vs_peers_x} median perusahaan sejenis."
+  revenue_decline: "Pendapatan turun {revenue_yoy_abs_pct} dibanding kuartal yang sama tahun lalu."
+  eps_decline: "Laba per saham turun {eps_yoy_abs_pct} dibanding kuartal yang sama tahun lalu."
+  high_debt: "Utang bersih {net_debt_to_ebitda_x} EBITDA tahunannya, tergolong tinggi."
+  low_coverage: "Laba operasi hanya menutup bunga {interest_coverage_x}, ruangnya sempit."
+  no_coverage: "Bisnis inti mencatat rugi operasi, sehingga tidak menutup pembayaran bunganya."
+  altman_distress: "Skor Z Altman {altman_z_num} berada di zona bahaya (risiko keuangan lebih tinggi)."
+  altman_grey: "Skor Z Altman {altman_z_num} berada di zona abu-abu (ada risiko keuangan)."
+  misses_estimates: "Perusahaan hanya melampaui estimasi EPS di {beats_8} dari {quarters_8} kuartal terakhir."
+  below_sma200: "Harga {vs_sma200_abs_pct} di bawah rata-rata 200 hari, tanda tren yang lemah."
+  estimates_falling: "Analis memangkas estimasi EPS tahun depan sebesar {estimate_change_90d_abs_pct} dalam 90 hari terakhir."
+  high_payout: "Perusahaan membayar {payout_ratio_pct} labanya sebagai dividen, mungkin sulit dipertahankan."
+  high_volatility: "Harga sangat bergejolak ({volatility_pct} per tahun), ayunan besar sering terjadi."
+  deep_drawdown: "Harga {current_drawdown_abs_pct} di bawah level tertingginya dalam 5 tahun terakhir."
+  high_short_interest: "{short_pct_pct} saham yang beredar dijual short: banyak investor bertaruh harga turun."
+  weak_cash_conversion: "Arus kas operasi hanya {cash_conversion_x} laba bersih, jadi lebih sedikit laba yang menjadi kas."
+  weak_fscore: "Daftar periksa kekuatan keuangan (Piotroski) hanya bernilai {piotroski_score}/9."
+
+none_strengths: "Tidak ada kekuatan yang menonjol dari data yang tersedia."
+none_risks: "Tidak ada risiko besar yang menonjol dari data yang tersedia."
