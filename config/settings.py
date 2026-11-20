@@ -58,13 +58,28 @@ class Settings:
         return "@" in ua and "YOUR_EMAIL_HERE" not in ua and "example.com" not in ua
 
 
+def _get(key: str, default: str = "") -> str:
+    """Setting from the environment / .env first; when deployed on Streamlit Community Cloud, from the app's
+    Secrets (Streamlit only copies Secrets into environment variables after st.secrets is first read)."""
+    value = os.getenv(key)
+    if value is not None and value.strip() != "":
+        return value
+    try:
+        import streamlit as st
+        if key in st.secrets:
+            return str(st.secrets[key])
+    except Exception:  # noqa: BLE001 - no secrets file (local run) or not running under Streamlit
+        pass
+    return value if value is not None else default
+
+
 def load_settings() -> Settings:
-    lang = os.getenv("LANGUAGE", "en").strip().lower()
+    lang = _get("LANGUAGE", "en").strip().lower()
     return Settings(
-        sec_user_agent=os.getenv("SEC_USER_AGENT", "").strip(),
-        finnhub_api_key=os.getenv("FINNHUB_API_KEY", "").strip(),
-        price_provider=os.getenv("PRICE_PROVIDER", "yfinance").strip().lower(),
-        production_safe_mode=_bool(os.getenv("PRODUCTION_SAFE_MODE"), False),
+        sec_user_agent=_get("SEC_USER_AGENT", "").strip(),
+        finnhub_api_key=_get("FINNHUB_API_KEY", "").strip(),
+        price_provider=_get("PRICE_PROVIDER", "yfinance").strip().lower(),
+        production_safe_mode=_bool(_get("PRODUCTION_SAFE_MODE") or None, False),
         language=lang if lang in {"en", "id"} else "en",
     )
 

@@ -43,11 +43,13 @@ def resolve_ticker(raw: str) -> ResolvedTicker:
         raise TickerNotFound(str(exc)) from exc
 
     warnings: list[str] = []
+    sec_problem: Optional[str] = None
     try:
         row = registry.sec().lookup(symbol)
         if row:
             return ResolvedTicker(symbol=symbol, cik=row["cik"], sec_title=row["title"])
     except ProviderError as exc:
+        sec_problem = str(exc)
         if "SEC_USER_AGENT" in str(exc):
             warnings.append("SEC EDGAR is off: add your email to SEC_USER_AGENT in the .env file. "
                             "Showing other sources only.")
@@ -60,6 +62,15 @@ def resolve_ticker(raw: str) -> ResolvedTicker:
         if not warnings:
             warnings.append("This ticker is not in the SEC company list, so official SEC data is not available.")
         return ResolvedTicker(symbol=symbol, warnings=warnings)
+
+    if sec_problem is not None:
+        # Neither source answered, so we can't tell whether the ticker exists - say so honestly.
+        hint = ("Set SEC_USER_AGENT (an app name + your email) in the .env file, or in the app's Secrets when "
+                "deployed on Streamlit Cloud." if "SEC_USER_AGENT" in sec_problem
+                else "Please try again in a minute.")
+        raise TickerNotFound(
+            f"We couldn't check '{symbol}' because the data sources are not reachable right now "
+            f"(SEC EDGAR: {sec_problem.rstrip('.')}; Yahoo Finance did not answer either). {hint}")
 
     raise TickerNotFound(
         f"We couldn't find a US-listed stock with the ticker '{symbol}'. "
