@@ -36,6 +36,28 @@ def test_val_redacts_demo_only_in_safe_mode():
     assert api.raw(5, "yfinance", "DEMO_ONLY", safe=True)["value"] is None
 
 
+def test_cors_allows_only_the_local_prototype():
+    """Phase 9: the mobile prototype (Vite on port 5173 / 4173) may call the API from the browser; other sites may not."""
+    import re
+    mw = [m for m in api.app.user_middleware if m.cls.__name__ == "CORSMiddleware"]
+    assert mw, "CORS middleware missing"
+    rx = re.compile(mw[0].kwargs["allow_origin_regex"])
+    for ok in ("http://127.0.0.1:5173", "http://localhost:4173", "http://192.168.1.20:5173"):
+        assert rx.fullmatch(ok), ok
+    for bad in ("https://evil.example", "http://127.0.0.1:8501", "http://example.com:5173"):
+        assert not rx.fullmatch(bad), bad
+    assert mw[0].kwargs["allow_methods"] == ["GET"]
+
+
+def test_fx_rate_is_hidden_in_safe_mode(monkeypatch):
+    api._fx.clear()
+    api._fx["usdidr"] = (__import__("time").time(), {"rate": 18000.0, "as_of": pd.Timestamp("2026-11-25")})
+    assert api.fx_usdidr(False)["value"] == 18000.0
+    red = api.fx_usdidr(True)
+    assert red["value"] is None and red["license_tag"] == "DEMO_ONLY"
+    api._fx.clear()
+
+
 # ---------------------------------------------------------------- live
 def _calls(t: str, safe: bool):
     return {

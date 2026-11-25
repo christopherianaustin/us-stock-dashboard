@@ -90,6 +90,7 @@ Then open http://127.0.0.1:8000/docs. It's interactive documentation: click an e
 | `GET /stocks/{ticker}/news?days=7` | Company news and SEC filings |
 | `GET /stocks/{ticker}/profile` | Company profile |
 | `GET /coverage/{ticker}` | Data coverage report |
+| `GET /fx/usdidr` | US dollar → rupiah rate (Yahoo, demo data), used by the mobile prototype |
 
 How responses work:
 - **Every value carries its origin:** `{"value", "source", "license_tag", "as_of", "derived", "na_reason"}`.
@@ -98,10 +99,44 @@ How responses work:
 - **Speed:** the first call for a ticker loads everything; later calls within 2 minutes take about 20–100 ms.
 - **Windows tip:** use `127.0.0.1` rather than `localhost`. `localhost` adds about 2 seconds per call.
 
+## 4b. Run the mobile prototype (Phase 9, internal only)
+
+A phone-sized mock-up of the Nanovest US stock page with the analysis added as pill tabs
+(Analysis · Fundamentals · News · Financials · Technicals · About). **Internal prototype: run it on your own computer only, never deploy it to a public URL.**
+
+One time, install Node.js (version 20 or newer) and the prototype's packages:
+
+```powershell
+cd mobile-ui
+npm install
+```
+
+Then use two terminals:
+
+```powershell
+# terminal 1, in the project folder: the API
+.venv\Scripts\python -m uvicorn api.main:app --host 127.0.0.1 --port 8000
+
+# terminal 2, in the mobile-ui folder: the prototype
+npm run dev
+```
+
+Open http://127.0.0.1:5173. On a computer the page shows inside a 390 × 844 phone frame.
+
+- **Pick a stock:** add `?t=KO` to the address, or tap the ticker under the logo **5 times** to open the hidden settings menu
+  (stock, language EN / ID, data mode, production-safe mode, data badges).
+- **Without the API:** AAPL, KO, TSLA and JPM also work from saved data (`mobile-ui/public/mock/`), so the prototype still runs if the API
+  or the data sources are down during a meeting. Refresh the saved data with `.venv\Scripts\python scripts/make_mobile_mocks.py`.
+- **On a phone (same Wi-Fi):** find your PC's address with `ipconfig` (e.g. 192.168.1.20), then run the API with `--host 0.0.0.0`
+  and the prototype with `npx vite --host 0.0.0.0` after setting `$env:VITE_API_BASE="http://192.168.1.20:8000"`, and open
+  `http://192.168.1.20:5173` on the phone. Windows may ask to allow access on private networks.
+- **Buy / Sell are not real.** They only show "Prototype only".
+- Screenshots of every tab: `node scripts/check-tabs.mjs ../design/phase9c AAPL` (with `npx vite preview` running).
+
 ## 5. Run the tests
 
 ```powershell
-.venv\Scripts\python -m pytest              # 122 fast tests, no internet needed
+.venv\Scripts\python -m pytest              # 128 fast tests, no internet needed
 .venv\Scripts\python -m pytest -m network   # 61 live tests against SEC / Yahoo / Finnhub (about 2 minutes)
 ```
 

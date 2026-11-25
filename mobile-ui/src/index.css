@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+
+/* Design tokens from the Figma frame (UI_ANALYSIS.md sections 3-5). Gilroy → Plus Jakarta Sans. */
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+
+  --color-navy: #082f57;        /* Primary/Black: main text */
+  --color-ink: #111a28;         /* Primary/Black Background (dark): buttons, avatar, chart line */
+  --color-purple: #561fa3;      /* Brand/Purple */
+  --color-lavender: #f7f3ff;    /* Shade Avatar/Purple */
+  --color-dgrey: #7c8d9d;       /* Shade/Dark Grey */
+  --color-grey: #a3b1be;        /* Shade/Grey */
+  --color-grey2: #e8ebef;       /* Shade/Grey-2 */
+  --color-lgrey: #f4f7f9;       /* Shade/Light Grey: dividers */
+  --color-chip: #e6eaee;        /* Shade Avatar/Black: selected time chip */
+  --color-up: #06cb90;          /* Product/Green */
+  --color-up-bg: #e6faf4;
+  --color-down: #e11c23;        /* Product/Red */
+  --color-down-bg: #fce8e9;
+
+  --shadow-card: 0 7px 25px 0 rgba(33, 33, 33, 0.1);
+}
+
+/* Figma text styles */
+@utility t-title { font-weight: 700; font-size: 24px; line-height: 32px; }
+@utility t-subtitle { font-weight: 700; font-size: 18px; line-height: 28px; }
+@utility t-link { font-weight: 700; font-size: 16px; line-height: 26px; }
+@utility t-body { font-weight: 500; font-size: 16px; line-height: 26px; }
+@utility t-label { font-weight: 700; font-size: 14px; line-height: 20px; }
+@utility t-label-m { font-weight: 500; font-size: 14px; line-height: 20px; }
+@utility t-action { font-weight: 500; font-size: 12px; line-height: 16px; }
+@utility t-action-b { font-weight: 700; font-size: 12px; line-height: 16px; }
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+html, body { margin: 0; background: #ffffff; color: var(--color-navy); }
+body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+
+/* Tab content cross-fades in */
+@keyframes tab-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.tab-fade { animation: tab-fade 180ms ease-out; }
+@media (prefers-reduced-motion: reduce) { .tab-fade { animation: none; } }
+
+/* Charts use the app font */
+.recharts-wrapper, .recharts-wrapper text { font-family: var(--font-sans); }
+.recharts-wrapper svg { overflow: visible; }
+
+/* Desktop: show the page inside a 390 × 844 phone frame. Phones: fill the screen. */
+@media (min-width: 520px) {
+  body { background: #e9edf2; }
+  .phone-stage { min-height: 100vh; display: grid; place-items: center; padding: 32px 0; }
+  .phone {
+    width: 390px; height: 844px; border-radius: 48px; overflow: hidden; background: #fff;
+    box-shadow: 0 0 0 10px #111a28, 0 30px 80px rgba(8, 47, 87, 0.35);
+    position: relative; transform: translateZ(0); /* keeps the toast inside the frame */
+  }
+  .phone-scroll { height: 100%; overflow-y: auto; scrollbar-width: none; }
+  .phone-scroll::-webkit-scrollbar { display: none; }
+}

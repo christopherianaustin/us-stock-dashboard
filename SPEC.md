@@ -576,3 +576,108 @@ Test tickers for every phase: **AAPL** (non-calendar FY, dividend), **MSFT**, **
 4. `README.md` for beginners
 5. `DATA_SOURCES.md`: table of every field, source, license tag, and which paid vendor endpoint would replace each DEMO_ONLY field
 6. Short list of known limitations
+
+---
+
+## 14. Phase 9: Nanovest app UI simulation (mobile prototype)
+
+### 14.1 Goal
+- Build a clickable mobile prototype that looks and feels like the Nanovest app's US stock asset page, with the new analysis features added into it.
+- Purpose: show managers, product and design teams what the feature would look like inside the real app.
+- This is an **internal prototype only**. Run it locally. Never deploy it to a public URL.
+- It does NOT replace the real app code. The real app team will rebuild it in their own tech stack.
+
+### 14.2 Design inputs (provided by the user in the `design/` folder)
+
+```
+design/
+  nanovest-screens/      # screenshots of the current Nanovest stock asset page, numbered in scroll order
+                         # e.g. 01-top.png, 02-chart.png, 03-about.png, 10-tab-news.png, 20-dark-mode.png
+  assets/                # Nanovest logo, icons, fonts (only use brand files from this folder)
+  design-tokens.md       # colors (hex), fonts, font sizes, corner radius, spacing (if available)
+  notes.md               # how things behave: taps, swipes, bottom sheets, what each button does
+  reference-other-apps/  # optional: screenshots of other apps for FEATURE ideas only, never copy their look
+```
+
+Rules for using the inputs:
+- The Nanovest screenshots are the source of truth for look and feel.
+- If `design-tokens.md` exists, its values win over what you guess from screenshots.
+- If something is not visible in the screenshots, follow the same style as the closest existing element. List every guess you made in `design/UI_ANALYSIS.md`.
+- Do not copy the visual design of other apps. Use them only to understand which features exist.
+
+### 14.3 Tech stack
+- New folder `mobile-ui/`
+- React + Vite + TypeScript + Tailwind CSS
+- Charts:
+  - Price and candlestick charts: **TradingView Lightweight Charts** (open source, keep the required attribution)
+  - Bars, lines, radar, gauges: **Recharts**
+- Data: call the FastAPI from Phase 8 (`api/main.py`). Enable CORS for the local dev server. All API URLs in one config file.
+- Also include a **mock data mode** (JSON files for AAPL, KO, TSLA, JPM) so the prototype works even if the API or data sources are down during a meeting.
+- Show the page inside a **phone frame** at 390 × 844 on desktop. On a real phone (opened over the local network), fill the screen.
+
+### 14.4 Page structure
+
+Keep the existing Nanovest page exactly as it is in the screenshots (header, price, chart, Buy/Sell buttons, existing sections). Then add the new analysis content in the most natural place, following the app's existing patterns (tabs, sections, or "See more" pages). Propose the placement in `UI_ANALYSIS.md` before building.
+
+Mobile priority (phones are small, do NOT show all 50 desktop charts on one screen):
+
+1. **Top (always visible):** existing Nanovest header and price. Add next earnings date chip.
+2. **Analysis summary card:** 7 scorecard pills (Strong / Neutral / Weak), top 3 Strengths and top 3 Risks, "See full analysis" link.
+3. **Key stats:** horizontal scroll cards (P/E, P/S, EV/EBITDA, revenue growth, net margin, ROE, debt to equity, dividend yield, beta). Tap a card for a bottom sheet with the explanation.
+4. **Sections or tabs** (follow the app's existing style):
+   - Overview: price chart with support/resistance toggle, returns vs S&P 500
+   - Earnings: EPS actual vs expected bars, beat rate, typical move after earnings, upcoming earnings
+   - Financials: revenue + net income bars, margin lines, Quarterly/Annual switch, "See full statement" page with horizontally scrollable table
+   - Valuation: P/E history band, now vs history vs peers, fair value estimate
+   - Health: Piotroski, Altman Z, debt and cash
+   - Dividends: hidden if no dividend
+   - Technicals: RSI, MACD, signals list
+   - Analysts and Ownership
+   - News and Filings
+   - About the company
+5. **Footer:** disclaimer (Section 2).
+
+Mobile patterns to use:
+- Bottom sheets for tooltips and explanations (tap the ⓘ icon)
+- Segmented controls for Quarterly/Annual and time ranges
+- Skeleton loaders while data loads
+- Friendly empty and N/A states with the reason
+- Tap on a chart to see the exact value (no hover on phones)
+- Charts must be readable at 390px wide: max 8 to 12 bars, short labels, large tap targets
+
+### 14.5 Prototype rules
+- Buy and Sell buttons are visual only. Tapping them shows "Prototype only".
+- No buy/sell verdict from us anywhere (Section 2 rule 1 still applies).
+- License badges (green / blue / orange) are hidden by default. Add a hidden "Data badges" toggle (for example in a debug menu) to show them.
+- Respect PRODUCTION_SAFE_MODE from the API: hidden fields show "Requires licensed data provider".
+- Language toggle EN / ID, using the same glossary files.
+- Support dark mode if the screenshots show the app has it.
+- Show numbers in the same format and currency style as the Nanovest screenshots.
+
+### 14.6 Build steps (do one, then stop and wait for the user)
+
+**9a. Analyze the design (no app code yet)**
+- Look at every image in `design/nanovest-screens/` and read `design-tokens.md` and `notes.md`.
+- Write `design/UI_ANALYSIS.md` with: color palette (hex), fonts and sizes, spacing, corner radius, shadows, icon style, list of components (cards, tabs, buttons, chips, bottom sheets), navigation patterns, and a proposed placement of the new analysis sections (with a simple text wireframe).
+- List everything you were unsure about. Stop and wait for the user to confirm or correct.
+
+**9b. Rebuild the existing page (mock data)**
+- Build the current Nanovest stock page as close to the screenshots as possible, with mock data, no new features yet.
+- Take screenshots of the prototype with Playwright at 390 × 844 and compare them side by side with the reference screenshots. List differences and fix them. Repeat up to 3 rounds.
+- Save comparison images in `design/compare/`. Stop and show the user.
+
+**9c. Add the analysis features (real API)**
+- Add the new sections in the agreed placement, connected to the FastAPI, with mock data mode as fallback.
+- Test with AAPL, KO, TSLA, JPM, BRK-B.
+
+**9d. Polish**
+- Loading states, errors, empty states, dark mode, EN / ID, tap interactions, performance (first screen under 3 seconds with cache).
+- Final Playwright screenshots of every section saved in `design/final/` for presentations.
+- Update README: how to run the API and the prototype together, and how to open it on a phone on the same Wi-Fi.
+
+### 14.7 Done when
+- On a phone-sized screen, the page looks like it belongs in the Nanovest app.
+- All new sections load for the test tickers, with N/A states where data is missing.
+- Works in mock data mode with the API turned off.
+- No buy/sell wording from us, disclaimer visible, Buy/Sell buttons are non-functional.
+

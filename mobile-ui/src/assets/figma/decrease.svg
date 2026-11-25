@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Decrease">
+<circle id="bg" cx="8" cy="8" r="8" fill="#FCE8E9"/>
+<g id="arrow-down" clip-path="url(#clip0_0_207)">
+<path id="icon" d="M5.23086 6.16963C4.85795 6.17435 4.55182 6.48048 4.5471 6.85339L4.49472 10.9913C4.49 11.3642 4.78848 11.6627 5.16139 11.6579L9.29927 11.6056C9.67219 11.6008 9.97832 11.2947 9.98304 10.9218C9.98776 10.5489 9.68928 10.2504 9.31637 10.2551L6.8086 10.2869L10.9598 6.13572C11.2268 5.8687 11.2322 5.44117 10.9718 5.18082C10.7115 4.92047 10.284 4.92589 10.0169 5.19291L5.86579 9.34407L5.89753 6.83629C5.90225 6.46338 5.60377 6.16491 5.23086 6.16963Z" fill-rule="evenodd" clip-rule="evenodd" fill="#E11C23"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_207">
+<rect width="10.6667" height="10.6667" fill="white" transform="translate(2.66667 2.66667)"/>
+</clipPath>
+</defs>
+</svg>

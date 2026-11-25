@@ -1,0 +1,584 @@
+{
+ "_ui": {
+  "disclaimer": "Informasi ini hanya untuk tujuan edukasi dan bukan merupakan saran investasi. Kinerja masa lalu tidak menjamin hasil di masa depan. Data dapat tertunda atau tidak akurat.",
+  "what": "Artinya",
+  "how": "Cara menghitung",
+  "good_bad": "Baik atau buruk?"
+ },
+ "price": {
+  "label": "Harga",
+  "what": "Harga terakhir untuk satu lembar saham.",
+  "how": "Harga transaksi terakhir dari penyedia harga. Bisa tertunda.",
+  "good_bad": "Harga saja tidak baik atau buruk. Bandingkan dengan laba dan riwayat perusahaan."
+ },
+ "change_today": {
+  "label": "Perubahan hari ini",
+  "what": "Seberapa besar harga bergerak sejak penutupan kemarin.",
+  "how": "Harga terakhir dikurangi harga penutupan sebelumnya (juga dalam %).",
+  "good_bad": "Pergerakan harian sebagian besar adalah noise. Pergerakan di atas sekitar 5% biasanya ada beritanya."
+ },
+ "market_cap": {
+  "label": "Kapitalisasi pasar",
+  "what": "Nilai total seluruh saham perusahaan, yaitu nilai perusahaan menurut pasar.",
+  "how": "Harga saham x jumlah saham beredar.",
+  "good_bad": "Tidak baik atau buruk. Perusahaan besar (di atas $10 miliar) biasanya lebih stabil; perusahaan kecil bisa tumbuh lebih cepat tapi lebih berisiko."
+ },
+ "week52_range": {
+  "label": "Rentang 52 minggu",
+  "what": "Harga terendah dan tertinggi dalam setahun terakhir, dan posisi harga hari ini di antaranya.",
+  "how": "Harga terendah dan tertinggi harian selama 252 hari perdagangan terakhir.",
+  "good_bad": "Dekat titik tertinggi = momentum kuat tapi mungkin mahal. Dekat titik terendah = momentum lemah, mungkin murah atau sedang bermasalah."
+ },
+ "next_earnings": {
+  "label": "Laporan laba berikutnya",
+  "what": "Tanggal berikutnya perusahaan melaporkan hasil kuartalannya.",
+  "how": "Dari kalender laporan laba yang diumumkan atau diperkirakan.",
+  "good_bad": "Harga sering bergerak besar di sekitar hari laporan laba. Ketahui tanggalnya sebelum bertindak."
+ },
+ "shares_outstanding": {
+  "label": "Saham beredar",
+  "what": "Jumlah saham perusahaan yang ada.",
+  "how": "Dilaporkan perusahaan di halaman depan laporan 10-Q atau 10-K terbaru.",
+  "good_bad": "Jumlah yang turun (buyback) biasanya baik bagi pemegang saham; jumlah yang naik (saham baru) mendilusi mereka."
+ },
+ "data_freshness": {
+  "label": "Kebaruan data",
+  "what": "Laporan keuangan terbaru yang menjadi sumber angka.",
+  "how": "Laporan 10-Q (kuartalan) atau 10-K (tahunan) terbaru di SEC EDGAR.",
+  "good_bad": "Perusahaan melapor setiap 3 bulan. Laporan yang lebih tua dari sekitar 4 bulan bisa berarti laporan terlambat."
+ },
+ "employees": {
+  "label": "Karyawan",
+  "what": "Jumlah karyawan tetap.",
+  "how": "Sesuai laporan perusahaan.",
+  "good_bad": "Berguna untuk melihat skala. Pendapatan per karyawan membantu membandingkan efisiensi perusahaan sejenis."
+ },
+ "fiscal_year_end": {
+  "label": "Akhir tahun buku",
+  "what": "Tanggal berakhirnya tahun keuangan perusahaan. Tidak selalu 31 Desember.",
+  "how": "Dari data registrasi perusahaan di SEC.",
+  "good_bad": "Tidak baik atau buruk. Ini menjelaskan mengapa, misalnya, 'Q1' Apple adalah Oktober sampai Desember."
+ },
+ "sic_code": {
+  "label": "Kode SIC",
+  "what": "Kode industri pemerintah AS yang dipakai SEC untuk mengelompokkan perusahaan.",
+  "how": "Dari data registrasi perusahaan di SEC.",
+  "good_bad": "Tidak baik atau buruk. Berguna untuk mencari perusahaan sejenis."
+ },
+ "ipo_date": {
+  "label": "Tanggal IPO",
+  "what": "Kapan saham perusahaan pertama kali diperdagangkan di bursa.",
+  "how": "Dari profil perusahaan penyedia data.",
+  "good_bad": "Perusahaan yang sudah lama tercatat punya rekam jejak lebih panjang untuk dipelajari."
+ },
+ "revenue": {
+  "label": "Pendapatan",
+  "what": "Semua uang yang diperoleh perusahaan dari penjualan produk dan jasa, sebelum biaya apa pun.",
+  "how": "Dilaporkan di laporan laba rugi (10-Q / 10-K).",
+  "good_bad": "Pendapatan yang terus naik adalah tanda baik. Pendapatan turun beberapa kuartal berturut-turut adalah peringatan."
+ },
+ "gross_profit": {
+  "label": "Laba kotor",
+  "what": "Sisa pendapatan setelah membayar biaya langsung pembuatan produk.",
+  "how": "Pendapatan dikurangi beban pokok pendapatan.",
+  "good_bad": "Semakin tinggi semakin baik, menunjukkan kekuatan harga. Bank dan asuransi tidak memilikinya."
+ },
+ "operating_income": {
+  "label": "Laba operasi",
+  "what": "Laba dari bisnis inti setelah biaya operasional seperti R&D dan pemasaran, sebelum bunga dan pajak.",
+  "how": "Laba kotor dikurangi beban operasional.",
+  "good_bad": "Positif dan tumbuh itu baik. Negatif berarti bisnis inti merugi."
+ },
+ "ebitda": {
+  "label": "EBITDA",
+  "what": "Ukuran kasar laba tunai dari operasi, tanpa memperhitungkan bunga, pajak, dan penyusutan.",
+  "how": "Laba operasi + penyusutan & amortisasi (dihitung oleh kami).",
+  "good_bad": "Berguna untuk membandingkan perusahaan dengan utang berbeda. Tidak bermakna untuk bank dan asuransi."
+ },
+ "pretax_income": {
+  "label": "Laba sebelum pajak (EBT)",
+  "what": "Laba sebelum pajak penghasilan.",
+  "how": "Dilaporkan di laporan laba rugi.",
+  "good_bad": "Positif dan tumbuh itu baik."
+ },
+ "net_income": {
+  "label": "Laba bersih",
+  "what": "Laba akhir setelah semua biaya, bunga, dan pajak.",
+  "how": "Dilaporkan di laporan laba rugi.",
+  "good_bad": "Positif dan tumbuh itu baik. Pos satu kali bisa membuat satu kuartal terlihat tidak biasa."
+ },
+ "eps_diluted": {
+  "label": "EPS (dilusi, GAAP)",
+  "what": "Laba per saham: bagian laba bersih untuk setiap lembar saham.",
+  "how": "Laba bersih / jumlah saham terdilusi (angka resmi GAAP).",
+  "good_bad": "EPS yang tumbuh itu baik. Analis sering memakai EPS 'disesuaikan' yang bisa berbeda."
+ },
+ "margins": {
+  "label": "Margin laba",
+  "what": "Berapa sen dari setiap $1 pendapatan yang menjadi laba, di setiap tingkat laporan laba rugi.",
+  "how": "Laba kotor, operasi, EBITDA, atau bersih / pendapatan.",
+  "good_bad": "Margin tinggi dan naik itu baik. Bandingkan dengan perusahaan sejenis."
+ },
+ "growth": {
+  "label": "Pertumbuhan dibanding tahun lalu",
+  "what": "Perubahan pendapatan dan EPS dibanding periode yang sama tahun sebelumnya.",
+  "how": "(Periode ini / periode sama tahun lalu) - 1. Membandingkan kuartal yang sama menghilangkan efek musiman.",
+  "good_bad": "Positif itu baik. Pertumbuhan stabil biasanya lebih baik daripada naik-turun besar."
+ },
+ "expense_breakdown": {
+  "label": "Rincian beban",
+  "what": "Bagaimana perusahaan membelanjakan pendapatannya: produksi (COGS), riset (R&D), penjualan/administrasi (SG&A).",
+  "how": "Setiap beban / pendapatan.",
+  "good_bad": "Persentase yang turun berarti perusahaan semakin efisien."
+ },
+ "total_assets": {
+  "label": "Total aset",
+  "what": "Semua yang dimiliki perusahaan: kas, gedung, persediaan, investasi.",
+  "how": "Dilaporkan di neraca. Selalu sama dengan liabilitas + ekuitas.",
+  "good_bad": "Tidak baik atau buruk sendiri. Bandingkan dengan kewajiban perusahaan."
+ },
+ "total_debt": {
+  "label": "Total utang",
+  "what": "Semua uang pinjaman yang harus dibayar kembali.",
+  "how": "Utang jangka pendek + utang jangka panjang.",
+  "good_bad": "Semakin rendah semakin aman. Utang wajar jika laba mudah menutup bunganya."
+ },
+ "net_debt": {
+  "label": "Utang bersih",
+  "what": "Sisa utang jika perusahaan memakai seluruh kasnya untuk melunasi.",
+  "how": "Total utang - kas - investasi jangka pendek.",
+  "good_bad": "Utang bersih negatif (kas lebih besar dari utang) adalah posisi sangat kuat."
+ },
+ "current_ratio": {
+  "label": "Rasio lancar",
+  "what": "Apakah perusahaan bisa membayar tagihan jatuh tempo dalam setahun dengan aset yang bisa dicairkan dalam setahun?",
+  "how": "Aset lancar / liabilitas lancar.",
+  "good_bad": "Di atas 1,5 nyaman. Di bawah 1,0 bisa menjadi peringatan (kecuali perusahaan sangat kuat seperti Apple)."
+ },
+ "debt_to_equity": {
+  "label": "Utang terhadap ekuitas",
+  "what": "Seberapa besar pinjaman dibanding modal milik pemegang saham.",
+  "how": "Total utang / ekuitas pemegang saham.",
+  "good_bad": "Di bawah 1,0 umumnya konservatif; di atas 2,0 tinggi. Buyback besar bisa membuat ekuitas kecil dan rasio ini tampak tinggi."
+ },
+ "operating_cash_flow": {
+  "label": "Arus kas operasi",
+  "what": "Kas nyata yang dihasilkan bisnis (bukan laba akuntansi).",
+  "how": "Dilaporkan di laporan arus kas. 10-Q melaporkannya sejak awal tahun, jadi kami kurangkan untuk mendapat per kuartal.",
+  "good_bad": "Positif dan di atas laba bersih menandakan kualitas laba yang tinggi."
+ },
+ "capex": {
+  "label": "Belanja modal (capex)",
+  "what": "Kas yang dipakai untuk gedung, peralatan, dan aset jangka panjang lain.",
+  "how": "Dilaporkan di laporan arus kas.",
+  "good_bad": "Diperlukan untuk tumbuh, tapi capex sangat tinggi menyisakan lebih sedikit kas untuk pemegang saham."
+ },
+ "fcf": {
+  "label": "Arus kas bebas (FCF)",
+  "what": "Kas yang tersisa setelah menjalankan dan berinvestasi di bisnis. Bisa untuk dividen, buyback, atau bayar utang.",
+  "how": "Arus kas operasi - capex.",
+  "good_bad": "Positif dan tumbuh sangat baik. FCF negatif dalam waktu lama adalah peringatan."
+ },
+ "shareholder_returns": {
+  "label": "Imbal hasil pemegang saham",
+  "what": "Kas yang dikembalikan perusahaan ke pemegang saham.",
+  "how": "Dividen dibayar + pembelian kembali saham (buyback).",
+  "good_bad": "Stabil itu baik jika dibayar dari arus kas bebas, bukan utang baru."
+ },
+ "derived": {
+  "label": "Nilai turunan (✱)",
+  "what": "Angka yang kami hitung karena perusahaan tidak melaporkannya langsung.",
+  "how": "Q4 = setahun penuh dikurangi Q1 sampai Q3. Arus kas kuartalan = sejak awal tahun dikurangi periode sebelumnya.",
+  "good_bad": "Tepat untuk sebagian besar pos. EPS dan jumlah saham Q4 adalah perkiraan yang sangat dekat."
+ },
+ "pe": {
+  "label": "P/E (TTM)",
+  "what": "Berapa dolar yang dibayar investor untuk setiap $1 laba tahunan.",
+  "how": "Harga saham / laba per saham 12 bulan terakhir. N/A jika laba negatif.",
+  "good_bad": "Lebih rendah bisa berarti lebih murah, lebih tinggi berarti investor berharap pertumbuhan lebih besar. Bandingkan dengan riwayat dan perusahaan sejenis."
+ },
+ "forward_pe": {
+  "label": "Forward P/E",
+  "what": "Seperti P/E, tapi memakai perkiraan laba analis untuk tahun buku berikutnya.",
+  "how": "Harga saham / perkiraan EPS tahun buku berikutnya (estimasi analis).",
+  "good_bad": "Lebih rendah dari P/E saat ini berarti laba diperkirakan tumbuh. Estimasi bisa meleset."
+ },
+ "peg": {
+  "label": "PEG",
+  "what": "P/E yang disesuaikan dengan perkiraan pertumbuhan.",
+  "how": "P/E / perkiraan pertumbuhan EPS tahunan dalam % (estimasi analis).",
+  "good_bad": "Sekitar 1 sering dianggap wajar; di bawah 1 bisa murah; di atas 2 mahal."
+ },
+ "ps": {
+  "label": "P/S (TTM)",
+  "what": "Berapa yang dibayar investor untuk setiap $1 penjualan tahunan.",
+  "how": "Kapitalisasi pasar / pendapatan 12 bulan terakhir.",
+  "good_bad": "Berguna saat laba kecil atau negatif. Bisnis bermargin tinggi biasanya punya P/S lebih tinggi."
+ },
+ "pb": {
+  "label": "P/B",
+  "what": "Harga dibanding nilai buku (kekayaan bersih akuntansi) perusahaan.",
+  "how": "Kapitalisasi pasar / ekuitas pemegang saham.",
+  "good_bad": "Paling berguna untuk bank dan asuransi (sekitar 1-2 wajar). Buyback besar membuat P/B perusahaan teknologi sangat tinggi."
+ },
+ "ev_ebitda": {
+  "label": "EV/EBITDA",
+  "what": "Harga seluruh bisnis (termasuk utang) dibanding laba tunai operasinya.",
+  "how": "Nilai perusahaan (EV) / EBITDA 12 bulan terakhir.",
+  "good_bad": "Lebih rendah lebih murah. Sekitar 10 umum untuk perusahaan matang. Tidak bermakna untuk bank."
+ },
+ "ev_revenue": {
+  "label": "EV/Pendapatan",
+  "what": "Harga seluruh bisnis (termasuk utang) dibanding penjualan tahunannya.",
+  "how": "Nilai perusahaan / pendapatan 12 bulan terakhir.",
+  "good_bad": "Lebih rendah lebih murah; bandingkan dengan perusahaan sejenis."
+ },
+ "p_fcf": {
+  "label": "P/FCF",
+  "what": "Berapa yang dibayar investor untuk setiap $1 arus kas bebas tahunan.",
+  "how": "Kapitalisasi pasar / arus kas bebas 12 bulan terakhir.",
+  "good_bad": "Di bawah sekitar 20 sering dianggap wajar; sangat tinggi berarti investor berharap pertumbuhan kuat."
+ },
+ "fcf_yield": {
+  "label": "Imbal hasil FCF",
+  "what": "Arus kas bebas sebagai persentase nilai pasar perusahaan.",
+  "how": "Arus kas bebas (TTM) / kapitalisasi pasar.",
+  "good_bad": "Lebih tinggi lebih baik. Di atas sekitar 5% menarik; negatif berarti perusahaan membakar kas."
+ },
+ "earnings_yield": {
+  "label": "Imbal hasil laba",
+  "what": "Laba sebagai persentase harga saham: kebalikan dari P/E.",
+  "how": "EPS (TTM) / harga, yaitu 1 / P/E.",
+  "good_bad": "Bandingkan dengan imbal hasil obligasi: saham yang menghasilkan lebih rendah dari obligasi aman butuh pertumbuhan kuat."
+ },
+ "enterprise_value": {
+  "label": "Nilai perusahaan (EV)",
+  "what": "Harga untuk membeli seluruh perusahaan, termasuk utangnya, dikurangi kasnya.",
+  "how": "Kapitalisasi pasar + total utang - kas dan investasi jangka pendek.",
+  "good_bad": "Tidak baik atau buruk sendiri; dipakai di EV/EBITDA dan EV/Pendapatan."
+ },
+ "target_upside": {
+  "label": "Potensi naik target analis",
+  "what": "Seberapa jauh rata-rata target harga analis Wall Street di atas atau di bawah harga hari ini.",
+  "how": "(Rata-rata target harga analis / harga) - 1. Opini pihak ketiga, bukan pandangan kami.",
+  "good_bad": "Target sering meleset dan berubah. Anggap sebagai satu opini, bukan ramalan."
+ },
+ "roe": {
+  "label": "ROE (imbal hasil ekuitas)",
+  "what": "Berapa laba yang dihasilkan dari modal milik pemegang saham.",
+  "how": "Laba bersih (TTM) / rata-rata ekuitas pemegang saham.",
+  "good_bad": "Di atas 15% umumnya kuat. ROE sangat tinggi bisa karena utang besar atau buyback (ekuitas kecil)."
+ },
+ "roa": {
+  "label": "ROA (imbal hasil aset)",
+  "what": "Berapa laba yang dihasilkan dari semua yang dimiliki perusahaan.",
+  "how": "Laba bersih (TTM) / rata-rata total aset. (Yahoo memakai rumus sedikit berbeda.)",
+  "good_bad": "Di atas 5% baik untuk sebagian besar perusahaan; bank biasanya sekitar 1%."
+ },
+ "roic": {
+  "label": "ROIC (imbal hasil modal yang diinvestasikan)",
+  "what": "Laba operasi dibanding semua dana yang diinvestasikan di bisnis (oleh pemberi pinjaman dan pemilik).",
+  "how": "NOPAT / (utang + ekuitas - kas). NOPAT = laba operasi x (1 - tarif pajak).",
+  "good_bad": "Di atas sekitar 10-15% berarti perusahaan menciptakan nilai. Tidak bermakna untuk bank."
+ },
+ "dupont": {
+  "label": "Rincian DuPont",
+  "what": "Memecah ROE menjadi tiga pendorong: profitabilitas, efisiensi, dan leverage (utang).",
+  "how": "ROE = margin bersih x perputaran aset (pendapatan / aset) x pengali ekuitas (aset / ekuitas).",
+  "good_bad": "ROE yang didorong margin dan perputaran lebih sehat daripada ROE yang didorong utang."
+ },
+ "effective_tax_rate": {
+  "label": "Tarif pajak efektif",
+  "what": "Bagian laba sebelum pajak yang dibayar sebagai pajak penghasilan.",
+  "how": "Pajak penghasilan / laba sebelum pajak.",
+  "good_bad": "Tarif federal AS 21%. Tarif yang sangat rendah mungkin tidak bertahan."
+ },
+ "cagr": {
+  "label": "CAGR (pertumbuhan tahunan majemuk)",
+  "what": "Rata-rata tingkat pertumbuhan per tahun selama beberapa tahun.",
+  "how": "(Nilai akhir / nilai awal)^(1 / tahun) - 1, dari laporan tahunan.",
+  "good_bad": "Lebih tinggi lebih baik. N/A jika nilai awal atau akhir negatif."
+ },
+ "bvps": {
+  "label": "Nilai buku per saham",
+  "what": "Kekayaan bersih akuntansi perusahaan per lembar saham.",
+  "how": "Ekuitas pemegang saham / jumlah saham beredar.",
+  "good_bad": "Nilai buku yang tumbuh itu baik. Bandingkan dengan harga memakai P/B."
+ },
+ "quick_ratio": {
+  "label": "Rasio cepat",
+  "what": "Seperti rasio lancar, tapi tanpa persediaan (yang bisa sulit dijual cepat).",
+  "how": "(Aset lancar - persediaan) / liabilitas lancar.",
+  "good_bad": "Di atas 1,0 nyaman."
+ },
+ "debt_to_ebitda": {
+  "label": "Utang terhadap EBITDA",
+  "what": "Berapa tahun laba tunai operasi yang dibutuhkan untuk melunasi semua utang.",
+  "how": "Total utang / EBITDA (TTM).",
+  "good_bad": "Di bawah 2 nyaman, di atas 4 tinggi."
+ },
+ "interest_coverage": {
+  "label": "Cakupan bunga",
+  "what": "Berapa kali laba operasi menutup bunga utang.",
+  "how": "Laba operasi (TTM) / beban bunga (TTM).",
+  "good_bad": "Di atas 5x nyaman; di bawah 2x berisiko."
+ },
+ "cash_conversion": {
+  "label": "Konversi kas",
+  "what": "Berapa banyak laba yang dilaporkan benar-benar menjadi kas.",
+  "how": "Arus kas operasi (TTM) / laba bersih (TTM).",
+  "good_bad": "Sekitar 1,0 atau lebih sehat. Jauh di bawah 1 dalam waktu lama bisa menjadi peringatan kualitas laba."
+ },
+ "valuation_history": {
+  "label": "Riwayat valuasi",
+  "what": "Seberapa mahal saham ini pada setiap hari selama 5 tahun terakhir.",
+  "how": "Harga harian dibanding laba/penjualan 12 bulan yang diketahui pada hari itu (memakai tanggal laporan, jadi tidak memakai data masa depan).",
+  "good_bad": "Di atas garis median = lebih mahal dari biasanya; di bawah = lebih murah. Sejarah tidak harus terulang."
+ },
+ "peers": {
+  "label": "Perbandingan perusahaan sejenis",
+  "what": "Rasio yang sama untuk perusahaan yang mirip.",
+  "how": "Daftar dari Finnhub; rasio dari Yahoo Finance (data demo). Median = nilai tengah.",
+  "good_bad": "Lebih murah dari sejenisnya bisa berarti peluang atau bisnis yang lebih lemah. Lihat juga pertumbuhan dan margin."
+ },
+ "graham": {
+  "label": "Angka Graham",
+  "what": "Rumus klasik 'harga wajar' yang sangat konservatif dari Benjamin Graham.",
+  "how": "Akar dari 22,5 x EPS x nilai buku per saham. Estimasi, bukan ramalan.",
+  "good_bad": "Dibuat untuk perusahaan stabil dengan aset besar. Sebagian besar perusahaan bertumbuh diperdagangkan jauh di atasnya."
+ },
+ "dcf": {
+  "label": "DCF (arus kas terdiskonto)",
+  "what": "Estimasi nilai dari kas yang mungkin dihasilkan bisnis di masa depan.",
+  "how": "Proyeksikan arus kas bebas 5 tahun, tambah nilai terminal, diskon ke hari ini, kurangi utang bersih, bagi jumlah saham.",
+  "good_bad": "Sangat sensitif terhadap asumsi. Gunakan untuk memahami apa yang tersirat dari harga, bukan sebagai ramalan."
+ },
+ "piotroski": {
+  "label": "Skor F Piotroski",
+  "what": "Daftar periksa 0-9 tentang kekuatan keuangan: profitabilitas, utang, dan efisiensi, dibanding tahun sebelumnya.",
+  "how": "Satu poin untuk setiap dari 9 tes yang lulus, memakai data tahunan SEC.",
+  "good_bad": "7-9 kuat, 4-6 rata-rata, 0-3 lemah."
+ },
+ "altman": {
+  "label": "Skor Z Altman",
+  "what": "Rumus yang memperkirakan risiko kesulitan keuangan (kebangkrutan) dalam sekitar 2 tahun.",
+  "how": "1,2 x modal kerja/aset + 1,4 x laba ditahan/aset + 3,3 x EBIT/aset + 0,6 x kapitalisasi pasar/liabilitas + 1,0 x penjualan/aset.",
+  "good_bad": "Di atas 2,99 = zona aman, 1,81-2,99 = zona abu-abu, di bawah 1,81 = zona bahaya. Tidak dipakai untuk bank dan asuransi."
+ },
+ "price_chart": {
+  "label": "Grafik harga",
+  "what": "Setiap candle menunjukkan satu hari: badan dari harga buka ke tutup (hijau = tutup lebih tinggi, merah = lebih rendah), garis tipis menunjukkan harga tertinggi dan terendah hari itu.",
+  "how": "Harga harian. Panel di bawah: volume, RSI, dan MACD.",
+  "good_bad": "Grafik menunjukkan apa yang sudah terjadi, bukan yang akan terjadi."
+ },
+ "sma": {
+  "label": "Rata-rata bergerak (SMA 20 / 50 / 200)",
+  "what": "Rata-rata harga penutupan 20, 50, atau 200 hari perdagangan terakhir. Meredam gejolak harian untuk melihat tren.",
+  "how": "Jumlah N harga penutupan terakhir / N.",
+  "good_bad": "Harga di atas rata-rata 200 hari umumnya dibaca sebagai tren naik jangka panjang; di bawahnya tren turun."
+ },
+ "rsi": {
+  "label": "RSI (14)",
+  "what": "Mengukur seberapa cepat dan seberapa besar harga bergerak belakangan ini, skala 0-100.",
+  "how": "Rumus Wilder: 100 - 100 / (1 + rata-rata kenaikan / rata-rata penurunan) selama 14 hari.",
+  "good_bad": "Di atas 70 = 'zona overbought' (naik cepat), di bawah 30 = 'zona oversold' (turun cepat). Tren kuat bisa bertahan lama di sana."
+ },
+ "macd": {
+  "label": "MACD (12, 26, 9)",
+  "what": "Menunjukkan perubahan momentum dengan membandingkan rata-rata bergerak cepat dan lambat.",
+  "how": "MACD = EMA 12 hari - EMA 26 hari. Sinyal = EMA 9 hari dari MACD. Histogram = MACD - sinyal.",
+  "good_bad": "MACD memotong ke atas garis sinyal = momentum berbalik naik; ke bawah = berbalik turun. Banyak sinyal palsu saat pasar datar."
+ },
+ "bollinger": {
+  "label": "Bollinger Bands (20, 2)",
+  "what": "Pita di sekitar rata-rata 20 hari yang melebar saat harga bergejolak dan menyempit saat tenang.",
+  "how": "Rata-rata 20 hari +/- 2 standar deviasi.",
+  "good_bad": "Menyentuh pita menunjukkan gerakan besar dibanding volatilitas terkini, bukan pembalikan dengan sendirinya."
+ },
+ "atr": {
+  "label": "ATR (14)",
+  "what": "Rata-rata rentang harga harian (seberapa besar saham biasanya bergerak dalam sehari).",
+  "how": "Rata-rata 'true range' selama 14 hari (penghalusan Wilder).",
+  "good_bad": "ATR lebih tinggi = ayunan harian lebih besar = risiko lebih besar. Juga ditampilkan sebagai % harga."
+ },
+ "volume": {
+  "label": "Volume dibanding rata-rata",
+  "what": "Berapa banyak saham diperdagangkan hari ini dibanding hari biasa.",
+  "how": "Volume hari ini / rata-rata volume 20 hari.",
+  "good_bad": "Di atas 1,5x berarti minat yang tidak biasa, sering di sekitar berita atau laporan laba."
+ },
+ "support_resistance": {
+  "label": "Support dan resistance",
+  "what": "Area harga tempat saham pernah berbalik arah. Support di bawah harga, resistance di atas.",
+  "how": "Cari titik tertinggi dan terendah ayunan (5 hari di tiap sisi) ditambah harga tertinggi dan terendah periode, kelompokkan harga dalam jarak max(0,5 x ATR, 1,5%), urutkan berdasarkan jumlah sentuhan (sentuhan baru dan bervolume tinggi lebih berbobot).",
+  "good_bad": "Support dan resistance adalah area di mana harga pernah bereaksi. Bukan jaminan."
+ },
+ "pivots": {
+  "label": "Pivot point (mingguan)",
+  "what": "Level acuan minggu ini yang dihitung dari harga tertinggi, terendah, dan penutupan minggu lalu.",
+  "how": "P = (Tertinggi + Terendah + Penutupan) / 3; R1 = 2P - Terendah; S1 = 2P - Tertinggi; R2 = P + (Tertinggi - Terendah); S2 = P - (Tertinggi - Terendah).",
+  "good_bad": "Banyak trader jangka pendek memperhatikannya, karena itu harga kadang bereaksi di sana. Bukan jaminan."
+ },
+ "trend_signals": {
+  "label": "Sinyal tren",
+  "what": "Fakta sederhana tentang tren saat ini, beserta tanggal kejadiannya.",
+  "how": "Harga dibanding rata-rata 50/200 hari, golden/death cross dalam 60 hari terakhir, zona RSI, persilangan MACD.",
+  "good_bad": "Fakta, bukan saran. Sinyal sering saling bertentangan."
+ },
+ "returns": {
+  "label": "Imbal hasil",
+  "what": "Berapa besar saham naik atau turun di setiap periode, dibanding pasar (SPY) dan ETF sektornya.",
+  "how": "Harga akhir / harga awal - 1, memakai harga yang disesuaikan dengan dividen dan stock split.",
+  "good_bad": "Mengalahkan pasar dalam 1-5 tahun adalah tanda baik; periode pendek sebagian besar noise."
+ },
+ "relative_performance": {
+  "label": "Kinerja relatif",
+  "what": "Saham, pasar (SPY), dan ETF sektornya, semuanya dimulai dari 100 agar bisa dibandingkan langsung.",
+  "how": "Setiap garis = harga / harga hari pertama x 100 (disesuaikan dividen).",
+  "good_bad": "Jarak yang makin lebar di atas SPY berarti saham mengalahkan pasar selama periode itu."
+ },
+ "beta": {
+  "label": "Beta",
+  "what": "Seberapa besar saham cenderung bergerak saat pasar bergerak.",
+  "how": "Dari imbal hasil mingguan 2 tahun: kovarians(saham, SPY) / varians(SPY).",
+  "good_bad": "1,0 = bergerak seperti pasar; 1,5 = ayunan 50% lebih besar; di bawah 1 = lebih tenang dari pasar."
+ },
+ "volatility": {
+  "label": "Volatilitas (1 tahun)",
+  "what": "Seberapa besar harga naik-turun, dinyatakan per tahun.",
+  "how": "Standar deviasi imbal hasil harian selama 1 tahun x akar 252.",
+  "good_bad": "Di bawah 20% tenang, 20-40% wajar untuk saham individu, di atas 50% sangat bergejolak."
+ },
+ "max_drawdown": {
+  "label": "Penurunan maksimum (max drawdown)",
+  "what": "Penurunan terbesar dari puncak ke titik terendah berikutnya dalam periode itu.",
+  "how": "Nilai terendah dari (harga / harga tertinggi sejauh ini - 1).",
+  "good_bad": "Menunjukkan kerugian yang bisa dirasakan investor. -20% umum; -50% atau lebih parah tergolong berat."
+ },
+ "sharpe": {
+  "label": "Rasio Sharpe (1 tahun)",
+  "what": "Imbal hasil per unit risiko, di atas investasi bebas risiko.",
+  "how": "(Imbal hasil 1 tahun - suku bunga T-bill 13 minggu) / volatilitas 1 tahun.",
+  "good_bad": "Di atas 1 baik, di atas 2 sangat baik, di bawah 0 berarti T-bill lebih baik."
+ },
+ "monthly_returns": {
+  "label": "Imbal hasil bulanan",
+  "what": "Imbal hasil setiap bulan kalender, untuk melihat pola musiman.",
+  "how": "Harga akhir bulan / harga akhir bulan sebelumnya - 1 (disesuaikan dividen).",
+  "good_bad": "Pola masa lalu belum tentu terulang."
+ },
+ "drawdown": {
+  "label": "Grafik drawdown",
+  "what": "Seberapa jauh di bawah titik tertingginya saham berada setiap hari.",
+  "how": "Harga / harga tertinggi sejauh ini - 1 (disesuaikan dividen).",
+  "good_bad": "Periode 'di bawah air' yang dalam dan lama menunjukkan seberapa berisiko saham ini."
+ },
+ "eps_surprise": {
+  "label": "EPS aktual vs perkiraan",
+  "what": "Membandingkan laba per saham yang dilaporkan perusahaan dengan perkiraan analis Wall Street.",
+  "how": "Kejutan % = (EPS dilaporkan - rata-rata estimasi analis) / |estimasi|. Beat = di atas +1%, miss = di bawah -1%, selain itu sesuai (inline). 'EPS dilaporkan' biasanya angka yang disesuaikan (non-GAAP).",
+  "good_bad": "Beat yang rutin menunjukkan perusahaan menetapkan ekspektasi yang bisa dilampaui atau berkinerja lebih baik. Reaksi harga sama pentingnya."
+ },
+ "beat_rate": {
+  "label": "Tingkat beat",
+  "what": "Seberapa sering perusahaan melampaui estimasi EPS analis.",
+  "how": "Jumlah beat / jumlah kuartal (8 dan 12 terakhir).",
+  "good_bad": "Sebagian besar perusahaan besar AS melampaui sekitar 70-80% waktu, jadi tingkat tinggi itu wajar; yang rendah menonjol."
+ },
+ "earnings_reaction": {
+  "label": "Pergerakan harga setelah laporan laba",
+  "what": "Seberapa besar saham bergerak segera setelah setiap laporan laba.",
+  "how": "Dari penutupan terakhir SEBELUM pasar bisa bereaksi (penutupan sebelumnya jika dilaporkan sebelum pasar buka; penutupan hari itu jika setelah pasar tutup) ke penutupan 1 dan 5 hari kemudian.",
+  "good_bad": "'Pergerakan khas' (rata-rata gerakan 1 hari absolut) menunjukkan seberapa besar risiko hari laporan laba."
+ },
+ "gaap_vs_adjusted": {
+  "label": "EPS GAAP vs EPS dilaporkan (disesuaikan)",
+  "what": "EPS GAAP adalah angka resmi di laporan SEC. EPS 'dilaporkan' dari penyedia data biasanya disesuaikan, tanpa pos satu kali.",
+  "how": "EPS dilusi GAAP dari SEC EDGAR; EPS dilaporkan dari yfinance.",
+  "good_bad": "Selisih besar yang terus-menerus (disesuaikan jauh lebih tinggi dari GAAP) perlu dicermati: apa yang dikecualikan."
+ },
+ "estimate_revisions": {
+  "label": "Revisi estimasi",
+  "what": "Bagaimana estimasi EPS analis berubah selama 90 hari terakhir.",
+  "how": "Rata-rata estimasi sekarang vs 7, 30, 60, dan 90 hari lalu, ditambah jumlah analis yang menaikkan atau menurunkan estimasinya.",
+  "good_bad": "Estimasi yang naik biasanya berarti bisnis lebih baik dari perkiraan; yang turun sebaliknya."
+ },
+ "upcoming_earnings": {
+  "label": "Laporan laba berikutnya",
+  "what": "Jadwal laporan laba berikutnya dan perkiraan analis.",
+  "how": "Tanggal dan rata-rata analis dari penyedia data. Tanggal bisa berubah sampai perusahaan mengonfirmasi.",
+  "good_bad": "Harga sering bergerak besar di sekitar laporan laba. Ketahui tanggal dan ekspektasinya."
+ },
+ "revenue_surprise": {
+  "label": "Pendapatan aktual vs perkiraan",
+  "what": "Pendapatan yang dilaporkan (dari laporan SEC) dibanding estimasi analis, jika tersedia.",
+  "how": "Pendapatan aktual dari SEC EDGAR; estimasi dari Finnhub (data gratis hanya untuk kuartal terbaru).",
+  "good_bad": "Melampaui di pendapatan menunjukkan permintaan nyata; melampaui hanya di EPS bisa karena pemotongan biaya atau pajak lebih rendah."
+ },
+ "dividend_yield": {
+  "label": "Imbal hasil dividen (TTM)",
+  "what": "Dividen tunai tahunan sebagai persentase harga saham.",
+  "how": "Dividen per saham yang dibayar 12 bulan terakhir / harga saat ini.",
+  "good_bad": "2-4% wajar untuk perusahaan matang. Imbal hasil sangat tinggi bisa menjadi tanda pasar memperkirakan pemotongan."
+ },
+ "payout_ratio": {
+  "label": "Rasio pembayaran (payout ratio)",
+  "what": "Bagian laba yang dibayarkan sebagai dividen.",
+  "how": "Dividen dibayar (12 bulan terakhir) / laba bersih (12 bulan terakhir), dari laporan SEC.",
+  "good_bad": "Di bawah sekitar 60% nyaman; di atas 100% berarti membayar lebih dari yang dihasilkan, tidak bisa bertahan lama."
+ },
+ "fcf_payout": {
+  "label": "Rasio pembayaran FCF",
+  "what": "Bagian arus kas bebas yang dibayarkan sebagai dividen: dividen dibayar dari kas, bukan laba.",
+  "how": "Dividen dibayar (TTM) / arus kas bebas (TTM).",
+  "good_bad": "Di bawah sekitar 70% memberi ruang untuk terus menaikkan dividen."
+ },
+ "dividend_growth": {
+  "label": "Pertumbuhan dividen",
+  "what": "Seberapa cepat dividen per saham tumbuh, dan berapa tahun berturut-turut dinaikkan.",
+  "how": "CAGR dividen tahunan per saham (3 dan 5 tahun). Rentetan = tahun kalender berturut-turut dengan kenaikan dividen reguler (dividen khusus diabaikan). Berdasarkan riwayat Yahoo; data sangat lama bisa tidak lengkap.",
+  "good_bad": "Rentetan panjang (25+ tahun = 'dividend aristocrat') menunjukkan komitmen kuat terhadap dividen."
+ },
+ "ex_dividend": {
+  "label": "Tanggal ex-dividen",
+  "what": "Anda harus memiliki saham SEBELUM tanggal ini untuk menerima dividen berikutnya.",
+  "how": "Diumumkan oleh perusahaan.",
+  "good_bad": "Harga biasanya turun sekitar nilai dividen pada tanggal ini."
+ },
+ "holders": {
+  "label": "Siapa pemilik saham",
+  "what": "Pembagian saham antara orang dalam perusahaan, institusi (dana, pensiun), dan pihak lain.",
+  "how": "Laporan terbaru yang dikumpulkan Yahoo Finance.",
+  "good_bad": "Kepemilikan institusi tinggi berarti investor profesional terlibat; kepemilikan orang dalam yang berarti menyelaraskan manajemen dengan pemegang saham."
+ },
+ "insiders": {
+  "label": "Transaksi orang dalam",
+  "what": "Saham yang dibeli atau dijual oleh direktur dan pejabat perusahaan (dilaporkan di Form 4 SEC).",
+  "how": "Pembelian dan penjualan per bulan. Pemberian saham, hadiah, dan pelaksanaan opsi ditampilkan tapi tidak dihitung.",
+  "good_bad": "Orang dalam menjual karena banyak alasan (pajak, diversifikasi). Pembelian di pasar lebih jarang dan lebih bermakna."
+ },
+ "analyst_ratings": {
+  "label": "Peringkat analis Wall Street",
+  "what": "Berapa banyak analis Wall Street yang memberi peringkat 'buy', 'hold', atau 'sell'. Ini opini pihak ketiga, bukan pendapat kami.",
+  "how": "Jumlah bulanan dari penyedia data (Finnhub dulu, lalu Yahoo).",
+  "good_bad": "Analis sering terlalu optimis dan terlambat mengubah pandangan. Gunakan sebagai satu masukan, bukan keputusan."
+ },
+ "short_interest": {
+  "label": "Short interest",
+  "what": "Saham yang dijual short oleh investor yang bertaruh harga akan turun.",
+  "how": "% float = saham short / saham yang bisa diperdagangkan. Days to cover = saham short / rata-rata volume harian.",
+  "good_bad": "Di bawah 5% dari float normal; di atas 20% berarti banyak investor bertaruh melawan saham ini (bisa terjadi 'short squeeze')."
+ },
+ "news": {
+  "label": "Berita",
+  "what": "Artikel terbaru tentang perusahaan dari penyedia berita.",
+  "how": "Berita Finnhub dulu, lalu Yahoo Finance. Judul duplikat dihapus.",
+  "good_bad": "Judul berita tidak kami verifikasi. Baca artikel asli dan periksa laporan resmi SEC."
+ },
+ "sec_filings": {
+  "label": "Laporan SEC",
+  "what": "Laporan resmi perusahaan kepada regulator AS.",
+  "how": "10-K = laporan tahunan, 10-Q = laporan kuartalan, 8-K = peristiwa penting (mis. laporan laba), Form 4 = transaksi orang dalam.",
+  "good_bad": "Sumber paling andal: apa yang wajib diungkapkan perusahaan secara hukum."
+ }
+}

@@ -20,6 +20,7 @@ from typing import Any, Literal, Optional
 import numpy as np
 import pandas as pd
 from fastapi import FastAPI, HTTPException, Path, Query
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 from config.settings import settings
@@ -28,6 +29,7 @@ from core.company import TickerNotFound, resolve_ticker
 from core.coverage import coverage_rows, coverage_summary
 from core.financials import field_label, field_specs, DERIVED_FIELDS
 from core.models import DataPoint, LicenseTag, Source
+from core.providers import registry
 from core.ratios import METRICS
 from core.scorecard import PILLARS, insight_texts
 from core.valuation import dcf_scenarios
@@ -44,6 +46,15 @@ app = FastAPI(
         "(`license_tag`: COMMERCIAL_OK, CALCULATED_SAFE, DEMO_ONLY).\n\n"
         "This information is for educational purposes only and is not investment advice."
     ),
+)
+
+
+# The Phase 9 mobile prototype (Vite dev server / preview) runs on your own computer and calls this API from the browser.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origin_regex=r"http://(127\.0\.0\.1|localhost|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+):(5173|4173)",
+    allow_methods=["GET"],
+    allow_headers=["*"],
 )
 
 
@@ -72,6 +83,7 @@ class Envelope(BaseModel):
 # =========================================================================== helpers
 _cache: dict[str, tuple[float, Bundle]] = {}
 _lock = threading.Lock()
+_sym_locks: dict[str, threading.Lock] = {}
 BUNDLE_TTL = 120  # seconds; underlying sources have their own disk cache (Section 10 TTLs)
 
 
@@ -81,13 +93,17 @@ def get_bundle(ticker: str) -> Bundle:
     except TickerNotFound as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
     with _lock:
-        hit = _cache.get(resolved.symbol)
-        if hit and time.time() - hit[0] < BUNDLE_TTL:
-            return hit[1]
-    b = load_bundle(resolved)
-    with _lock:
-        _cache[resolved.symbol] = (time.time(), b)
-    return b
+        sym_lock = _sym_locks.setdefault(resolved.symbol, threading.Lock())
+    # One load per symbol: when the mobile prototype asks for several sections at once, they wait for one load.
+    with sym_lock:
+        with _lock:
+            hit = _cache.get(resolved.symbol)
+            if hit and time.time() - hit[0] < BUNDLE_TTL:
+                return hit[1]
+        b = load_bundle(resolved)
+        with _lock:
+            _cache[resolved.symbol] = (time.time(), b)
+        return b
 
 
 def is_safe(param: Optional[bool]) -> bool:
@@ -432,6 +448,23 @@ def profile(ticker: str = TickerPath, safe_mode: Optional[bool] = SafeQuery):
                               "is_financial_company": p.is_financial_company,
                               **{f: val(getattr(p, f), safe) for f in fields},
                               "shares_outstanding": val(b.header.shares_outstanding, safe)})
+
+
+_fx: dict[str, tuple[float, dict]] = {}
+
+
+@app.get("/fx/usdidr", tags=["fx"], summary="US dollar to Indonesian rupiah rate (latest daily close)")
+def fx_usdidr(safe_mode: Optional[bool] = SafeQuery):
+    """Used by the mobile prototype to show prices in Rupiah. Yahoo Finance data, so DEMO_ONLY."""
+    safe = is_safe(safe_mode)
+    hit = _fx.get("usdidr")
+    if not hit or time.time() - hit[0] > 3600:
+        df = registry.yfinance().get_history_raw("IDR=X", period="5d")
+        if df is None or df.empty:
+            raise HTTPException(503, "USD/IDR rate is not available right now.")
+        hit = (time.time(), {"rate": float(df["Close"].dropna().iloc[-1]), "as_of": df.index[-1]})
+        _fx["usdidr"] = hit
+    return {"pair": "USD/IDR", **raw(hit[1]["rate"], "yfinance", DEMO, safe, as_of=hit[1]["as_of"])}
 
 
 @app.get("/coverage/{ticker}", response_model=Envelope, tags=["coverage"],
