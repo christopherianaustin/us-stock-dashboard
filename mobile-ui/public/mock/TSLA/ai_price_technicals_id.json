@@ -1,6 +1,6 @@
 {
  "ticker": "TSLA",
- "generated_at": "2026-11-25T10:44:40+00:00",
+ "generated_at": "2026-11-26T07:13:35+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,73 +9,80 @@
   "ticker": "TSLA",
   "tab": "price_technicals",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Neutral",
-  "as_of": "2026-11-25T10:44:40+00:00",
+  "as_of": "2026-11-26T07:13:35+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Neutral",
-   "headline": "Tren jangka pendek membaik, tetapi tertinggal dari pasar dalam setahun",
-   "takeaway": "Harga TSLA sedikit di atas rata-rata 50 dan 200 hari, dan unggul dari S&P 500 dalam 3 bulan terakhir. Namun dalam 1 dan 5 tahun saham ini jauh tertinggal, dan pergerakan harganya jauh lebih tajam daripada pasar.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Dalam 3 bulan, saham naik 10.2%, sementara S&P 500 turun 5.6% dan ETF sektor XLY turun 0.3%.",
+     "title": "Unggul dalam 3 bulan terakhir",
+     "detail": "Saham naik 8.5% dalam 3 bulan saat S&P 500 turun 6.2% dan ETF sektor (XLY) turun 0.2%; dalam 1 bulan juga unggul.",
      "metric_keys": [
       "returns_pct"
      ]
     },
     {
-     "text": "Harga 2.1% di atas rata-rata 50 hari dan 0.9% di atas rata-rata 200 hari (patokan tren jangka panjang).",
+     "title": "Di atas rata-rata 50 hari",
+     "detail": "Harga 0.8% di atas rata-rata 50 hari, dan RSI (ukuran seberapa cepat harga naik-turun) berada di 50, zona netral.",
      "metric_keys": [
       "sma50",
-      "sma200"
+      "rsi14"
      ]
     },
     {
-     "text": "RSI (ukuran seberapa cepat harga bergerak) di 51.8, artinya di zona netral, tidak naik atau turun terlalu cepat.",
+     "title": "Area support cukup dekat",
+     "detail": "Support (area harga yang pernah menahan penurunan) terdekat di Rp6,738,000, sekitar 3.6% di bawah harga sekarang, sudah teruji 3 kali.",
      "metric_keys": [
-      "rsi14"
+      "nearest_support",
+      "price"
      ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "Dalam 1 tahun saham turun 7.9%, sementara S&P 500 naik 8.6%. Dalam 5 tahun hanya naik 6.7%, dibanding 67.4%.",
+     "title": "Tertinggal dari pasar jangka panjang",
+     "detail": "Turun 15.5% sejak awal tahun dan 9.4% dalam 1 tahun, sementara S&P 500 naik 5.9% dan 7.3%; 5 tahun hanya 5.4% vs 67%.",
      "metric_keys": [
       "returns_pct"
      ]
     },
     {
-     "text": "Beta 1.7 (bergerak sekitar 1.7 kali pasar) dan volatilitas 47.1% per tahun. Penurunan terbesar dalam 5 tahun mencapai 73%.",
+     "title": "Harga sangat bergejolak",
+     "detail": "Beta (gerak dibanding pasar) 1.69 dan volatilitas 47.1% per tahun; penurunan terbesar dari puncak 39.1% dalam 1 tahun dan 73% dalam 5 tahun.",
      "metric_keys": [
       "beta",
       "volatility_1y",
+      "max_drawdown_1y",
       "max_drawdown_5y"
      ]
     },
     {
-     "text": "Harga masih 21.5% di bawah puncak terakhir. MACD (indikator arah momentum) turun di bawah garis sinyalnya pada 5 Nov 2026.",
+     "title": "Tren dan momentum melemah",
+     "detail": "Harga 0.3% di bawah rata-rata 200 hari, MACD (indikator arah momentum) turun di bawah garis sinyal 5 November, skor momentum 36 (lemah).",
      "metric_keys": [
-      "current_drawdown",
-      "recent_signals"
+      "sma200",
+      "recent_signals",
+      "rule_based_pillars"
+     ]
+    },
+    {
+     "title": "Resistance dekat, jauh dari puncak",
+     "detail": "Resistance (area yang pernah menahan kenaikan) Rp7,076,000 hanya 1.2% di atas, teruji 6 kali; harga masih 23.8% di bawah puncak 52 minggu.",
+     "metric_keys": [
+      "nearest_resistance",
+      "from_high_52w"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Laporan laba berikutnya dijadwalkan 28 Jan 2027.",
-    "Support terdekat (area harga pernah tertahan turun) Rp6,708,000, 4.8% di bawah harga kini; resistance (area harga pernah tertahan naik) Rp7,449,000, 5.8% di atas."
-   ],
-   "ask_yourself": "Seberapa nyaman Anda memegang saham yang pernah turun 73% dari puncaknya?",
    "data_gaps": [
-    "Semua data bertanda DEMO_ONLY, jadi angka mungkin bukan data pasar sebenarnya.",
-    "Harga dalam rupiah dikonversi dari dolar AS dengan kurs Rp18,310; perubahan kurs ikut memengaruhi angka.",
-    "Tidak ada data volume perdagangan."
+    "Harga dikonversi dari dolar AS dengan kurs Rp18,390, sehingga imbal hasil dalam rupiah bisa berbeda karena perubahan kurs.",
+    "Data volume perdagangan tidak tersedia untuk menilai kekuatan pergerakan harga."
    ]
   },
   "model": "claude-opus-5-5",
   "attempts": 1,
-  "cost_usd": 0.046601,
+  "cost_usd": 0.051172,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

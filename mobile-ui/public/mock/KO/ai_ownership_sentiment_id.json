@@ -1,6 +1,6 @@
 {
  "ticker": "KO",
- "generated_at": "2026-11-25T10:44:12+00:00",
+ "generated_at": "2026-11-26T07:12:30+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,73 +9,69 @@
   "ticker": "KO",
   "tab": "ownership_sentiment",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Not applicable",
-  "as_of": "2026-11-25T10:44:12+00:00",
+  "as_of": "2026-11-26T07:12:30+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Not applicable",
-   "headline": "Mayoritas analis Wall Street positif, tetapi orang dalam terus menjual",
-   "takeaway": "Menurut analis Wall Street, pandangan terhadap KO umumnya positif dan tidak ada rekomendasi jual. Namun, orang dalam (direksi dan pejabat perusahaan) tercatat menjual lebih banyak daripada membeli di semua bulan yang ada datanya.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Dari 35 analis Wall Street, 28 memberi peringkat beli atau beli kuat, 7 tahan, dan tidak ada yang menyarankan jual.",
+     "title": "Mayoritas analis menilai positif",
+     "detail": "Menurut analis Wall Street, 28 dari 35 analis memberi peringkat beli atau beli kuat, 7 tahan, dan tidak ada peringkat jual.",
      "metric_keys": [
       "wall_street_analyst_ratings"
      ]
     },
     {
-     "text": "Wolfe Research mulai meliput KO pada 18 Nov 2026 dengan peringkat Outperform. Lima perubahan lain sejak 28 Okt hanya mempertahankan peringkat positif.",
+     "title": "Peringkat terbaru tetap positif",
+     "detail": "Sejak 28 Oktober 2026, Wolfe Research memulai liputan dengan Outperform (di atas rata-rata pasar), sementara TD Cowen, RBC, Wells Fargo, Piper Sandler mempertahankan peringkat positif.",
      "metric_keys": [
       "recent_rating_changes_by_analysts"
      ]
     },
     {
-     "text": "Short interest (saham yang dijual pinjam, bertaruh harga turun) hanya 1.11% dari saham beredar, tanda sedikit investor bertaruh melawan KO.",
+     "title": "Banyak dimiliki institusi besar",
+     "detail": "Institusi besar memegang 68.3% saham, termasuk Berkshire Hathaway sekitar 9.3% dan BlackRock sekitar 7.5%.",
+     "metric_keys": [
+      "who_owns_the_shares_pct",
+      "top_institutions"
+     ]
+    },
+    {
+     "title": "Sedikit taruhan harga turun",
+     "detail": "Short interest (saham yang dijual pinjam karena bertaruh harga turun) hanya 1.11% dari saham beredar, sekitar 2.8 hari perdagangan untuk menutupnya.",
      "metric_keys": [
       "short_interest"
      ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "Orang dalam tercatat menjual bersih di keenam bulan yang ada datanya, dari Maret hingga November 2026.",
+     "title": "Orang dalam terus menjual",
+     "detail": "Orang dalam (direksi dan pejabat perusahaan) lebih banyak menjual daripada membeli di keenam bulan 2026 yang ada datanya, termasuk November.",
      "metric_keys": [
       "insider_net_buying_by_month"
      ]
     },
     {
-     "text": "Target harga rata-rata analis Rp1,824,000, hanya sedikit di atas harga sekarang Rp1,787,000. Target terendah Rp1,611,000 berada di bawah harga sekarang.",
+     "title": "Selisih target harga tipis",
+     "detail": "Rata-rata target harga 12 bulan analis Rp1,836,000 hanya sedikit di atas harga Rp1,795,000, sedangkan target terendah Rp1,618,000 di bawah harga sekarang.",
      "metric_keys": [
       "analyst_target_mean",
       "analyst_target_low",
       "price"
      ]
-    },
-    {
-     "text": "Institusi besar memegang 68.3% saham, Berkshire Hathaway sendiri 9.3%. Keputusan segelintir pemegang besar bisa berpengaruh pada harga.",
-     "metric_keys": [
-      "who_owns_the_shares_pct",
-      "top_institutions"
-     ]
     }
    ],
-   "what_to_watch_next": [
-    "Laporan keuangan berikutnya pada 9 Feb 2027, yang bisa memicu perubahan peringkat analis.",
-    "Posisi harga terhadap kisaran target analis Rp1,611,000 hingga Rp2,051,000."
-   ],
-   "ask_yourself": "Seberapa besar bobot yang Anda berikan pada pendapat analis dibanding tindakan orang dalam perusahaan?",
    "data_gaps": [
-    "Nilai penjualan bersih orang dalam tampak tidak konsisten (misalnya -580 vs -1.13 triliun rupiah), jadi besarnya tidak bisa diandalkan.",
-    "Data orang dalam tidak tersedia untuk April, September, dan Oktober 2026.",
-    "Tidak ada data riwayat short interest untuk melihat tren naik atau turun.",
-    "Angka rupiah dikonversi dari dolar AS dengan kurs 18,310 dan berlabel DEMO_ONLY."
+    "Nilai penjualan bersih orang dalam tercatat dalam satuan triliun rupiah yang tampak sangat besar, sehingga besarnya jumlah tidak dapat dipastikan dan tidak dicantumkan.",
+    "Data transaksi orang dalam tidak tersedia untuk beberapa bulan (misalnya April, September, Oktober 2026), jadi tidak jelas apakah ada transaksi di bulan tersebut.",
+    "Ringkasan peringkat analis berasal dari data per 1 November 2026, sedangkan short interest per 30 Oktober 2026."
    ]
   },
   "model": "claude-opus-5-5",
-  "attempts": 1,
-  "cost_usd": 0.038417,
+  "attempts": 2,
+  "cost_usd": 0.110987,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

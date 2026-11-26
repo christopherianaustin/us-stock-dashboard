@@ -2,31 +2,34 @@
 # Edit the text freely; changing it changes the cache key, so new summaries are generated.
 summary:
   name: Summary (overall)
-  focus: The big picture across all pillars - the single biggest strength, the single biggest risk, and how the stock compares overall with its peers and its own history.
+  focus: The big picture across all pillars - the single biggest strength, the single biggest risk, and how the stock compares overall with its peers and its own history. Sort the findings into bullish and bearish points.
 price_technicals:
   name: Price and Technicals
-  focus: The price trend (vs 50 and 200 day averages), performance vs the S&P 500 and sector, how much the price swings (beta, volatility, biggest drop), and how far the price is from the nearest support and resistance. Price patterns describe the past only.
+  focus: The price trend (vs 50 and 200 day averages), performance vs the S&P 500 and sector, how much the price swings (beta, volatility, biggest drop), and how far the price is from the nearest support and resistance. Price patterns describe the past only. Sort the findings into bullish and bearish points.
 earnings:
   name: Earnings
-  focus: The record of beating or missing estimates and by how much, how the price usually reacts after earnings, whether analysts have been raising or cutting estimates, and the next earnings date.
+  focus: The record of beating or missing estimates and by how much, how the price usually reacts after earnings, whether analysts have been raising or cutting estimates, and the next earnings date. Sort the findings into bullish and bearish points.
 financials:
   name: Financials
-  focus: The trend in revenue and profit, whether margins are getting better or worse, whether cash flow supports the reported profit, and the balance between cash and debt. Point out any sudden change.
+  focus: The trend in revenue and profit, whether margins are getting better or worse, whether cash flow supports the reported profit, and the balance between cash and debt. Point out any sudden change. Sort the findings into bullish and bearish points.
 valuation:
   name: Valuation
-  focus: How the price compares with the company's own history and with peers, and whether growth helps explain it. Fair value numbers are estimates based on assumptions; say so if you mention them.
+  focus: How the price compares with the company's own history and with peers, and whether growth helps explain it. Fair value numbers are estimates based on assumptions; say so if you mention them. Sort the findings into bullish and bearish points.
 profitability_health:
   name: Profitability and Health
-  focus: How well the company turns money into profit (ROE, ROIC), how safe its debt level is, and what the Piotroski and Altman scores say, in plain words.
+  focus: How well the company turns money into profit (ROE, ROIC), how safe its debt level is, and what the Piotroski and Altman scores say, in plain words. Sort the findings into bullish and bearish points.
 dividends:
   name: Dividends
-  focus: The dividend yield vs its own history, whether profits and free cash flow cover the dividend, and the dividend growth streak. If there is no dividend, say so simply and mention buybacks only if they are in the data.
+  focus: The dividend yield vs its own history, whether profits and free cash flow cover the dividend, and the dividend growth streak. If there is no dividend, say so simply and mention buybacks only if they are in the data. Sort the findings into bullish and bearish points.
 ownership_sentiment:
   name: Ownership and Sentiment
-  focus: What Wall Street analysts rate the stock (always attributed to them), recent rating changes, insider buying or selling, how much big institutions own, and short interest.
+  focus: What Wall Street analysts rate the stock (always attributed to them), recent rating changes, insider buying or selling, how much big institutions own, and short interest. Sort the findings into bullish and bearish points.
 news_filings:
   name: News and Filings
-  focus: The main themes in recent headlines and filings, using only the headline wording. Do not guess what the articles say. Use signal "Not applicable".
+  focus: The main themes in recent headlines and filings, using only the headline wording. Do not guess what the articles say. Sort the findings into bullish and bearish points.
 company_profile:
   name: Company Profile
-  focus: What the company does and how it makes money, in plain words, using only the data. Use signal "Not applicable".
+  focus: What the company does and how it makes money, in plain words, using only the data. Sort the findings into bullish and bearish points.
+holders:   # Phase 11 (SPEC 17.6); not in TABS until the Holders tab exists
+  name: Holders
+  focus: "Who owns the stock and how that is changing: institutional buying or selling over recent quarters (number of holders, net shares, biggest moves), insider open-market buying or selling (not grants or option exercises), how much selling was pre-planned under 10b5-1 plans, cluster buying, and how concentrated ownership is. Mention that 13F data can be up to 45 days old when it matters. Insider selling has many possible reasons; do not suggest a reason the data does not show. Sort the findings into bullish and bearish points."

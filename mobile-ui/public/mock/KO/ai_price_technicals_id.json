@@ -1,6 +1,6 @@
 {
  "ticker": "KO",
- "generated_at": "2026-11-25T10:43:15+00:00",
+ "generated_at": "2026-11-26T07:11:24+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,74 +9,86 @@
   "ticker": "KO",
   "tab": "price_technicals",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Strong",
-  "as_of": "2026-11-25T10:43:15+00:00",
+  "as_of": "2026-11-26T07:11:24+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Strong",
-   "headline": "Tren harga naik kuat dan mengungguli pasar, dengan ayunan relatif kecil",
-   "takeaway": "Harga KO berada di atas rata-rata 50 dan 200 hari, dan naik 38.1% dalam setahun, jauh di atas S&P 500 (8.6%). Namun harga kini dekat level tertinggi 52 minggu, dan ada sinyal momentum melemah sejak 19 Nov.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Harga Rp1,787,000 berada 6.0% di atas rata-rata 50 hari dan 16.1% di atas rata-rata 200 hari, tanda tren naik.",
-     "metric_keys": [
-      "price",
-      "sma50",
-      "sma200"
-     ]
-    },
-    {
-     "text": "Naik 38.1% dalam 1 tahun, lebih tinggi dari S&P 500 (8.6%) dan ETF sektor XLP (22.6%).",
+     "title": "Kinerja jauh di atas pasar",
+     "detail": "Dalam 1 tahun saham naik 38%, jauh di atas S&P 500 (7.3%) dan ETF sektor XLP (21.5%); sejak awal tahun naik 42.3%.",
      "metric_keys": [
       "returns_pct"
      ]
     },
     {
-     "text": "Beta (seberapa besar gerak saham dibanding pasar) hanya 0.10. Penurunan terbesar setahun terakhir hanya 7.9% dari puncak.",
+     "title": "Tren harga sedang naik",
+     "detail": "Harga berada 5.7% di atas rata-rata 50 hari dan 15.9% di atas rata-rata 200 hari, tanda tren naik jangka pendek dan panjang.",
+     "metric_keys": [
+      "sma50",
+      "sma200"
+     ]
+    },
+    {
+     "title": "Pergerakan harga relatif tenang",
+     "detail": "Beta (seberapa kuat ikut gerak pasar; 1 = sama) hanya 0.1, dan penurunan terbesar dari puncak setahun terakhir hanya 7.9%.",
      "metric_keys": [
       "beta",
-      "max_drawdown_1y"
+      "max_drawdown_1y",
+      "max_drawdown_5y"
+     ]
+    },
+    {
+     "title": "Imbal hasil sebanding risikonya",
+     "detail": "Sharpe ratio (imbal hasil dibanding risiko) 1 tahun sebesar 1.8, dan harga hanya 3% di bawah titik tertinggi 52 minggu.",
+     "metric_keys": [
+      "sharpe_1y",
+      "from_high_52w"
      ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "MACD (indikator arah momentum) turun di bawah garis sinyalnya pada 19 Nov 2026, tanda momentum naik mulai melemah.",
+     "title": "Sinyal momentum mulai melemah",
+     "detail": "Pada 19 November 2026, MACD (indikator arah momentum) memotong ke bawah garis sinyalnya, tanda pergeseran momentum ke arah turun.",
      "metric_keys": [
       "recent_signals"
      ]
     },
     {
-     "text": "Harga hanya 2.9% di bawah tertinggi 52 minggu. Resistance (area harga pernah tertahan) Rp1,841,000 hanya 3.0% di atas harga sekarang.",
+     "title": "Dekat area resistance",
+     "detail": "Resistance (area harga yang dulu sulit ditembus) di Rp1,849,000 hanya 3% di atas harga sekarang, sedangkan support terdekat 7.7% di bawah.",
      "metric_keys": [
-      "from_high_52w",
-      "nearest_resistance"
+      "nearest_resistance",
+      "nearest_support",
+      "price"
      ]
     },
     {
-     "text": "Volatilitas setahun 19.1%, dan penurunan terbesar dalam 5 tahun mencapai 17.3%. Beta rendah tidak berarti harga tidak pernah turun.",
+     "title": "Sudah naik tajam dari titik terendah",
+     "detail": "Harga sudah 45.1% di atas titik terendah 52 minggu, sehingga koreksi ke support Rp1,657,000 berarti turun sekitar 7.7%.",
      "metric_keys": [
-      "volatility_1y",
-      "max_drawdown_5y"
+      "from_low_52w",
+      "nearest_support"
+     ]
+    },
+    {
+     "title": "Tertinggal sedikit dari sektor",
+     "detail": "Dalam 3 bulan terakhir saham naik 7.1%, sedikit di bawah ETF sektor XLP yang naik 7.4%.",
+     "metric_keys": [
+      "returns_pct"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Laporan laba berikutnya pada 9 Feb 2027.",
-    "Resistance di Rp1,841,000 (3.0% di atas) dan support (area harga pernah tertahan saat turun) di Rp1,650,000 (7.7% di bawah)."
-   ],
-   "ask_yourself": "Seberapa nyaman Anda jika harga turun ke area support terdekat, sekitar 7.7% di bawah harga sekarang?",
    "data_gaps": [
-    "Semua data ditandai DEMO_ONLY, jadi mungkin bukan data pasar sebenarnya.",
-    "Harga dikonversi dari USD dengan kurs Rp18,310. Perubahan kurs bisa membuat hasil dalam rupiah berbeda dari angka ini.",
-    "Tidak ada pembanding volatilitas atau beta dengan perusahaan sejenis."
+    "Volatilitas 1 tahun (19.1%) dan Sharpe ratio tidak dibandingkan dengan pesaing atau S&P 500, jadi sulit menilai apakah tergolong tinggi atau rendah.",
+    "Harga dikonversi dari dolar AS dengan kurs Rp18,390; tidak jelas apakah persentase imbal hasil memperhitungkan perubahan kurs rupiah."
    ]
   },
   "model": "claude-opus-5-5",
   "attempts": 1,
-  "cost_usd": 0.055713,
+  "cost_usd": 0.040268,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

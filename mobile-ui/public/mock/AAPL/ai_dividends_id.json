@@ -1,6 +1,6 @@
 {
  "ticker": "AAPL",
- "generated_at": "2026-11-25T10:42:27+00:00",
+ "generated_at": "2026-11-26T07:10:35+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,21 +9,63 @@
   "ticker": "AAPL",
   "tab": "dividends",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Neutral",
-  "as_of": "2026-11-25T10:42:27+00:00",
-  "source": "fallback",
+  "as_of": "2026-11-26T07:10:35+00:00",
+  "source": "ai",
   "summary": {
-   "label": "Ringkasan otomatis",
-   "signal": "Neutral",
-   "positives": [
-    "Dividen telah dinaikkan 13 tahun berturut-turut."
+   "bullish": [
+    {
+     "title": "Dividen naik 13 tahun beruntun",
+     "detail": "Apple menaikkan dividen 13 tahun berturut-turut, rata-rata tumbuh sekitar 5% per tahun selama 5 tahun terakhir.",
+     "metric_keys": [
+      "growth_streak_years",
+      "cagr_5y"
+     ]
+    },
+    {
+     "title": "Dividen tertutup laba dan kas",
+     "detail": "Hanya sekitar 11.9% laba dan 11.6% arus kas bebas (uang tunai sisa setelah belanja modal) dipakai untuk dividen, sehingga ruangnya masih lebar.",
+     "metric_keys": [
+      "payout_ratio",
+      "fcf_payout"
+     ]
+    },
+    {
+     "title": "Dibayar rutin tiap kuartal",
+     "detail": "Dividen dibayar 4 kali setahun, totalnya Rp19,680 per saham dalam 12 bulan terakhir, naik dari Rp14,850 pada 2020.",
+     "metric_keys": [
+      "frequency_per_year",
+      "dps_ttm"
+     ]
+    }
    ],
-   "watch_outs": []
+   "bearish": [
+    {
+     "title": "Imbal hasil dividen sangat kecil",
+     "detail": "Dividend yield (dividen setahun dibandingkan harga saham) hanya 0.3%, di bawah rata-rata 5 tahunnya sendiri sebesar 0.48%.",
+     "metric_keys": [
+      "yield_ttm"
+     ]
+    },
+    {
+     "title": "Pertumbuhan dividen sedikit melambat",
+     "detail": "Dividen tumbuh 4.2% per tahun dalam 3 tahun terakhir, sedikit lebih lambat dibanding 5.0% per tahun dalam 5 tahun.",
+     "metric_keys": [
+      "cagr_3y",
+      "cagr_5y"
+     ]
+    }
+   ],
+   "data_gaps": [
+    "Tidak ada perbandingan dividend yield dengan perusahaan sejenis atau S&P 500, jadi sulit menilai posisinya secara relatif.",
+    "Nilai rupiah dikonversi dari dolar AS dengan kurs Rp18,390, sehingga angkanya bisa berubah mengikuti kurs.",
+    "Tidak ada data pembelian kembali saham (buyback), yang juga merupakan cara perusahaan mengembalikan uang ke pemegang saham."
+   ]
   },
   "model": "claude-opus-5-5",
-  "cost_usd": 0.070878,
+  "attempts": 1,
+  "cost_usd": 0.03246,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

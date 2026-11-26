@@ -1,7 +1,7 @@
 # TSLA · Tesla, Inc.: AI summary samples
 
-Prompt version 1.0 · model claude-opus-5-5 · effort medium · generated 2026-11-25 17:48  
-Total for 20 summaries: **207,309 tokens, $1.27**
+Prompt version 2.1 · model claude-opus-5-5 · effort medium · generated 2026-11-26 14:19  
+Total for 20 summaries: **195,849 tokens, $1.51**
 
 AI-generated from our data. It can make mistakes and is not investment advice.
 
@@ -9,358 +9,349 @@ AI-generated from our data. It can make mistakes and is not investment advice.
 
 ### English (USD)
 
-*source **ai** · attempts 1 · rule signal Weak · license DEMO_ONLY · tokens 6,206 · $0.0370 · 13.9 s*
+*source **fallback** · attempts - · license DEMO_ONLY · tokens 12,035 · $0.0859 · 31.5 s*
 
-**[Weak] Strong balance sheet, but priced far above peers as profits shrink**
+> AI not used: bullish[0].detail has 26 words (max 25)
 
-Tesla's finances are very solid, with more cash than debt. But its share price is very high compared with profit, both against peers and its own history, while recent profit has fallen.
+**Automatic summary**
 
-- ✅ Debt to equity (debt compared with owners' money) is only 0.10, and the company holds net cash of $36.2B.  `debt_to_equity`
-- ✅ Net margin (profit kept from sales) is 3.1%, above the peer median of 0%. ROE is 3.8% versus a peer median of -18.4%.  `net_margin, roe`
-- ✅ Operating cash flow is 5.8 times net income, so reported profit is backed by real cash coming in.  ``
-- ⚠️ P/E (price compared with yearly profit) is 424, versus a peer median of 22.5 and its own 5-year median of 144.  `pe`
-- ⚠️ Earnings per share fell 44% versus the same quarter last year, and revenue slipped 0.2%. EPS estimates were beaten in only 3 of 8 quarters.  `revenue_yoy`
-- ⚠️ Beta (how much the stock moves versus the market) is 1.7, so price swings tend to be larger than the overall market.  `beta`
-- 📅 Next earnings report on 28 Jan 2027, after profit per share fell 44% last quarter.
-- 📅 Price is $384.68, between its 52-week low of $297.38 and 52-week high of $498.83.
-- ❓ How comfortable are you holding a stock priced far above its peers while its profit is falling?
-- Data gaps: Price, market value, valuation and beta data are tagged demo-only and may not be fully reliable.; No analyst estimates or price targets are provided.; Details behind the Growth, Earnings quality and Momentum pillar scores are not shown.
+**Bullish**
+- 🟢 The company has more cash than debt (net cash of $36.2B).
+- 🟢 Operating cash flow is 5.8× net income, so profits are backed by cash.
+- 🟢 Altman Z-score of 14.66 is in the safe zone (low distress risk).
+
+**Bearish**
+- 🔴 P/E is higher than 93% of the last 5 years, so the price is higher than usual compared with profit.
+- 🔴 Revenue fell 0.2% compared with the same quarter last year.
+- 🔴 Earnings per share fell 44% compared with the same quarter last year.
+- 🔴 The company beat EPS estimates in only 3 of the last 8 quarters.
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 2 · rule signal Weak · license DEMO_ONLY · tokens 13,129 · $0.0835 · 30.8 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 6,214 · $0.0454 · 17.5 s*
 
-**[Weak] Keuangan sangat sehat, tetapi harga saham jauh di atas labanya**
+**Bullish**
+- 🟢 **Kas jauh lebih besar dari utang**: Kas bersih (kas dikurangi utang) sekitar US$36.2 miliar, debt to equity (utang dibanding modal) hanya 0.104x, dan skor kesehatan keuangan 100.  `debt_to_equity, rule_based_strengths, pillars`
+- 🟢 **Risiko kebangkrutan tergolong rendah**: Altman Z-score (uji risiko kebangkrutan) 14.66, berada di zona aman yang menandakan risiko kesulitan keuangan rendah.  `rule_based_strengths`
+- 🟢 **Laba didukung arus kas**: Arus kas operasi (uang tunai dari bisnis inti) sekitar 5.8 kali laba bersih, jadi laba yang dilaporkan ditopang uang tunai nyata.  `rule_based_strengths`
+- 🟢 **Profitabilitas di atas perusahaan sejenis**: Margin bersih 3.1% dan ROE (laba dibanding modal) 3.8%, lebih baik dari median sejenis 0% dan -18.4%, meski angkanya sendiri masih rendah.  `net_margin, roe`
 
-Keuangan Tesla sangat kuat, dengan kas lebih banyak dari utang dan risiko kesulitan keuangan rendah. Namun harga sahamnya jauh lebih tinggi dibanding labanya, baik terhadap perusahaan sejenis maupun sejarahnya sendiri, sementara laba sedang turun.
+**Bearish**
+- 🔴 **Harga jauh di atas sejenis**: P/E (harga dibanding laba setahun) 419x, sekitar 18.6 kali median sejenis 22.5x, dan lebih tinggi dari 93% periode 5 tahun terakhir.  `pe, pillars, rule_based_risks`
+- 🔴 **Rasio harga lain juga tinggi**: EV/EBITDA (nilai perusahaan dibanding laba operasi) 161x versus median sejenis 9.36x, dan P/S (harga dibanding penjualan) 14.5x versus 0.369x.  `ev_ebitda, ps`
+- 🔴 **Laba per saham turun tajam**: EPS (laba per saham) turun 44% dan pendapatan turun 0.2% dibanding kuartal yang sama tahun lalu; skor profitabilitas hanya 4.  `revenue_yoy, rule_based_risks, pillars`
+- 🔴 **Sering di bawah perkiraan, harga bergejolak**: EPS melampaui estimasi analis hanya 3 dari 8 kuartal terakhir, dan beta 1.69 (gerak harga lebih besar dari pasar).  `rule_based_risks, beta`
 
-- ✅ Pilar kesehatan keuangan mendapat skor 100. Kas lebih besar dari utang, dan debt to equity (utang dibanding modal sendiri) hanya 0.104.  `debt_to_equity`
-- ✅ Arus kas operasi 5.8 kali laba bersih, artinya laba didukung uang tunai yang benar-benar masuk.  ``
-- ✅ ROE (laba dibanding modal pemegang saham) 3.8%, lebih baik dari median perusahaan sejenis yang -18.4%.  `roe`
-- ⚠️ P/E (harga dibanding laba setahun) 424, jauh di atas median sejenis 22.5 dan median 5 tahunnya 144.  `pe`
-- ⚠️ Laba per saham turun 44% dibanding kuartal yang sama tahun lalu. Pendapatan juga turun 0.2%.  `revenue_yoy`
-- ⚠️ Beta 1.7 berarti harga cenderung bergerak lebih tajam dari pasar. EPS hanya melampaui estimasi di 3 dari 8 kuartal terakhir.  `beta`
-- 📅 Laporan keuangan berikutnya pada 28 Jan 2027, terutama apakah penurunan laba berlanjut.
-- 📅 Harga Rp7,043,000 berada di antara level terendah 52 minggu Rp5,445,000 dan tertinggi Rp9,134,000.
-- ❓ Seberapa nyaman Anda dengan saham yang harganya jauh di atas labanya saat ini dan bergerak lebih tajam dari pasar?
-- Data gaps: Data harga, valuasi dan beta bertanda DEMO_ONLY, jadi mungkin bukan data pasar terkini.; Angka kas bersih hanya tersedia dalam dolar AS, tidak dalam rupiah.; Tidak ada data estimasi analis atau target harga.; Pilar dividen tidak berlaku karena tidak ada data dividen.
+*Data gaps: Pilar dividen tidak berlaku karena tidak ada data dividen (0 dari 3 metrik).; Angka kas bersih hanya tersedia dalam dolar AS, belum dalam rupiah.; Daftar perusahaan sejenis yang dipakai sebagai pembanding tidak disebutkan.*
 
 ## Price and Technicals
 
 ### English (USD)
 
-*source **ai** · attempts 2 · rule signal Neutral · license DEMO_ONLY · tokens 11,424 · $0.0489 · 17.0 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 5,167 · $0.0236 · 7.6 s*
 
-**[Neutral] Recent gains, but behind the market over one and five years**
+**Bullish**
+- 🟢 **Strong recent months vs market**: Up 8.5% over 3 months while the S&P 500 fell 6.2% and the sector ETF was nearly flat (-0.2%).  `returns_pct`
+- 🟢 **Beat market last month**: Rose 2.1% over 1 month while the S&P 500 fell 5.7%, though the sector ETF did better at 3.9%.  `returns_pct`
+- 🟢 **Nearby support levels**: Support (a price where buying held before) sits 3.6% below at $366.37, touched 3 times; these levels are not guarantees.  `nearest_support, price`
+- 🟢 **Recovered from yearly low**: Price is 27.8% above its 52-week low and 0.8% above its 50-day average of $377.17.  `from_low_52w, sma50, price`
 
-TSLA has risen in the last three months while the S&P 500 fell. Over longer periods it lags the market, and its price swings much more than average.
+**Bearish**
+- 🔴 **Lagging the market longer term**: Down 15.5% this year and 9.4% over 1 year, while the S&P 500 gained 5.9% and 7.3%.  `returns_pct`
+- 🔴 **Large price swings**: Beta (movement vs the market) is 1.69, yearly volatility is 47.1%, and the biggest drop in 5 years was 73%.  `beta, volatility_1y, max_drawdown_5y, max_drawdown_1y`
+- 🔴 **Weak trend and momentum**: Price is 0.3% below its 200-day average, momentum score is 36 (Weak), and MACD (a trend signal) turned downward on 2026-11-05.  `sma200, rule_based_pillars, recent_signals`
+- 🔴 **Well below recent peak**: Price is 22.4% below its last peak, with resistance (a price where selling stopped rises before) just 1.2% above at $384.75, touched 6 times.  `current_drawdown, from_high_52w, nearest_resistance`
 
-- ✅ Up 10.2% over 3 months, while the S&P 500 fell 5.6% and its sector fund was roughly flat (-0.3%).  `returns_pct`
-- ✅ Price is 2.1% above its 50-day average and 0.9% above its 200-day average. This points to a mild recent uptrend.  `sma50, sma200, price`
-- ⚠️ Down 14.5% this year, while the S&P 500 rose 6.2%. Over 5 years it gained 6.7%, versus 67.4% for the S&P 500.  `returns_pct`
-- ⚠️ Beta (move versus the market) is 1.7, so it tends to swing more than the market. The biggest drop in 1 year was 39.1%.  `beta, max_drawdown_1y, volatility_1y`
-- ⚠️ Price is still 21.5% below its last peak. MACD (a momentum signal) turned downward on 5 Nov 2026.  `current_drawdown, recent_signals`
-- 📅 Nearest support (past buying area) is $366.37, 4.8% below. Nearest resistance (past selling area) is $406.84, 5.8% above.
-- 📅 Next earnings report on 28 Jan 2027.
-- ❓ How would you feel if a stock you own fell by about a third within one year?
-- Data gaps: All price data is marked demo only and may not match live market prices.
+*Data gaps: Over 5 years the stock returned only 5.4% vs 67% for the S&P 500, but no longer-term volatility comparison with peers is provided.; Sharpe ratio (return per unit of risk) is -0.28 over 1 year, but no peer or market Sharpe ratio is given for comparison.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 1 · rule signal Neutral · license DEMO_ONLY · tokens 6,836 · $0.0466 · 16.7 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 6,588 · $0.0512 · 19.0 s*
 
-**[Neutral] Tren jangka pendek membaik, tetapi tertinggal dari pasar dalam setahun**
+**Bullish**
+- 🟢 **Unggul dalam 3 bulan terakhir**: Saham naik 8.5% dalam 3 bulan saat S&P 500 turun 6.2% dan ETF sektor (XLY) turun 0.2%; dalam 1 bulan juga unggul.  `returns_pct`
+- 🟢 **Di atas rata-rata 50 hari**: Harga 0.8% di atas rata-rata 50 hari, dan RSI (ukuran seberapa cepat harga naik-turun) berada di 50, zona netral.  `sma50, rsi14`
+- 🟢 **Area support cukup dekat**: Support (area harga yang pernah menahan penurunan) terdekat di Rp6,738,000, sekitar 3.6% di bawah harga sekarang, sudah teruji 3 kali.  `nearest_support, price`
 
-Harga TSLA sedikit di atas rata-rata 50 dan 200 hari, dan unggul dari S&P 500 dalam 3 bulan terakhir. Namun dalam 1 dan 5 tahun saham ini jauh tertinggal, dan pergerakan harganya jauh lebih tajam daripada pasar.
+**Bearish**
+- 🔴 **Tertinggal dari pasar jangka panjang**: Turun 15.5% sejak awal tahun dan 9.4% dalam 1 tahun, sementara S&P 500 naik 5.9% dan 7.3%; 5 tahun hanya 5.4% vs 67%.  `returns_pct`
+- 🔴 **Harga sangat bergejolak**: Beta (gerak dibanding pasar) 1.69 dan volatilitas 47.1% per tahun; penurunan terbesar dari puncak 39.1% dalam 1 tahun dan 73% dalam 5 tahun.  `beta, volatility_1y, max_drawdown_1y, max_drawdown_5y`
+- 🔴 **Tren dan momentum melemah**: Harga 0.3% di bawah rata-rata 200 hari, MACD (indikator arah momentum) turun di bawah garis sinyal 5 November, skor momentum 36 (lemah).  `sma200, recent_signals, rule_based_pillars`
+- 🔴 **Resistance dekat, jauh dari puncak**: Resistance (area yang pernah menahan kenaikan) Rp7,076,000 hanya 1.2% di atas, teruji 6 kali; harga masih 23.8% di bawah puncak 52 minggu.  `nearest_resistance, from_high_52w`
 
-- ✅ Dalam 3 bulan, saham naik 10.2%, sementara S&P 500 turun 5.6% dan ETF sektor XLY turun 0.3%.  `returns_pct`
-- ✅ Harga 2.1% di atas rata-rata 50 hari dan 0.9% di atas rata-rata 200 hari (patokan tren jangka panjang).  `sma50, sma200`
-- ✅ RSI (ukuran seberapa cepat harga bergerak) di 51.8, artinya di zona netral, tidak naik atau turun terlalu cepat.  `rsi14`
-- ⚠️ Dalam 1 tahun saham turun 7.9%, sementara S&P 500 naik 8.6%. Dalam 5 tahun hanya naik 6.7%, dibanding 67.4%.  `returns_pct`
-- ⚠️ Beta 1.7 (bergerak sekitar 1.7 kali pasar) dan volatilitas 47.1% per tahun. Penurunan terbesar dalam 5 tahun mencapai 73%.  `beta, volatility_1y, max_drawdown_5y`
-- ⚠️ Harga masih 21.5% di bawah puncak terakhir. MACD (indikator arah momentum) turun di bawah garis sinyalnya pada 5 Nov 2026.  `current_drawdown, recent_signals`
-- 📅 Laporan laba berikutnya dijadwalkan 28 Jan 2027.
-- 📅 Support terdekat (area harga pernah tertahan turun) Rp6,708,000, 4.8% di bawah harga kini; resistance (area harga pernah tertahan naik) Rp7,449,000, 5.8% di atas.
-- ❓ Seberapa nyaman Anda memegang saham yang pernah turun 73% dari puncaknya?
-- Data gaps: Semua data bertanda DEMO_ONLY, jadi angka mungkin bukan data pasar sebenarnya.; Harga dalam rupiah dikonversi dari dolar AS dengan kurs Rp18,310; perubahan kurs ikut memengaruhi angka.; Tidak ada data volume perdagangan.
+*Data gaps: Harga dikonversi dari dolar AS dengan kurs Rp18,390, sehingga imbal hasil dalam rupiah bisa berbeda karena perubahan kurs.; Data volume perdagangan tidak tersedia untuk menilai kekuatan pergerakan harga.*
 
 ## Earnings
 
 ### English (USD)
 
-*source **fallback** · attempts - · rule signal Neutral · license DEMO_ONLY · tokens 11,913 · $0.0687 · 26.3 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 5,973 · $0.0424 · 16.1 s*
 
-> AI not used: headline has 13 words (max 12)
+**Bullish**
+- 🟢 **Recent results mostly beat estimates**: EPS (profit per share) beat estimates in 3 of the last 4 quarters, including Q3 FY26 at $0.48 versus the $0.45 estimate.  `last_quarters`
+- 🟢 **Profits backed by real cash**: Operating cash flow (cash from daily business) is 5.8 times net income, so reported profits are supported by cash coming in.  `rule_based_strengths`
+- 🟢 **Slightly more raises this quarter**: In the last 30 days, 11 analysts raised their current-quarter estimate and 9 cut it; the next-quarter estimate had 4 raises and 4 cuts.  `analyst_estimate_revisions_30d`
 
-**Automatic summary** · signal Neutral
+**Bearish**
+- 🔴 **Weak record of beating estimates**: Beat EPS estimates in only 3 of the last 8 quarters, with large misses of 34.9% in Q1 FY25 and 39.1% in Q2 FY26.  `beat_rate_8q, last_quarters`
+- 🔴 **Big price swings after earnings**: The stock typically moves about 8.5% up or down the day after earnings, and fell 14.5% after the Q2 FY26 miss.  `typical_move, last_quarters`
+- 🔴 **Price fell even after beats**: After each of the last 3 beats (Q4 FY25, Q1 FY26, Q3 FY26), the price dropped about 3% the next day.  `last_quarters`
+- 🔴 **Yearly estimates being cut**: In 30 days, 16 analysts cut this year's estimate versus 12 raising; next year saw 17 cuts versus 11, down 3.9% over 90 days.  `analyst_estimate_revisions_30d, rule_based_risks`
 
-- ✅ Operating cash flow is 5.8× net income, so profits are backed by cash.
-- ⚠️ The company beat EPS estimates in only 3 of the last 8 quarters.
-- ⚠️ Analysts cut their next-year EPS estimate by 3.9% in the last 90 days.
+*Data gaps: The next earnings date differs between two fields (2027-01-27 and 2027-01-28), so the exact date is unclear.; Q2 FY25 is labeled a 1.11% miss although both the estimate and actual EPS show $0.40, likely due to rounding.; Past quarterly revenue results versus estimates are not provided, only EPS.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 1 · rule signal Neutral · license DEMO_ONLY · tokens 6,446 · $0.0437 · 16.6 s*
+*source **fallback** · attempts - · license DEMO_ONLY · tokens 14,874 · $0.1410 · 52.2 s*
 
-**[Neutral] Riwayat laba naik-turun, harga saham sering bergerak tajam setelah laporan**
+> AI not used: bearish[3].title has 7 words (2 to 6)
 
-Tesla hanya melampaui estimasi laba di 3 dari 8 kuartal terakhir, dengan beberapa meleset besar. Harga saham biasanya bergerak sekitar 8.5% sehari setelah laporan, naik atau turun.
+**Ringkasan otomatis**
 
-- ✅ EPS (laba per saham) melampaui estimasi di 3 dari 4 kuartal terakhir, termasuk Q3 FY26 dengan selisih 6.4%.  `last_quarters`
-- ✅ Untuk kuartal berjalan, 11 analis menaikkan estimasi dan 9 memangkasnya dalam 30 hari terakhir.  `analyst_estimate_revisions_30d`
-- ⚠️ Hanya 3 dari 8 kuartal di atas estimasi. Q2 FY26 meleset 39.1% dan Q1 FY25 meleset 34.9%.  `beat_rate_8q, last_quarters`
-- ⚠️ Rata-rata harga bergerak 8.48% sehari setelah laporan. Setelah Q2 FY26, harga turun 14.5%. Setelah tiga laporan yang melampaui estimasi, harga tetap turun sekitar 3%.  `typical_move, last_quarters`
-- ⚠️ Dalam 30 hari, estimasi tahun fiskal ini dipangkas 16 analis vs dinaikkan 12. Tahun fiskal depan: 17 dipangkas, 11 dinaikkan.  `analyst_estimate_revisions_30d`
-- 📅 Laporan laba berikutnya sekitar 27 Jan 2027 setelah pasar tutup. Wall Street analis (28 orang) mengestimasi EPS Rp9,242, dibanding Rp9,155 setahun lalu.
-- 📅 Analis mengestimasi pendapatan kuartal tersebut sekitar Rp536 triliun.
-- ❓ Seberapa nyaman Anda jika harga saham bergerak 8% atau lebih dalam sehari setelah laporan laba?
-- Data gaps: Tanggal laporan berikutnya berbeda di data: 27 Jan 2027 dan 28 Jan 2027.; Pemangkasan estimasi 3.9% dalam 90 hari dan rasio arus kas 5.8× tidak didukung data rinci di tab ini.; Tidak ada data riwayat pendapatan aktual vs estimasi.
+**Bullish**
+- 🟢 Arus kas operasi 5.8× laba bersih, jadi laba didukung kas.
+
+**Bearish**
+- 🔴 Perusahaan hanya melampaui estimasi EPS di 3 dari 8 kuartal terakhir.
+- 🔴 Analis memangkas estimasi EPS tahun depan sebesar 3.9% dalam 90 hari terakhir.
 
 ## Financials
 
 ### English (USD)
 
-*source **ai** · attempts 2 · rule signal Weak · license CALCULATED_SAFE · tokens 15,293 · $0.1090 · 40.2 s*
+*source **ai** · attempts 2 · license CALCULATED_SAFE · tokens 16,649 · $0.1517 · 54.2 s*
 
-**[Weak] Profits shrinking and revenue flat, but cash flow remains solid**
+**Bullish**
+- 🟢 **Cash flow well above profit**: Operating cash flow (cash from running the business) reached $6.26 billion in Q3 FY26, about 5.8 times net income.  `cash_conversion, quarterly_cash_flow.operating_cash_flow, quarterly_income.net_income`
+- 🟢 **More cash than debt**: Cash of $17.9 billion is well above total debt of $9.27 billion in Q3 FY26, giving a financial cushion.  `balance_sheet.cash, balance_sheet.total_debt`
+- 🟢 **Gross margin improving**: Gross margin (sales left after production costs) rose to 19.6% in Q3 FY26 from 18% a year earlier and 16.3% in Q4 FY24.  `quarterly_income.gross_margin`
+- 🟢 **Revenue near recent highs**: Revenue grew about 5.2% a year over 3 years, and quarterly revenue of $28 billion is among the highest of the 8 quarters shown.  `revenue_cagr_3y, quarterly_income.revenue`
 
-Tesla's sales have stalled and profit has fallen since FY2023, with EPS (profit per share) down 43.6% from a year ago. Cash flow is still stronger than reported profit, and cash is well above debt.
+**Bearish**
+- 🔴 **Profit per share fell sharply**: Q3 FY26 revenue was flat (down 0.2%) from a year earlier, while EPS (profit per share) fell 43.6%; growth score is Weak (34).  `revenue_yoy, eps_yoy, rule_based_pillars.growth`
+- 🔴 **Yearly profit keeps shrinking**: Net income fell from $15 billion in FY2023 to $3.79 billion in FY2025; net margin (sales kept as profit) fell from 15.5% to 4%.  `annual.net_income, annual.net_margin`
+- 🔴 **Operating margin down**: Operating margin (profit from main business) was 2.56% in Q3 FY26, down from 5.78% a year earlier, despite better gross margin.  `quarterly_income.operating_margin`
+- 🔴 **Higher spending cuts free cash**: Capital spending (factories and equipment) was $4.73 billion in Q3 FY26 versus $2.25 billion a year earlier; free cash flow fell to $1.53 billion.  `quarterly_cash_flow.capex, quarterly_cash_flow.fcf`
 
-- ✅ Operating cash flow was $6.26 billion in Q3 FY26, far above net income of $0.787 billion. Cash conversion (cash compared with profit) is 5.81x.  `quarterly_cash_flow.operating_cash_flow, quarterly_income.net_income, cash_conversion`
-- ✅ Cash of $17.9 billion in Q3 FY26 is well above total debt of $9.27 billion.  `balance_sheet.cash, balance_sheet.total_debt`
-- ✅ Gross margin (sales left after production costs) was 19.6% in Q3 FY26, up from 18% a year earlier.  `quarterly_income.gross_margin`
-- ⚠️ Yearly net income fell from $15 billion in FY2023 to $3.79 billion in FY2025. Net margin (profit share of sales) dropped from 15.5% to 4%.  `annual.net_income, annual.net_margin`
-- ⚠️ Operating margin (profit from main business) was 2.56% in Q3 FY26, down from 5.78% a year earlier. Revenue was flat, down 0.2%.  `quarterly_income.operating_margin, revenue_yoy`
-- ⚠️ Capital spending jumped to $5.79 billion in Q2 FY26, pushing free cash flow (cash left after investment) to minus $1.09 billion.  `quarterly_cash_flow.capex, quarterly_cash_flow.fcf`
-- 📅 Next earnings report on 28 Jan 2027.
-- 📅 Whether capital spending stays near the Q3 FY26 level of $4.73 billion and free cash flow stays positive.
-- ❓ How comfortable are you holding a company whose profit has been falling while it spends heavily?
-- Data gaps: Net debt (-$36.2 billion) does not match cash minus total debt shown; the definitions may differ.; No comparisons with peers or the wider market were provided for these figures.; Balance sheet history only starts at Q4 FY25.
+*Data gaps: The net debt figure (-$36.2 billion) does not match the cash and total debt shown, so it may include other investments and was not used.; No peer or S&P 500 comparisons are given for margins, growth or debt, so context comes only from the company's own history.; Balance sheet data covers only 4 quarters, which limits the view of longer-term cash and debt trends.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 1 · rule signal Weak · license DEMO_ONLY · tokens 7,365 · $0.0491 · 17.9 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 8,636 · $0.0825 · 30.0 s*
 
-**[Weak] Laba menyusut tajam, tetapi posisi kas kuat dan arus kas sehat**
+**Bullish**
+- 🟢 **Arus kas jauh di atas laba**: Kas dari operasi (uang tunai dari bisnis inti) Rp115 triliun pada Q3 FY26, jauh di atas laba bersih Rp14.5 triliun; cash conversion 5.8x.  `cash_conversion, quarterly_cash_flow.operating_cash_flow, quarterly_income.net_income`
+- 🟢 **Kas lebih besar dari utang**: Kas Rp328 triliun pada Q3 FY26, jauh di atas total utang Rp170 triliun, dan naik dari Rp280 triliun di Q2 FY26.  `balance_sheet.cash, balance_sheet.total_debt`
+- 🟢 **Margin kotor cenderung membaik**: Margin kotor (sisa penjualan setelah biaya produksi) 19.6% di Q3 FY26, naik dari 16.3% di Q4 FY24, meski sempat turun ke 16.8%.  `quarterly_income.gross_margin`
+- 🟢 **Pendapatan naik dalam 3 tahun**: CAGR 3 tahun (rata-rata pertumbuhan per tahun) pendapatan 5.2%; pendapatan tahunan naik dari Rp1,500 triliun (FY2022) ke Rp1,740 triliun (FY2025).  `revenue_cagr_3y, annual.revenue`
 
-Pendapatan Tesla stagnan dan labanya turun tajam dalam beberapa tahun terakhir. Namun, uang tunai dari bisnis inti jauh melebihi laba yang dilaporkan, dan kasnya lebih besar dari utang.
+**Bearish**
+- 🔴 **Laba turun tajam**: EPS (laba per saham) turun 43.6% dibanding tahun lalu; laba bersih tahunan merosot dari Rp276 triliun (FY2023) ke Rp69.8 triliun (FY2025).  `eps_yoy, annual.net_income`
+- 🔴 **Margin laba makin tipis**: Margin bersih (persen penjualan yang jadi laba) turun dari 15.5% di FY2023 ke 4% di FY2025; margin operasi Q3 FY26 hanya 2.6%, dari 5.8%.  `annual.net_margin, quarterly_income.operating_margin`
+- 🔴 **Pendapatan cenderung mendatar**: Pendapatan Q3 FY26 turun 0.2% dari tahun lalu, FY2025 Rp1,740 triliun di bawah FY2024 Rp1,800 triliun; skor pertumbuhan 34 (Lemah).  `revenue_yoy, annual.revenue, rule_based_pillars.growth`
+- 🔴 **Belanja modal melonjak**: Belanja modal (investasi pabrik dan alat) melonjak ke Rp106 triliun di Q2 FY26, membuat arus kas bebas minus Rp20.1 triliun; utang naik ke Rp170 triliun.  `quarterly_cash_flow.capex, quarterly_cash_flow.fcf, balance_sheet.total_debt`
 
-- ✅ Arus kas operasi (uang tunai dari bisnis inti) Rp115 triliun di Q3 FY26, sekitar 5.8 kali laba bersih.  `cash_conversion, quarterly_cash_flow.operating_cash_flow`
-- ✅ Kas Rp327 triliun di Q3 FY26, jauh di atas total utang Rp170 triliun.  `balance_sheet.cash, balance_sheet.total_debt`
-- ✅ Gross margin (sisa penjualan setelah biaya produksi) 19.6% di Q3 FY26, naik dari 18% di Q3 FY25.  `quarterly_income.gross_margin`
-- ⚠️ EPS (laba per saham) turun 43.6% dibanding tahun lalu, sementara pendapatan kuartal terakhir hampir datar (-0.2%).  `eps_yoy, revenue_yoy`
-- ⚠️ Margin laba bersih tahunan turun dari 15.5% (FY2023) ke 4% (FY2025). Margin operasi Q3 FY26 hanya 2.56%, dari 5.78% setahun sebelumnya.  `annual.net_margin, quarterly_income.operating_margin`
-- ⚠️ Belanja modal melonjak ke Rp106 triliun di Q2 FY26, membuat free cash flow minus Rp20 triliun. Q3 FY26 masih tinggi, Rp86.6 triliun.  `quarterly_cash_flow.capex, quarterly_cash_flow.fcf`
-- 📅 Laporan keuangan berikutnya pada 28 Jan 2027.
-- 📅 Apakah margin operasi bisa naik lagi dari 2.56% dan belanja modal kembali ke kisaran Rp40-an triliun per kuartal.
-- ❓ Seberapa nyaman Anda dengan perusahaan yang labanya terus menyusut, meski kasnya masih kuat?
-- Data gaps: Angka utang bersih (net debt) tidak sesuai dengan selisih kas dan total utang, kemungkinan mencakup investasi lain; angka ini tidak dipakai.; Semua angka dikonversi dari dolar AS dengan kurs Rp18,310, sehingga bisa berbeda dari laporan asli.; Data neraca hanya tersedia untuk 4 kuartal terakhir.
+*Data gaps: Angka utang bersih (misalnya minus Rp660 triliun) tidak cocok dengan selisih kas dan total utang yang tercantum, sehingga tidak dipakai.; Semua angka dikonversi dari dolar AS dengan kurs Rp18,390; perubahan kurs bisa memengaruhi perbandingan antarperiode.; Data tahunan FY2026 lengkap belum tersedia; laporan berikutnya dijadwalkan 28 Januari 2027.*
 
 ## Valuation
 
 ### English (USD)
 
-*source **ai** · attempts 2 · rule signal Weak · license DEMO_ONLY · tokens 13,898 · $0.0851 · 29.2 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 6,293 · $0.0426 · 15.5 s*
 
-**[Weak] Priced far above its own history and peers, while profit shrinks**
+**Bullish**
+- 🟢 **Analysts expect profit recovery**: Wall Street analysts estimate 25.2% EPS (profit per share) growth next year, which brings forward P/E (price vs expected profit) to 176, down from 419.  `forward_pe, peg, pe`
+- 🟢 **Analyst targets above current price**: Wall Street analysts' average price target is $419.05 versus today's $380.14, though their targets range widely from $128.11 to $600.00.  `analyst_target_mean, analyst_target_low, analyst_target_high, price`
+- 🟢 **Sales steadier than peers**: Revenue was nearly flat (-0.17%) over the past year while peers fell about 2%; over 3 years, sales grew about 5.2% a year.  `revenue_yoy, revenue_cagr_3y`
 
-Investors pay much more than usual for each dollar of Tesla's profit and sales, and far more than similar companies. Profit fell over the past year, so recent growth does not explain the high price.
+**Bearish**
+- 🔴 **Price very high versus profit**: P/E (price compared with yearly profit) is 419, higher than 93% of the last 5 years and far above the peer median of 22.5.  `pe`
+- 🔴 **Profits shrinking, not growing**: EPS fell 43.6% over the past year and about 33% a year over 3 years, so recent growth does not explain the high price.  `eps_yoy, eps_cagr_3y, peg`
+- 🔴 **Other price measures above peers**: EV/EBITDA (company value vs core profit) is 161 against a peer median of 9.36; P/S (price vs sales) is 14.5 against 0.369.  `ev_ebitda, ps`
+- 🔴 **Fair value estimates far below**: DCF models (estimates built on assumptions) give $28.20 to $37.02 per share and the Graham number gives $21.47, versus a $380.14 price.  `dcf_bear, dcf_base, dcf_bull, graham_number, price`
 
-- ✅ Sales were about flat over the past year (-0.2%), better than the peer median of -2%.  `revenue_yoy`
-- ✅ Wall Street analysts estimate EPS (profit per share) will grow 25.2% next year, giving a lower forward P/E of 178.  `peg, forward_pe`
-- ⚠️ P/E (price compared with yearly profit) is 424, higher than 94% of the last 5 years and far above the peer median of 22.5.  `pe`
-- ⚠️ EPS fell 43.6% over the past year and 33.2% per year over 3 years, so growth does not explain the price.  `eps_yoy, eps_cagr_3y`
-- ⚠️ DCF estimates (value from future cash, based on assumptions) range $28.20 to $37.02 per share, far below the $384.68 price.  `dcf_bear, dcf_bull, price`
-- 📅 Next earnings report on 28 Jan 2027.
-- 📅 Wall Street analysts' mean price target is $419.05, with a range of $128.11 to $600.00.
-- ❓ Are you comfortable paying a price far above peers while profit is shrinking?
-- Data gaps: Forward P/E, P/B and P/FCF have no history or peer comparison.; Most valuation data is marked demo-only and may not be fully reliable.
+*Data gaps: No history or peer comparison is given for forward P/E, P/B, P/FCF or FCF yield, so these are hard to judge on their own.; The DCF estimates assume 20% yearly cash flow growth based on analysts' expectations, while actual EPS has been falling, so these values depend heavily on assumptions.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 2 · rule signal Weak · license DEMO_ONLY · tokens 15,072 · $0.1071 · 39.1 s*
+*source **ai** · attempts 2 · license DEMO_ONLY · tokens 15,193 · $0.1338 · 46.6 s*
 
-**[Weak] Harga jauh di atas sejarahnya dan perusahaan sejenis, laba turun**
+**Bullish**
+- 🟢 **Pendapatan lebih stabil dari pesaing**: Pendapatan setahun terakhir hampir datar (turun 0.17%), lebih baik dari median perusahaan sejenis yang turun 2%.  `revenue_yoy`
+- 🟢 **Target analis di atas harga**: Rata-rata target harga perkiraan analis Wall Street Rp7,706,000, di atas harga kini Rp6,991,000, tetapi rentangnya lebar: Rp2,356,000 hingga Rp11,030,000.  `analyst_target_mean, analyst_target_low, analyst_target_high, price`
+- 🟢 **Analis perkirakan laba naik**: Analis Wall Street memperkirakan EPS (laba per saham) naik 25.2% tahun depan, sehingga Forward P/E (harga dibanding laba perkiraan) 176, di bawah 419.  `forward_pe, peg, pe`
+- 🟢 **Pendapatan tumbuh dalam 3 tahun**: Pendapatan tumbuh rata-rata 5.2% per tahun selama 3 tahun terakhir, meski laba bergerak berlawanan arah.  `revenue_cagr_3y`
 
-Investor kini membayar jauh lebih banyak untuk setiap rupiah laba Tesla, dibanding biasanya maupun dibanding perusahaan sejenis. Laba justru turun tajam, jadi pertumbuhan saat ini belum menjelaskan harga tersebut.
+**Bearish**
+- 🔴 **P/E jauh di atas pesaing**: P/E (harga dibanding laba setahun) 419, lebih tinggi dari 93% periode 5 tahun terakhir (median 144) dan median pesaing 22.5.  `pe`
+- 🔴 **Laba per saham terus turun**: EPS turun 43.6% dalam setahun dan rata-rata turun 33.2% per tahun selama 3 tahun, sehingga harga tinggi kurang didukung pertumbuhan laba.  `eps_yoy, eps_cagr_3y`
+- 🔴 **Rasio valuasi lain juga tinggi**: EV/EBITDA (nilai perusahaan dibanding laba operasional) 161 vs median pesaing 9.4; P/S (harga dibanding penjualan) 14.5 vs pesaing 0.37.  `ev_ebitda, ps`
+- 🔴 **Estimasi nilai wajar jauh lebih rendah**: Estimasi DCF (nilai dari proyeksi arus kas, berbasis asumsi) Rp593,300 dan Graham number Rp394,800, jauh di bawah harga Rp6,991,000.  `dcf_base, graham_number, price`
 
-- ✅ Pendapatan hanya turun 0.17% dalam setahun, lebih baik dari median perusahaan sejenis yang turun 2%.  `revenue_yoy`
-- ✅ Analis Wall Street memperkirakan EPS (laba per saham) naik 25.2% tahun depan. Forward P/E (harga dibanding perkiraan laba tahun depan) adalah 178.  `peg, forward_pe`
-- ⚠️ P/E (harga dibanding laba setahun) 424, lebih tinggi dari 94% periode 5 tahun terakhir dan jauh di atas median sejenis 22.5.  `pe`
-- ⚠️ EPS turun 43.6% dalam setahun dan rata-rata turun 33.2% per tahun selama 3 tahun terakhir.  `eps_yoy, eps_cagr_3y`
-- ⚠️ Estimasi DCF (nilai dari proyeksi arus kas, berbasis asumsi) Rp516,300 hingga Rp677,900 per saham, jauh di bawah harga Rp7,043,000.  `dcf_bear, dcf_bull, price`
-- 📅 Laporan laba berikutnya pada 28 Jan 2027.
-- 📅 Apakah EPS mulai tumbuh sesuai perkiraan analis sebesar 25.2% untuk tahun depan.
-- ❓ Seberapa nyaman Anda membayar harga tinggi saat laba perusahaan sedang turun?
-- Data gaps: P/B, P/FCF, Forward P/E dan FCF yield tidak punya pembanding sejarah atau perusahaan sejenis.; Estimasi DCF memakai asumsi pertumbuhan 20% per tahun, sementara EPS historis justru turun.; Sebagian besar data bertanda DEMO_ONLY, jadi keandalannya terbatas.
+*Data gaps: Tidak ada perbandingan dengan sejarah atau pesaing untuk Forward P/E, P/B, P/FCF dan FCF yield, sehingga angka tersebut sulit dinilai.*
 
 ## Profitability and Health
 
 ### English (USD)
 
-*source **ai** · attempts 2 · rule signal Neutral · license DEMO_ONLY · tokens 12,212 · $0.0684 · 24.4 s*
+*source **ai** · attempts 2 · license DEMO_ONLY · tokens 12,777 · $0.1026 · 39.0 s*
 
-**[Neutral] Very strong balance sheet, but thin and shrinking profits**
+**Bullish**
+- 🟢 **More cash than debt**: Holds about $36.2 billion more cash than debt (net cash), and debt to equity (debt compared with owners' money) is just 0.1.  `net_debt, debt_to_equity`
+- 🟢 **Very low bankruptcy risk score**: Altman Z-score (a test of bankruptcy risk) is about 14.7, far above the safe-zone line of 3.  `altman_z`
+- 🟢 **Returns above struggling peers**: ROE (profit on owners' money) is 3.8% vs peer median -18.4%; net margin (profit kept from sales) 3.1% vs peer median 0%.  `roe, net_margin`
+- 🟢 **Strong cash flow, easy interest**: Operating cash flow of $14.75 billion is far above net profit of $3.79 billion, and profit covers interest costs about 10 times.  `piotroski, interest_coverage`
 
-Tesla has far more cash than debt, so its finances look sturdy. But it keeps only a small share of sales as profit, and some efficiency measures have weakened over the past year.
+**Bearish**
+- 🔴 **Thin profit from core business**: Profitability score is 4 (rated Weak), and operating margin (profit from core business as share of sales) is only 3.35%.  `operating_margin`
+- 🔴 **Low return on invested money**: ROIC (profit on all money invested) is 5.08% and ROA (profit on company assets) is 2.21%, both modest levels.  `roic, roa`
+- 🔴 **Key trends getting weaker**: Piotroski score (9 checks of financial strength) is 5 of 9; ROA fell from 6.7% to 3.1%, asset turnover from 0.92 to 0.78.  `piotroski, asset_turnover, roa`
+- 🔴 **More shares, slightly more debt**: Share count rose from 3.50 billion to 3.53 billion, and leverage edged up from 4.8% to 5.1%, two failed Piotroski checks.  `piotroski`
 
-- ✅ Has about $36.2B more cash than debt (net cash). Debt to equity (debt compared with owners' money) is low at 0.104x.  `net_debt, debt_to_equity`
-- ✅ Interest coverage (profit compared with interest costs) is 9.96x, and the Altman Z-score (bankruptcy-risk score) of 14.8 is in the safe zone.  `interest_coverage, altman_z`
-- ✅ ROE (profit compared with owners' money) is 3.8%, above the peer median of -18.4%. Net margin of 3.1% beats the peer median of 0%.  `roe, net_margin`
-- ⚠️ Keeps only about $3 of every $100 in sales as profit. Operating margin (profit from main business) is 3.35%.  `net_margin, operating_margin`
-- ⚠️ ROIC (return on all money invested in the business) is 5.08%, a modest return on the money the company uses.  `roic`
-- ⚠️ Piotroski score (9 checks of financial strength) is 5 of 9. ROA fell from 6.7% to 3.1%, and asset turnover dropped from 0.92 to 0.78.  `piotroski, roa, asset_turnover`
-- 📅 Next earnings report on 28 Jan 2027: check whether profit margins move up from about 3%.
-- 📅 Whether ROA keeps falling from 3.1% and asset turnover from 0.78 in coming results.
-- ❓ How do you weigh a very strong cash position against currently thin profits?
-- Data gaps: No history or peer comparison is given for ROIC, operating margin, or debt measures.; The Altman Z-score is marked as demo-only data, so treat it with caution.; ROA differs between sources (2.21% in the metrics vs 3.1% in the Piotroski checks), and the current ratio also differs (1.74 vs 2.16).
+*Data gaps: No peer or historical comparisons are given for ROIC, ROA, operating margin, gross margin or debt ratios, so these are hard to judge.; ROA appears as 2.21% in the metrics but 3.1% in the Piotroski checks, likely due to different calculation methods.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 2 · rule signal Neutral · license DEMO_ONLY · tokens 13,313 · $0.0883 · 34.3 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 5,856 · $0.0400 · 15.4 s*
 
-**[Neutral] Keuangan sangat kuat, tetapi kemampuan menghasilkan laba masih tipis**
+**Bullish**
+- 🟢 **Kas lebih besar dari utang**: Kas perusahaan melebihi total utangnya sekitar Rp665 triliun, dan rasio utang terhadap modal hanya 0.10x, tergolong rendah.  `net_debt, debt_to_equity`
+- 🟢 **Risiko bangkrut sangat rendah**: Altman Z-score (uji risiko kebangkrutan) 14.7, jauh di atas batas zona aman 3; skor kesehatan keuangan 100 (Kuat).  `altman_z`
+- 🟢 **Mampu bayar bunga dan tagihan**: Laba operasi menutup beban bunga sekitar 10 kali, dan current ratio (aset lancar dibanding utang jangka pendek) 1.74x.  `interest_coverage, current_ratio, quick_ratio, debt_to_ebitda`
+- 🟢 **Lebih untung dibanding pesaing**: ROE (laba dibanding modal pemegang saham) 3.8%, di atas median pesaing -18.4%; margin laba bersih 3.1% vs median pesaing 0%.  `roe, net_margin`
 
-Tesla punya kas lebih banyak dari utangnya dan beban utangnya ringan. Namun laba dari penjualan dan modalnya masih kecil, dan beberapa ukuran efisiensi melemah dibanding tahun sebelumnya.
+**Bearish**
+- 🔴 **Margin laba sangat tipis**: Hanya sekitar Rp3 laba bersih dari setiap Rp100 penjualan, dan skor profitabilitas hanya 4.0 (kategori Lemah).  `net_margin, operating_margin`
+- 🔴 **Imbal hasil modal rendah**: ROIC (laba dari seluruh modal yang ditanam) hanya 5.1% dan ROE 3.8%, tergolong kecil walau lebih baik dari pesaing.  `roic, roe`
+- 🔴 **Efisiensi aset menurun**: ROA (laba dibanding total aset) turun dari 6.7% ke 3.1%, dan perputaran aset turun dari 0.92x ke 0.78x.  `roa, asset_turnover`
+- 🔴 **Skor Piotroski hanya sedang**: Piotroski score (9 cek sederhana kekuatan keuangan) 5 dari 9; jumlah saham juga naik dari 3.50 miliar ke 3.53 miliar.  `piotroski`
 
-- ✅ Utang bersih minus Rp662 triliun, artinya kas lebih besar dari utang. Debt to equity (utang dibanding modal sendiri) hanya 0.104x.  `net_debt, debt_to_equity`
-- ✅ Interest coverage (laba operasional dibanding biaya bunga) 9.96x, jadi laba operasional hampir 10 kali lipat biaya bunganya.  `interest_coverage`
-- ✅ ROE (laba dibanding modal pemegang saham) 3.8%, di atas median perusahaan sejenis yang -18.4%.  `roe`
-- ⚠️ Net margin (laba bersih dibanding penjualan) hanya 3.11%. Margin operasional juga tipis, 3.35%, sehingga ruang untuk menahan biaya naik sempit.  `net_margin, operating_margin`
-- ⚠️ ROIC (laba dari seluruh modal yang dipakai) 5.08%, tergolong rendah. Skor pilar profitabilitas hanya 4, level Weak.  `roic`
-- ⚠️ Skor Piotroski (cek kekuatan keuangan) 5 dari 9. ROA turun dari 6.7% ke 3.1%, dan jumlah saham bertambah.  `piotroski, roa`
-- 📅 Laporan laba berikutnya pada 28 Januari 2027.
-- 📅 Apakah ROA bisa naik lagi dari 3.1% dan asset turnover pulih dari 0.78.
-- ❓ Seberapa penting bagi Anda laba yang besar dibanding neraca keuangan yang kuat?
-- Data gaps: Altman Z-score 14.8 ditandai hanya untuk demo, jadi belum bisa dijadikan pegangan.; Angka di data tidak sama: ROA tertulis 2.21% di metrik tetapi 3.1% di cek Piotroski; current ratio 1.74x versus 2.16.; Tidak ada data riwayat ROE dan ROIC, serta tidak ada perbandingan dengan perusahaan sejenis untuk ROIC dan rasio utang.
+*Data gaps: Angka ROA (2.21% vs 3.1%) dan current ratio (1.74x vs 2.16) berbeda antara metrik utama dan cek Piotroski, mungkin karena periode berbeda.; Tidak ada perbandingan dengan riwayat perusahaan atau S&P 500 untuk sebagian besar metrik, dan perbandingan pesaing hanya untuk ROE dan margin bersih.*
 
 ## Dividends
 
 ### English (USD)
 
-*source **ai** · attempts 1 · rule signal Not applicable · license CALCULATED_SAFE · tokens 3,610 · $0.0061 · 3.0 s*
+*source **ai** · attempts 1 · license CALCULATED_SAFE · tokens 3,565 · $0.0120 · 6.0 s*
 
-**[Not applicable] Tesla does not pay a dividend**
+**Bullish**
+- (none)
 
-Tesla does not pay shareholders a dividend (a regular cash payment from profits). Any return from owning this stock would come only from changes in the share price.
+**Bearish**
+- 🔴 **No dividend paid**: Tesla does not pay a dividend (regular cash payment to shareholders), so owning the stock gives no regular cash income.  `pays_dividend, dividend_note, rule_based_pillars.dividend.level`
 
-- 📅 Next earnings report on 28 Jan 2027.
-- ❓ Do you need regular cash income from your investments, or are you comfortable relying only on share price changes?
-- Data gaps: No data on share buybacks (the company buying back its own shares) was provided.
+*Data gaps: No data on share buybacks (the company buying back its own shares), so this summary cannot show whether cash is returned to shareholders another way.; No profit or free cash flow figures are included, so this summary cannot show whether the company could afford a dividend.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 1 · rule signal Not applicable · license DEMO_ONLY · tokens 3,843 · $0.0101 · 4.6 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 3,701 · $0.0141 · 5.9 s*
 
-**[Not applicable] Tesla tidak membagikan dividen kepada pemegang saham**
+**Bullish**
+- (none)
 
-Data menunjukkan Tesla tidak membayar dividen. Artinya, keuntungan dari saham ini hanya bisa datang dari perubahan harga saham, bukan dari pembayaran tunai rutin.
+**Bearish**
+- 🔴 **Tidak membagikan dividen**: Per 26 November 2026, Tesla tidak membagikan dividen, jadi pemegang saham tidak mendapat pemasukan rutin, hanya dari perubahan harga saham.  `pays_dividend, dividend_note, rule_based_pillars.dividend.level, as_of`
 
-- ⚠️ Dividen 0: investor tidak menerima pembayaran tunai rutin, jadi hasil investasi bergantung sepenuhnya pada pergerakan harga saham.  `pays_dividend, dividend_note`
-- 📅 Laporan keuangan berikutnya dijadwalkan pada 28 Jan 2027.
-- ❓ Apakah Anda mencari pemasukan tunai rutin, atau nyaman dengan saham yang tidak membagikan dividen?
-- Data gaps: Tidak ada data pembelian kembali saham (buyback), jadi cara lain perusahaan mengembalikan uang ke pemegang saham tidak bisa dinilai.
+*Data gaps: Tidak ada data buyback (pembelian kembali saham oleh perusahaan), jadi tidak bisa dinilai apakah ada cara lain perusahaan mengembalikan uang ke pemegang saham.; Tidak ada data laba, arus kas bebas, atau riwayat dividen, sehingga kemampuan Tesla membayar dividen di masa depan tidak bisa dinilai.*
 
 ## Ownership and Sentiment
 
 ### English (USD)
 
-*source **fallback** · attempts - · rule signal Not applicable · license DEMO_ONLY · tokens 11,894 · $0.0680 · 26.7 s*
+*source **ai** · attempts 2 · license DEMO_ONLY · tokens 11,511 · $0.0792 · 30.1 s*
 
-> AI not used: positives[0] has 30 words (max 25); positives[1] has 28 words (max 25)
+**Bullish**
+- 🟢 **More analysts positive than negative**: Of 54 Wall Street analysts, 10 rate it strong buy and 19 buy, while only 2 say sell and none strong sell.  `wall_street_analyst_ratings`
+- 🟢 **Recent upgrades and new Buy**: Barclays upgraded to Overweight (rate above average) on 26 October 2026; HSBC moved from Reduce to Hold; Seaport Global started at Buy.  `recent_rating_changes_by_analysts`
+- 🟢 **Average target above current price**: Wall Street analysts' average 12-month price target is $419.05, above the current share price of $380.14.  `analyst_target_mean, price`
+- 🟢 **Few bets against the stock**: Only 2.03% of tradable shares are sold short (bets the price falls), and covering them would take about 1.8 days of trading.  `short_interest`
 
-**Automatic summary** · signal Not applicable
+**Bearish**
+- 🔴 **Heavy insider selling**: Insiders sold more than they bought in every month shown, including a net $938 million in September 2026.  `insider_net_buying_by_month`
+- 🔴 **Many analysts say hold**: 23 of 54 analysts rate it hold, and the average score is 2.31 on a 1-to-5 scale, between buy and hold.  `wall_street_analyst_ratings`
+- 🔴 **Analysts strongly disagree on value**: Analyst 12-month price targets range from $128.11 to $600, and the low target is far below today's $380.14.  `analyst_target_low, analyst_target_high, price`
+- 🔴 **Some ratings stay cautious**: GLJ Research repeated its Sell rating on 5 and 13 November 2026, and UBS kept a Neutral rating on 24 November.  `recent_rating_changes_by_analysts`
 
+*Data gaps: Insider trading data is missing for July and August 2026.; No peer or historical comparison is given for short interest or institutional ownership (44.8%), so these are hard to judge.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 2 · rule signal Not applicable · license DEMO_ONLY · tokens 13,387 · $0.0969 · 37.6 s*
+*source **ai** · attempts 2 · license DEMO_ONLY · tokens 12,636 · $0.1006 · 38.8 s*
 
-**[Not applicable] Analis Wall Street cenderung positif, tetapi insider terus menjual bersih**
+**Bullish**
+- 🟢 **Banyak analis memberi rating beli**: Dari 54 analis Wall Street, 10 memberi Strong Buy dan 19 memberi Buy, sedangkan 23 memberi Hold dan hanya 2 memberi Sell.  `wall_street_analyst_ratings`
+- 🟢 **Target rata-rata di atas harga**: Analis Wall Street memperkirakan target harga 12 bulan rata-rata Rp7,706,000, di atas harga saat ini Rp6,991,000.  `analyst_target_mean, price`
+- 🟢 **Beberapa kenaikan rating terbaru**: Barclays menaikkan rating ke Overweight (26 Okt), HSBC naik dari Reduce ke Hold (20 Nov), dan Seaport Global mulai meliput dengan Buy.  `recent_rating_changes_by_analysts`
+- 🟢 **Short interest tergolong kecil**: Hanya sekitar 2% saham beredar dijual short (taruhan harga turun), dan posisi itu bisa ditutup dalam sekitar 1.78 hari perdagangan.  `short_interest`
 
-Menurut 54 analis Wall Street, skor rata-rata TSLA adalah 2.31 (skala 1 paling positif sampai 5 paling negatif). Di sisi lain, orang dalam perusahaan menjual lebih banyak daripada membeli setiap bulan yang tercatat sejak Februari 2026.
+**Bearish**
+- 🔴 **Orang dalam terus menjual saham**: Insider (pimpinan dan pemegang saham besar internal) menjual bersih setiap bulan yang tercatat, terbesar Rp197 miliar pada Februari 2026.  `insider_net_buying_by_month`
+- 🔴 **Perbedaan target analis sangat lebar**: Target harga terendah analis Rp2,356,000, jauh di bawah harga saat ini, sementara yang tertinggi Rp11,030,000, menunjukkan pandangan yang sangat berbeda.  `analyst_target_low, analyst_target_high, price`
+- 🔴 **Banyak analis masih ragu**: Skor rata-rata analis 2.31 (skala 1 Strong Buy sampai 5 Strong Sell), dengan 23 Hold dan GLJ Research dua kali menegaskan Sell di November.  `wall_street_analyst_ratings, recent_rating_changes_by_analysts`
 
-- ✅ Dari 54 analis Wall Street, 10 memberi rating paling positif dan 19 positif. Hanya 2 yang negatif, tanpa rating paling negatif.  `wall_street_analyst_ratings`
-- ✅ Beberapa perubahan rating terbaru: HSBC naik dari negatif ke netral (20 Nov), Barclays dari Equal-Weight ke Overweight (26 Okt).  `recent_rating_changes_by_analysts`
-- ✅ Short interest (porsi saham yang dipinjam untuk bertaruh harga turun) hanya 2.03% dari saham beredar, per 30 Okt 2026.  `short_interest`
-- ⚠️ Insider (orang dalam perusahaan) menjual bersih tiap bulan yang tercatat, terbesar Rp196 miliar pada Feb 2026, lalu mengecil ke Rp17.2 miliar pada Sep.  `insider_net_buying_by_month`
-- ⚠️ Target harga analis sangat lebar: terendah Rp2,346,000 dan tertinggi Rp10,990,000, dibandingkan harga sekarang Rp7,043,000. Pendapat analis sangat berbeda.  `analyst_target_low, analyst_target_high, price`
-- ⚠️ 23 dari 54 analis memberi rating netral, dan GLJ Research dua kali mempertahankan rating negatif pada November (5 dan 13 Nov).  `wall_street_analyst_ratings, recent_rating_changes_by_analysts`
-- 📅 Laporan keuangan berikutnya pada 28 Jan 2027.
-- 📅 Harga sekarang Rp7,043,000, dibandingkan rata-rata target harga 12 bulan analis Wall Street di Rp7,673,000.
-- ❓ Seberapa besar Anda mengandalkan pendapat analis ketika orang dalam perusahaan terus menjual bersih?
-- Data gaps: Data penjualan/pembelian insider tidak tersedia untuk Juli, Agustus, dan Oktober 2026.; Tidak ada data perubahan kepemilikan institusi dari waktu ke waktu; hanya porsi saat ini (44.8%).; Data short interest per 30 Okt 2026, bisa sudah berubah.; Data harga bertanda DEMO_ONLY dan dikonversi dari dolar AS dengan kurs 18,310, sehingga angka rupiah bisa bergeser.
+*Data gaps: Tidak ada pembanding dengan perusahaan sejenis atau riwayat untuk short interest dan kepemilikan institusi (44.8%).; Data transaksi insider tidak tersedia untuk Juli, Agustus, Oktober, dan November 2026.; Semua angka rupiah dikonversi dari dolar AS dengan kurs Rp18,390, sehingga bisa berubah mengikuti kurs.*
 
 ## News and Filings
 
 ### English (USD)
 
-*source **ai** · attempts 1 · rule signal Not applicable · license DEMO_ONLY · tokens 5,836 · $0.0298 · 10.8 s*
+*source **ai** · attempts 2 · license DEMO_ONLY · tokens 12,742 · $0.0958 · 34.7 s*
 
-**[Not applicable] Headlines focus on possible Tesla-SpaceX merger talks**
+**Bullish**
+- 🟢 **Large fund opens Tesla stake**: A headline says Brad Gerstner's Altimeter opened a $680 million Tesla stake, while exiting Qualcomm and Applied Materials.  `headlines`
+- 🟢 **SpaceX merger talks draw interest**: Several headlines discuss possible SpaceX merger talks; investor Ron Baron says SpaceX could make $50B a year from one data center.  `headlines`
+- 🟢 **SpaceX gets FCC approval**: One headline says SpaceX shares cut losses after FCC (US communications regulator) approval for data centers in space, on 2026-11-25.  `headlines`
 
-About 7 of 15 recent headlines mention a possible Tesla-SpaceX merger, which the headlines describe as talks, not a done deal. Other themes include a chip shortage linked to a 25% memory cut and wider market worries.
+**Bearish**
+- 🔴 **Shares fell with EU delay**: A headline says Tesla sank 5% as an AI selloff deepened and the EU stalled approval of FSD (Tesla's self-driving software).  `headlines`
+- 🔴 **Merger raises valuation questions**: Headlines say the potential merger is 'doing all the work' for Tesla, and SpaceX stock crashed on 2026-11-25 over compute demand worries.  `headlines`
+- 🔴 **Wider market selling off**: Headlines on 2026-11-25 describe a broad market selloff before Thanksgiving, with Sandisk down 13% in the same AI-related selling.  `headlines`
 
-- ✅ Tesla filed its latest 10-Q (quarterly report) on 22 Oct 2026, one day after an 8-K with earnings results.  `sec_filings`
-- ✅ A 24 Nov headline says RBC expects a SpaceX-Tesla deal announcement by early 2027. This is an analyst view, not a confirmed plan.  `headlines`
-- ⚠️ A 25 Nov headline links Tesla's 25% memory cut to an AI-driven chip shortage and says the stock slipped overnight.  `headlines`
-- ⚠️ Merger headlines also raise concerns. One says the $3.5 trillion merger talks have 'a surprising catch'. Another says one group of investors should be worried.  `headlines`
-- ⚠️ A 25 Nov headline says BYD plans car production in France to push further into Europe, a competition theme.  `headlines`
-- 📅 Next earnings report on 28 Jan 2027.
-- 📅 Any official merger news. Headlines mention a possible deal in December or by early 2027.
-- ❓ How comfortable are you holding a stock whose news is driven by a deal that is not yet confirmed?
-- Data gaps: Only headlines are available, not article content, so details and accuracy of the merger reports cannot be checked.; Several headlines are not about Tesla, such as AppLovin, Solana and a leather shop.; The content of the 8-K, DEF 14A and Form 4 insider trade filings is not provided.
+*Data gaps: Only headline wording is available; article contents and the details of SEC filings, including recent earnings reports, are not included.; Two Form 4 insider trade filings (2026-06-17 and 2026-09-09) do not show whether insiders bought or sold shares.; Several headlines are about other companies or general topics and say little about Tesla directly.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 2 · rule signal Not applicable · license DEMO_ONLY · tokens 14,133 · $0.1041 · 41.0 s*
+*source **ai** · attempts 2 · license DEMO_ONLY · tokens 13,342 · $0.1034 · 40.1 s*
 
-**[Not applicable] Rencana merger Tesla-SpaceX mendominasi berita terbaru**
+**Bullish**
+- 🟢 **Investor besar masuk ke Tesla**: Menurut judul berita 25 Nov 2026, Altimeter milik Brad Gerstner membuka posisi saham Tesla senilai US$680 juta sambil keluar dari Qualcomm dan Applied Materials.  `headlines`
+- 🟢 **Wacana merger dengan SpaceX**: Beberapa judul pada 25–26 Nov 2026 menyebut pembicaraan merger Tesla–SpaceX, termasuk klaim Ron Baron bahwa SpaceX bisa meraup US$50 miliar setahun dari satu pusat data.  `headlines`
+- 🟢 **SpaceX dapat izin FCC**: Judul 25 Nov 2026 menyebut SpaceX, calon mitra merger Tesla, memperoleh izin FCC (regulator komunikasi AS) untuk pusat data di luar angkasa.  `headlines`
 
-Sebagian besar judul berita terbaru membahas kemungkinan merger Tesla dan SpaceX, yang menurut satu judul bernilai sekitar US$3,5 triliun. Tema lain mencakup pemangkasan memori 25% akibat krisis chip, rencana BYD di Eropa, dan pasar saham yang melemah.
+**Bearish**
+- 🔴 **Saham turun, izin FSD tertahan**: Judul 25 Nov 2026 menyebut saham Tesla turun 5% saat aksi lepas saham AI meluas dan Uni Eropa menahan izin FSD (fitur mengemudi otomatis).  `headlines`
+- 🔴 **Harga saham bergantung wacana merger**: Judul SeekingAlpha 25 Nov 2026 menyebut potensi merger kini menjadi penggerak utama saham, sementara judul lain mempertanyakan valuasi dalam pembicaraan merger tersebut.  `headlines`
+- 🔴 **Saham SpaceX sempat anjlok**: Judul 25 Nov 2026 menyebut harga saham SpaceX jatuh karena kekhawatiran permintaan daya komputasi, risiko bagi rencana merger dengan Tesla.  `headlines`
+- 🔴 **Pasar saham sedang tertekan**: Pada 25 Nov 2026, beberapa judul menyoroti pasar yang kembali melemah menjelang Thanksgiving dan saham terkait AI yang ikut turun.  `headlines`
 
-- ✅ Laporan kuartalan (10-Q) terbaru terbit 22 Okt 2026, sehari setelah rilis hasil laba pada 21 Okt 2026.  `sec_filings`
-- ✅ Dokumen rapat pemegang saham (DEF 14A) terbit 19 Okt 2026, sehingga informasi resmi rapat tersedia bagi pemegang saham.  `sec_filings`
-- ⚠️ Judul 25 Nov 2026 menyebut Tesla memangkas memori 25% karena krisis chip akibat AI, dan saham TSLA melemah di perdagangan malam.  `headlines`
-- ⚠️ Merger masih berupa pembicaraan. Judul 24 Nov 2026 menyebut satu kelompok investor punya alasan khawatir, judul lain menyebut ada catatan mengejutkan.  `headlines`
-- ⚠️ Judul 25 Nov 2026 menyebut BYD berencana memproduksi mobil di Prancis untuk memperkuat dorongannya ke pasar Eropa.  `headlines`
-- 📅 Laporan laba Tesla berikutnya dijadwalkan pada 28 Jan 2027.
-- 📅 Kabar resmi soal merger Tesla-SpaceX: satu judul menyebut kesepakatan bisa datang Desember, sementara RBC memperkirakan pengumuman paling lambat awal 2027.
-- ❓ Seberapa nyaman Anda jika arah bisnis perusahaan bisa berubah besar akibat merger?
-- Data gaps: Hanya judul berita yang tersedia, isi artikel tidak ada, sehingga detail dan kebenaran tiap judul tidak bisa dicek.; Beberapa judul tidak terkait langsung dengan Tesla, misalnya soal AppLovin, Solana, pemasok tenaga surya, dan toko kulit di Stark County.; Detail transaksi orang dalam (Form 4, 9 Sep 2026 dan 17 Jun 2026) tidak tersedia, termasuk arah dan jumlah transaksinya.; Isi laporan 8-K tanggal 29 Sep 2026 (berita perusahaan) tidak dijelaskan dalam data.
+*Data gaps: Ringkasan ini hanya berdasarkan judul berita, bukan isi artikel, dan merger Tesla–SpaceX baru berupa pembicaraan yang belum dipastikan dalam data.; Laporan Form 4 (transaksi orang dalam) pada 17 Jun dan 9 Sep 2026 tidak menunjukkan arah transaksi maupun nilainya.; Isi laporan keuangan (10-Q dan 8-K hasil kinerja Oktober 2026) tidak tersedia, jadi angka kinerja tidak bisa dinilai di tab ini.*
 
 ## Company Profile
 
 ### English (USD)
 
-*source **ai** · attempts 2 · rule signal Not applicable · license DEMO_ONLY · tokens 10,174 · $0.0498 · 21.6 s*
+*source **fallback** · attempts - · license DEMO_ONLY · tokens 11,229 · $0.0852 · 39.4 s*
 
-**[Not applicable] Electric car maker that also sells solar power and batteries**
+> AI not used: banned phrase "buy" in bearish[1].detail: "Its car business sells regulatory credits (rights other carmakers buy to meet rules), so one of its two segments partly depends on government policy."
 
-Tesla mainly designs, makes and sells electric cars, plus solar panels and large batteries for homes, businesses and utilities. It earns money from selling and leasing cars, and from extras like charging, insurance, repairs, financing and software upgrades.
+**Automatic summary**
 
-- ✅ Business has 2 segments: Automotive, and Energy Generation and Storage, which includes Powerwall and Megapack batteries and solar roofs.  `description`
-- ✅ Market value (share price times shares outstanding) is about $1.52 trillion, with 134,785 employees.  `market_cap, employees`
-- ✅ Founded in 2003 and listed on Nasdaq since 29 Jun 2010, headquartered in Austin, Texas.  `ipo_date, exchange, headquarters`
-- ⚠️ The data lists 2 segments but does not show how much revenue or profit each one brings in.  `description`
-- ⚠️ Some income comes from regulatory credits (permits sold to other carmakers), not only from selling its 2 product types.  `description`
-- 📅 Fiscal year ends 31 December; the next full-year results will cover the year ending 31 Dec 2026.
-- ❓ Do you understand which parts of Tesla's business you are really investing in?
-- Data gaps: No revenue or profit breakdown by segment or by country.; No upcoming earnings date provided.; Market value figure is tagged DEMO_ONLY and may not be official data.
+**Bullish**
+- (none)
+
+**Bearish**
+- (none)
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 2 · rule signal Not applicable · license DEMO_ONLY · tokens 11,325 · $0.0710 · 29.9 s*
+*source **fallback** · attempts - · license DEMO_ONLY · tokens 10,868 · $0.0764 · 32.7 s*
 
-**[Not applicable] Tesla menjual mobil listrik serta produk energi surya dan baterai**
+> AI not used: number "2" in bullish[0].detail is not in the data; number "2" in bullish[1].detail is not in the data; number "3" in bullish[3].detail is not in the data
 
-Tesla terutama menghasilkan uang dari mobil listrik, ditambah penjualan sistem penyimpanan energi dan panel surya. Data ini tidak menunjukkan seberapa besar pendapatan dari tiap bisnis.
+**Ringkasan otomatis**
 
-- ✅ Sejak berdiri pada 2003, Tesla menjual mobil listrik sekaligus baterai penyimpanan energi seperti Powerwall dan Megapack, serta panel surya.  `description`
-- ✅ Nilai pasar (harga saham dikali jumlah saham) sekitar Rp27,800 triliun, dengan 134,785 karyawan dan kantor pusat di Austin, Texas.  `market_cap, employees, headquarters`
-- ✅ Pendapatan juga datang dari layanan pendukung: Supercharger, servis, asuransi, pembiayaan, sewa, dan upgrade lewat aplikasi. Tercatat di Nasdaq sejak 2010.  `description, ipo_date, exchange`
-- ⚠️ Nilai pasar Rp27,800 triliun dikonversi dengan kurs Rp18,310 per dolar AS. Angka dalam rupiah ikut berubah saat kurs bergerak.  `market_cap, exchange_rate_used`
-- ⚠️ Sebagian pendapatan berasal dari penjualan kredit regulasi otomotif (izin emisi yang dijual ke produsen lain). Porsinya tidak ada dalam data per 2025.  `description, fiscal_year_end`
-- 📅 Tahun buku Tesla berakhir 31 Desember; laporan tahunan berikutnya mencakup kinerja hingga akhir 2026.
-- ❓ Apakah Anda memahami bisnis mana yang paling memengaruhi kinerja Tesla sebelum berinvestasi?
-- Data gaps: Tidak ada rincian pendapatan per segmen (otomotif vs energi).; Data nilai pasar berlabel DEMO_ONLY, sehingga keandalannya terbatas.; Tidak ada tanggal laporan keuangan berikutnya.
+**Bullish**
+- (none)
+
+**Bearish**
+- (none)

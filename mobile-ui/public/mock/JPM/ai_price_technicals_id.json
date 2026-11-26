@@ -1,6 +1,6 @@
 {
  "ticker": "JPM",
- "generated_at": "2026-11-25T10:46:04+00:00",
+ "generated_at": "2026-11-26T07:15:59+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,70 +9,86 @@
   "ticker": "JPM",
   "tab": "price_technicals",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Neutral",
-  "as_of": "2026-11-25T10:46:04+00:00",
+  "as_of": "2026-11-26T07:15:59+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Neutral",
-   "headline": "Harga di bawah rata-rata 50 dan 200 hari, unggul jangka panjang",
-   "takeaway": "Tren jangka pendek melemah karena harga Rp5,806,000 berada di bawah rata-rata 50 dan 200 hari. Namun dalam 3 dan 5 tahun, kenaikan saham ini jauh melampaui S&P 500 dan sektornya.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Dalam 5 tahun saham naik 122%, jauh di atas S&P 500 (67.4%) dan ETF sektor keuangan XLF (57.7%).",
+     "title": "Unggul jauh dalam jangka panjang",
+     "detail": "Dalam 5 tahun saham naik 121%, jauh di atas S&P 500 (67%) dan ETF sektor keuangan XLF (58.8%); dalam 3 tahun naik 120%.",
      "metric_keys": [
       "returns_pct"
      ]
     },
     {
-     "text": "Dalam 6 bulan saham naik 4.5% saat S&P 500 turun 3.1%, meski masih di bawah sektor (8.8%).",
+     "title": "Lebih kuat dari pasar 6 bulan",
+     "detail": "Naik 4.4% dalam 6 bulan saat S&P 500 turun 3.4%, meski masih di bawah sektor keuangan yang naik 9.6%.",
      "metric_keys": [
       "returns_pct"
      ]
     },
     {
-     "text": "Beta (seberapa besar gerak saham dibanding pasar) 1.08, artinya naik-turunnya hampir sama dengan pasar secara umum.",
+     "title": "Turun lebih ringan sebulan terakhir",
+     "detail": "Turun 4.5% dalam sebulan, lebih ringan dari S&P 500 yang turun 5.7%, walau sektor keuangan justru naik 1.1%.",
      "metric_keys": [
-      "beta"
+      "returns_pct"
+     ]
+    },
+    {
+     "title": "Ada area support di bawah",
+     "detail": "Support (area harga yang dulu menahan penurunan) ada di Rp5,489,000 dan Rp5,427,000, sekitar 6-7% di bawah harga; yang kedua tersentuh 3 kali.",
+     "metric_keys": [
+      "nearest_support",
+      "price"
      ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "Harga 5.6% di bawah rata-rata 50 hari dan 2.5% di bawah rata-rata 200 hari, tanda tren sedang melemah.",
+     "title": "Harga di bawah rata-rata",
+     "detail": "Harga Rp5,825,000 berada 5.5% di bawah rata-rata 50 hari dan 2.6% di bawah rata-rata 200 hari; MACD (indikator arah momentum) berbalik turun 17 November.",
      "metric_keys": [
+      "price",
       "sma50",
-      "sma200"
+      "sma200",
+      "recent_signals"
      ]
     },
     {
-     "text": "Dalam 3 bulan saham turun 10.6%, lebih dalam dari S&P 500 (-5.6%) dan sektor (-3.3%).",
+     "title": "Tertinggal dari pasar belakangan ini",
+     "detail": "Dalam 3 bulan turun 10.8%, lebih dalam dari S&P 500 (-6.2%) dan sektor (-2.7%); sejak awal tahun hanya naik 0.2% vs S&P 500 5.9%.",
      "metric_keys": [
       "returns_pct"
      ]
     },
     {
-     "text": "Penurunan terbesar dari puncak dalam 5 tahun mencapai 37.9%. Saat ini harga 12.7% di bawah puncak terakhir.",
+     "title": "Masih jauh dari puncak",
+     "detail": "Harga 13.6% di bawah titik tertinggi 52 minggu; beta 1.08 (gerak sedikit lebih besar dari pasar), dan dalam 5 tahun pernah turun 37.9% dari puncak.",
      "metric_keys": [
+      "from_high_52w",
+      "beta",
       "max_drawdown_5y",
       "current_drawdown"
      ]
+    },
+    {
+     "title": "Resistance dekat di atas",
+     "detail": "Resistance (area harga yang dulu menahan kenaikan) di Rp5,987,000 hanya 2.8% di atas harga sekarang dan sudah tersentuh 4 kali.",
+     "metric_keys": [
+      "nearest_resistance",
+      "price"
+     ]
     }
    ],
-   "what_to_watch_next": [
-    "Laporan keuangan berikutnya dijadwalkan 14 Jan 2027.",
-    "Resistance (area harga yang dulu sering tertahan) terdekat Rp5,961,000, sekitar 2.7% di atas harga kini; support (area harga yang dulu sering tertahan saat turun) terdekat Rp5,465,000, sekitar 5.9% di bawah. Ini hanya pola masa lalu, bukan jaminan."
-   ],
-   "ask_yourself": "Apakah Anda nyaman jika harga saham ini turun cukup dalam sebelum kembali pulih?",
    "data_gaps": [
-    "Data bertanda DEMO_ONLY sehingga mungkin bukan data pasar resmi.",
-    "Harga dikonversi dari dolar AS dengan kurs 18,310 per USD; perubahan kurs ikut memengaruhi angka dalam rupiah."
+    "Volatilitas, beta dan Sharpe ratio tidak dibandingkan dengan perusahaan sejenis atau riwayatnya sendiri, sehingga sulit menilai apakah tingkat risikonya tinggi atau rendah."
    ]
   },
   "model": "claude-opus-5-5",
-  "attempts": 2,
-  "cost_usd": 0.089694,
+  "attempts": 1,
+  "cost_usd": 0.061184,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

@@ -1,6 +1,6 @@
 {
  "ticker": "TSLA",
- "generated_at": "2026-11-25T10:45:41+00:00",
+ "generated_at": "2026-11-26T07:15:29+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,65 +9,17 @@
   "ticker": "TSLA",
   "tab": "company_profile",
   "lang": "en",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Not applicable",
-  "as_of": "2026-11-25T10:45:41+00:00",
-  "source": "ai",
+  "as_of": "2026-11-26T07:15:29+00:00",
+  "source": "fallback",
   "summary": {
-   "signal": "Not applicable",
-   "headline": "Electric car maker that also sells solar power and batteries",
-   "takeaway": "Tesla mainly designs, makes and sells electric cars, plus solar panels and large batteries for homes, businesses and utilities. It earns money from selling and leasing cars, and from extras like charging, insurance, repairs, financing and software upgrades.",
-   "positives": [
-    {
-     "text": "Business has 2 segments: Automotive, and Energy Generation and Storage, which includes Powerwall and Megapack batteries and solar roofs.",
-     "metric_keys": [
-      "description"
-     ]
-    },
-    {
-     "text": "Market value (share price times shares outstanding) is about $1.52 trillion, with 134,785 employees.",
-     "metric_keys": [
-      "market_cap",
-      "employees"
-     ]
-    },
-    {
-     "text": "Founded in 2003 and listed on Nasdaq since 29 Jun 2010, headquartered in Austin, Texas.",
-     "metric_keys": [
-      "ipo_date",
-      "exchange",
-      "headquarters"
-     ]
-    }
-   ],
-   "watch_outs": [
-    {
-     "text": "The data lists 2 segments but does not show how much revenue or profit each one brings in.",
-     "metric_keys": [
-      "description"
-     ]
-    },
-    {
-     "text": "Some income comes from regulatory credits (permits sold to other carmakers), not only from selling its 2 product types.",
-     "metric_keys": [
-      "description"
-     ]
-    }
-   ],
-   "what_to_watch_next": [
-    "Fiscal year ends 31 December; the next full-year results will cover the year ending 31 Dec 2026."
-   ],
-   "ask_yourself": "Do you understand which parts of Tesla's business you are really investing in?",
-   "data_gaps": [
-    "No revenue or profit breakdown by segment or by country.",
-    "No upcoming earnings date provided.",
-    "Market value figure is tagged DEMO_ONLY and may not be official data."
-   ]
+   "label": "Automatic summary",
+   "bullish": [],
+   "bearish": []
   },
   "model": "claude-opus-5-5",
-  "attempts": 2,
-  "cost_usd": 0.04985,
+  "cost_usd": 0.085179,
   "cached": false,
   "disclaimer": "AI-generated from the data on this page. It can make mistakes and is not investment advice.",
   "sample": true

@@ -1,6 +1,6 @@
 {
  "ticker": "TSLA",
- "generated_at": "2026-11-25T10:45:27+00:00",
+ "generated_at": "2026-11-26T07:14:58+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,44 +9,53 @@
   "ticker": "TSLA",
   "tab": "ownership_sentiment",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Not applicable",
-  "as_of": "2026-11-25T10:45:27+00:00",
+  "as_of": "2026-11-26T07:14:58+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Not applicable",
-   "headline": "Analis Wall Street cenderung positif, tetapi insider terus menjual bersih",
-   "takeaway": "Menurut 54 analis Wall Street, skor rata-rata TSLA adalah 2.31 (skala 1 paling positif sampai 5 paling negatif). Di sisi lain, orang dalam perusahaan menjual lebih banyak daripada membeli setiap bulan yang tercatat sejak Februari 2026.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Dari 54 analis Wall Street, 10 memberi rating paling positif dan 19 positif. Hanya 2 yang negatif, tanpa rating paling negatif.",
+     "title": "Banyak analis memberi rating beli",
+     "detail": "Dari 54 analis Wall Street, 10 memberi Strong Buy dan 19 memberi Buy, sedangkan 23 memberi Hold dan hanya 2 memberi Sell.",
      "metric_keys": [
       "wall_street_analyst_ratings"
      ]
     },
     {
-     "text": "Beberapa perubahan rating terbaru: HSBC naik dari negatif ke netral (20 Nov), Barclays dari Equal-Weight ke Overweight (26 Okt).",
+     "title": "Target rata-rata di atas harga",
+     "detail": "Analis Wall Street memperkirakan target harga 12 bulan rata-rata Rp7,706,000, di atas harga saat ini Rp6,991,000.",
+     "metric_keys": [
+      "analyst_target_mean",
+      "price"
+     ]
+    },
+    {
+     "title": "Beberapa kenaikan rating terbaru",
+     "detail": "Barclays menaikkan rating ke Overweight (26 Okt), HSBC naik dari Reduce ke Hold (20 Nov), dan Seaport Global mulai meliput dengan Buy.",
      "metric_keys": [
       "recent_rating_changes_by_analysts"
      ]
     },
     {
-     "text": "Short interest (porsi saham yang dipinjam untuk bertaruh harga turun) hanya 2.03% dari saham beredar, per 30 Okt 2026.",
+     "title": "Short interest tergolong kecil",
+     "detail": "Hanya sekitar 2% saham beredar dijual short (taruhan harga turun), dan posisi itu bisa ditutup dalam sekitar 1.78 hari perdagangan.",
      "metric_keys": [
       "short_interest"
      ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "Insider (orang dalam perusahaan) menjual bersih tiap bulan yang tercatat, terbesar Rp196 miliar pada Feb 2026, lalu mengecil ke Rp17.2 miliar pada Sep.",
+     "title": "Orang dalam terus menjual saham",
+     "detail": "Insider (pimpinan dan pemegang saham besar internal) menjual bersih setiap bulan yang tercatat, terbesar Rp197 miliar pada Februari 2026.",
      "metric_keys": [
       "insider_net_buying_by_month"
      ]
     },
     {
-     "text": "Target harga analis sangat lebar: terendah Rp2,346,000 dan tertinggi Rp10,990,000, dibandingkan harga sekarang Rp7,043,000. Pendapat analis sangat berbeda.",
+     "title": "Perbedaan target analis sangat lebar",
+     "detail": "Target harga terendah analis Rp2,356,000, jauh di bawah harga saat ini, sementara yang tertinggi Rp11,030,000, menunjukkan pandangan yang sangat berbeda.",
      "metric_keys": [
       "analyst_target_low",
       "analyst_target_high",
@@ -54,28 +63,23 @@
      ]
     },
     {
-     "text": "23 dari 54 analis memberi rating netral, dan GLJ Research dua kali mempertahankan rating negatif pada November (5 dan 13 Nov).",
+     "title": "Banyak analis masih ragu",
+     "detail": "Skor rata-rata analis 2.31 (skala 1 Strong Buy sampai 5 Strong Sell), dengan 23 Hold dan GLJ Research dua kali menegaskan Sell di November.",
      "metric_keys": [
       "wall_street_analyst_ratings",
       "recent_rating_changes_by_analysts"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Laporan keuangan berikutnya pada 28 Jan 2027.",
-    "Harga sekarang Rp7,043,000, dibandingkan rata-rata target harga 12 bulan analis Wall Street di Rp7,673,000."
-   ],
-   "ask_yourself": "Seberapa besar Anda mengandalkan pendapat analis ketika orang dalam perusahaan terus menjual bersih?",
    "data_gaps": [
-    "Data penjualan/pembelian insider tidak tersedia untuk Juli, Agustus, dan Oktober 2026.",
-    "Tidak ada data perubahan kepemilikan institusi dari waktu ke waktu; hanya porsi saat ini (44.8%).",
-    "Data short interest per 30 Okt 2026, bisa sudah berubah.",
-    "Data harga bertanda DEMO_ONLY dan dikonversi dari dolar AS dengan kurs 18,310, sehingga angka rupiah bisa bergeser."
+    "Tidak ada pembanding dengan perusahaan sejenis atau riwayat untuk short interest dan kepemilikan institusi (44.8%).",
+    "Data transaksi insider tidak tersedia untuk Juli, Agustus, Oktober, dan November 2026.",
+    "Semua angka rupiah dikonversi dari dolar AS dengan kurs Rp18,390, sehingga bisa berubah mengikuti kurs."
    ]
   },
   "model": "claude-opus-5-5",
   "attempts": 2,
-  "cost_usd": 0.096878,
+  "cost_usd": 0.100647,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

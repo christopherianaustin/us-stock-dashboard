@@ -1,6 +1,6 @@
 {
  "ticker": "JPM",
- "generated_at": "2026-11-25T10:46:38+00:00",
+ "generated_at": "2026-11-26T07:17:10+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,19 +9,84 @@
   "ticker": "JPM",
   "tab": "ownership_sentiment",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Not applicable",
-  "as_of": "2026-11-25T10:46:38+00:00",
-  "source": "fallback",
+  "as_of": "2026-11-26T07:17:10+00:00",
+  "source": "ai",
   "summary": {
-   "label": "Ringkasan otomatis",
-   "signal": "Not applicable",
-   "positives": [],
-   "watch_outs": []
+   "bullish": [
+    {
+     "title": "Mayoritas analis memberi rating positif",
+     "detail": "Dari 31 analis Wall Street, 3 memberi Strong Buy dan 15 memberi Buy, tanpa satu pun rating Sell bulan ini.",
+     "metric_keys": [
+      "wall_street_analyst_ratings"
+     ]
+    },
+    {
+     "title": "Target harga rata-rata di atas harga",
+     "detail": "Analis Wall Street memperkirakan target harga 12 bulan rata-rata Rp6,871,000, di atas harga saat ini Rp5,825,000; target tertinggi Rp7,816,000.",
+     "metric_keys": [
+      "analyst_target_mean",
+      "analyst_target_high",
+      "price"
+     ]
+    },
+    {
+     "title": "Short interest sangat rendah",
+     "detail": "Hanya 0.9% saham beredar dijual short (taruhan harga turun), dengan days to cover (hari untuk menutup posisi short) 3.36 hari.",
+     "metric_keys": [
+      "short_interest"
+     ]
+    },
+    {
+     "title": "Dimiliki besar oleh institusi",
+     "detail": "Institusi memegang 75.5% saham, dengan BlackRock 7.66% dan Vanguard 6.55% sebagai pemegang terbesar.",
+     "metric_keys": [
+      "who_owns_the_shares_pct",
+      "top_institutions"
+     ]
+    }
+   ],
+   "bearish": [
+    {
+     "title": "Orang dalam terus menjual saham",
+     "detail": "Orang dalam (direksi dan pejabat perusahaan) menjual lebih banyak daripada membeli di setiap bulan yang tercatat, terakhir sekitar Rp16.2 triliun bersih pada September 2026.",
+     "metric_keys": [
+      "insider_net_buying_by_month"
+     ]
+    },
+    {
+     "title": "Banyak analis memilih Hold",
+     "detail": "13 dari 31 analis memberi rating Hold; skor rata-rata 2.32 (skala 1 Strong Buy hingga 5 Strong Sell) menunjukkan pandangan positif yang moderat.",
+     "metric_keys": [
+      "wall_street_analyst_ratings"
+     ]
+    },
+    {
+     "title": "Tidak ada kenaikan rating terbaru",
+     "detail": "Semua perubahan rating sejak 14 Oktober 2026 hanya mempertahankan rating lama, termasuk Neutral dari Citigroup dan Equal-Weight dari Morgan Stanley.",
+     "metric_keys": [
+      "recent_rating_changes_by_analysts"
+     ]
+    },
+    {
+     "title": "Target terendah di bawah harga",
+     "detail": "Target harga terendah analis Wall Street, Rp5,738,000, sedikit di bawah harga saat ini Rp5,825,000.",
+     "metric_keys": [
+      "analyst_target_low",
+      "price"
+     ]
+    }
+   ],
+   "data_gaps": [
+    "Data transaksi orang dalam untuk Juli 2026 tidak tersedia.",
+    "Angka penjualan orang dalam Mei 2026 (Rp219 triliun bersih) sangat besar dibanding bulan lain, jadi satuan atau angkanya mungkin perlu dicek ulang.",
+    "Tidak ada pembanding short interest atau kepemilikan institusi dengan perusahaan sejenis maupun riwayatnya sendiri."
+   ]
   },
   "model": "claude-opus-5-5",
-  "cost_usd": 0.07513,
+  "attempts": 2,
+  "cost_usd": 0.092907,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

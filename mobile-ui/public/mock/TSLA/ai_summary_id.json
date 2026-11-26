@@ -1,6 +1,6 @@
 {
  "ticker": "TSLA",
- "generated_at": "2026-11-25T10:44:31+00:00",
+ "generated_at": "2026-11-26T07:13:25+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,68 +9,89 @@
   "ticker": "TSLA",
   "tab": "summary",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Weak",
-  "as_of": "2026-11-25T10:44:31+00:00",
+  "as_of": "2026-11-26T07:13:25+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Weak",
-   "headline": "Keuangan sangat sehat, tetapi harga saham jauh di atas labanya",
-   "takeaway": "Keuangan Tesla sangat kuat, dengan kas lebih banyak dari utang dan risiko kesulitan keuangan rendah. Namun harga sahamnya jauh lebih tinggi dibanding labanya, baik terhadap perusahaan sejenis maupun sejarahnya sendiri, sementara laba sedang turun.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Pilar kesehatan keuangan mendapat skor 100. Kas lebih besar dari utang, dan debt to equity (utang dibanding modal sendiri) hanya 0.104.",
+     "title": "Kas jauh lebih besar dari utang",
+     "detail": "Kas bersih (kas dikurangi utang) sekitar US$36.2 miliar, debt to equity (utang dibanding modal) hanya 0.104x, dan skor kesehatan keuangan 100.",
      "metric_keys": [
-      "debt_to_equity"
+      "debt_to_equity",
+      "rule_based_strengths",
+      "pillars"
      ]
     },
     {
-     "text": "Arus kas operasi 5.8 kali laba bersih, artinya laba didukung uang tunai yang benar-benar masuk.",
-     "metric_keys": []
+     "title": "Risiko kebangkrutan tergolong rendah",
+     "detail": "Altman Z-score (uji risiko kebangkrutan) 14.66, berada di zona aman yang menandakan risiko kesulitan keuangan rendah.",
+     "metric_keys": [
+      "rule_based_strengths"
+     ]
     },
     {
-     "text": "ROE (laba dibanding modal pemegang saham) 3.8%, lebih baik dari median perusahaan sejenis yang -18.4%.",
+     "title": "Laba didukung arus kas",
+     "detail": "Arus kas operasi (uang tunai dari bisnis inti) sekitar 5.8 kali laba bersih, jadi laba yang dilaporkan ditopang uang tunai nyata.",
      "metric_keys": [
+      "rule_based_strengths"
+     ]
+    },
+    {
+     "title": "Profitabilitas di atas perusahaan sejenis",
+     "detail": "Margin bersih 3.1% dan ROE (laba dibanding modal) 3.8%, lebih baik dari median sejenis 0% dan -18.4%, meski angkanya sendiri masih rendah.",
+     "metric_keys": [
+      "net_margin",
       "roe"
      ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "P/E (harga dibanding laba setahun) 424, jauh di atas median sejenis 22.5 dan median 5 tahunnya 144.",
+     "title": "Harga jauh di atas sejenis",
+     "detail": "P/E (harga dibanding laba setahun) 419x, sekitar 18.6 kali median sejenis 22.5x, dan lebih tinggi dari 93% periode 5 tahun terakhir.",
      "metric_keys": [
-      "pe"
+      "pe",
+      "pillars",
+      "rule_based_risks"
      ]
     },
     {
-     "text": "Laba per saham turun 44% dibanding kuartal yang sama tahun lalu. Pendapatan juga turun 0.2%.",
+     "title": "Rasio harga lain juga tinggi",
+     "detail": "EV/EBITDA (nilai perusahaan dibanding laba operasi) 161x versus median sejenis 9.36x, dan P/S (harga dibanding penjualan) 14.5x versus 0.369x.",
      "metric_keys": [
-      "revenue_yoy"
+      "ev_ebitda",
+      "ps"
      ]
     },
     {
-     "text": "Beta 1.7 berarti harga cenderung bergerak lebih tajam dari pasar. EPS hanya melampaui estimasi di 3 dari 8 kuartal terakhir.",
+     "title": "Laba per saham turun tajam",
+     "detail": "EPS (laba per saham) turun 44% dan pendapatan turun 0.2% dibanding kuartal yang sama tahun lalu; skor profitabilitas hanya 4.",
      "metric_keys": [
+      "revenue_yoy",
+      "rule_based_risks",
+      "pillars"
+     ]
+    },
+    {
+     "title": "Sering di bawah perkiraan, harga bergejolak",
+     "detail": "EPS melampaui estimasi analis hanya 3 dari 8 kuartal terakhir, dan beta 1.69 (gerak harga lebih besar dari pasar).",
+     "metric_keys": [
+      "rule_based_risks",
       "beta"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Laporan keuangan berikutnya pada 28 Jan 2027, terutama apakah penurunan laba berlanjut.",
-    "Harga Rp7,043,000 berada di antara level terendah 52 minggu Rp5,445,000 dan tertinggi Rp9,134,000."
-   ],
-   "ask_yourself": "Seberapa nyaman Anda dengan saham yang harganya jauh di atas labanya saat ini dan bergerak lebih tajam dari pasar?",
    "data_gaps": [
-    "Data harga, valuasi dan beta bertanda DEMO_ONLY, jadi mungkin bukan data pasar terkini.",
-    "Angka kas bersih hanya tersedia dalam dolar AS, tidak dalam rupiah.",
-    "Tidak ada data estimasi analis atau target harga.",
-    "Pilar dividen tidak berlaku karena tidak ada data dividen."
+    "Pilar dividen tidak berlaku karena tidak ada data dividen (0 dari 3 metrik).",
+    "Angka kas bersih hanya tersedia dalam dolar AS, belum dalam rupiah.",
+    "Daftar perusahaan sejenis yang dipakai sebagai pembanding tidak disebutkan."
    ]
   },
   "model": "claude-opus-5-5",
-  "attempts": 2,
-  "cost_usd": 0.083542,
+  "attempts": 1,
+  "cost_usd": 0.04542,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

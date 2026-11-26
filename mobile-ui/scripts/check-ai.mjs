@@ -19,7 +19,7 @@ function expected(lang, tabs) {
     const f = `public/mock/${T}/ai_${a}_${lang}.json`
     if (!existsSync(f)) return false
     const d = JSON.parse(readFileSync(f, 'utf8')).data
-    return d.source === 'ai' || d.summary.positives.length + d.summary.watch_outs.length > 0
+    return d.source === 'ai' || d.summary.bullish.length + d.summary.bearish.length > 0
   }).length
 }
 const browser = await chromium.launch({ channel: 'chrome', headless: true })
@@ -41,26 +41,28 @@ for (const lang of ['en', 'id']) {
     await page.waitForFunction(() => ![...document.querySelectorAll('[data-ai-insight] [data-skeleton]')].length, null, { timeout: 150000 }).catch(() => {})
     await page.waitForTimeout(800)
     const n = await page.locator('[data-ai-insight]').count()
-    const heads = await page.locator('[data-ai-insight] p.t-label').allInnerTexts()
-    const ok = n === want && !errs.length
+    const heads = await page.locator('[data-ai-insight] li b').allInnerTexts()
+    const sides = await page.locator('[data-ai-insight] [data-ai-side]').count()
+    const ok = n === want && sides === 2 * n && !errs.length
     if (!ok) bad++
-    console.log(`${ok ? 'OK ' : 'BAD'} ${T} ${lang} ${tab}: ${n}/${want} AI blocks ${errs.length ? 'errors: ' + errs.join(' | ') : ''}`)
+    console.log(`${ok ? 'OK ' : 'BAD'} ${T} ${lang} ${tab}: ${n}/${want} AI blocks, ${sides} bullish/bearish lists ${errs.length ? 'errors: ' + errs.join(' | ') : ''}`)
     heads.forEach((x) => console.log('     ' + x))
     if (tab === 'analysis' || tab === 'fundamentals') await page.screenshot({ path: `${OUT}/ai_${T}_${tab}_${lang}.png` })
     await ctx.close()
   }
 }
-// "More" and feedback on the first block
+// "Show all" and feedback on the first block
 {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 })
   const page = await ctx.newPage()
   await page.goto(`http://127.0.0.1:4173/?t=${T}&lang=en&mode=${MODE}&statusbar=1`)
   const box = page.locator('[data-ai-insight]').first()
   await box.scrollIntoViewIfNeeded()
-  await box.getByRole('button', { name: 'More' }).click()
+  const showAll = box.getByRole('button', { name: 'Show all' })
+  if (await showAll.count()) await showAll.click()
   await box.getByRole('button', { name: 'Helpful', exact: true }).click()
   await page.waitForTimeout(400)
-  console.log('More + feedback:', (await box.innerText()).includes('Thanks for the feedback') ? 'OK' : 'BAD')
+  console.log('Show all + feedback:', (await box.innerText()).includes('Thanks for the feedback') ? 'OK' : 'BAD')
   await box.screenshot({ path: `${OUT}/ai_${T}_card_more.png` })
   await ctx.close()
 }

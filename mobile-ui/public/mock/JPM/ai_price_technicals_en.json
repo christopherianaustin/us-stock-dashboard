@@ -1,6 +1,6 @@
 {
  "ticker": "JPM",
- "generated_at": "2026-11-25T10:46:03+00:00",
+ "generated_at": "2026-11-26T07:15:46+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,69 +9,82 @@
   "ticker": "JPM",
   "tab": "price_technicals",
   "lang": "en",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Neutral",
-  "as_of": "2026-11-25T10:46:03+00:00",
+  "as_of": "2026-11-26T07:15:46+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Neutral",
-   "headline": "Strong long-term gains, but the short-term trend has turned weaker",
-   "takeaway": "JPM has more than doubled over 3 and 5 years, well ahead of the market. Recently, though, it trades below its 50-day and 200-day averages and has lagged its sector.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Up 120% over 3 years, compared with 63.7% for the S&P 500 and 66.1% for the financial sector fund.",
+     "title": "Strong long-term gains",
+     "detail": "The stock rose 121% over 5 years, beating the S&P 500 (67%) and its sector fund XLF (58.8%); 3-year gain was 120%.",
      "metric_keys": [
       "returns_pct"
      ]
     },
     {
-     "text": "Up 4.5% over 6 months while the S&P 500 fell 3.1%, though it trailed the sector's 8.8% gain.",
+     "title": "Beat the market over 6 months",
+     "detail": "Up 4.4% in 6 months while the S&P 500 fell 3.4%, though it trailed the financial sector fund's 9.6% gain.",
      "metric_keys": [
       "returns_pct"
      ]
     },
     {
-     "text": "Beta (how much it moves versus the market) is 1.08, so its swings have been close to the market's.",
+     "title": "Price swings close to market",
+     "detail": "Beta (movement vs the market) is 1.08, near the market's 1, with a 1-year volatility (typical yearly swing) of 23.1%.",
      "metric_keys": [
-      "beta"
+      "beta",
+      "volatility_1y"
+     ]
+    },
+    {
+     "title": "Support levels below the price",
+     "detail": "Support (price where buying held before) sits at $298.46 and $295.13, about 6% to 7% below; the latter was touched 3 times.",
+     "metric_keys": [
+      "nearest_support",
+      "price"
      ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "Price is 5.6% below its 50-day average and 2.5% below its 200-day average, often read as a weak trend.",
+     "title": "Trading below key averages",
+     "detail": "At $316.74, the price is 5.5% below its 50-day average and 2.6% below its 200-day average, a sign of a weak trend.",
      "metric_keys": [
+      "price",
       "sma50",
       "sma200"
      ]
     },
     {
-     "text": "Down 10.6% over 3 months, a bigger fall than the S&P 500 (-5.6%) and its sector (-3.3%).",
+     "title": "Recent decline and momentum shift",
+     "detail": "Down 10.8% in 3 months, worse than the S&P 500 (-6.2%); MACD (a trend signal) turned downward on 2026-11-17.",
+     "metric_keys": [
+      "returns_pct",
+      "recent_signals"
+     ]
+    },
+    {
+     "title": "Lagging this year",
+     "detail": "Up only 0.2% year to date versus 5.9% for the S&P 500 and 4.4% for the sector fund; 1-year gain also trailed both.",
      "metric_keys": [
       "returns_pct"
      ]
     },
     {
-     "text": "Now 12.7% below its last peak. Over 5 years, its biggest drop from a peak was 37.9%.",
+     "title": "Resistance close above, past drops",
+     "detail": "Resistance (price where selling stopped rises) at $325.56 is 2.8% above, touched 4 times; the biggest 5-year drop was 37.9%.",
      "metric_keys": [
-      "current_drawdown",
+      "nearest_resistance",
       "max_drawdown_5y"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Nearest resistance (a price where it stalled before) is $325.56, 2.7% above, near the 200-day average of $325.14. Nearest support is $298.46, 5.9% below.",
-    "Next earnings report on 14 Jan 2027."
-   ],
-   "ask_yourself": "Are you comfortable holding a stock that has dropped nearly 38% from a peak within the last 5 years?",
-   "data_gaps": [
-    "All metrics are tagged as demo data, so they may not reflect live market prices."
-   ]
+   "data_gaps": []
   },
   "model": "claude-opus-5-5",
   "attempts": 1,
-  "cost_usd": 0.029817,
+  "cost_usd": 0.033824,
   "cached": false,
   "disclaimer": "AI-generated from the data on this page. It can make mistakes and is not investment advice.",
   "sample": true

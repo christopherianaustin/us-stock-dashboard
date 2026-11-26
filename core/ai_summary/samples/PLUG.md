@@ -1,7 +1,7 @@
 # PLUG · PLUG POWER INC: AI summary samples
 
-Prompt version 1.0 · model claude-opus-5-5 · effort medium · generated 2026-11-25 17:48  
-Total for 20 summaries: **195,846 tokens, $1.19**
+Prompt version 2.1 · model claude-opus-5-5 · effort medium · generated 2026-11-26 14:19  
+Total for 20 summaries: **138,788 tokens, $0.88**
 
 AI-generated from our data. It can make mistakes and is not investment advice.
 
@@ -9,352 +9,339 @@ AI-generated from our data. It can make mistakes and is not investment advice.
 
 ### English (USD)
 
-*source **ai** · attempts 1 · rule signal Weak · license DEMO_ONLY · tokens 6,118 · $0.0379 · 15.0 s*
+*source **ai** · attempts 2 · license DEMO_ONLY · tokens 10,508 · $0.0597 · 20.9 s*
 
-**[Weak] Sales are growing, but heavy losses and a weak price trend dominate**
+**Bullish**
+- 🟢 **More cash than debt**: The company holds more cash than debt, with net cash (cash minus debt) of $134.1M, which gives it some room to fund operations.  `rule_based_strengths`
+- 🟢 **Sales still growing**: Revenue grew 13.3% from a year earlier, and the Growth pillar is rated Strong with a score of 70 out of 100.  `revenue_yoy, pillars`
+- 🟢 **Priced low versus own history**: P/S (price compared with yearly sales) is 1.95, below its 5-year median of 4.28 and close to the peer median of 2.02.  `ps`
 
-Five of the scored pillars are Weak and only Growth is Strong. PLUG is growing sales and has more cash than debt, but it loses much more than it sells and shows signs of financial stress.
+**Bearish**
+- 🔴 **Very large losses**: Lost $1.2B over 12 months; net margin (profit share of sales) is -154% and ROE (return on owners' money) -111%, versus peer medians near 6%.  `net_margin, roe, rule_based_risks`
+- 🔴 **High financial distress signals**: Altman Z-score (a test of bankruptcy risk) is -5.93, in the distress zone, and the core business loss does not cover interest payments.  `rule_based_risks, pillars`
+- 🔴 **Weak price trend**: At $1.07, the price is 54% below its 200-day average and far under the 52-week high of $4.33, despite a 13.8% rise today.  `price, week52_high, change_pct_1d, rule_based_risks`
+- 🔴 **Slower growth, missed estimates**: Revenue growth of 13.3% trails the peer median of 43.3%, and EPS beat analyst estimates in only 3 of the last 8 quarters.  `revenue_yoy, rule_based_risks`
 
-- ✅ Revenue grew 13.3% over the past year, and the Growth pillar scores Strong (70). Peers grew faster, though, with a median of 43.3%.  `revenue_yoy, pillars.Growth`
-- ✅ The company has more cash than debt, with net cash of $134.1M. This gives it some cushion.  `rule_based_strengths`
-- ✅ P/S (price compared with yearly sales) is 1.69, below the peer median of 2.02 and its own 5-year median of 4.28.  `ps`
-- ⚠️ Net margin (profit kept from sales) is -154%: it lost about $154 for every $100 of sales. The peer median is a 6% profit.  `net_margin`
-- ⚠️ Altman Z-score (a measure of financial distress risk) is -6.01, in the distress zone. The 12-month loss was $1.2B.  `rule_based_risks`
-- ⚠️ The price is $0.93, close to its 52-week low of $0.91 and far below the high of $4.33. It is 60% below its 200-day average.  `price, week52_low, week52_high, rule_based_risks`
-- 📅 Next earnings report on 1 Mar 2027.
-- 📅 Whether the price holds near its 52-week low of $0.91.
-- ❓ How much of a loss could you accept in a company that is not yet profitable and shows signs of financial stress?
-- Data gaps: Valuation pillar has only 1 of 5 metrics; P/E and EV/EBITDA are not meaningful because earnings and EBITDA are negative.; Debt to equity is missing, and Financial health uses only 3 of 5 metrics.; Earnings quality uses only 2 of 4 metrics.; Price, market value and P/S data are marked demo only.
+*Data gaps: Valuation pillar has not enough data (1 of 5 metrics); P/E and EV/EBITDA are not available because earnings and EBITDA are negative.; Debt to equity is not available, so the Financial health pillar uses only 3 of 5 metrics.; Earnings quality pillar is based on only 2 of 4 metrics.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 2 · rule signal Weak · license DEMO_ONLY · tokens 13,398 · $0.0935 · 36.9 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 5,983 · $0.0424 · 18.0 s*
 
-**[Weak] Pendapatan tumbuh, tapi rugi besar dan risiko keuangan tinggi**
+**Bullish**
+- 🟢 **Pertumbuhan pendapatan masih positif**: Pendapatan naik 13.3% dibanding tahun lalu dan pilar pertumbuhan dinilai kuat (skor 70), meski masih jauh di bawah median pesaing 43.3%.  `revenue_yoy`
+- 🟢 **Kas lebih besar dari utang**: Perusahaan punya kas bersih (kas melebihi utang), walau pilar kesehatan keuangan secara keseluruhan tetap lemah dengan skor 33.  ``
+- 🟢 **P/S rendah dibanding sejarahnya**: P/S (harga dibanding penjualan setahun) 1.95, di bawah median 5 tahunnya 4.28 dan mirip median pesaing 2.02.  `ps`
 
-PLUG masih merugi besar dan tanda risiko keuangannya tinggi, meski pendapatan tetap tumbuh. Dibanding perusahaan sejenis, profitabilitas dan pertumbuhannya tertinggal, dan harganya kini dekat titik terendah setahun.
+**Bearish**
+- 🔴 **Rugi sangat besar**: Net margin (laba bersih per penjualan) -154% dan ROE (laba dibanding modal pemegang saham) -111%, jauh di bawah median pesaing sekitar 6%.  `net_margin, roe`
+- 🔴 **Sinyal risiko keuangan tinggi**: Skor Z Altman (uji risiko kebangkrutan) -5.93 di zona bahaya, dan rugi operasi membuat bisnis inti tidak menutup pembayaran bunga.  ``
+- 🔴 **Tren harga sangat lemah**: Harga Rp19,680 berada 54% di bawah rata-rata 200 hari dan jauh dari puncak 52 minggu Rp79,630, meski hari ini naik 13.8%.  `price, week52_high, change_pct_1d`
+- 🔴 **Sering meleset dari estimasi**: Perusahaan hanya melampaui estimasi EPS (laba per saham) analis di 3 dari 8 kuartal terakhir; laporan berikutnya dijadwalkan 2027-03-01.  ``
 
-- ✅ Pendapatan naik 13.3% dibanding tahun lalu. Pilar pertumbuhan dinilai Kuat (skor 70), meski masih di bawah median peer 43.3%.  `revenue_yoy`
-- ✅ P/S (harga saham dibanding penjualan setahun) 1.69x, lebih rendah dari median peer 2.02x dan median 5 tahunnya sendiri 4.28x.  `ps`
-- ⚠️ Margin bersih -154%: dari tiap Rp100 penjualan, perusahaan rugi sekitar Rp154. Median peer justru untung 6.04%.  `net_margin`
-- ⚠️ Skor Z Altman (ukuran risiko kesulitan keuangan) -6.01, masuk zona bahaya. ROE juga -111%, jauh di bawah median peer 6.16%.  `roe`
-- ⚠️ Harga Rp17,030, dekat titik terendah 52 minggu Rp16,660 dan jauh dari tertinggi Rp79,280. Harga 60% di bawah rata-rata 200 hari.  `price, week52_low, week52_high`
-- 📅 Laporan keuangan berikutnya pada 1 Mar 2027, terutama apakah kerugian mengecil.
-- 📅 Pergerakan harga di sekitar titik terendah 52 minggu Rp16,660.
-- ❓ Seberapa nyaman Anda memegang saham perusahaan yang masih merugi besar dan harganya sudah turun tajam?
-- Data gaps: P/E dan EV/EBITDA tidak tersedia karena laba dan EBITDA negatif, sehingga pilar valuasi hanya memakai 1 dari 5 metrik.; Rasio utang terhadap ekuitas tidak tersedia.; Sebagian angka kas bersih dan kerugian hanya tersedia dalam dolar AS, bukan rupiah.; Data harga dan valuasi berlabel DEMO_ONLY, sehingga keakuratannya perlu dicek.
+*Data gaps: P/E dan EV/EBITDA tidak tersedia karena laba dan EBITDA negatif, sehingga pilar valuasi hanya memakai 1 dari 5 metrik.; Rasio utang terhadap modal (debt to equity) tidak tersedia, sehingga gambaran utang belum lengkap.; Nilai rupiah dikonversi dari dolar AS dengan kurs Rp18,390, jadi bisa berubah mengikuti kurs.*
 
 ## Price and Technicals
 
 ### English (USD)
 
-*source **ai** · attempts 2 · rule signal Weak · license DEMO_ONLY · tokens 12,201 · $0.0618 · 31.5 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 5,434 · $0.0283 · 10.3 s*
 
-**[Weak] Steep downtrend, far below its averages and lagging the market**
+**Bullish**
+- 🟢 **Strong bounce today**: The price rose 13.8% today and sits 28.9% above its 52-week low, though it is still $1.07 per share.  `change_pct_1d, from_low_52w, price`
+- 🟢 **Moves less with market**: Beta (how much it moves versus the market) is 0.87, so broad market moves affect it slightly less, though its own swings are large.  `beta`
+- 🟢 **Room before next resistance**: The nearest resistance (a price level where rises stalled before) is $1.33, about 24% above today's price, reached 4 times before.  `nearest_resistance`
 
-PLUG's price has fallen sharply and sits well below its 50-day and 200-day averages, far behind the S&P 500 and its sector. Price swings are large, and the price is just above its 52-week low.
+**Bearish**
+- 🔴 **Clear downward price trend**: Price is 29.6% below its 50-day average and 53.6% below its 200-day average, and MACD (a trend signal) turned downward on 2026-11-13.  `sma50, sma200, recent_signals`
+- 🔴 **Far behind market and sector**: Over 1 year the stock fell 45.1% while the S&P 500 rose 7.3% and the industrial sector rose 8.5%.  `returns_pct`
+- 🔴 **Very deep long-term losses**: The price is 97.4% below its last peak and fell 97.3% over 5 years, while the S&P 500 gained 67%.  `current_drawdown, max_drawdown_5y, returns_pct`
+- 🔴 **High swings and short betting**: Yearly volatility (typical price swing) is 80.7%, Sharpe ratio (return per unit of risk) is -0.6, and 23% of tradable shares are sold short.  `volatility_1y, sharpe_1y, rule_based_risks`
 
-- ✅ Beta (how much it moves with the market) is 0.76, so it has tended to follow overall market moves less than average.  `beta`
-- ✅ RSI (speed of recent price moves) is 26, below 30, meaning prices fell fast recently. This describes the past only.  `rsi14`
-- ⚠️ At $0.93, the price is 39.6% below its 50-day average and 59.8% below its 200-day average, a sign of a weak trend.  `price, sma50, sma200`
-- ⚠️ Over 1 year the stock fell 52.6%, while the S&P 500 rose 8.64% and its sector fund rose 8.97%.  `returns_pct`
-- ⚠️ Volatility (typical yearly swing) is 79.3%. The biggest drop over 5 years was 98.3%, and it is now 97.8% below its last peak.  `volatility_1y, max_drawdown_5y, current_drawdown`
-- 📅 Nearest support is $0.91 (2.2% below); nearest resistance is $1.33 (43% above, touched 4 times). These are past reaction areas, not guarantees.
-- 📅 Next earnings report on 1 Mar 2027.
-- ❓ How comfortable are you holding a stock that has swung this much and fallen this far?
-- Data gaps: All metrics are tagged DEMO_ONLY, so figures may not reflect live market data.; Short interest (23% of tradable shares) appears only in a risk note, without a date or source metric.; No trading volume data is provided to judge how strong the recent moves were.
+*Data gaps: Trading volume data is not provided, so the strength of today's 13.8% rise cannot be judged.; The nearest support at $0.83 was touched only once, so it is a weak reference point.; The date of the 23% short interest figure is not given.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 1 · rule signal Weak · license DEMO_ONLY · tokens 6,609 · $0.0402 · 26.7 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 6,516 · $0.0488 · 19.1 s*
 
-**[Weak] Harga dalam tren turun tajam, jauh tertinggal dari pasar**
+**Bullish**
+- 🟢 **Harga melonjak hari ini**: Harga naik 13.8% hari ini ke Rp19,680 dan kini 28.9% di atas titik terendah 52 minggu, walau masih jauh di bawah rata-ratanya.  `change_pct_1d, price, from_low_52w`
+- 🟢 **RSI belum di zona ekstrem**: RSI (pengukur seberapa cepat harga naik atau turun) di 38, masih dalam rentang netral 30-70, bukan tanda penurunan yang terlalu cepat.  `rsi14`
 
-Harga PLUG berada jauh di bawah rata-rata 50 dan 200 hari, dan kinerjanya jauh di bawah S&P 500 serta sektornya. Harganya juga sangat bergejolak, dengan penurunan besar dalam 1 sampai 5 tahun terakhir.
+**Bearish**
+- 🔴 **Tren harga masih turun**: Harga 29.6% di bawah rata-rata 50 hari dan 53.6% di bawah rata-rata 200 hari; MACD (indikator arah momentum) berbalik turun pada 13 November.  `sma50, sma200, price`
+- 🔴 **Kalah jauh dari pasar**: Dalam 1 tahun harga turun 45.1%, sementara S&P 500 naik 7.3% dan ETF sektor industri naik 8.5%; dalam 5 tahun turun 97.3%.  `returns_pct`
+- 🔴 **Harga sangat bergejolak**: Volatilitas (ayunan harga tahunan) 80.7%, penurunan terbesar setahun 77.5%, dan Sharpe ratio (imbal hasil per unit risiko) negatif di -0.61, meski beta hanya 0.87.  `volatility_1y, max_drawdown_1y, sharpe_1y, beta`
+- 🔴 **Jauh dari puncak, banyak short**: Harga 97.4% di bawah puncak sebelumnya, dan 23% saham beredar dijual short (taruhan bahwa harga akan turun).  `current_drawdown, max_drawdown_5y`
 
-- ✅ Beta (seberapa besar saham ikut bergerak bersama pasar) 0.76, artinya naik-turunnya kurang terkait dengan pasar. Namun saham ini tetap sangat bergejolak sendiri.  `beta`
-- ⚠️ Harga Rp17,030 berada 39.6% di bawah rata-rata 50 hari dan 59.8% di bawah rata-rata 200 hari, tanda tren turun.  `price, sma50, sma200`
-- ⚠️ Dalam 1 tahun harga turun 52.6%, sementara S&P 500 naik 8.64% dan ETF sektor Industrials (XLI) naik 8.97%.  `returns_pct`
-- ⚠️ Volatilitas (ayunan harga per tahun) 79.3%. Penurunan terbesar 5 tahun 98.3%, dan harga kini 97.8% di bawah puncaknya.  `volatility_1y, max_drawdown_5y, current_drawdown`
-- 📅 Support (area harga pernah tertahan) Rp16,660, hanya 2.2% di bawah harga kini dan baru tersentuh 1 kali; resistance (area harga pernah tertahan naik) Rp24,350, 43% di atas.
-- 📅 Laporan keuangan berikutnya pada 1 Maret 2027.
-- ❓ Seberapa nyaman Anda memegang saham yang harganya bisa berayun lebih dari separuh dalam setahun?
-- Data gaps: Data berlabel DEMO_ONLY, sehingga mungkin bukan data pasar langsung.; Harga dikonversi dari dolar AS dengan kurs Rp18,310, jadi perubahan kurs ikut memengaruhi angka rupiah.; Tidak ada data volume perdagangan untuk menilai kekuatan pergerakan harga.
+*Data gaps: Angka short interest 23% hanya muncul di catatan risiko, tanpa tanggal atau pembanding dengan saham sejenis.; Level support terdekat di Rp15,260 (22.4% di bawah harga) baru tersentuh sekali, jadi kurang teruji dibanding level resistance.*
 
 ## Earnings
 
 ### English (USD)
 
-*source **ai** · attempts 2 · rule signal Weak · license DEMO_ONLY · tokens 11,501 · $0.0626 · 33.3 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 5,432 · $0.0326 · 11.8 s*
 
-**[Weak] Missed profit estimates in 5 of the last 8 quarters**
+**Bullish**
+- 🟢 **Losses per share have shrunk**: EPS (profit or loss per share) moved from a loss of $0.50 in Q4 FY24 to a loss of $0.07 in Q3 FY26.  `last_quarters`
+- 🟢 **Analysts raised estimates recently**: In the last 30 days, analysts raised estimates 4 times across periods with 0 cuts, though only a few revisions were made.  `analyst_estimate_revisions_30d`
+- 🟢 **Some recent quarters beat estimates**: Q4 FY25 beat estimates by 44% and the price jumped 23.2% the next day; Q2 FY26 beat by 12.5%.  `last_quarters`
 
-PLUG beat analysts' EPS (earnings per share) estimates in only 3 of the last 8 quarters, and its price often moves sharply after reports. Recent analyst estimate changes have all been upward, though the company still reports losses every quarter.
+**Bearish**
+- 🔴 **Missed estimates most quarters**: EPS beat Wall Street estimates in only 3 of the last 8 quarters, including a 9.45% miss in the latest quarter (Q3 FY26).  `beat_rate_8q, last_quarters`
+- 🔴 **Some very large misses**: Losses were far worse than estimated in Q4 FY24 (117% miss) and Q1 FY26 (74.2% miss), showing results can be hard to predict.  `last_quarters`
+- 🔴 **Still losing money each quarter**: All 8 recent quarters were losses, and analysts estimate another loss of $0.06 per share for the report due 2027-03-01.  `last_quarters, next_earnings`
+- 🔴 **Big price swings after earnings**: The price typically moves about 7% up or down the day after earnings; it fell 8.67% after the latest report.  `typical_move, last_quarters`
 
-- ✅ In the last 30 days, analysts raised estimates 4 times and cut none across the current quarter, next quarter and current year.  `analyst_estimate_revisions_30d`
-- ✅ Losses per share have narrowed: -$0.50 in Q4 FY24 versus -$0.07 in Q3 FY26.  `last_quarters`
-- ✅ Its biggest beat, 44% above estimates in Q4 FY25, was followed by a 23.2% one-day price rise.  `last_quarters`
-- ⚠️ Beat EPS estimates in only 3 of the last 8 quarters, including a 9.5% miss in the latest quarter, Q3 FY26.  `beat_rate_8q, last_quarters`
-- ⚠️ The price typically moves about 7% in one day after earnings, up or down. It fell 8.7% after the latest report.  `typical_move, last_quarters`
-- ⚠️ Misses can be large: actual EPS was 117% worse than estimates in Q4 FY24 and 74% worse in Q1 FY26.  `last_quarters`
-- 📅 Next earnings report on 1 Mar 2027, after market close. Wall Street analysts (6) estimate EPS of -$0.06 and revenue of $280 million.
-- 📅 Whether analysts keep raising estimates, as in the last 30 days (4 raised, 0 cut).
-- ❓ Are you comfortable with a stock that often moves about 7% in a single day after earnings?
-- Data gaps: The 'EPS a year ago' figure (-$0.12) for the next report does not match the Q4 FY25 actual EPS (-$0.06) shown in the quarter history.; No revenue history versus estimates is provided, only EPS.; Metrics are tagged as demo data, so figures may not be fully reliable.
+*Data gaps: The 'EPS a year ago' for the next report is listed as -$0.12, but the matching quarter a year earlier (Q4 FY25) shows -$0.06, so this comparison is unclear.; Only 6 analysts cover the next report, and few estimate revisions were made, so the revision trend is based on little data.; The earnings quality score is 25 (Weak), but the data does not explain what drives this score.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 1 · rule signal Weak · license DEMO_ONLY · tokens 6,131 · $0.0386 · 23.2 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 6,205 · $0.0474 · 17.5 s*
 
-**[Weak] Lebih sering meleset dari estimasi, harga bergerak tajam setelah laporan**
+**Bullish**
+- 🟢 **Kerugian per saham makin kecil**: EPS (laba per saham) masih negatif, tetapi rugi menyusut dari Rp9,195 per saham pada Q4 FY24 menjadi Rp1,287 pada Q3 FY26.  `last_quarters`
+- 🟢 **Analis menaikkan estimasi**: Dalam 30 hari terakhir, analis menaikkan estimasi kuartal ini (1), kuartal depan (2) dan tahun fiskal ini (1), tanpa satu pun pemotongan.  `analyst_estimate_revisions_30d`
+- 🟢 **Analis perkirakan rugi lebih kecil**: Analis Wall Street memperkirakan rugi Rp1,134 per saham untuk laporan 1 Maret 2027, lebih kecil dari Rp2,207 setahun sebelumnya.  `next_earnings`
 
-PLUG hanya melampaui estimasi EPS (laba per saham) di 3 dari 8 kuartal terakhir, dan perusahaan masih rugi. Analis sedikit menaikkan estimasi dalam 30 hari terakhir, tetapi rekam jejaknya masih lemah.
+**Bearish**
+- 🔴 **Sering di bawah estimasi**: EPS hanya melampaui estimasi analis di 3 dari 8 kuartal terakhir, termasuk meleset jauh 117% (Q4 FY24) dan 74.2% (Q1 FY26).  `beat_rate_8q, last_quarters`
+- 🔴 **Kuartal terakhir meleset**: Pada Q3 FY26 rugi Rp1,287 per saham, 9.45% lebih buruk dari estimasi, dan harga saham turun 8.67% sehari setelahnya.  `last_quarters`
+- 🔴 **Harga bergejolak setelah laporan**: Rata-rata harga bergerak sekitar 7% naik atau turun sehari setelah laporan laba, dan pernah melonjak 23.2% pada Q4 FY25.  `typical_move, last_quarters`
+- 🔴 **Kualitas laba lemah, masih rugi**: Skor kualitas laba (penilaian seberapa andal laba perusahaan) hanya 25 atau level Lemah, dan perusahaan merugi di semua 8 kuartal terakhir.  `earnings_quality, last_quarters`
 
-- ✅ Dalam 30 hari terakhir, estimasi analis untuk kuartal depan dinaikkan 2 kali dan tidak ada yang dipotong.  `analyst_estimate_revisions_30d`
-- ✅ Analis memperkirakan rugi per saham -Rp1,129 untuk kuartal berikutnya, lebih kecil dibanding -Rp2,197 pada kuartal yang sama setahun lalu.  `next_earnings`
-- ⚠️ EPS di atas estimasi hanya 3 dari 8 kuartal. Kuartal terakhir (Q3 FY26) meleset 9.45%, dan harga turun 8.67% keesokan harinya.  `beat_rate_8q, last_quarters`
-- ⚠️ Beberapa kali meleset sangat jauh: rugi 74.2% lebih besar dari estimasi di Q1 FY26 dan 117% di Q4 FY24.  `last_quarters`
-- ⚠️ Harga biasanya bergerak sekitar 7.01% sehari setelah laporan, naik atau turun. Pernah naik 23.2% dan pernah turun 10%.  `typical_move, last_quarters`
-- 📅 Laporan keuangan berikutnya pada 1 Mar 2027 setelah pasar tutup (96 hari lagi). Estimasi EPS -Rp1,129 dan pendapatan sekitar Rp5.12 triliun dari 6 analis.
-- 📅 Apakah analis terus menaikkan estimasi tanpa ada yang memotong menjelang laporan tersebut.
-- ❓ Apakah Anda nyaman memegang saham yang harganya bisa bergerak sekitar 7% dalam sehari setelah laporan keuangan?
-- Data gaps: Data berlabel DEMO_ONLY, sehingga keakuratannya mungkin terbatas.; Angka dalam Rupiah dikonversi dari dolar AS dengan kurs Rp18,310, sehingga bisa berbeda dari angka resmi.; Tidak ada riwayat hasil pendapatan dibanding estimasi pada kuartal-kuartal sebelumnya.
+*Data gaps: Data pendapatan aktual per kuartal tidak tersedia, sehingga hasil pendapatan dibanding estimasi tidak bisa dinilai.; Estimasi kuartal berikutnya hanya berasal dari 6 analis, dan jumlah revisi estimasi juga kecil, jadi gambarannya terbatas.*
 
 ## Financials
 
 ### English (USD)
 
-*source **ai** · attempts 2 · rule signal Strong · license CALCULATED_SAFE · tokens 13,902 · $0.0883 · 32.2 s*
+*source **ai** · attempts 1 · license CALCULATED_SAFE · tokens 6,534 · $0.0440 · 15.7 s*
 
-**[Neutral] Revenue up and a quarterly profit, but cash keeps falling**
+**Bullish**
+- 🟢 **Operating losses shrinking fast**: Operating margin (main business profit as a share of sales) improved from -679% in Q4 FY24 to -37.5% in Q3 FY26.  `operating_margin`
+- 🟢 **Gross margin near break-even**: Gross margin (sales minus direct costs) rose from -122% in Q4 FY24 to about -2.7% in Q3 FY26, close to zero.  `gross_margin`
+- 🟢 **Cash burn slowing down**: Free cash flow (cash left after running costs and investment) was -$79.7 million in Q3 FY26, better than -$230 million in Q2 FY25.  `fcf, operating_cash_flow`
+- 🟢 **Quarterly sales growing again**: Revenue reached $201 million in Q3 FY26, up 13.3% from the same quarter last year.  `revenue, revenue_yoy`
 
-Revenue grew 13.3% and Q3 FY26 showed a $99.8 million profit, but core operations still lost money and burned cash. Cash fell from $369 million to $134 million in three quarters, so the profit is not backed by cash.
+**Bearish**
+- 🔴 **Cash balance falling quickly**: Cash fell from $369 million in Q4 FY25 to $134 million in Q3 FY26, while the latest quarter still used $79.7 million.  `cash, fcf`
+- 🔴 **Profit not from main business**: Q3 FY26 showed a $99.8 million profit, yet the core business lost money (operating margin -37.5%) and operating cash flow was -$76.4 million.  `net_income, net_margin, operating_margin, operating_cash_flow`
+- 🔴 **Large yearly losses continue**: FY2025 net loss was $1.63 billion, a net margin of -230%, after a $2.1 billion loss in FY2024.  `net_income, net_margin`
+- 🔴 **Little long-term sales growth**: Revenue grew only about 0.4% a year over 3 years; FY2025 sales of $710 million were below FY2023's $891 million.  `revenue_cagr_3y, revenue`
 
-- ✅ Revenue was $201 million in Q3 FY26, up 13.3% from the same quarter last year.  `revenue_yoy, quarterly_income.revenue`
-- ✅ Operating margin (profit from the core business per dollar of sales) improved to -37.5% in Q3 FY26, from -197% a year earlier.  `quarterly_income.operating_margin`
-- ✅ Free cash flow (cash left after running costs and investment) improved to -$79.7 million in Q3 FY26, from -$118 million a year earlier.  `quarterly_cash_flow.fcf`
-- ⚠️ The $99.8 million Q3 FY26 profit is a sudden change, while the core business still lost money (operating margin -37.5%).  `quarterly_income.net_income, quarterly_income.operating_margin, quarterly_income.net_margin`
-- ⚠️ Cash dropped from $369 million to $134 million in three quarters. Operating cash flow was still -$76.4 million in Q3 FY26.  `balance_sheet.cash, quarterly_cash_flow.operating_cash_flow`
-- ⚠️ Gross margin (sales minus direct costs) was -2.67% in Q3 FY26, so products still cost slightly more to make than they earn.  `quarterly_income.gross_margin`
-- 📅 Next earnings report on 1 Mar 2027: check whether the profit repeats and whether cash flow improves.
-- 📅 Cash level of $134 million compared with quarterly free cash flow of about -$80 million.
-- ❓ How comfortable are you with a company that is still using up its cash each quarter?
-- Data gaps: No debt data, so the balance between cash and debt cannot be judged.; Cash conversion is not available because most periods show losses.; The data does not explain what caused the Q3 FY26 profit despite an operating loss.; The 100% EPS growth figure has no supporting detail and may be distorted by losses.
+*Data gaps: Debt figures are not provided, so the balance between cash and debt cannot be judged.; Cash conversion (how much profit turns into cash) is unavailable because net income has mostly been negative.; The data does not explain what caused the positive Q3 FY26 net income, and no peer or S&P 500 comparisons are given.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 2 · rule signal Strong · license DEMO_ONLY · tokens 15,905 · $0.1247 · 46.7 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 7,237 · $0.0561 · 20.1 s*
 
-**[Neutral] Laba Q3 positif, tapi kas terus terkuras dan margin operasi negatif**
+**Bullish**
+- 🟢 **Kerugian operasional jauh menyusut**: Margin operasional (laba bisnis inti dibagi pendapatan) membaik ke -37.5% pada Q3 FY26, dari -197% di kuartal yang sama tahun lalu.  `operating_margin`
+- 🟢 **Margin kotor mendekati impas**: Margin kotor (penjualan dikurangi biaya produksi) kini -2.67% pada Q3 FY26, jauh membaik dari -67.9% setahun sebelumnya, meski masih sedikit negatif.  `gross_margin`
+- 🟢 **Pembakaran kas makin kecil**: Free cash flow (kas tersisa setelah belanja modal) minus Rp1.47 triliun pada Q3 FY26, lebih kecil dari minus Rp4.24 triliun pada Q2 FY25.  `fcf, operating_cash_flow, capex`
+- 🟢 **Pendapatan kuartalan tumbuh**: Pendapatan Q3 FY26 sebesar Rp3.69 triliun, naik 13.3% dibanding kuartal yang sama tahun lalu; skor pertumbuhan dinilai Strong (70).  `revenue_yoy, revenue, growth`
 
-Pendapatan naik 13.3% dari tahun lalu, dan Q3 FY26 mencatat laba bersih positif. Namun bisnis inti masih rugi, arus kas tetap negatif, dan kas turun dari Rp6.75 triliun ke Rp2.46 triliun sejak Q4 FY25.
+**Bearish**
+- 🔴 **Laba tidak didukung arus kas**: Laba bersih Q3 FY26 positif Rp1.83 triliun, tetapi bisnis inti masih rugi (margin operasional -37.5%) dan arus kas operasi minus Rp1.41 triliun.  `net_income, net_margin, operating_margin, operating_cash_flow, eps_yoy`
+- 🔴 **Saldo kas turun tajam**: Kas turun dari Rp6.78 triliun pada Q4 FY25 menjadi Rp2.47 triliun pada Q3 FY26, sementara arus kas masih negatif tiap kuartal.  `cash, fcf`
+- 🔴 **Rugi tahunan masih besar**: Pada FY2025 rugi bersih Rp30 triliun dengan margin bersih -230%, artinya rugi lebih besar dari total pendapatan Rp13.1 triliun.  `net_income, net_margin, revenue`
+- 🔴 **Pendapatan jangka panjang hampir datar**: CAGR pendapatan 3 tahun (rata-rata pertumbuhan per tahun) hanya 0.4%; pendapatan FY2025 Rp13.1 triliun masih di bawah Rp16.4 triliun pada FY2023.  `revenue_cagr_3y, revenue`
 
-- ✅ Pendapatan Q3 FY26 sebesar Rp3.67 triliun, naik 13.3% dibanding kuartal yang sama tahun lalu.  `revenue_yoy, quarterly_income.revenue`
-- ✅ Margin operasi (laba usaha dibanding penjualan) membaik ke -37.5% di Q3 FY26, dari -197% di Q3 FY25.  `quarterly_income.operating_margin`
-- ✅ Arus kas bebas (kas sisa setelah belanja modal) minus Rp1.46 triliun di Q3 FY26, lebih kecil dari minus Rp4.22 triliun di Q2 FY25.  `quarterly_cash_flow.fcf`
-- ⚠️ Laba bersih Rp1.83 triliun di Q3 FY26 tidak didukung kas: arus kas operasi masih minus Rp1.4 triliun, margin kotor -2.67%.  `quarterly_income.net_income, quarterly_cash_flow.operating_cash_flow, quarterly_income.gross_margin`
-- ⚠️ Kas turun dari Rp6.75 triliun (Q4 FY25) ke Rp2.46 triliun (Q3 FY26). Arus kas bebas negatif di setiap kuartal dalam data.  `balance_sheet.cash, quarterly_cash_flow.fcf`
-- ⚠️ Pertumbuhan jangka panjang tipis: pendapatan rata-rata hanya naik 0.401% per tahun selama 3 tahun. Rugi bersih FY2025 masih Rp29.9 triliun.  `revenue_cagr_3y, annual.net_income`
-- 📅 Laporan keuangan berikutnya pada 1 Mar 2027: apakah laba positif berlanjut dan arus kas operasi membaik.
-- 📅 Posisi kas, terakhir Rp2.46 triliun di Q3 FY26, dibanding arus kas bebas yang masih minus.
-- ❓ Seberapa nyaman Anda dengan perusahaan yang kasnya terus berkurang meski pendapatannya naik?
-- Data gaps: Tidak ada data utang, jadi keseimbangan kas dan utang tidak bisa dinilai.; Cash conversion (seberapa besar laba berubah jadi kas) tidak tersedia karena laba bersih tahunan masih negatif.; Pertumbuhan EPS 100% sulit dibaca karena berasal dari perubahan rugi ke laba, bukan pertumbuhan biasa.; Angka dikonversi dari dolar AS dengan kurs Rp18,310 per USD, sehingga perubahan kurs bisa memengaruhi angka rupiah.
+*Data gaps: Tidak ada data utang, sehingga keseimbangan antara kas dan utang tidak bisa dinilai.; Cash conversion (seberapa besar laba berubah menjadi kas) tidak tersedia karena memerlukan laba bersih positif secara berkelanjutan.; Angka dikonversi dari dolar AS dengan kurs Rp18,390 per USD, sehingga perubahan kurs bisa memengaruhi angka dalam rupiah.*
 
 ## Valuation
 
 ### English (USD)
 
-*source **ai** · attempts 1 · rule signal Not enough data · license DEMO_ONLY · tokens 6,277 · $0.0375 · 14.9 s*
+*source **ai** · attempts 2 · license DEMO_ONLY · tokens 11,206 · $0.0680 · 25.6 s*
 
-**[Not enough data] Low price-to-sales history, but losses block most valuation measures**
+**Bullish**
+- 🟢 **Price-to-sales below its history**: P/S (price compared with yearly sales) is 1.95, below its 5-year median of 4.28 and near the low end (6th percentile) of that range.  `ps`
+- 🟢 **Priced in line with peers**: P/S of 1.95 is close to the peer median of 2.02, so the stock is not priced above similar companies on sales.  `ps`
+- 🟢 **Analyst targets above current price**: Wall Street analysts estimate an average price target of $2.78, above the $1.07 share price, though their estimates range from $0.75 to $7.00.  `analyst_target_mean, analyst_target_low, analyst_target_high, price`
 
-PLUG's price compared with sales sits near its 5-year low and below peers. But the company loses money and burns cash, so most standard valuation measures cannot be calculated, which makes the price hard to judge.
+**Bearish**
+- 🔴 **Large losses compared with price**: Earnings yield (yearly profit compared with share price) is -88.2%, meaning big losses, so P/E (price compared with yearly profit) cannot be measured.  `earnings_yield`
+- 🔴 **Burning cash**: FCF yield (cash left after spending, compared with company value) is -32.4%, so the business uses more cash than it brings in.  `fcf_yield`
+- 🔴 **Sales growth slower than peers**: Revenue grew 13.3% last year versus a peer median of 43.3%, and only about 0.4% per year over 3 years.  `revenue_yoy, revenue_cagr_3y`
+- 🔴 **Wide views and sharp moves**: The lowest analyst target of $0.75 is below the $1.07 price, and the share price moved 13.8% in one day.  `analyst_target_low, price, change_pct_1d`
 
-- ✅ P/S (price compared with yearly sales) is 1.69, below its 5-year median of 4.28 and the peer median of 2.02.  `ps`
-- ✅ P/S is near the bottom of its 5-year range, at about the 3rd percentile. The range ran from 1.15 to 329.  `ps`
-- ✅ Revenue grew 13.3% over the past year, so sales are still rising.  `revenue_yoy`
-- ⚠️ Earnings yield (profit compared with share price) is -101%. Yearly losses are about as large as the company's whole market value of $1.3 billion.  `earnings_yield, market_cap`
-- ⚠️ FCF yield (cash left after spending, compared with company value) is -37.3%. The business uses much more cash than it brings in.  `fcf_yield`
-- ⚠️ Revenue growth of 13.3% is well below the peer median of 43.3%, so growth does little to explain the price.  `revenue_yoy`
-- 📅 Next earnings report on 1 Mar 2027.
-- 📅 Wall Street analysts' price targets range from $0.75 to $7.00 (mean $2.97), versus today's price of $0.93. These are estimates and they vary widely.
-- ❓ How comfortable are you owning a company that is still losing money and using cash?
-- Data gaps: P/E, forward P/E, PEG, EV/EBITDA and P/FCF are not available because earnings, EBITDA and free cash flow are negative.; Fair value (DCF) estimates for bear, base and bull cases are not available.; EPS growth of 100% is hard to interpret when earnings are negative.; 3-year revenue growth of 0.401% looks unclear and may be unreliable.; No peer or history comparison is given for P/B, FCF yield or earnings yield.; Market data is tagged as demo only and may not be current.
+*Data gaps: P/E, forward P/E, PEG, EV/EBITDA and P/FCF are not available because earnings, EBITDA and free cash flow are negative.; DCF fair value estimates (bear, base and bull cases) are not available, and the overall valuation rating has not enough data.; EPS growth of 100% is hard to interpret because earnings are negative, so it is not used as a positive point.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 1 · rule signal Not enough data · license DEMO_ONLY · tokens 7,139 · $0.0541 · 20.0 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 6,389 · $0.0494 · 19.2 s*
 
-**[Not enough data] Harga dekat titik terendah 5 tahun, tapi perusahaan masih merugi**
+**Bullish**
+- 🟢 **P/S dekat titik terendah**: P/S (harga saham dibanding penjualan setahun) 1.95x, di persentil ke-6 riwayat 5 tahunnya (median 4.28x) dan sedikit di bawah median pesaing 2.02x.  `ps`
+- 🟢 **Target analis di atas harga**: Analis Wall Street memperkirakan target rata-rata Rp51,060, di atas harga Rp19,680, tetapi rentangnya sangat lebar, dari Rp13,790 hingga Rp128,700.  `analyst_target_mean, analyst_target_low, analyst_target_high, price`
 
-Dilihat dari P/S, harga saham PLUG lebih rendah dari hampir seluruh 5 tahun terakhir dan sedikit di bawah perusahaan sejenis. Namun perusahaan masih rugi dan membakar kas, sehingga banyak ukuran valuasi utama tidak bisa dihitung.
+**Bearish**
+- 🔴 **Perusahaan masih rugi besar**: Earnings yield (laba dibanding harga saham) -88.2%, artinya perusahaan masih merugi besar sehingga P/E tidak bisa dihitung.  `earnings_yield`
+- 🔴 **Arus kas masih negatif**: FCF yield (kas bebas dibanding nilai pasar) -32.4%, artinya bisnis mengeluarkan jauh lebih banyak kas daripada yang dihasilkannya.  `fcf_yield`
+- 🔴 **Pertumbuhan pendapatan tertinggal pesaing**: Pendapatan naik 13.3% dalam setahun, jauh di bawah median pesaing 43.3%; rata-rata pertumbuhan 3 tahun hanya sekitar 0.4% per tahun.  `revenue_yoy, revenue_cagr_3y`
+- 🔴 **Harga sangat bergejolak**: Harga saham naik 13.8% hari ini, dan target terendah analis Rp13,790 berada di bawah harga saat ini Rp19,680.  `change_pct_1d, analyst_target_low, price`
 
-- ✅ P/S (harga dibanding penjualan setahun) 1.69x, hanya lebih tinggi dari sekitar 3.5% masa 5 tahun terakhir. Median 5 tahunnya 4.28x.  `ps`
-- ✅ P/S 1.69x juga sedikit di bawah median perusahaan sejenis, yaitu 2.02x.  `ps`
-- ⚠️ Earnings yield -101% dan FCF yield (kas bebas dibanding nilai pasar) -37.3%. Artinya perusahaan masih rugi besar dan membakar kas.  `earnings_yield, fcf_yield`
-- ⚠️ Pendapatan tumbuh 13.3% setahun terakhir, jauh di bawah median perusahaan sejenis 43.3%. Rata-rata pertumbuhan 3 tahun hanya 0.4% per tahun.  `revenue_yoy, revenue_cagr_3y`
-- ⚠️ Target harga analis Wall Street sangat beragam, dari Rp13,730 hingga Rp128,200 (rata-rata Rp54,320). Ini estimasi pihak ketiga, bukan kepastian.  `analyst_target_low, analyst_target_high, analyst_target_mean, price`
-- 📅 Laporan keuangan berikutnya pada 1 Maret 2027: perhatikan apakah kerugian dan pembakaran kas mengecil.
-- 📅 Pertumbuhan pendapatan (saat ini 13.3%) dibanding median perusahaan sejenis 43.3%.
-- ❓ Seberapa nyaman Anda dengan saham yang harganya rendah dibanding sejarahnya, tetapi perusahaannya masih merugi?
-- Data gaps: P/E, forward P/E, PEG, EV/EBITDA dan P/FCF tidak tersedia karena laba, EBITDA dan arus kas bebas negatif.; Estimasi nilai wajar DCF (bear, base, bull) tidak tersedia.; Pertumbuhan EPS 100% sulit ditafsirkan karena laba masih negatif.; Data berlabel DEMO_ONLY dan dikonversi dari dolar AS dengan kurs Rp18,310.
+*Data gaps: P/E, forward P/E, PEG, EV/EBITDA dan P/FCF tidak tersedia karena laba, EBITDA dan arus kas negatif, serta estimasi nilai wajar DCF juga tidak tersedia.; Pertumbuhan EPS 100% sulit ditafsirkan karena perusahaan masih rugi, dan skor valuasi berbasis aturan berstatus 'data tidak cukup'.; Angka dalam rupiah dikonversi dari dolar AS dengan kurs Rp18,390, sehingga perubahan kurs bisa memengaruhi angka.*
 
 ## Profitability and Health
 
 ### English (USD)
 
-*source **ai** · attempts 1 · rule signal Weak · license DEMO_ONLY · tokens 5,996 · $0.0318 · 12.2 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 6,024 · $0.0432 · 15.8 s*
 
-**[Weak] Large losses and distress-zone score, though cash exceeds debt for now**
+**Bullish**
+- 🟢 **More cash than debt**: Has about $134 million more cash than debt, and its current ratio (short-term assets vs short-term bills) is 2.21, up from 1.97.  `net_debt, current_ratio, quick_ratio`
+- 🟢 **Gross margin improving**: Gross margin (sales left after direct costs) improved from -99.4% to -34.1% in the yearly check, though it is still below zero.  `gross_margin, piotroski`
+- 🟢 **Some financial checks improving**: Passes 5 of 9 Piotroski checks (simple tests of financial strength), including asset turnover (sales per dollar of assets) rising from 0.13 to 0.20.  `piotroski, asset_turnover`
 
-PLUG loses far more than it earns from sales, and its bankruptcy-risk score sits in the distress zone. Its cash cushion and improving gross margin help, but the business is not yet profitable.
+**Bearish**
+- 🔴 **Bankruptcy-risk score in distress**: Altman Z-score (a test of bankruptcy risk) is -5.93, far below the 1.8 level that marks the distress zone.  `altman_z`
+- 🔴 **Large losses compared with peers**: Net margin is -154% versus a peer median of 6.04%, and ROE (profit on shareholders' money) is -111% versus peers' 6.16%.  `net_margin, roe, roic, roa, operating_margin`
+- 🔴 **Burning cash, interest not covered**: Operating cash flow was -$0.54 billion and interest coverage (operating profit vs interest costs) is -13.5x, so operations do not pay interest.  `interest_coverage, piotroski`
+- 🔴 **Many new shares issued**: Share count rose from 0.79 billion to 1.15 billion, shrinking each existing shareholder's slice of the company.  `piotroski`
 
-- ✅ Holds more cash than debt (net cash of about $134 million). Current ratio (short-term assets vs short-term bills) is 2.21.  `net_debt, current_ratio`
-- ✅ Gross margin (sales minus direct costs) improved from -99.4% to -34.1% in the Piotroski check. It is about -3% over the last 12 months.  `piotroski, gross_margin`
-- ✅ Piotroski score (financial strength checklist) is 5 of 9. That is a middle result, helped by better asset use and liquidity.  `piotroski`
-- ⚠️ Net margin is -154%, versus a peer median of 6%. ROE (profit on shareholders' money) is -111%, versus peers at 6.2%.  `net_margin, roe`
-- ⚠️ Altman Z-score (bankruptcy-risk score) is -6.01, well below 1.8, which is the distress zone. Interest coverage is -13.5x.  `altman_z, interest_coverage`
-- ⚠️ Shares rose from 0.79 billion to 1.15 billion. New shares spread each owner's slice thinner.  `piotroski`
-- 📅 Next earnings report on 1 Mar 2027. Watch whether gross margin moves above 0%.
-- 📅 Watch whether cash still exceeds debt, now about $134 million in net cash, and whether the share count keeps rising.
-- ❓ How much risk are you comfortable with in a company that is still losing money?
-- Data gaps: Debt to equity and debt to EBITDA are not available.; The Altman Z-score is marked demo-only, so treat it as indicative.; The 12-month loss of $1.2B differs from the $1.63B net income figure in the Piotroski check, likely due to different periods.
+*Data gaps: Debt to equity and debt to EBITDA are not available, so the debt level cannot be fully judged.; Loss figures differ: the 12-month loss is shown as $1.2 billion in one place and $1.63 billion in the Piotroski check.; Gross margin is -3.02% over the last 12 months but -34.1% in the Piotroski check, likely different time periods.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 2 · rule signal Weak · license DEMO_ONLY · tokens 13,470 · $0.0894 · 33.0 s*
+*source **ai** · attempts 2 · license DEMO_ONLY · tokens 12,203 · $0.0845 · 31.5 s*
 
-**[Weak] Rugi besar dan risiko keuangan tinggi, meski kas melebihi utang**
+**Bullish**
+- 🟢 **Kas lebih besar dari utang**: Perusahaan punya kas bersih (kas dikurangi utang) sekitar Rp2,47 triliun, jadi tidak bergantung pada pinjaman besar.  `net_debt`
+- 🟢 **Aset lancar menutup utang jangka pendek**: Current ratio (aset lancar dibanding utang jangka pendek) 2,21x dan naik dari 1,97 ke 2,31; quick ratio (tanpa persediaan) 1,27x.  `current_ratio, quick_ratio, piotroski`
+- 🟢 **Margin kotor membaik tajam**: Margin kotor (laba setelah biaya produksi) naik dari -99,4% ke -34,1%, dan kini -3,02%, mendekati titik impas.  `gross_margin, piotroski`
+- 🟢 **Aset dipakai lebih efisien**: Perputaran aset (penjualan dibanding total aset) naik dari 0,13x ke 0,20x, meski angka saat ini 0,295x masih rendah.  `asset_turnover, piotroski`
 
-PLUG masih merugi besar: dari setiap Rp100 penjualan, perusahaan rugi sekitar Rp154. Kasnya memang lebih besar dari utang, tetapi skor Altman Z berada di zona bahaya dan jumlah saham terus bertambah.
+**Bearish**
+- 🔴 **Rugi sangat besar dibanding sejenis**: ROE (laba dibanding modal pemilik) -111% dan margin bersih -154%, jauh di bawah median perusahaan sejenis sekitar 6%.  `roe, net_margin, roic, operating_margin`
+- 🔴 **Skor Altman di zona bahaya**: Altman Z-score (uji risiko kebangkrutan) -5,93, jauh di bawah batas 1,8 yang menandakan zona bahaya keuangan.  `altman_z`
+- 🔴 **Operasi tidak menutup bunga**: Interest coverage (laba operasi dibanding beban bunga) -13,5x, artinya bisnis inti merugi dan tidak menghasilkan dana untuk membayar bunga.  `interest_coverage, operating_margin`
+- 🔴 **Saham baru mengencerkan kepemilikan**: Jumlah saham naik dari 0,79 miliar ke 1,15 miliar lembar; skor Piotroski (9 cek kesehatan keuangan) hanya 5 dari 9.  `piotroski`
 
-- ✅ Kas lebih besar dari utang, dengan kas bersih sekitar Rp2.46 triliun. Current ratio (aset lancar dibanding utang jangka pendek) 2.21x.  `net_debt, current_ratio`
-- ✅ Lulus 5 dari 9 cek Piotroski (cek kekuatan keuangan). Margin kotor membaik dari -99.4% menjadi -34.1%.  `piotroski, gross_margin`
-- ⚠️ ROE (laba dibanding modal pemegang saham) -111%, jauh di bawah median pesaing 6.2%. Net margin -154%, sementara median pesaing 6.0%.  `roe, net_margin`
-- ⚠️ Altman Z-score (skor risiko kebangkrutan) -6.01, masuk zona bahaya karena di bawah 1.8. Interest coverage -13.5x: laba operasi tidak menutup bunga.  `altman_z, interest_coverage`
-- ⚠️ Jumlah saham naik dari 0.79 miliar menjadi 1.15 miliar, sehingga porsi kepemilikan tiap saham terencerkan. Arus kas operasi juga masih negatif.  `piotroski`
-- 📅 Laporan keuangan berikutnya pada 1 Mar 2027.
-- 📅 Apakah margin kotor (kini -3.02%) dan arus kas operasi terus membaik di laporan berikutnya.
-- ❓ Seberapa nyaman Anda memegang saham perusahaan yang masih merugi besar dan sering menerbitkan saham baru?
-- Data gaps: Rasio utang terhadap ekuitas dan utang terhadap EBITDA tidak tersedia.; Altman Z-score ditandai sebagai data demo, sehingga keandalannya terbatas.; Angka rugi berbeda antar sumber (sekitar USD 1.2 miliar vs 1.63 miliar), begitu pula current ratio (2.21 vs 2.31).
+*Data gaps: Rasio utang terhadap modal dan utang terhadap EBITDA tidak tersedia, sehingga beban utang tidak bisa dinilai lengkap.; Angka rugi dan arus kas operasi hanya tersedia dalam dolar AS dengan nilai berbeda antar bagian data, jadi tidak dikonversi ke rupiah.; ROIC, ROA dan margin operasi tidak punya pembanding perusahaan sejenis atau riwayat lima tahun.*
 
 ## Dividends
 
 ### English (USD)
 
-*source **ai** · attempts 1 · rule signal Not applicable · license CALCULATED_SAFE · tokens 3,612 · $0.0062 · 3.3 s*
+*source **ai** · attempts 1 · license CALCULATED_SAFE · tokens 3,553 · $0.0118 · 5.4 s*
 
-**[Not applicable] Plug Power does not pay a dividend**
+**Bullish**
+- (none)
 
-Plug Power currently pays no dividend, so this tab has no yield, payout or growth streak to review. Investors in this stock would rely only on price changes, not regular cash payments.
+**Bearish**
+- 🔴 **No dividend paid**: The company pays $0 in dividends, so shareholders get no regular cash income and any return depends only on share price changes.  `pays_dividend, dividend_note, rule_based_pillars.dividend.level`
 
-- 📅 Next earnings report on 1 Mar 2027.
-- ❓ Do you need regular cash income from your investments, or are you comfortable with none?
-- Data gaps: No data on share buybacks or other ways of returning cash to shareholders.
+*Data gaps: No data on share buybacks (the company buying back its own shares), so we cannot tell whether cash is returned to shareholders another way.; No profit or free cash flow figures are provided in this tab, so we cannot show why the company does not pay a dividend.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 1 · rule signal Not applicable · license DEMO_ONLY · tokens 3,805 · $0.0094 · 4.7 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 3,656 · $0.0132 · 5.9 s*
 
-**[Not applicable] PLUG tidak membagikan dividen kepada pemegang saham**
+**Bullish**
+- (none)
 
-Menurut data, Plug Power saat ini tidak membayar dividen. Jadi tab ini tidak bisa menilai imbal hasil dividen, kecukupan laba atau arus kas, maupun riwayat kenaikan dividen.
+**Bearish**
+- 🔴 **Tidak membagikan dividen**: PLUG tidak membayar dividen, dan penilaian pilar dividennya tercatat "Not applicable", jadi saham ini tidak memberi pemasukan rutin dari dividen.  `pays_dividend, dividend_note, rule_based_pillars.dividend.level`
 
-- ⚠️ Dividen yang dibayar saat ini 0, jadi pemegang saham tidak menerima pendapatan rutin dari saham ini.  `pays_dividend, dividend_note`
-- 📅 Laporan keuangan berikutnya dijadwalkan pada 1 Maret 2027.
-- ❓ Apakah Anda membutuhkan pendapatan rutin dari investasi, atau lebih fokus pada pergerakan harga saham?
-- Data gaps: Tidak ada data pembelian kembali saham (buyback) di tab ini.
+*Data gaps: Tidak ada data buyback (pembelian kembali saham), jadi tidak bisa dinilai apakah perusahaan mengembalikan uang ke pemegang saham dengan cara lain.; Tidak ada data laba atau arus kas bebas di tab ini, jadi kemampuan perusahaan untuk membayar dividen di masa depan tidak bisa dinilai.*
 
 ## Ownership and Sentiment
 
 ### English (USD)
 
-*source **fallback** · attempts - · rule signal Not applicable · license DEMO_ONLY · tokens 11,604 · $0.0624 · 34.4 s*
+*source **fallback** · attempts - · license DEMO_ONLY · tokens 10,808 · $0.0641 · 25.8 s*
 
-> AI not used: banned phrase "sell" in positives[1]: "Only 3 rate it Sell or Strong Sell."
+> AI not used: bullish[1].detail has 28 words (max 25); bullish[3].detail has 2 sentences (must be one); banned phrase "buy" in bearish[0].detail: "22.6% of tradable shares are sold short (bets the price falls); short sellers would need about 5.8 days of normal trading to buy back."
 
-**Automatic summary** · signal Not applicable
+**Automatic summary**
 
+**Bullish**
+- (none)
+
+**Bearish**
+- (none)
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 2 · rule signal Not applicable · license DEMO_ONLY · tokens 13,474 · $0.0994 · 50.4 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 6,029 · $0.0446 · 16.8 s*
 
-**[Not applicable] Analis terbelah, insider terus melepas saham, short interest tinggi**
+**Bullish**
+- 🟢 **Target rata-rata analis di atas harga**: Analis Wall Street memperkirakan target harga 12 bulan rata-rata Rp51,060, di atas harga saat ini Rp19,680.  `analyst_target_mean, price`
+- 🟢 **Banyak analis menilai positif**: Dari 27 analis Wall Street, 12 memberi rating beli (2 beli kuat, 10 beli), sementara hanya 3 yang memberi rating jual.  `wall_street_analyst_ratings`
+- 🟢 **Kepemilikan institusi besar tinggi**: Institusi seperti dana investasi memegang 64.5% saham, dengan BlackRock sebagai pemegang terbesar sebesar 13.1%.  `who_owns_the_shares_pct, top_institutions`
 
-Pendapat analis Wall Street beragam: 12 dari 27 analis netral, dan rentang target harganya sangat lebar. Insider terus melepas saham dan 22.6% saham beredar dipertaruhkan akan turun, tanda keraguan pasar yang cukup besar.
+**Bearish**
+- 🔴 **Banyak investor bertaruh harga turun**: Short interest (porsi saham yang dijual short, yaitu taruhan harga turun) mencapai 22.6% dari saham beredar, perlu sekitar 5.8 hari untuk menutupnya.  `short_interest`
+- 🔴 **Orang dalam terus menjual saham**: Insider (direksi dan pejabat perusahaan) lebih banyak menjual di setiap bulan yang tercatat, termasuk bersih Rp269 miliar pada November dan Rp243 miliar Oktober.  `insider_net_buying_by_month`
+- 🔴 **Rating rata-rata cenderung netral**: Skor rata-rata analis 2.63 (skala 1 beli kuat hingga 5 jual kuat), dengan 12 analis memberi tahan dan semua perubahan terbaru hanya mempertahankan rating.  `wall_street_analyst_ratings, recent_rating_changes_by_analysts`
+- 🔴 **Perkiraan analis sangat berbeda-beda**: Target harga analis berkisar dari Rp13,790, di bawah harga saat ini, hingga Rp128,700, menunjukkan ketidakpastian yang besar.  `analyst_target_low, analyst_target_high, price`
 
-- ✅ Dari 27 analis Wall Street, 2 memberi rating sangat positif dan 10 positif. Skor rata-rata 2.63 (skala 1 terbaik sampai 5 terburuk).  `wall_street_analyst_ratings.analysts, wall_street_analyst_ratings.strong_buy, wall_street_analyst_ratings.buy, wall_street_analyst_ratings.average_score_1_strong_buy_to_5_strong_sell`
-- ✅ Analis Wall Street memperkirakan target harga rata-rata 12 bulan Rp54,320, jauh di atas harga saat ini Rp17,030.  `analyst_target_mean, price`
-- ✅ Institusi besar memiliki 64.5% saham. BlackRock sendiri memegang 13.1%, pemegang terbesar dalam daftar.  `who_owns_the_shares_pct.Institutions, top_institutions`
-- ⚠️ Insider (orang dalam perusahaan) melepas lebih banyak saham daripada membeli di setiap bulan yang tercatat, termasuk Rp268 miliar pada November 2026.  `insider_net_buying_by_month`
-- ⚠️ Short interest (porsi saham yang dipertaruhkan akan turun) mencapai 22.6% dari saham beredar, dengan sekitar 5.81 hari untuk menutup posisi itu.  `short_interest.pct_of_float_sold_short, short_interest.days_to_cover`
-- ⚠️ Target analis sangat lebar: terendah Rp13,730, di bawah harga sekarang, dan tertinggi Rp128,200. Artinya pendapat analis sangat berbeda.  `analyst_target_low, analyst_target_high, price`
-- 📅 Laporan laba berikutnya pada 1 Maret 2027.
-- 📅 Data insider bulan berikutnya: apakah pelepasan saham bersih berlanjut setelah Rp268 miliar di November 2026.
-- ❓ Seberapa nyaman Anda dengan saham yang pendapat pasarnya sangat terbelah?
-- Data gaps: Tidak ada pembanding short interest atau kepemilikan institusi dengan perusahaan sejenis atau riwayat perusahaan sendiri.; Data insider tidak mencantumkan beberapa bulan, jadi tidak jelas apakah ada transaksi pada bulan tersebut.; Data short interest per 30 Oktober 2026, sehingga mungkin sudah berubah.; Semua angka rupiah dikonversi dari dolar AS, sehingga ikut berubah mengikuti kurs.
+*Data gaps: Tidak ada perbandingan short interest dan kepemilikan institusi dengan perusahaan sejenis atau riwayat perusahaan, sehingga sulit menilai seberapa tinggi angkanya.; Data transaksi insider tidak mencakup semua bulan (misalnya Februari–Mei, Juli, Agustus 2026) dan tidak menjelaskan alasan penjualan.; Data short interest per 30 Oktober 2026, sehingga mungkin belum mencerminkan kenaikan harga 13.8% hari ini.*
 
 ## News and Filings
 
 ### English (USD)
 
-*source **ai** · attempts 2 · rule signal Not applicable · license DEMO_ONLY · tokens 12,341 · $0.0751 · 36.3 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 5,299 · $0.0277 · 9.5 s*
 
-**[Not applicable] Turnaround hopes meet lower analyst targets and sector swings**
+**Bullish**
+- 🟢 **CEO points to demand rebound**: A 2026-11-23 headline says the Plug Power CEO sees demand rebounding, with the company's turnaround (effort to fix the business) still in focus.  `headlines`
+- 🟢 **Sharp one-day gain reported**: A 2026-11-25 headline says the stock rose 12.2% that day without company news, although another same-day headline reports a 6% fall.  `headlines`
+- 🟢 **New California hydrogen station**: A 2026-11-25 headline asks whether a Plug Power hydrogen station in California changes the company's story, showing new business activity is drawing attention.  `headlines`
 
-Recent news centers on Plug Power's turnaround, sharp moves in fuel-cell peers, and clean energy policy. The company reaffirmed its growth target, but two analysts lowered price targets on 20 Nov.
+**Bearish**
+- 🔴 **Repeated drops with fuel cell peers**: Headlines report Plug Power falling 3% on 2026-11-20, 5% on 2026-11-24 and 6% on 2026-11-25, alongside drops at Bloom Energy and FuelCell Energy.  `headlines`
+- 🔴 **Share price near $1**: A 2026-11-24 headline says the stock trades near $1 and asks if this is a hydrogen turnaround or another false start.  `headlines`
+- 🔴 **Possible clean energy funding cuts**: A 2026-11-20 headline says clean energy stocks fell on reports President Trump may cancel an additional $12 billion of clean energy project funding.  `headlines`
 
-- ✅ A 19 Nov headline says Plug Power reaffirmed its growth target and eyes positive EBITDA (profit before interest, tax, depreciation) as cash burn slows.  `headlines`
-- ✅ A 23 Nov headline says the CEO sees a demand rebound, with the turnaround still in focus.  `headlines`
-- ⚠️ On 20 Nov, B. Riley cut its price target to $3.5 and RBC Capital cut its target to $1.25.  `headlines`
-- ⚠️ A 20 Nov headline said the US may cancel another $12 billion in clean energy funding, and clean energy stocks traded lower.  `headlines`
-- ⚠️ Headlines say Plug Power shares dropped 3% on 20 Nov and 5% on 24 Nov, alongside falls in peers like Bloom Energy.  `headlines`
-- 📅 Next earnings report on 1 Mar 2027.
-- 📅 Several insider trade filings (Form 4) in Oct and Nov 2026, the latest on 18 Nov.
-- ❓ How comfortable are you holding a stock whose news often moves with policy and sector swings?
-- Data gaps: Only headline wording is available, not the full articles.; Form 4 insider trade details, such as direction and size, are not provided.; The content of the 19 Nov 8-K filing is not described.
+*Data gaps: Six insider trade filings (Form 4) since 2026-10-02 are listed, but the data does not show whether insiders bought or sold shares.; The 8-K filings (company news on 2026-11-19, earnings results on 2026-10-15 and 2026-11-09) and the 10-Q quarterly report have no details on their contents.; Only headline wording is available, and two 2026-11-25 headlines conflict (up 12.2% vs down 6%), so the actual price move that day is unclear.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **fallback** · attempts - · rule signal Not applicable · license DEMO_ONLY · tokens 12,888 · $0.0858 · 42.7 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 5,683 · $0.0348 · 12.5 s*
 
-> AI not used: banned phrase "buy" in positives[2]: "Riley Securities tetap memberi peringkat Buy, meski target harganya diturunkan ke $3.5."; banned phrase "beli" in data_gaps[1]: "Ada 5 laporan Form 4 (transaksi orang dalam) sejak 2 Okt 2026, tetapi arah (beli/jual) dan jumlahnya tidak tersedia."; banned phrase "jual" in data_gaps[1]: "Ada 5 laporan Form 4 (transaksi orang dalam) sejak 2 Okt 2026, tetapi arah (beli/jual) dan jumlahnya tidak tersedia."
+**Bullish**
+- 🟢 **CEO melihat permintaan pulih**: Judul berita 23 November 2026 menyebut CEO Plug Power melihat permintaan kembali naik, dengan upaya pemulihan bisnis (turnaround) tetap jadi fokus.  `headlines`
+- 🟢 **Saham sempat naik tajam**: Pada 25 November 2026 saham PLUG tercatat naik 12.2% dalam sehari, walau judulnya menyebut kenaikan itu terjadi tanpa berita dari perusahaan.  `headlines`
+- 🟢 **Stasiun hidrogen baru di California**: Judul berita 25 November 2026 membahas stasiun hidrogen Plug Power di California dan bertanya apakah ini mengubah cerita perusahaan.  `headlines`
 
-**Ringkasan otomatis** · signal Not applicable
+**Bearish**
+- 🔴 **Risiko kebijakan energi bersih**: Saham energi bersih turun pada 20 November 2026 setelah laporan bahwa Presiden Trump mungkin membatalkan tambahan dana US$12 miliar untuk proyek energi bersih.  `headlines`
+- 🔴 **Turun bersama saham sejenis**: PLUG turun 3% (20 Nov), 5% (24 Nov) dan 6% (25 Nov) bersamaan dengan Bloom Energy dan FuelCell Energy, menandakan harga sangat naik-turun.  `headlines`
+- 🔴 **Harga saham dekat US$1**: Judul berita 24 November 2026 menyebut harga PLUG mendekati US$1 dan mempertanyakan apakah ini pemulihan atau kembali gagal.  `headlines`
 
+*Data gaps: Ada 6 laporan transaksi orang dalam (Form 4) sejak 2 Oktober 2026, tetapi data tidak menunjukkan apakah itu pembelian atau penjualan.; Isi laporan 8-K tanggal 19 November 2026 dan laporan kuartalan (10-Q) tanggal 9 November 2026 tidak tersedia, jadi dampaknya tidak bisa dinilai.; Ringkasan ini hanya berdasarkan judul berita, bukan isi artikel.*
 
 ## Company Profile
 
 ### English (USD)
 
-*source **ai** · attempts 2 · rule signal Not applicable · license DEMO_ONLY · tokens 9,143 · $0.0331 · 25.0 s*
+*source **ai** · attempts 2 · license DEMO_ONLY · tokens 9,130 · $0.0474 · 21.8 s*
 
-**[Not applicable] Hydrogen fuel cell and fuel supplier for forklifts and industry**
+**Bullish**
+- 🟢 **Covers the whole hydrogen chain**: Sells GenEco electrolyzers (machines that make hydrogen), GenFuel fueling systems and GenDrive fuel cells for Class 1, 2, 3 and 6 forklifts.  `description`
+- 🟢 **Long operating history**: Incorporated in 1997 and listed on Nasdaq since 1999, so the business has been running for decades.  `description, ipo_date, exchange`
+- 🟢 **Several ways to reach customers**: Has 2,344 employees and sells through its own sales team, equipment makers and dealers in Europe, Australia and North America.  `employees, description`
 
-Plug Power sells hydrogen fuel cell systems, mainly for forklifts and warehouse vehicles, plus the hydrogen fuel, equipment and maintenance service to run them. It is a small company, worth about $1.3 billion, based in New York.
+**Bearish**
+- 🔴 **Small company by market value**: Market value (share price times all shares) is about $1.5 billion, small for a US-listed company, so the share price can move sharply.  `market_cap`
+- 🔴 **Business focused on hydrogen**: Almost every product named, from fuel cells to liquid hydrogen supply, relies on hydrogen use, a business it has pursued since 1997.  `description`
 
-- ✅ Several income sources: GenDrive fuel cells, GenFuel hydrogen fueling, GenCare maintenance service, electrolyzers and liquid hydrogen, sold through 3 sales channels.  `description`
-- ✅ Long track record: incorporated in 1997, listed on Nasdaq since its IPO (first share sale) on 28 Oct 1999, with 2,344 employees.  `description, ipo_date, employees`
-- ⚠️ Market value is about $1.3 billion, a small company. Smaller companies' share prices can move more sharply than larger ones.  `market_cap`
-- ⚠️ The description lists 3 main customer areas: material handling, fuel cell vehicle fleets and stationary power. Results may depend on these markets.  `description`
-- 📅 The latest fiscal year ended 31 Dec 2025; the next full-year results cover the year ending 31 Dec 2026.
-- ❓ How well do you understand the hydrogen business, and how comfortable are you owning a small company in it?
-- Data gaps: No revenue breakdown by product or region, so it is unclear which business earns the most.; No profit, cash or growth data in this tab.; Market value is marked demo-only and may not be reliable.
+*Data gaps: No revenue, profit or cash flow data, so it is unclear how much money each product line earns or whether the company is profitable.; No breakdown of sales by product or by region.; Market value is not compared with peers or the S&P 500 in this data.*
 
 ### Bahasa Indonesia (IDR)
 
-*source **ai** · attempts 2 · rule signal Not applicable · license DEMO_ONLY · tokens 10,332 · $0.0555 · 23.7 s*
+*source **ai** · attempts 1 · license DEMO_ONLY · tokens 4,959 · $0.0312 · 14.2 s*
 
-**[Not applicable] Perusahaan hidrogen: sel bahan bakar, pasokan hidrogen, dan layanan perawatan**
+**Bullish**
+- 🟢 **Produk hidrogen dari hulu ke hilir**: Menjual sel bahan bakar GenDrive, sistem pengisian GenFuel, elektroliser GenEco, dan layanan perawatan GenCare, mencakup produksi hingga pemakaian hidrogen sejak 1997.  `description`
+- 🟢 **Pelanggan forklift dan armada**: GenDrive menggerakkan forklift listrik Kelas 1, 2, 3 dan 6, kendaraan otomatis, serta peralatan darat bandara, dijual lewat tenaga penjualan langsung, OEM, dan dealer.  `description`
+- 🟢 **Perusahaan lama dengan jangkauan luas**: Melantai di Nasdaq sejak 1999, memiliki 2,344 karyawan, dan melayani pelanggan di Eropa, Australia, Amerika Utara, serta negara lain.  `ipo_date, employees, exchange, description`
 
-Plug Power menjual sistem sel bahan bakar hidrogen untuk forklift dan kendaraan gudang, serta hidrogen cair, alat produksi, dan layanan perawatannya. Data di tab ini tidak menunjukkan berapa besar pendapatan dari tiap produk.
+**Bearish**
+- 🔴 **Bergantung pada satu teknologi**: Hampir semua produk berbasis hidrogen dan gas kriogenik (gas yang sangat dingin), sehingga bisnis senilai pasar Rp27.5 triliun ini bergantung pada permintaan hidrogen.  `description, market_cap`
 
-- ✅ Berdiri sejak 1997 dan tercatat di Nasdaq sejak IPO 28 Oktober 1999, dengan 2.344 karyawan.  `ipo_date, employees, exchange`
-- ✅ Nilai pasar (harga saham x jumlah saham beredar) sekitar Rp23,8 triliun, dihitung dengan kurs Rp18.310 per dolar AS.  `market_cap, exchange_rate_used`
-- ✅ Menjual lewat 3 jalur: tim penjualan langsung, produsen peralatan (OEM), dan jaringan dealer, untuk pelanggan di beberapa benua.  `description`
-- ⚠️ Data tab ini tidak berisi angka pendapatan, laba, atau arus kas, jadi kondisi keuangan belum bisa dinilai dari sini.  `metrics`
-- ⚠️ Nilai pasar Rp23,8 triliun ditandai DEMO_ONLY dan dikonversi dari dolar, jadi angka dapat berubah mengikuti kurs.  `market_cap, exchange_rate_used`
-- 📅 Tahun buku berakhir 31 Desember; laporan tahunan untuk tahun 2026 akan mencakup periode hingga 31 Desember 2026.
-- ❓ Seberapa paham Anda dengan bisnis hidrogen dan sel bahan bakar sebelum mempertimbangkan saham ini?
-- Data gaps: Tidak ada rincian pendapatan per produk atau per wilayah.; Tidak ada data pendapatan, laba, atau arus kas di tab ini.; Data nilai pasar bertanda DEMO_ONLY sehingga keandalannya terbatas.
+*Data gaps: Tidak ada data pendapatan per produk atau per wilayah, jadi tidak jelas produk mana yang paling banyak menghasilkan uang.; Tidak ada data laba, arus kas, atau utang di tab ini, sehingga kesehatan bisnis belum bisa dinilai.; Nilai pasar (harga saham x jumlah saham) Rp27.5 triliun tidak dibandingkan dengan perusahaan sejenis seperti RUN atau FLNC.*

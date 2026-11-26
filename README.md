@@ -169,9 +169,16 @@ With `npx vite preview` and the API running, in the `mobile-ui` folder:
 
 ## 4c. AI Insight cards (Phase 10)
 
-Each Streamlit tab, except Coverage, and each main mobile section starts with an **AI Insight**: a plain-language
-explanation of the data on that page, with a signal chip, positives and watch-outs, "More" (what to watch next and
-ask yourself), thumbs up/down, and an "AI-generated, not investment advice" footer.
+Each Streamlit tab, except Coverage, and each main mobile section starts with an **AI Insight** (prompt version 2.0,
+SPEC Section 16). It has only two lists, built from the data on that page:
+
+- **Bullish:** facts that support a positive view.
+- **Bearish:** facts that support a negative view, or are risks.
+
+Each point has a short bold title and one sentence with a number and its context. Streamlit shows the two lists side
+by side. Mobile stacks them, shows 2 points per side with "Show all", and explains the two words under ⓘ. The card
+also has a small grey "Data gaps" note when something is missing, thumbs up/down, and an "AI-generated, not
+investment advice" footer.
 
 - **Turn on:** put `ANTHROPIC_API_KEY=...` and `AI_SUMMARIES_ENABLED=true` in `.env`, then restart the API and the
   dashboard.

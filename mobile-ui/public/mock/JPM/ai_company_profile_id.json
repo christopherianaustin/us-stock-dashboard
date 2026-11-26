@@ -1,6 +1,6 @@
 {
  "ticker": "JPM",
- "generated_at": "2026-11-25T10:47:01+00:00",
+ "generated_at": "2026-11-26T07:17:49+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,54 +9,55 @@
   "ticker": "JPM",
   "tab": "company_profile",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Not applicable",
-  "as_of": "2026-11-25T10:47:01+00:00",
+  "as_of": "2026-11-26T07:17:49+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Not applicable",
-   "headline": "Bank besar AS dengan tiga lini bisnis: konsumen, korporasi, kekayaan",
-   "takeaway": "JPMorgan Chase adalah bank dan perusahaan induk keuangan yang melayani nasabah di banyak wilayah dunia. Pendapatannya datang dari layanan bank untuk perorangan dan bisnis, layanan untuk perusahaan dan institusi besar, serta pengelolaan investasi dan kekayaan.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Bisnis terbagi ke 3 segmen: perbankan konsumen dan komunitas, bank komersial dan investasi, serta manajemen aset dan kekayaan.",
+     "title": "Salah satu bank terbesar",
+     "detail": "Nilai pasar (harga saham dikali jumlah saham) sekitar Rp15,500 triliun, termasuk bank diversifikasi yang tercatat di bursa NYSE.",
+     "metric_keys": [
+      "market_cap"
+     ]
+    },
+    {
+     "title": "Sumber pendapatan sangat beragam",
+     "detail": "Bisnis terbagi ke 3 segmen: perbankan konsumen, bank komersial dan investasi, serta pengelolaan aset, melayani individu hingga perusahaan besar di banyak benua.",
      "metric_keys": [
       "description"
      ]
     },
     {
-     "text": "Nilai pasar (harga saham dikali jumlah saham) sekitar Rp15,400 triliun, dengan 322,964 karyawan.",
-     "metric_keys": [
-      "market_cap",
-      "employees"
-     ]
-    },
-    {
-     "text": "Berdiri sejak 1799, tercatat di bursa NYSE sejak 1969, dan berkantor pusat di New York.",
+     "title": "Sejarah panjang dan skala besar",
+     "detail": "Didirikan tahun 1799, sahamnya tercatat sejak 1969, dan kini mempekerjakan 322,964 karyawan dengan kantor pusat di New York.",
      "metric_keys": [
       "description",
       "ipo_date",
-      "exchange",
+      "employees",
       "headquarters"
      ]
     }
    ],
-   "watch_outs": [],
-   "what_to_watch_next": [
-    "Tahun buku perusahaan berakhir setiap 31 Desember; laporan tahunan terakhir untuk tahun yang berakhir 31 Desember 2025."
+   "bearish": [
+    {
+     "title": "Terpapar naik-turun pasar dan kredit",
+     "detail": "Dari 3 segmen, ada market-making dan derivatif (kontrak yang nilainya ikut aset lain) serta kredit rumah, kartu dan properti komersial, yang hasilnya bergantung kondisi ekonomi.",
+     "metric_keys": [
+      "description"
+     ]
+    }
    ],
-   "ask_yourself": "Seberapa nyaman Anda berinvestasi di bank yang bisnisnya luas dan rumit seperti ini?",
    "data_gaps": [
-    "Tidak ada rincian pendapatan atau laba per segmen maupun per wilayah, jadi belum jelas bisnis mana yang paling besar menyumbang uang.",
-    "Nilai pasar dikonversi dari dolar AS dengan kurs Rp18,310 per USD, sehingga angka dalam rupiah ikut berubah saat kurs bergerak.",
-    "Data nilai pasar diberi label DEMO_ONLY, sehingga keandalannya mungkin terbatas.",
-    "Tidak ada tanggal laporan keuangan berikutnya dalam data."
+    "Tidak ada data pendapatan atau laba per segmen, sehingga tidak terlihat segmen mana yang paling besar menyumbang uang.",
+    "Tab ini tidak memuat angka keuangan seperti pertumbuhan, laba atau perbandingan dengan pesaing seperti BAC, WFC dan C.",
+    "Nilai pasar dikonversi dari dolar AS dengan kurs Rp18,390, sehingga angka dalam rupiah ikut berubah jika kurs bergerak."
    ]
   },
   "model": "claude-opus-5-5",
   "attempts": 1,
-  "cost_usd": 0.039449,
+  "cost_usd": 0.03688,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

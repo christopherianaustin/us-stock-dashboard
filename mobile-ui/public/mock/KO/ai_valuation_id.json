@@ -1,6 +1,6 @@
 {
  "ticker": "KO",
- "generated_at": "2026-11-25T10:43:31+00:00",
+ "generated_at": "2026-11-26T07:11:54+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,64 +9,82 @@
   "ticker": "KO",
   "tab": "valuation",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Weak",
-  "as_of": "2026-11-25T10:43:31+00:00",
+  "as_of": "2026-11-26T07:11:54+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Weak",
-   "headline": "Harga di atas rata-rata 5 tahunnya, pertumbuhan belum sepenuhnya menjelaskan",
-   "takeaway": "Investor kini membayar lebih banyak dari biasanya untuk setiap rupiah laba dan penjualan KO, dan untuk beberapa ukuran juga lebih tinggi dari perusahaan sejenis. Pertumbuhan pendapatan 7.4% masih di bawah median peer 11.2%, jadi belum banyak menjelaskan harga ini.",
-   "positives": [
+   "bullish": [
     {
-     "text": "P/E (harga dibanding laba setahun) 28.7x, masih lebih rendah dari median perusahaan sejenis 32x.",
+     "title": "P/E di bawah perusahaan sejenis",
+     "detail": "P/E (harga saham dibanding laba setahun) sebesar 28.7x, lebih rendah dari median perusahaan sejenis yang 32x.",
      "metric_keys": [
       "pe"
      ]
     },
     {
-     "text": "EPS (laba per saham) tumbuh rata-rata 11.6% per tahun selama 3 tahun, dan 8.1% dalam setahun terakhir.",
+     "title": "Laba per saham terus tumbuh",
+     "detail": "EPS (laba per saham) naik 8.1% dalam setahun terakhir dan rata-rata tumbuh 11.6% per tahun selama 3 tahun.",
      "metric_keys": [
-      "eps_cagr_3y",
-      "eps_yoy"
-     ]
-    }
-   ],
-   "watch_outs": [
-    {
-     "text": "P/E lebih tinggi dari 89% periode 5 tahun terakhir (median 26.3x). Ekspektasi tinggi membuat hasil yang lemah lebih berpengaruh.",
-     "metric_keys": [
-      "pe"
+      "eps_yoy",
+      "eps_cagr_3y"
      ]
     },
     {
-     "text": "P/S (harga dibanding penjualan) 8.23x, lebih tinggi dari 99.6% periode 5 tahun dan jauh di atas median peer 2.27x.",
+     "title": "Target analis sedikit di atas harga",
+     "detail": "Analis Wall Street memperkirakan target harga rata-rata Rp1,836,000, sedikit di atas harga saat ini Rp1,795,000, dengan rentang Rp1,618,000 hingga Rp2,060,000.",
      "metric_keys": [
-      "ps"
-     ]
-    },
-    {
-     "text": "Estimasi DCF (nilai dari perkiraan arus kas) skenario dasar Rp1,002,000, di bawah harga Rp1,787,000. Ini estimasi berbasis asumsi, bukan prediksi.",
-     "metric_keys": [
-      "dcf_base",
+      "analyst_target_mean",
+      "analyst_target_low",
+      "analyst_target_high",
       "price"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Laporan laba berikutnya pada 9 Feb 2027.",
-    "Analis Wall Street memperkirakan target harga Rp1,611,000 hingga Rp2,051,000, rata-rata Rp1,824,000, dekat harga saat ini Rp1,787,000."
+   "bearish": [
+    {
+     "title": "Harga tinggi dibanding sejarahnya",
+     "detail": "P/E 28.7x lebih tinggi dari 89% periode 5 tahun terakhir (median 26.3x), dan P/S (harga dibanding penjualan) 8.22x hampir tertinggi dalam 5 tahun.",
+     "metric_keys": [
+      "pe",
+      "ps"
+     ]
+    },
+    {
+     "title": "Rasio lain jauh di atas pesaing",
+     "detail": "P/S 8.22x jauh di atas median pesaing 2.27x, dan EV/EBITDA (nilai perusahaan dibanding laba operasional) 24.9x dibanding median pesaing 13.9x.",
+     "metric_keys": [
+      "ps",
+      "ev_ebitda"
+     ]
+    },
+    {
+     "title": "Pertumbuhan lebih lambat dari pesaing",
+     "detail": "Pendapatan naik 7.4% setahun, di bawah median pesaing 11.2%; PEG (P/E dibanding pertumbuhan laba) 5.19x karena analis memperkirakan EPS hanya tumbuh 5.5%.",
+     "metric_keys": [
+      "revenue_yoy",
+      "peg"
+     ]
+    },
+    {
+     "title": "Estimasi nilai wajar di bawah harga",
+     "detail": "Estimasi DCF (nilai dari perkiraan arus kas masa depan) kasus dasar Rp1,006,000 per saham, di bawah harga Rp1,795,000; angka ini bergantung pada asumsi.",
+     "metric_keys": [
+      "dcf_base",
+      "dcf_bear",
+      "dcf_bull",
+      "price"
+     ]
+    }
    ],
-   "ask_yourself": "Apakah Anda nyaman membayar lebih dari biasanya untuk perusahaan yang pertumbuhannya lebih lambat dari pesaingnya?",
    "data_gaps": [
-    "Tidak ada perbandingan riwayat atau peer untuk Forward P/E, P/B, P/FCF dan FCF yield.",
-    "Banyak data bertanda DEMO_ONLY dan dikonversi dari dolar AS dengan kurs 18,310, sehingga angka rupiah bisa berbeda dari kondisi sebenarnya."
+    "Forward P/E, P/B, P/FCF dan FCF yield tidak memiliki perbandingan dengan sejarah perusahaan atau pesaing, sehingga sulit dinilai.",
+    "Pertumbuhan EPS tidak dibandingkan dengan pesaing, hanya pertumbuhan pendapatan yang memiliki median pesaing."
    ]
   },
   "model": "claude-opus-5-5",
-  "attempts": 2,
-  "cost_usd": 0.114842,
+  "attempts": 1,
+  "cost_usd": 0.053808,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

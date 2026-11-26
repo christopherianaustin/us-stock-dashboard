@@ -1,6 +1,6 @@
 {
  "ticker": "TSLA",
- "generated_at": "2026-11-25T10:45:19+00:00",
+ "generated_at": "2026-11-26T07:14:57+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,19 +9,82 @@
   "ticker": "TSLA",
   "tab": "ownership_sentiment",
   "lang": "en",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Not applicable",
-  "as_of": "2026-11-25T10:45:19+00:00",
-  "source": "fallback",
+  "as_of": "2026-11-26T07:14:57+00:00",
+  "source": "ai",
   "summary": {
-   "label": "Automatic summary",
-   "signal": "Not applicable",
-   "positives": [],
-   "watch_outs": []
+   "bullish": [
+    {
+     "title": "More analysts positive than negative",
+     "detail": "Of 54 Wall Street analysts, 10 rate it strong buy and 19 buy, while only 2 say sell and none strong sell.",
+     "metric_keys": [
+      "wall_street_analyst_ratings"
+     ]
+    },
+    {
+     "title": "Recent upgrades and new Buy",
+     "detail": "Barclays upgraded to Overweight (rate above average) on 26 October 2026; HSBC moved from Reduce to Hold; Seaport Global started at Buy.",
+     "metric_keys": [
+      "recent_rating_changes_by_analysts"
+     ]
+    },
+    {
+     "title": "Average target above current price",
+     "detail": "Wall Street analysts' average 12-month price target is $419.05, above the current share price of $380.14.",
+     "metric_keys": [
+      "analyst_target_mean",
+      "price"
+     ]
+    },
+    {
+     "title": "Few bets against the stock",
+     "detail": "Only 2.03% of tradable shares are sold short (bets the price falls), and covering them would take about 1.8 days of trading.",
+     "metric_keys": [
+      "short_interest"
+     ]
+    }
+   ],
+   "bearish": [
+    {
+     "title": "Heavy insider selling",
+     "detail": "Insiders sold more than they bought in every month shown, including a net $938 million in September 2026.",
+     "metric_keys": [
+      "insider_net_buying_by_month"
+     ]
+    },
+    {
+     "title": "Many analysts say hold",
+     "detail": "23 of 54 analysts rate it hold, and the average score is 2.31 on a 1-to-5 scale, between buy and hold.",
+     "metric_keys": [
+      "wall_street_analyst_ratings"
+     ]
+    },
+    {
+     "title": "Analysts strongly disagree on value",
+     "detail": "Analyst 12-month price targets range from $128.11 to $600, and the low target is far below today's $380.14.",
+     "metric_keys": [
+      "analyst_target_low",
+      "analyst_target_high",
+      "price"
+     ]
+    },
+    {
+     "title": "Some ratings stay cautious",
+     "detail": "GLJ Research repeated its Sell rating on 5 and 13 November 2026, and UBS kept a Neutral rating on 24 November.",
+     "metric_keys": [
+      "recent_rating_changes_by_analysts"
+     ]
+    }
+   ],
+   "data_gaps": [
+    "Insider trading data is missing for July and August 2026.",
+    "No peer or historical comparison is given for short interest or institutional ownership (44.8%), so these are hard to judge."
+   ]
   },
   "model": "claude-opus-5-5",
-  "cost_usd": 0.067994,
+  "attempts": 2,
+  "cost_usd": 0.079203,
   "cached": false,
   "disclaimer": "AI-generated from the data on this page. It can make mistakes and is not investment advice.",
   "sample": true

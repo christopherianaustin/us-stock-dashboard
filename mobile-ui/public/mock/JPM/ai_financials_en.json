@@ -1,6 +1,6 @@
 {
  "ticker": "JPM",
- "generated_at": "2026-11-25T10:46:12+00:00",
+ "generated_at": "2026-11-26T07:16:19+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,19 +9,91 @@
   "ticker": "JPM",
   "tab": "financials",
   "lang": "en",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "CALCULATED_SAFE",
-  "rule_based_signal": "Strong",
-  "as_of": "2026-11-25T10:46:12+00:00",
-  "source": "fallback",
+  "as_of": "2026-11-26T07:16:19+00:00",
+  "source": "ai",
   "summary": {
-   "label": "Automatic summary",
-   "signal": "Strong",
-   "positives": [],
-   "watch_outs": []
+   "bullish": [
+    {
+     "title": "Steady revenue growth",
+     "detail": "Revenue grew 8.1% year over year and 12.3% per year over 3 years, from $129 billion in FY2022 to $182 billion in FY2025.",
+     "metric_keys": [
+      "revenue_yoy",
+      "revenue_cagr_3y",
+      "annual.revenue"
+     ]
+    },
+    {
+     "title": "Profit per share rising",
+     "detail": "EPS (profit per share) grew 9.9% from a year earlier, slightly faster than revenue growth of 8.1%.",
+     "metric_keys": [
+      "eps_yoy",
+      "revenue_yoy"
+     ]
+    },
+    {
+     "title": "Healthy profit margins",
+     "detail": "Kept $30.5 of every $100 in revenue as profit in Q3 FY26; annual net margin rose from 29.3% in FY2022 to 31.3% in FY2025.",
+     "metric_keys": [
+      "quarterly_income.net_margin",
+      "annual.net_margin"
+     ]
+    },
+    {
+     "title": "Cash far above debt",
+     "detail": "Cash of $326 billion is far above total debt of $71.3 billion, leaving net cash (cash minus debt) of about $255 billion in Q3 FY26.",
+     "metric_keys": [
+      "balance_sheet.cash",
+      "balance_sheet.total_debt",
+      "balance_sheet.net_debt"
+     ]
+    }
+   ],
+   "bearish": [
+    {
+     "title": "Latest quarter below peak",
+     "detail": "Q2 FY26 revenue of $57.3 billion (up 27.7%) and margin of 36.9% stood out; Q3 FY26 fell back to $50.2 billion and 30.5%.",
+     "metric_keys": [
+      "quarterly_income.revenue",
+      "quarterly_income.revenue_yoy",
+      "quarterly_income.net_margin"
+     ]
+    },
+    {
+     "title": "Annual profit dipped in FY2025",
+     "detail": "Net income slipped from $58.5 billion in FY2024 to $57 billion in FY2025, and net margin fell from 32.9% to 31.3%.",
+     "metric_keys": [
+      "annual.net_income",
+      "annual.net_margin"
+     ]
+    },
+    {
+     "title": "Uneven quarterly results",
+     "detail": "Quarterly results swing: revenue fell 10.5% year over year in Q2 FY25, and net margin dropped to 28.4% in Q4 FY25.",
+     "metric_keys": [
+      "quarterly_income.revenue_yoy",
+      "quarterly_income.net_margin"
+     ]
+    },
+    {
+     "title": "Debt up, cash down slightly",
+     "detail": "Total debt rose from $64.8 billion in Q4 FY25 to $71.3 billion in Q3 FY26, while cash dipped from $343 billion to $326 billion.",
+     "metric_keys": [
+      "balance_sheet.total_debt",
+      "balance_sheet.cash"
+     ]
+    }
+   ],
+   "data_gaps": [
+    "Operating cash flow swings widely (from -$252 billion to $148 billion) because loans and deposits run through it, so it cannot confirm reported profit.",
+    "Free cash flow, gross margin and operating margin are not available for this bank.",
+    "No peer or S&P 500 comparisons are given for growth or margins."
+   ]
   },
   "model": "claude-opus-5-5",
-  "cost_usd": 0.069654,
+  "attempts": 2,
+  "cost_usd": 0.115235,
   "cached": false,
   "disclaimer": "AI-generated from the data on this page. It can make mistakes and is not investment advice.",
   "sample": true

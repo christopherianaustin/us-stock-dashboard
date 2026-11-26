@@ -7,11 +7,15 @@ explanation of the data on that page. Our code calculates every number; the AI o
 
 1. The input builder (`core/ai_summary/input_builder.py`) packs the tab's data into a small JSON object:
    numbers rounded, ratios as %, money in short units.
-2. Claude (`claude-opus-5-5`, effort `medium`) writes a structured answer: signal, headline, takeaway, positives,
-   watch-outs, what to watch next, ask yourself, data gaps.
-3. The validator checks it for banned buy/sell words, numbers that aren't in the data, length limits, and how far
-   the signal moved. If a check fails, it retries once with a note. If it fails again, the card shows the rule-based
-   **Automatic summary**.
+2. Claude (`claude-opus-5-5`, effort `medium`, prompt version 2.0) writes a structured answer (SPEC Section 16):
+   - **bullish:** 0–4 points that support a positive view;
+   - **bearish:** 0–4 points that support a negative view, or are risks;
+   - **data_gaps:** 0–3 notes.
+
+   Each point is a 2–6 word title plus one sentence of at most 25 words.
+3. The validator checks it for banned buy/sell words, numbers that aren't in the data, and length limits. If a check
+   fails, it retries once with a note. If it fails again, the card shows the rule-based **Automatic summary**:
+   Section 7 strengths as bullish points and risks as bearish points.
 4. The result is cached for 24 hours, or until the data changes.
 5. Every attempt is logged to `logs/ai_summaries.jsonl`.
 6. Thumbs up/down votes are saved to `logs/ai_feedback.jsonl`.

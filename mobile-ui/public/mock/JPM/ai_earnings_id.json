@@ -1,6 +1,6 @@
 {
  "ticker": "JPM",
- "generated_at": "2026-11-25T10:46:11+00:00",
+ "generated_at": "2026-11-26T07:16:09+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,65 +9,68 @@
   "ticker": "JPM",
   "tab": "earnings",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Neutral",
-  "as_of": "2026-11-25T10:46:11+00:00",
+  "as_of": "2026-11-26T07:16:09+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Neutral",
-   "headline": "Sering melampaui estimasi, tetapi kuartal terakhir meleset dan estimasi dipangkas",
-   "takeaway": "JPM melampaui estimasi laba di 6 dari 8 kuartal terakhir. Namun kuartal terakhir meleset, dan lebih banyak analis memangkas estimasi jangka pendek daripada menaikkannya.",
-   "positives": [
+   "bullish": [
     {
-     "text": "EPS (laba per saham) melampaui estimasi analis di 6 dari 8 kuartal terakhir. Selisih terbesar 19.2% di atas estimasi pada Q4 FY24.",
+     "title": "Sering melampaui estimasi analis",
+     "detail": "EPS (laba per saham) berada di atas estimasi analis pada 6 dari 8 kuartal terakhir, dengan selisih terbesar 19.2% pada Q4 FY24.",
      "metric_keys": [
       "beat_rate_8q",
       "last_quarters"
      ]
     },
     {
-     "text": "Untuk tahun fiskal depan, 9 analis menaikkan estimasi dan hanya 1 yang memangkas dalam 30 hari terakhir.",
+     "title": "Estimasi tahun depan banyak dinaikkan",
+     "detail": "Dalam 30 hari terakhir, 9 analis menaikkan dan hanya 1 yang memangkas estimasi laba untuk tahun fiskal berikutnya.",
      "metric_keys": [
       "analyst_estimate_revisions_30d"
      ]
+    },
+    {
+     "title": "Estimasi EPS di atas tahun lalu",
+     "detail": "Analis Wall Street memperkirakan EPS Rp107,800 untuk laporan 14 Januari 2027, lebih tinggi dari Rp85,150 pada kuartal yang sama tahun lalu.",
+     "metric_keys": [
+      "next_earnings"
+     ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "Q3 FY26 meleset 3.24% di bawah estimasi. Ini meleset kedua dalam 4 kuartal, setelah Q4 FY25 yang meleset 3.91%.",
+     "title": "Kuartal terakhir di bawah estimasi",
+     "detail": "EPS Q3 FY26 sebesar Rp105,700, sekitar 3.2% di bawah estimasi Rp109,300, menjadi hasil meleset kedua setelah Q4 FY25.",
      "metric_keys": [
       "last_quarters"
      ]
     },
     {
-     "text": "Untuk kuartal berjalan, 7 analis memangkas estimasi dan hanya 2 yang menaikkan dalam 30 hari terakhir.",
+     "title": "Estimasi jangka dekat lebih banyak dipangkas",
+     "detail": "Dalam 30 hari terakhir, 7 analis memangkas dan 2 menaikkan estimasi kuartal ini, sementara untuk tahun fiskal berjalan 7 dipangkas dan 3 dinaikkan.",
      "metric_keys": [
       "analyst_estimate_revisions_30d"
      ]
     },
     {
-     "text": "Harga rata-rata bergerak 2.49% sehari setelah laporan laba. Penurunan terbesar -4.19% terjadi setelah meleset di Q4 FY25.",
+     "title": "Reaksi harga tidak selalu positif",
+     "detail": "Harga rata-rata bergerak 2.49% sehari setelah laporan, turun 4.19% saat meleset di Q4 FY25, dan juga sempat turun 1.91% walau melampaui estimasi di Q3 FY25.",
      "metric_keys": [
       "typical_move",
       "last_quarters"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Laporan laba berikutnya pada 14 Jan 2027, sebelum pasar buka. Analis Wall Street memperkirakan EPS Rp107,300, dibanding Rp84,780 setahun lalu.",
-    "Analis memperkirakan pendapatan sekitar Rp935 triliun (rata-rata dari 12 analis)."
-   ],
-   "ask_yourself": "Seberapa nyaman Anda jika harga bergerak sekitar 2.5% dalam sehari setelah laporan laba?",
    "data_gaps": [
-    "Data bertanda DEMO_ONLY, jadi keakuratannya perlu dicek ulang.",
-    "Angka dikonversi dari dolar AS dengan kurs Rp18,310, sehingga bisa berubah mengikuti kurs.",
-    "Tidak ada riwayat pendapatan aktual dibanding estimasi untuk kuartal sebelumnya."
+    "Skor kualitas laba 54 (Netral) tidak disertai penjelasan komponen penilaiannya.",
+    "Tidak ada data pendapatan aktual dibandingkan estimasi untuk kuartal-kuartal sebelumnya, hanya EPS.",
+    "Semua angka dikonversi dari dolar AS dengan kurs Rp18,390, sehingga nilai rupiah dapat berubah mengikuti kurs."
    ]
   },
   "model": "claude-opus-5-5",
-  "attempts": 1,
-  "cost_usd": 0.030789,
+  "attempts": 2,
+  "cost_usd": 0.097063,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

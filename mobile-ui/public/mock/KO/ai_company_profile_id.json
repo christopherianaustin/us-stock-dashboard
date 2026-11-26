@@ -1,6 +1,6 @@
 {
  "ticker": "KO",
- "generated_at": "2026-11-25T10:44:24+00:00",
+ "generated_at": "2026-11-26T07:13:09+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,66 +9,73 @@
   "ticker": "KO",
   "tab": "company_profile",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Not applicable",
-  "as_of": "2026-11-25T10:44:24+00:00",
+  "as_of": "2026-11-26T07:13:09+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Not applicable",
-   "headline": "Coca-Cola menjual minuman non-alkohol lewat banyak merek dan mitra pembotolan",
-   "takeaway": "Coca-Cola membuat dan menjual minuman non-alkohol di AS dan dunia. Uang masuk dari penjualan minuman jadi, serta konsentrat dan sirup ke mitra pembotolan, restoran, dan toko.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Perusahaan berdiri tahun 1886 dan tercatat di bursa NYSE sejak 1950, jadi riwayat bisnisnya sangat panjang.",
+     "title": "Merek terkenal dan sangat beragam",
+     "detail": "Berdiri sejak 1886, menjual Coca-Cola, Sprite, Fanta, Dasani, Minute Maid, BODYARMOR, Costa dan banyak merek lain di berbagai jenis minuman.",
      "metric_keys": [
-      "description",
-      "ipo_date",
-      "exchange"
-     ]
-    },
-    {
-     "text": "Nilai pasar (harga saham x jumlah saham) sekitar Rp7,690 triliun, termasuk perusahaan sangat besar.",
-     "metric_keys": [
-      "market_cap"
-     ]
-    },
-    {
-     "text": "Punya sekitar 65,900 karyawan dan banyak merek, seperti Coca-Cola, Sprite, Fanta, Minute Maid, dan Dasani.",
-     "metric_keys": [
-      "employees",
       "description"
      ]
-    }
-   ],
-   "watch_outs": [
+    },
     {
-     "text": "Nilai Rp7,690 triliun dihitung dengan kurs Rp18,310 per dolar AS. Jika kurs berubah, nilai dalam rupiah ikut berubah.",
+     "title": "Perusahaan berukuran sangat besar",
+     "detail": "Nilai pasar (harga saham dikali jumlah saham) sekitar Rp7,720 triliun, dihitung dengan kurs Rp18,390 per dolar AS.",
      "metric_keys": [
       "market_cap",
       "exchange_rate_used"
      ]
     },
     {
-     "text": "Sejak 1886 penjualan bergantung pada jaringan mitra pembotolan, distributor, dan pengecer independen, bukan hanya operasi sendiri.",
+     "title": "Produk kebutuhan sehari-hari",
+     "detail": "Masuk sektor Consumer Defensive (barang yang tetap dibeli saat ekonomi lesu), dan sudah tercatat di bursa NYSE sejak 1950.",
      "metric_keys": [
-      "description"
+      "sector",
+      "ipo_date",
+      "exchange"
+     ]
+    },
+    {
+     "title": "Jaringan penjualan luas",
+     "detail": "Menjual di Amerika Serikat dan internasional, termasuk sirup ke restoran dan minimarket, dengan 65,900 karyawan di kantor pusat Atlanta dan seluruh dunia.",
+     "metric_keys": [
+      "description",
+      "employees"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Tahun buku Coca-Cola berakhir 31 Desember; laporan tahunan terakhir untuk tahun yang berakhir 31 Desember 2025."
+   "bearish": [
+    {
+     "title": "Bergantung pada mitra pembotolan",
+     "detail": "Dengan 65,900 karyawan, banyak produksi dan distribusi dilakukan lewat mitra pembotolan, distributor dan pengecer independen di luar kendali penuh perusahaan.",
+     "metric_keys": [
+      "description",
+      "employees"
+     ]
+    },
+    {
+     "title": "Hanya fokus pada minuman",
+     "detail": "Meski bernilai Rp7,720 triliun, bisnisnya hanya minuman non-alkohol dan bersaing dengan perusahaan serupa seperti PEP, KDP, MNST dan CELH.",
+     "metric_keys": [
+      "market_cap",
+      "industry",
+      "similar_companies"
+     ]
+    }
    ],
-   "ask_yourself": "Seberapa paham Anda cara bisnis minuman ini menghasilkan uang sebelum mempertimbangkannya?",
    "data_gaps": [
-    "Tidak ada rincian pendapatan per produk atau per wilayah.",
-    "Tidak ada tanggal laporan keuangan berikutnya.",
-    "Data nilai pasar berlabel DEMO_ONLY, jadi mungkin hanya untuk contoh."
+    "Tab ini tidak berisi data pendapatan, jadi tidak terlihat merek atau wilayah mana yang paling banyak menghasilkan uang.",
+    "Tidak ada perbandingan nilai pasar dengan perusahaan serupa atau S&P 500.",
+    "Tidak ada data laba, utang atau pertumbuhan untuk menilai kondisi keuangan."
    ]
   },
   "model": "claude-opus-5-5",
   "attempts": 2,
-  "cost_usd": 0.061086,
+  "cost_usd": 0.100959,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

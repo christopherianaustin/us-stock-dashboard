@@ -1,6 +1,6 @@
 {
  "ticker": "KO",
- "generated_at": "2026-11-25T10:43:26+00:00",
+ "generated_at": "2026-11-26T07:11:49+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,75 +9,83 @@
   "ticker": "KO",
   "tab": "financials",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Neutral",
-  "as_of": "2026-11-25T10:43:26+00:00",
+  "as_of": "2026-11-26T07:11:49+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Neutral",
-   "headline": "Pendapatan dan margin membaik, tapi arus kas dan data utang naik-turun",
-   "takeaway": "Pendapatan dan laba KO tumbuh, margin membaik, dan kas naik ke Rp246 triliun. Namun arus kas per kuartal naik-turun tajam, kuartal Q4 cenderung lebih lemah, dan data utang terbaru belum lengkap.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Pendapatan Q3 FY26 Rp245 triliun, naik 7.4% dari kuartal yang sama tahun lalu, lebih cepat dari rata-rata 3 tahun 3.7% per tahun.",
+     "title": "Margin laba makin tebal",
+     "detail": "Margin bersih (laba dari tiap penjualan) Q3 FY26 sebesar 30%, naik dari 29.7% setahun lalu; tahunan FY2025 27.3% vs 22.6% di FY2024.",
+     "metric_keys": [
+      "net_margin"
+     ]
+    },
+    {
+     "title": "Pendapatan dan laba tumbuh",
+     "detail": "Pendapatan Q3 FY26 naik 7.43% dibanding kuartal yang sama tahun lalu, dan EPS (laba per saham) naik 8.14%.",
      "metric_keys": [
       "revenue_yoy",
+      "eps_yoy",
+      "revenue"
+     ]
+    },
+    {
+     "title": "Arus kas mendukung laba",
+     "detail": "Cash conversion (kas operasi dibanding laba bersih) 1.11x; free cash flow (kas sisa setelah belanja modal) Q3 FY26 sekitar Rp83.7 triliun.",
+     "metric_keys": [
+      "cash_conversion",
+      "fcf",
+      "operating_cash_flow"
+     ]
+    },
+    {
+     "title": "Kas besar, utang kecil",
+     "detail": "Kas naik ke Rp247 triliun di Q3 FY26 dari Rp189 triliun di Q4 FY25; per Q1 FY26 kas melebihi utang sekitar Rp190 triliun.",
+     "metric_keys": [
+      "cash",
+      "total_debt",
+      "net_debt"
+     ]
+    }
+   ],
+   "bearish": [
+    {
+     "title": "Pertumbuhan jangka panjang lambat",
+     "detail": "Rata-rata pertumbuhan pendapatan 3 tahun (CAGR) hanya 3.69% per tahun, dan skor pertumbuhan 49 tergolong netral.",
+     "metric_keys": [
       "revenue_cagr_3y",
-      "quarterly_income.revenue"
+      "growth"
      ]
     },
     {
-     "text": "Margin bersih (laba dari tiap penjualan) Q3 FY26 30%, naik dari 29.7% setahun lalu. Tahun FY2025 mencapai 27.3%, dari 22.6% di FY2024.",
+     "title": "Kuartal keempat cenderung lemah",
+     "detail": "Margin operasi (laba bisnis inti per penjualan) Q4 FY25 turun tajam ke 15.6% dari 23.5% setahun sebelumnya; laporan Q4 berikutnya 9 Februari 2027.",
      "metric_keys": [
-      "quarterly_income.net_margin",
-      "annual.net_margin"
+      "operating_margin",
+      "net_margin"
      ]
     },
     {
-     "text": "Cash conversion 1.11x: arus kas operasi sedikit lebih besar dari laba yang dilaporkan, jadi laba didukung uang tunai nyata.",
+     "title": "Arus kas kuartal pertama naik-turun",
+     "detail": "Kas operasi Q1 FY25 minus Rp95.7 triliun, dan Q1 FY26 hanya Rp37.2 triliun, jauh di bawah laba bersih Rp72.2 triliun.",
      "metric_keys": [
-      "cash_conversion"
+      "operating_cash_flow",
+      "fcf",
+      "net_income"
      ]
     }
    ],
-   "watch_outs": [
-    {
-     "text": "Kuartal Q4 cenderung lemah: margin operasi (laba dari bisnis inti) turun ke 15.6% di Q4 FY25, dari 32% di kuartal sebelumnya.",
-     "metric_keys": [
-      "quarterly_income.operating_margin"
-     ]
-    },
-    {
-     "text": "Arus kas operasi naik-turun tajam: minus Rp95.2 triliun di Q1 FY25, dan hanya Rp37 triliun di Q1 FY26 saat laba Rp71.8 triliun.",
-     "metric_keys": [
-      "quarterly_cash_flow.operating_cash_flow",
-      "quarterly_income.net_income"
-     ]
-    },
-    {
-     "text": "Total utang turun mendadak dari Rp27.4 triliun ke Rp4.58 triliun dalam satu kuartal; data utang terbaru tidak tersedia.",
-     "metric_keys": [
-      "balance_sheet.total_debt"
-     ]
-    }
-   ],
-   "what_to_watch_next": [
-    "Laporan laba berikutnya pada 9 Feb 2027 (hasil Q4, yang dua tahun terakhir marginnya lebih rendah).",
-    "Apakah arus kas operasi tetap di atas laba, setelah Rp90.2 triliun di Q3 FY26."
-   ],
-   "ask_yourself": "Seberapa nyaman Anda dengan hasil per kuartal yang naik-turun, jika tren tahunannya tumbuh?",
    "data_gaps": [
-    "Data total utang dan utang bersih untuk Q2 dan Q3 FY26 tidak tersedia.",
-    "Penurunan utang dari Rp27.4 triliun ke Rp4.58 triliun tidak dijelaskan; datanya mungkin tidak lengkap.",
-    "Penyebab arus kas operasi negatif di Q1 FY25 tidak dijelaskan.",
-    "Tidak ada perbandingan dengan perusahaan sejenis atau rata-rata pasar di tab ini.",
-    "Angka dikonversi dari dolar AS dengan kurs 18310; perubahan kurs bisa memengaruhi angka dalam rupiah."
+    "Data total utang dan utang bersih untuk Q2 dan Q3 FY26 tidak tersedia, jadi posisi utang terbaru belum bisa dipastikan.",
+    "Total utang turun mendadak dari Rp27.5 triliun ke Rp4.6 triliun dalam satu kuartal tanpa penjelasan; angka ini perlu dibaca dengan hati-hati.",
+    "Semua angka dikonversi dari dolar AS dengan kurs Rp18,390, sehingga perubahan kurs bisa memengaruhi perbandingan antarperiode."
    ]
   },
   "model": "claude-opus-5-5",
-  "attempts": 2,
-  "cost_usd": 0.154166,
+  "attempts": 1,
+  "cost_usd": 0.062232,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

@@ -1,6 +1,6 @@
 {
  "ticker": "AAPL",
- "generated_at": "2026-11-25T10:41:32+00:00",
+ "generated_at": "2026-11-26T07:09:38+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,69 +9,83 @@
   "ticker": "AAPL",
   "tab": "summary",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Strong",
-  "as_of": "2026-11-25T10:41:32+00:00",
+  "as_of": "2026-11-26T07:09:38+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Strong",
-   "headline": "Bisnis sangat menguntungkan, tetapi valuasi di atas sejarah dan peer",
-   "takeaway": "Enam dari tujuh pilar bernilai kuat, terutama profitabilitas dan momentum dengan skor 96. Risiko utamanya valuasi: P/E 39.5 kali, lebih tinggi dari 96% periode 5 tahun terakhir dan 1.9 kali median perusahaan sejenis.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Net margin (laba bersih dibanding penjualan) 27.6%: sekitar Rp28 laba dari tiap Rp100 penjualan. Median perusahaan sejenis hanya 7.2%.",
+     "title": "Laba jauh di atas pesaing",
+     "detail": "Margin laba bersih (porsi penjualan yang jadi laba) 27.6% dan ROE (laba dibanding modal pemegang saham) 142%, jauh di atas median pesaing 7.15% dan 73.6%.",
      "metric_keys": [
-      "net_margin"
-     ]
-    },
-    {
-     "text": "ROE (laba dibanding modal pemegang saham) 142%, jauh di atas median perusahaan sejenis 73.6%.",
-     "metric_keys": [
+      "net_margin",
       "roe"
      ]
     },
     {
-     "text": "Laba melampaui estimasi EPS (laba per saham) di 8 dari 8 kuartal terakhir, dan skor Piotroski 9/9.",
+     "title": "Keuangan tergolong sangat sehat",
+     "detail": "Skor Piotroski (9 cek sederhana kekuatan keuangan) 9/9, dengan rasio utang terhadap ekuitas (utang dibanding modal sendiri) 0.697x.",
      "metric_keys": [
-      "rule_based_strengths"
+      "debt_to_equity"
+     ]
+    },
+    {
+     "title": "Konsisten melampaui estimasi laba",
+     "detail": "Laba per saham (EPS) melampaui estimasi analis di 8 dari 8 kuartal terakhir; skor pilar kualitas laba 89.",
+     "metric_keys": []
+    },
+    {
+     "title": "Harga dekat titik tertinggi",
+     "detail": "Harga Rp6,539,000 mendekati level tertinggi 52 minggu Rp6,636,000, dan skor pilar momentum 97, tertinggi di antara semua pilar.",
+     "metric_keys": [
+      "price",
+      "week52_high",
+      "week52_low"
      ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "P/E (harga dibanding laba setahun) 39.5, di atas median 5 tahunnya 31.6 dan median perusahaan sejenis 20.8.",
+     "title": "Valuasi di atas sejarahnya sendiri",
+     "detail": "P/E (harga dibanding laba setahun) 39.6, lebih tinggi dari 96% periode 5 tahun terakhir (median 31.6); skor pilar valuasi hanya 7.",
      "metric_keys": [
       "pe"
      ]
     },
     {
-     "text": "Pendapatan tumbuh 11.7% setahun, lebih lambat dari median perusahaan sejenis 46.6%.",
+     "title": "Harga lebih tinggi dari pesaing",
+     "detail": "P/E 39.6 vs median pesaing 20.8, P/S (harga dibanding penjualan) 10.8 vs 2.58, dan EV/EBITDA 30.3 vs 11.7.",
+     "metric_keys": [
+      "pe",
+      "ps",
+      "ev_ebitda"
+     ]
+    },
+    {
+     "title": "Pendapatan tumbuh lebih lambat",
+     "detail": "Pendapatan naik 11.7% dibanding tahun lalu, jauh di bawah median pesaing 46.6%, padahal valuasinya lebih tinggi dari pesaing.",
      "metric_keys": [
       "revenue_yoy"
      ]
     },
     {
-     "text": "P/S (harga dibanding penjualan) 10.7, lebih tinggi dari 98.5% periode 5 tahun terakhir. Median perusahaan sejenis 2.58.",
+     "title": "Dividen relatif kecil",
+     "detail": "Imbal hasil dividen (dividen setahun dibanding harga saham) hanya 0.301%, dan pilar dividen dinilai netral dengan skor 67.",
      "metric_keys": [
-      "ps"
+      "dividend_yield"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Laporan laba berikutnya pada 29 Jan 2027.",
-    "Harga Rp6,483,000 dekat level tertinggi 52 minggu di Rp6,607,000; level terendahnya Rp4,457,000."
-   ],
-   "ask_yourself": "Seberapa nyaman Anda membeli saham yang harganya dibanding laba lebih tinggi dari biasanya?",
    "data_gaps": [
-    "Pilar kesehatan keuangan hanya memakai 4 dari 5 metrik.",
-    "Sebagian besar data harga dan valuasi bertanda DEMO_ONLY, jadi mungkin bukan data pasar terkini.",
-    "Nilai rupiah dikonversi dari dolar AS dengan kurs 18,310, sehingga bisa berubah mengikuti kurs."
+    "Pilar kesehatan keuangan hanya memakai 4 dari 5 metrik, dan rasio utang serta dividen tidak punya pembanding pesaing.",
+    "Semua angka rupiah dikonversi dari dolar AS dengan kurs Rp18,390, jadi nilainya ikut berubah bila kurs bergerak.",
+    "Median pertumbuhan pendapatan pesaing 46.6% tergolong sangat tinggi; daftar pesaing tidak tersedia sehingga perbandingan ini sulit diperiksa."
    ]
   },
   "model": "claude-opus-5-5",
-  "attempts": 2,
-  "cost_usd": 0.097307,
+  "attempts": 1,
+  "cost_usd": 0.059374,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

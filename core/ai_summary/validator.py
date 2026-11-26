@@ -1,10 +1,12 @@
-"""Safety and accuracy checks run on every AI summary before it is shown (SPEC 15.8).
+"""Safety and accuracy checks run on every AI summary before it is shown (SPEC 15.8, as changed by 16.6).
 
 1. Banned phrases (our own buy/sell/hold calls, predictions, promises), in English and Indonesian.
    Exception: sentences that clearly attribute the words to analysts, in the tabs listed in the config.
 2. Number check: every number in the output must be in the input data (within rounding).
-3. Length check: the limits in schema.LIMITS.
-4. Signal check: moves at most one step from the rule-based signal.
+3. Length check: the limits in schema.LIMITS (0-4 points per list, title 2-6 words, detail max 25 words,
+   data_gaps max 3).
+4. Completeness: not too thin for the amount of data, and no empty side when our rule-based checks found
+   strengths or risks for this tab.
 """
 from __future__ import annotations
 
@@ -23,7 +25,6 @@ from core.ai_summary.schema import LIMITS, TabSummary
 NUM_RE = re.compile(r"\d+(?:[.,]\d+)*")
 # numbers that may appear without being in the data ("for every $100", "one of 1")
 ALWAYS_OK = {0.0, 1.0, 100.0}
-SIGNAL_ORDER = {"Weak": 0, "Neutral": 1, "Strong": 2}
 
 
 @dataclass
@@ -41,10 +42,10 @@ def banned_config() -> dict:
 # =========================================================================== text helpers
 def texts_of(s: TabSummary) -> list[tuple[str, str]]:
     """(field name, text) for every piece of text in a summary."""
-    out = [("headline", s.headline), ("takeaway", s.takeaway), ("ask_yourself", s.ask_yourself)]
-    out += [(f"positives[{i}]", p.text) for i, p in enumerate(s.positives)]
-    out += [(f"watch_outs[{i}]", p.text) for i, p in enumerate(s.watch_outs)]
-    out += [(f"what_to_watch_next[{i}]", t) for i, t in enumerate(s.what_to_watch_next)]
+    out = []
+    for kind in ("bullish", "bearish"):
+        for i, p in enumerate(getattr(s, kind)):
+            out += [(f"{kind}[{i}].title", p.title), (f"{kind}[{i}].detail", p.detail)]
     out += [(f"data_gaps[{i}]", t) for i, t in enumerate(s.data_gaps)]
     return out
 
@@ -69,9 +70,12 @@ def check_banned(s: TabSummary, tab: str) -> list[str]:
     phrases = list(cfg.get("en", [])) + list(cfg.get("id", []))
     exempt_tab = tab in cfg.get("analyst_exception_tabs", [])
     analyst_res = [_phrase_re(w) for w in cfg.get("analyst_words", [])]
+    allowed_res = [_phrase_re(w) for w in cfg.get("allowed_phrases", [])]
     failures = []
     for name, text in texts_of(s):
         for sent in sentences(text):
+            for r in allowed_res:
+                sent = r.sub(" ", sent)
             if exempt_tab and any(r.search(sent) for r in analyst_res):
                 continue
             for ph in phrases:
@@ -146,53 +150,79 @@ def matches(out: float, data: Iterable[float]) -> bool:
     return False
 
 
+NAMED_NUMBERS = re.compile(r"S&P\s?500", re.IGNORECASE)    # index names, not data ("S&P 500")
+
+
 def check_numbers(s: TabSummary, payload: dict) -> list[str]:
     data = numbers_in_data(payload)
     failures = []
     for name, text in texts_of(s):
-        for token, readings in numbers_in_text(text):
+        for token, readings in numbers_in_text(NAMED_NUMBERS.sub("S&P", text)):
             if readings and not any(matches(r, data) for r in readings):
                 failures.append(f'number "{token}" in {name} is not in the data')
     return failures
 
 
-# =========================================================================== 3. lengths, 4. signal
+# =========================================================================== 3. lengths
 def check_lengths(s: TabSummary) -> list[str]:
     L, f = LIMITS, []
-    if words(s.headline) > L["headline_words"]:
-        f.append(f'headline has {words(s.headline)} words (max {L["headline_words"]})')
-    if words(s.takeaway) > L["takeaway_words"]:
-        f.append(f'takeaway has {words(s.takeaway)} words (max {L["takeaway_words"]})')
-    if len(sentences(s.takeaway)) > L["takeaway_sentences"]:
-        f.append(f'takeaway has {len(sentences(s.takeaway))} sentences (max {L["takeaway_sentences"]})')
-    for kind in ("positives", "watch_outs"):
+    for kind in ("bullish", "bearish"):
         pts = getattr(s, kind)
         if len(pts) > L["points"]:
             f.append(f"{kind} has {len(pts)} points (max {L['points']})")
         for i, p in enumerate(pts):
-            if words(p.text) > L["point_words"]:
-                f.append(f"{kind}[{i}] has {words(p.text)} words (max {L['point_words']})")
-    if len(s.what_to_watch_next) > L["what_to_watch_next"]:
-        f.append(f"what_to_watch_next has {len(s.what_to_watch_next)} items (max {L['what_to_watch_next']})")
-    if not s.headline.strip() or not s.takeaway.strip():
-        f.append("headline or takeaway is empty")
-    if s.ask_yourself.count("?") != 1:
-        f.append("ask_yourself must be exactly one question")
+            n = words(p.title)
+            if not L["title_words_min"] <= n <= L["title_words_max"]:
+                f.append(f"{kind}[{i}].title has {n} words ({L['title_words_min']} to {L['title_words_max']})")
+            if words(p.detail) > L["detail_words"]:
+                f.append(f"{kind}[{i}].detail has {words(p.detail)} words (max {L['detail_words']})")
+            if len(sentences(p.detail)) > 1:
+                f.append(f"{kind}[{i}].detail has {len(sentences(p.detail))} sentences (must be one)")
+    if len(s.data_gaps) > L["data_gaps"]:
+        f.append(f"data_gaps has {len(s.data_gaps)} items (max {L['data_gaps']})")
     return f
 
 
-def check_signal(s: TabSummary, rule_signal: str) -> list[str]:
-    a, b = SIGNAL_ORDER.get(rule_signal), SIGNAL_ORDER.get(s.signal)
-    if rule_signal == "Not applicable" and s.signal != "Not applicable":
-        return [f'signal must stay "Not applicable" for this tab (got "{s.signal}")']
-    if a is not None and b is not None and abs(a - b) > 1:
-        return [f'signal moved more than one step ("{rule_signal}" -> "{s.signal}")']
-    return []
+# =========================================================================== 4. completeness
+THIN_POINTS = 1          # a card with this many points or fewer ...
+RICH_DATA = 10           # ... is too thin when the tab has at least this many facts
+
+
+def data_facts(payload: dict) -> int:
+    """Rough count of facts in a tab's input: numbers, headlines and a long company description."""
+    def walk(x) -> int:
+        if isinstance(x, bool) or x is None:
+            return 0
+        if isinstance(x, (int, float)):
+            return 1
+        if isinstance(x, str):
+            return 10 if len(x) > 300 else 0       # e.g. the company description
+        if isinstance(x, dict):
+            return sum(walk(v) for k, v in x.items() if k not in ("rule_based_pillars", "as_of"))
+        if isinstance(x, list):
+            return sum(walk(v) if not (isinstance(v, dict) and "headline" in v) else 1 for v in x)
+        return 0
+    return walk(payload)
+
+
+def check_completeness(s: TabSummary, payload: dict, strengths=(), risks=()) -> list[str]:
+    """Catch answers that leave out most of the tab (SPEC 16.1: short, but complete)."""
+    f = []
+    n = len(s.bullish) + len(s.bearish)
+    if n <= THIN_POINTS and data_facts(payload) >= RICH_DATA:
+        f.append(f"only {n} point(s) for a tab with a lot of data: go through every metric, comparison and "
+                 "headline, and cover each important one (most tabs need 2 to 4 points per side)")
+    if strengths and not s.bullish:
+        f.append(f'bullish is empty, but the data shows strengths, for example: "{strengths[0]}"')
+    if risks and not s.bearish:
+        f.append(f'bearish is empty, but the data shows risks, for example: "{risks[0]}"')
+    return f
 
 
 # =========================================================================== all checks
-def validate(s: TabSummary, payload: dict, tab: str, rule_signal: str) -> CheckResult:
-    failures = check_lengths(s) + check_signal(s, rule_signal) + check_banned(s, tab) + check_numbers(s, payload)
+def validate(s: TabSummary, payload: dict, tab: str, strengths=(), risks=()) -> CheckResult:
+    failures = (check_lengths(s) + check_banned(s, tab) + check_numbers(s, payload)
+                + check_completeness(s, payload, strengths, risks))
     return CheckResult(ok=not failures, failures=failures)
 
 

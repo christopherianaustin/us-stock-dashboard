@@ -1,6 +1,6 @@
 {
  "ticker": "AAPL",
- "generated_at": "2026-11-25T10:41:32+00:00",
+ "generated_at": "2026-11-26T07:09:51+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,70 +9,81 @@
   "ticker": "AAPL",
   "tab": "earnings",
   "lang": "en",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Strong",
-  "as_of": "2026-11-25T10:41:32+00:00",
+  "as_of": "2026-11-26T07:09:51+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Neutral",
-   "headline": "Beat estimates 8 quarters straight, but analysts are cutting longer-term forecasts",
-   "takeaway": "Apple beat profit estimates in all of the last 8 quarters. However, the share price often fell the day after, and analysts have recently cut more estimates than they raised for most future periods.",
-   "positives": [
+   "bullish": [
     {
-     "text": "EPS (profit per share) beat Wall Street estimates in 8 of the last 8 quarters, by between 1.7% and 9.5%.",
+     "title": "Beat estimates every quarter",
+     "detail": "EPS (profit per share) beat Wall Street estimates in 8 of the last 8 quarters, by about 1.7% to 9.5%, and 5.8% most recently.",
      "metric_keys": [
       "beat_rate_8q",
       "last_quarters"
      ]
     },
     {
-     "text": "The latest quarter (Q4 FY26) showed EPS of $2.10 against a $1.98 estimate, a 5.8% beat.",
+     "title": "Strong earnings quality",
+     "detail": "Earnings quality score is 89, rated Strong, and the Piotroski score (9 simple checks of financial strength) is a full 9 of 9.",
+     "metric_keys": [
+      "rule_based_pillars",
+      "rule_based_strengths"
+     ]
+    },
+    {
+     "title": "Current quarter estimates rising",
+     "detail": "In the last 30 days, 11 analysts raised their current quarter estimate while only 4 cut it.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    },
+    {
+     "title": "Analysts expect higher profit",
+     "detail": "25 Wall Street analysts estimate EPS of $2.91 for the report expected late January 2027, above $2.84 a year ago.",
+     "metric_keys": [
+      "next_earnings"
+     ]
+    }
+   ],
+   "bearish": [
+    {
+     "title": "Yearly estimates being cut",
+     "detail": "In 30 days, 23 analysts cut this fiscal year's estimate versus 7 raising it; for next year, 10 cut versus 3 raised.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    },
+    {
+     "title": "Next quarter estimates falling",
+     "detail": "For the next quarter, 13 analysts cut their estimate in the last 30 days while only 2 raised it.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    },
+    {
+     "title": "Price often falls after beats",
+     "detail": "Despite beating estimates, the stock fell the next day after most reports, including -7.35% in Q3 FY26 and -1.9% in Q4 FY26.",
      "metric_keys": [
       "last_quarters"
      ]
     },
     {
-     "text": "For the current quarter, 11 analysts raised estimates and 4 cut them in the last 30 days.",
+     "title": "Noticeable moves on report days",
+     "detail": "The stock typically moves about 2.4% up or down the day after earnings, so short-term swings around reports are common.",
      "metric_keys": [
-      "analyst_estimate_revisions_30d"
+      "typical_move"
      ]
     }
    ],
-   "watch_outs": [
-    {
-     "text": "Beats did not always lift the price. After Q3 FY26 the stock fell 7.35% the next day despite a 6.7% beat.",
-     "metric_keys": [
-      "last_quarters"
-     ]
-    },
-    {
-     "text": "For the current fiscal year, 23 analysts cut estimates and only 7 raised them in the last 30 days.",
-     "metric_keys": [
-      "analyst_estimate_revisions_30d"
-     ]
-    },
-    {
-     "text": "Next-quarter and next-fiscal-year estimates also saw more cuts than raises: 13 vs 2 and 10 vs 3.",
-     "metric_keys": [
-      "analyst_estimate_revisions_30d"
-     ]
-    }
-   ],
-   "what_to_watch_next": [
-    "Next earnings around 28 Jan 2027 after market close. 25 Wall Street analysts estimate EPS of $2.91 (vs $2.84 a year ago) and revenue of $156 billion.",
-    "The stock has typically moved about 2.4% up or down the day after earnings."
-   ],
-   "ask_yourself": "How would you feel if the price dropped after earnings even when the company beats estimates?",
    "data_gaps": [
-    "Next earnings date differs in the data: 28 Jan 2027 in one field and 29 Jan 2027 in another.",
-    "Past revenue results versus estimates are not provided.",
-    "Metrics are tagged as demo data, so values may not be fully reliable."
+    "The next earnings date differs in the data: 2027-01-28 in one field and 2027-01-29 in another.",
+    "The scale and method behind the earnings quality score of 89 are not explained."
    ]
   },
   "model": "claude-opus-5-5",
-  "attempts": 1,
-  "cost_usd": 0.04835,
+  "attempts": 2,
+  "cost_usd": 0.057911,
   "cached": false,
   "disclaimer": "AI-generated from the data on this page. It can make mistakes and is not investment advice.",
   "sample": true

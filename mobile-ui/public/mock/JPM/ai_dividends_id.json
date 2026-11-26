@@ -1,6 +1,6 @@
 {
  "ticker": "JPM",
- "generated_at": "2026-11-25T10:46:37+00:00",
+ "generated_at": "2026-11-26T07:17:03+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,19 +9,66 @@
   "ticker": "JPM",
   "tab": "dividends",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Neutral",
-  "as_of": "2026-11-25T10:46:37+00:00",
-  "source": "fallback",
+  "as_of": "2026-11-26T07:17:03+00:00",
+  "source": "ai",
   "summary": {
-   "label": "Ringkasan otomatis",
-   "signal": "Neutral",
-   "positives": [],
-   "watch_outs": []
+   "bullish": [
+    {
+     "title": "Dividen tumbuh cukup cepat",
+     "detail": "Dividen per saham naik rata-rata 11.5% per tahun dalam 3 tahun terakhir dan sekitar 9% per tahun dalam 5 tahun terakhir.",
+     "metric_keys": [
+      "cagr_3y",
+      "cagr_5y"
+     ]
+    },
+    {
+     "title": "Dividen jauh di bawah laba",
+     "detail": "Payout ratio (porsi laba yang dibagikan sebagai dividen) 26.5%, jadi sebagian besar laba masih ditahan perusahaan.",
+     "metric_keys": [
+      "payout_ratio"
+     ]
+    },
+    {
+     "title": "Dibayar rutin tiap kuartal",
+     "detail": "Total dividen Rp113,100 per saham dalam 12 bulan terakhir, dibayar 4 kali setahun, naik dari Rp66,200 pada 2020.",
+     "metric_keys": [
+      "dps_ttm",
+      "frequency_per_year"
+     ]
+    }
+   ],
+   "bearish": [
+    {
+     "title": "Yield di bawah rata-rata historis",
+     "detail": "Dividend yield (dividen setahun dibanding harga saham) 1.94%, lebih rendah dari rata-rata 5 tahunnya sendiri sebesar 2.35%.",
+     "metric_keys": [
+      "yield_ttm"
+     ]
+    },
+    {
+     "title": "Rekor kenaikan masih singkat",
+     "detail": "Dividen baru naik 3 tahun berturut-turut, rekor kenaikan yang masih tergolong pendek.",
+     "metric_keys": [
+      "growth_streak_years"
+     ]
+    },
+    {
+     "title": "Skor dividen hanya netral",
+     "detail": "Skor pilar dividen dari sistem penilaian berbasis aturan adalah 45, masuk level Netral, jadi profil dividennya tidak menonjol.",
+     "metric_keys": []
+    }
+   ],
+   "data_gaps": [
+    "Porsi arus kas bebas (free cash flow) yang dibagikan sebagai dividen tidak tersedia, jadi kecukupan kas untuk dividen tidak bisa dinilai.",
+    "Semua angka rupiah dikonversi dari dolar AS dengan kurs Rp18,390, sehingga perubahan kurs bisa memengaruhi angka yang terlihat.",
+    "Data dividen per tahun tampak naik setiap tahun sejak 2020, sedangkan rekor kenaikan tercatat 3 tahun; kemungkinan berbeda karena konversi kurs, jadi perlu dibaca hati-hati."
+   ]
   },
   "model": "claude-opus-5-5",
-  "cost_usd": 0.027973,
+  "attempts": 1,
+  "cost_usd": 0.044336,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

@@ -1,6 +1,6 @@
 {
  "ticker": "AAPL",
- "generated_at": "2026-11-25T10:41:59+00:00",
+ "generated_at": "2026-11-26T07:10:12+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,66 +9,81 @@
   "ticker": "AAPL",
   "tab": "valuation",
   "lang": "en",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Weak",
-  "as_of": "2026-11-25T10:41:59+00:00",
+  "as_of": "2026-11-26T07:10:12+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Weak",
-   "headline": "Priced near the top of its 5-year range and above peers",
-   "takeaway": "Investors pay more for each dollar of Apple's profit and sales than in most of the last 5 years, and far more than similar companies. Profit growth of about 13.6% a year only partly explains this higher price.",
-   "positives": [
+   "bullish": [
     {
-     "text": "EPS (profit per share) grew 13.6% over the past year, matching its 3-year yearly average of 13.6%. Growth has been steady.",
+     "title": "Profit per share growing steadily",
+     "detail": "EPS (profit per share) grew 13.6% over the past year, matching its 3-year yearly average growth of 13.6%.",
      "metric_keys": [
       "eps_yoy",
       "eps_cagr_3y"
      ]
     },
     {
-     "text": "Forward P/E is 33.4, lower than today's 39.5. This is based on analysts' estimates of higher profit next fiscal year.",
+     "title": "Lower ratio on expected profit",
+     "detail": "Forward P/E (price compared with analysts' expected future profit) is 33.5, lower than 39.6 based on the past year's profit.",
      "metric_keys": [
       "forward_pe",
       "pe"
      ]
+    },
+    {
+     "title": "Sales growth picking up",
+     "detail": "Revenue grew 11.7% over the past year, faster than its 3-year yearly average of 7.7%, though slower than peers (median 46.6%).",
+     "metric_keys": [
+      "revenue_yoy",
+      "revenue_cagr_3y"
+     ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "P/E (price compared with yearly profit) is 39.5, higher than 96% of the last 5 years and almost double the peer median of 20.8.",
+     "title": "P/E near 5-year high",
+     "detail": "P/E of 39.6 is higher than 96% of the last five years (median 31.6) and about 1.9 times the peer median of 20.8.",
      "metric_keys": [
       "pe"
      ]
     },
     {
-     "text": "PEG (P/E compared with expected growth) is 3.18. The price is high relative to the 12.4% profit growth analysts estimate.",
+     "title": "Sales and earnings ratios also high",
+     "detail": "P/S (price compared with sales) of 10.8 and EV/EBITDA (company value compared with operating profit) of 30.3 are near 5-year highs and far above peers.",
      "metric_keys": [
-      "peg"
+      "ps",
+      "ev_ebitda"
      ]
     },
     {
-     "text": "Revenue grew 11.7% over the past year, well below the peer median of 46.6%, while P/S is 10.7 versus peers' 2.58.",
+     "title": "Price high relative to growth",
+     "detail": "PEG (P/E divided by expected profit growth) is 3.2, as analysts' expected growth of 12.4% is small next to the P/E of 39.6.",
      "metric_keys": [
-      "revenue_yoy",
-      "ps"
+      "peg",
+      "pe"
+     ]
+    },
+    {
+     "title": "Fair value estimates below price",
+     "detail": "DCF estimates (assumption-based cash flow models) range $155.65 to $232.86, below the $355.58 price; Wall Street analysts' average target is $345.63.",
+     "metric_keys": [
+      "dcf_bear",
+      "dcf_base",
+      "dcf_bull",
+      "price",
+      "analyst_target_mean"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Next earnings report on 29 Jan 2027, which will update profit growth behind the P/E.",
-    "P/E of 39.5 is close to its 5-year high of 42.6 and well above its 5-year median of 31.6."
-   ],
-   "ask_yourself": "How comfortable are you paying a price well above the company's usual level for its current growth?",
    "data_gaps": [
-    "Most figures are tagged DEMO_ONLY, so they may not reflect real market data.",
-    "No history or peer comparison is given for P/B, P/FCF, FCF yield or forward P/E.",
-    "DCF estimates (base case $191.03) and the Graham number ($39.45) rely on assumptions and are not predictions."
+    "No 5-year or peer comparison is given for forward P/E, PEG, P/B, P/FCF or FCF yield.",
+    "Fair value numbers (DCF and the Graham number of $39.45) are formula estimates that depend heavily on assumptions, such as a 10% discount rate."
    ]
   },
   "model": "claude-opus-5-5",
   "attempts": 1,
-  "cost_usd": 0.032961,
+  "cost_usd": 0.061016,
   "cached": false,
   "disclaimer": "AI-generated from the data on this page. It can make mistakes and is not investment advice.",
   "sample": true

@@ -1,6 +1,6 @@
 {
  "ticker": "TSLA",
- "generated_at": "2026-11-25T10:45:14+00:00",
+ "generated_at": "2026-11-26T07:14:52+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,36 +9,32 @@
   "ticker": "TSLA",
   "tab": "dividends",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Not applicable",
-  "as_of": "2026-11-25T10:45:14+00:00",
+  "as_of": "2026-11-26T07:14:52+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Not applicable",
-   "headline": "Tesla tidak membagikan dividen kepada pemegang saham",
-   "takeaway": "Data menunjukkan Tesla tidak membayar dividen. Artinya, keuntungan dari saham ini hanya bisa datang dari perubahan harga saham, bukan dari pembayaran tunai rutin.",
-   "positives": [],
-   "watch_outs": [
+   "bullish": [],
+   "bearish": [
     {
-     "text": "Dividen 0: investor tidak menerima pembayaran tunai rutin, jadi hasil investasi bergantung sepenuhnya pada pergerakan harga saham.",
+     "title": "Tidak membagikan dividen",
+     "detail": "Per 26 November 2026, Tesla tidak membagikan dividen, jadi pemegang saham tidak mendapat pemasukan rutin, hanya dari perubahan harga saham.",
      "metric_keys": [
       "pays_dividend",
-      "dividend_note"
+      "dividend_note",
+      "rule_based_pillars.dividend.level",
+      "as_of"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Laporan keuangan berikutnya dijadwalkan pada 28 Jan 2027."
-   ],
-   "ask_yourself": "Apakah Anda mencari pemasukan tunai rutin, atau nyaman dengan saham yang tidak membagikan dividen?",
    "data_gaps": [
-    "Tidak ada data pembelian kembali saham (buyback), jadi cara lain perusahaan mengembalikan uang ke pemegang saham tidak bisa dinilai."
+    "Tidak ada data buyback (pembelian kembali saham oleh perusahaan), jadi tidak bisa dinilai apakah ada cara lain perusahaan mengembalikan uang ke pemegang saham.",
+    "Tidak ada data laba, arus kas bebas, atau riwayat dividen, sehingga kemampuan Tesla membayar dividen di masa depan tidak bisa dinilai."
    ]
   },
   "model": "claude-opus-5-5",
   "attempts": 1,
-  "cost_usd": 0.010085,
+  "cost_usd": 0.014104,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

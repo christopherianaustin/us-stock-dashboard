@@ -1,28 +1,21 @@
-// AI Insight block (SPEC 15.7, step 10c): shown at the top of a section, generated only when it scrolls into view.
-// Fails quietly: if the API is off, AI is switched off, or the request fails, the block simply isn't there.
+// AI Insight block (SPEC 16.5): Bullish and Bearish points only, shown at the top of a section.
+// Generated only when it scrolls into view. Fails quietly: if the API is off, AI is switched off, or the request
+// fails, the block simply isn't there.
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { API } from '../config'
 import { ep, useData, useSettings, type AiTab } from '../lib/data'
 import { dateShort } from '../lib/format'
 import { useL } from '../lib/i18n'
-import type { Tone } from '../lib/plain'
-import { ToneChip } from './ui'
+import { ChangeIcon, InfoIcon } from './ui'
 
-type Point = { text: string; metric_keys: string[] }
-type Summary = {
-  signal: string; headline?: string; takeaway?: string; label?: string
-  positives: (Point | string)[]; watch_outs: (Point | string)[]
-  what_to_watch_next?: string[]; ask_yourself?: string; data_gaps?: string[]
-}
+/** AI points have a title and a detail; automatic-summary points are plain sentences. */
+type Point = { title: string; detail: string; metric_keys: string[] }
+type Summary = { label?: string; bullish: (Point | string)[]; bearish: (Point | string)[]; data_gaps?: string[] }
 type AiRes = {
   enabled: boolean; source?: 'ai' | 'fallback'; ticker?: string; tab?: AiTab; lang?: string
   prompt_version?: string; as_of?: string | null; summary?: Summary
 }
-
-const TONE: Record<string, Tone> = { Strong: 'good', Neutral: 'neutral', Weak: 'watch' }
-const SIGNAL_ID: Record<string, string> = {
-  Strong: 'Kuat', Neutral: 'Netral', Weak: 'Lemah', 'Not enough data': 'Data belum cukup', 'Not applicable': 'Tidak berlaku',
-}
+const SHOWN = 2   // points per side before "Show all"
 
 const Sparkle = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden className="shrink-0">
@@ -74,25 +67,24 @@ function Loading({ standalone }: { standalone: boolean }) {
     </Shell>
   )
 }
-
 function Loaded({ tab, standalone }: { tab: AiTab; standalone: boolean }) {
   const s = useSettings()
   const L = useL()
   const q = useData<AiRes>((t, lang) => ep.ai(t, lang, tab))
-  const [more, setMore] = useState(false)
+  const [all, setAll] = useState(false)
   const [vote, setVote] = useState<'up' | 'down' | null>(null)
-  useEffect(() => { setVote(null); setMore(false) }, [s.ticker, s.lang])
+  useEffect(() => { setVote(null); setAll(false) }, [s.ticker, s.lang])
 
   if (q.loading) return <Loading standalone={standalone} />
   const d = q.data
-  // No card when: the request failed, AI is switched off, or saved (demo) samples would be shown in safe mode.
-  if (q.error || !d?.enabled || !d.summary || (q.src === 'mock' && s.safe)) return null
+  // No card when: the request failed, AI is switched off, the answer is in the old format (saved before prompt 2.0),
+  // or saved (demo) samples would be shown in safe mode.
+  if (q.error || !d?.enabled || !d.summary || !Array.isArray(d.summary.bullish) || (q.src === 'mock' && s.safe)) return null
   const sm = d.summary
   const ai = d.source === 'ai'
-  if (!ai && !sm.positives.length && !sm.watch_outs.length) return null
+  if (!ai && !sm.bullish.length && !sm.bearish.length) return null
 
-  const chip = <ToneChip tone={TONE[sm.signal] ?? 'na'}>{s.lang === 'id' ? SIGNAL_ID[sm.signal] ?? sm.signal : sm.signal}</ToneChip>
-  const text = (p: Point | string) => (typeof p === 'string' ? p : p.text)
+  const more = sm.bullish.length > SHOWN || sm.bearish.length > SHOWN
   const asOf = dateShort(d.as_of ?? q.env?.generated_at)
   const send = (v: 'up' | 'down') => {
     setVote(v)
@@ -101,45 +93,35 @@ function Loaded({ tab, standalone }: { tab: AiTab; standalone: boolean }) {
       body: JSON.stringify({ ticker: d.ticker ?? s.ticker, tab, lang: s.lang, prompt_version: d.prompt_version ?? '', vote: v, source: d.source, surface: 'mobile' }),
     }).catch(() => { /* saved-data mode / API down: the thanks message still shows */ })
   }
+  const help = {
+    title: L('Bullish and bearish', 'Bullish dan bearish'),
+    what: L('Bullish = points that support a positive view.\nBearish = points that support a negative view or are risks.',
+      'Bullish = poin yang mendukung pandangan positif.\nBearish = poin yang mendukung pandangan negatif atau risiko.'),
+    how: L('Written by AI from the data on this page only, then checked by our code: every number must be in the data, and buy or sell advice is blocked.',
+      'Ditulis oleh AI hanya dari data di halaman ini, lalu diperiksa oleh kode kami: setiap angka harus ada di data, dan saran beli atau jual diblokir.'),
+    good_bad: L('These are facts from the data, not forecasts or advice. Weigh both sides and check the other sections too.',
+      'Ini fakta dari data, bukan ramalan atau saran. Timbang kedua sisi dan periksa juga bagian lainnya.'),
+  }
 
   return (
     <Shell standalone={standalone}>
-      <div className="flex items-center gap-1.5 flex-wrap">
+      <div className="flex items-center gap-1.5">
         {ai && <Sparkle />}
-        <span className="t-action-b text-purple">{ai ? L('AI Insight', 'Insight AI') : sm.label ?? L('Automatic summary', 'Ringkasan otomatis')}</span>
-        <span className="ml-auto">{chip}</span>
+        <span className="t-action-b text-purple flex-1">{ai ? L('AI Insight', 'Insight AI') : sm.label ?? L('Automatic summary', 'Ringkasan otomatis')}</span>
+        <InfoIcon size={16} topic={help} />
       </div>
-      {ai && <p className="t-label text-navy mt-2 mb-0">{sm.headline}</p>}
-      {ai && <p className="t-label-m text-navy mt-1 mb-0">{sm.takeaway}</p>}
-      {(sm.positives.length > 0 || sm.watch_outs.length > 0) && (
-        <ul className="list-none p-0 m-0 mt-3 flex flex-col gap-2">
-          {sm.positives.map((p, i) => <Item key={`p${i}`} good text={text(p)} />)}
-          {sm.watch_outs.map((p, i) => <Item key={`w${i}`} text={text(p)} />)}
-        </ul>
+      <Side up items={sm.bullish} all={all}
+        empty={L("No clear bullish points in this tab's data.", 'Tidak ada poin bullish yang jelas di data tab ini.')} />
+      <Side up={false} items={sm.bearish} all={all}
+        empty={L("No major bearish points in this tab's data. Check the other tabs too.", 'Tidak ada poin bearish utama di data tab ini. Periksa juga tab lainnya.')} />
+      {more && (
+        <button type="button" onClick={() => setAll(!all)} aria-expanded={all}
+          className="mt-3 p-0 bg-transparent border-0 t-action-b text-purple cursor-pointer">
+          {all ? L('Show less', 'Tampilkan lebih sedikit') : L('Show all', 'Tampilkan semua')}
+        </button>
       )}
-      {ai && (
-        <>
-          <button type="button" onClick={() => setMore(!more)} aria-expanded={more}
-            className="mt-3 p-0 bg-transparent border-0 t-action-b text-purple cursor-pointer">
-            {more ? L('Less', 'Lebih sedikit') : L('More', 'Selengkapnya')}
-          </button>
-          {more && (
-            <div className="mt-2 flex flex-col gap-2">
-              {!!sm.what_to_watch_next?.length && (
-                <div>
-                  <div className="t-action-b text-dgrey">{L('What to watch next', 'Yang perlu dipantau')}</div>
-                  {sm.what_to_watch_next.map((w, i) => <p key={i} className="t-label-m text-navy mt-1 mb-0">{w}</p>)}
-                </div>
-              )}
-              {sm.ask_yourself && (
-                <div>
-                  <div className="t-action-b text-dgrey">{L('Ask yourself', 'Tanyakan pada diri sendiri')}</div>
-                  <p className="t-label-m text-navy mt-1 mb-0">{sm.ask_yourself}</p>
-                </div>
-              )}
-            </div>
-          )}
-        </>
+      {ai && !!sm.data_gaps?.length && (
+        <p className="t-action text-grey mt-3 mb-0">{L('Data gaps', 'Data yang kurang')}: {sm.data_gaps.join(' · ')}</p>
       )}
       <p className="t-action text-dgrey mt-3 mb-0">
         {ai
@@ -162,11 +144,24 @@ function Loaded({ tab, standalone }: { tab: AiTab; standalone: boolean }) {
   )
 }
 
-function Item({ text, good = false }: { text: string; good?: boolean }) {
+/** One side: green up-arrow "Bullish" or red down-arrow "Bearish", then its points (title bold, then detail). */
+function Side({ up, items, all, empty }: { up: boolean; items: (Point | string)[]; all: boolean; empty: string }) {
+  const shown = all ? items : items.slice(0, SHOWN)
   return (
-    <li className="flex gap-2 t-label-m text-navy">
-      <span className={`size-2 rounded-full shrink-0 mt-1.5 ${good ? 'bg-up' : 'bg-amber-500'}`} aria-hidden />
-      <span><span className="sr-only">{good ? 'Positive: ' : 'Watch-out: '}</span>{text}</span>
-    </li>
+    <div className="mt-3" data-ai-side={up ? 'bullish' : 'bearish'}>
+      <div className="flex items-center gap-1.5">
+        <ChangeIcon up={up} size={18} />
+        <span className="t-label text-navy">{up ? 'Bullish' : 'Bearish'}</span>
+      </div>
+      {!items.length ? <p className="t-label-m text-dgrey mt-1 mb-0">{empty}</p> : (
+        <ul className="list-none p-0 m-0 mt-1.5 flex flex-col gap-2">
+          {shown.map((p, i) => (
+            <li key={i} className="t-label-m text-navy">
+              {typeof p === 'string' ? p : <><b className="block font-bold">{p.title}</b>{p.detail}</>}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   )
 }

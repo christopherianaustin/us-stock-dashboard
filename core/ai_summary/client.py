@@ -96,12 +96,22 @@ def tab_focus() -> dict:
         return yaml.safe_load(f)
 
 
-def user_message(tab: str, lang: str, currency: str, rule_signal: str, payload: dict,
+def without_license_tags(x):
+    """License tags stay in our code (cards, coverage report, safe mode) but are not sent to the model: it was
+    skipping demo-tagged facts and listing "demo data" in data_gaps, which means nothing to app users."""
+    if isinstance(x, dict):
+        return {k: without_license_tags(v) for k, v in x.items() if k not in ("license_tag", "license")}
+    if isinstance(x, list):
+        return [without_license_tags(v) for v in x]
+    return x
+
+
+def user_message(tab: str, lang: str, currency: str, payload: dict,
                  today: Optional[date] = None, retry_note: Optional[str] = None) -> str:
-    """The user message template from SPEC 15.6.2."""
+    """The user message template from SPEC 15.6.2, without the rule_based_signal line (SPEC 16.4)."""
     tf = tab_focus()[tab]
     fmt = display_format(lang, currency)
-    data = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+    data = json.dumps(without_license_tags(payload), ensure_ascii=False, separators=(",", ":"))
     msg = (
         "<request>\n"
         f"tab: {tf['name']}\n"
@@ -109,7 +119,6 @@ def user_message(tab: str, lang: str, currency: str, rule_signal: str, payload: 
         f"language: {lang}\n"
         f'display_format: {{currency: "{fmt["currency"]}", example: "{fmt["example"]}", '
         f'percent example: "{fmt["percent example"]}"}}\n'
-        f"rule_based_signal: {rule_signal}\n"
         f"today: {(today or date.today()).isoformat()}\n"
         "</request>\n\n"
         f"<stock_data>\n{data}\n</stock_data>\n\n"

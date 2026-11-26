@@ -1,6 +1,6 @@
 {
  "ticker": "JPM",
- "generated_at": "2026-11-25T10:46:35+00:00",
+ "generated_at": "2026-11-26T07:16:47+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,21 +9,67 @@
   "ticker": "JPM",
   "tab": "profitability_health",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Strong",
-  "as_of": "2026-11-25T10:46:35+00:00",
-  "source": "fallback",
+  "as_of": "2026-11-26T07:16:47+00:00",
+  "source": "ai",
   "summary": {
-   "label": "Ringkasan otomatis",
-   "signal": "Strong",
-   "positives": [
-    "Perusahaan mempertahankan 32% dari pendapatannya sebagai laba, margin yang tinggi."
+   "bullish": [
+    {
+     "title": "ROE jauh di atas pesaing",
+     "detail": "ROE (laba dibandingkan modal pemegang saham) mencapai 18%, di atas median pesaing 11.1%, dengan skor profitabilitas 87 berkategori Kuat.",
+     "metric_keys": [
+      "roe"
+     ]
+    },
+    {
+     "title": "Margin laba di atas pesaing",
+     "detail": "Perusahaan menyimpan sekitar 32.5% dari pendapatannya sebagai laba bersih, lebih tinggi dari median pesaing 27.8%.",
+     "metric_keys": [
+      "net_margin"
+     ]
+    },
+    {
+     "title": "Jumlah saham berkurang",
+     "detail": "Saham beredar turun dari 2.88 miliar menjadi 2.78 miliar, sehingga porsi kepemilikan tiap saham tidak terencerkan.",
+     "metric_keys": [
+      "piotroski"
+     ]
+    }
    ],
-   "watch_outs": []
+   "bearish": [
+    {
+     "title": "Skor Piotroski tergolong lemah",
+     "detail": "Skor Piotroski (pemeriksaan sederhana kekuatan keuangan) hanya lulus 3 dari 7 pemeriksaan yang bisa dinilai, karena 2 pemeriksaan tidak punya data.",
+     "metric_keys": [
+      "piotroski"
+     ]
+    },
+    {
+     "title": "Arus kas operasi negatif",
+     "detail": "Arus kas operasi (uang tunai dari bisnis utama) tercatat -147.78B, padahal laba bersih positif 57.05B, meski arus kas bank bisa berfluktuasi.",
+     "metric_keys": [
+      "piotroski"
+     ]
+    },
+    {
+     "title": "ROA turun dan leverage tinggi",
+     "detail": "ROA (laba dibandingkan total aset) turun dari 1.5% ke 1.4%, dan aset mencapai 13.2 kali modal, sehingga ROE tinggi sebagian berasal dari utang.",
+     "metric_keys": [
+      "roa",
+      "equity_multiplier"
+     ]
+    }
+   ],
+   "data_gaps": [
+    "Kesehatan keuangan tidak bisa dinilai karena data kurang, dan rasio utang, current ratio, serta Altman Z-score (uji risiko kebangkrutan) tidak berlaku untuk bank.",
+    "Mata uang dan satuan angka arus kas operasi serta laba bersih (B) tidak dijelaskan dalam data.",
+    "ROA dan equity multiplier tidak punya pembanding dengan pesaing atau riwayat lima tahun."
+   ]
   },
   "model": "claude-opus-5-5",
-  "cost_usd": 0.0,
+  "attempts": 2,
+  "cost_usd": 0.076843,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

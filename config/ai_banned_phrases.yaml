@@ -28,11 +28,34 @@ id:
   - murah
   - mahal
 
-# Words that mark a sentence as attributed to analysts.
+# Words that mark a sentence as attributed to analysts (incl. rating changes by named firms, e.g.
+# "China Renaissance raised its rating from Hold to Buy").
 analyst_words:
   - analyst
   - analysts
   - analis
+  - rating
+  - ratings
+  - rated
+  - upgrade
+  - upgraded
+  - upgrades
+  - downgrade
+  - downgraded
+  - downgrades
+  - price target
+  - consensus
+  - peringkat
+  - target harga
+  - konsensus
+
+# Ordinary phrases that contain a banned word but are not advice. They are removed before the check.
+allowed_phrases:
+  - S&P 500
+  - tekanan jual     # selling pressure
+  - aksi jual        # sell-off
+  - belum pasti      # not yet certain
+  - tidak pasti      # uncertain
 
 analyst_exception_tabs:
   - ownership_sentiment

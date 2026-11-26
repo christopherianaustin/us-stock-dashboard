@@ -45,12 +45,12 @@ def save_feedback(ticker: str, tab: str, lang: str, prompt_version: str, vote: s
 
 
 def fallback_summary(ti: TabInput, lang: str) -> dict:
-    """The rule-based strengths and risks for the tab (Section 7), labeled "Automatic summary"."""
+    """The rule-based strengths (bullish) and risks (bearish) for the tab (Section 7, SPEC 16.6),
+    labeled "Automatic summary". Points are plain sentences (no title)."""
     return {
         "label": "Ringkasan otomatis" if lang == "id" else "Automatic summary",
-        "signal": ti.rule_signal,
-        "positives": ti.strengths[:3],
-        "watch_outs": ti.risks[:3],
+        "bullish": ti.strengths[:4],
+        "bearish": ti.risks[:4],
     }
 
 
@@ -64,7 +64,7 @@ def get_summary(ticker: str, tab: str, lang: str, currency: str, ti: TabInput, *
     version = cache.prompt_version()
     key = cache.cache_key(ticker, tab, lang, ti.payload, version)
     base = {"enabled": True, "ticker": ticker.upper(), "tab": tab, "lang": lang, "prompt_version": version,
-            "license_tag": ti.license_tag, "rule_based_signal": ti.rule_signal, "as_of": ti.payload.get("as_of")}
+            "license_tag": ti.license_tag, "as_of": ti.payload.get("as_of")}
     if use_cache and (hit := cache.get(key)):
         return {**hit, "cached": True}
     with _log_lock:
@@ -82,7 +82,7 @@ def _generate(key: str, base: dict, ticker: str, tab: str, lang: str, currency: 
     total = Usage()
     model_used, note, last_error = cfg.ai_model, None, None
     for attempt in (1, 2):
-        msg = user_message(tab, lang, currency, ti.rule_signal, ti.payload, today=today, retry_note=note)
+        msg = user_message(tab, lang, currency, ti.payload, today=today, retry_note=note)
         entry = {"time": datetime.now(timezone.utc).isoformat(timespec="seconds"), "ticker": ticker.upper(),
                  "tab": tab, "lang": lang, "attempt": attempt, "input_hash": ihash, "prompt_version": version,
                  "model_requested": cfg.ai_model, "effort": cfg.ai_effort}
@@ -98,7 +98,7 @@ def _generate(key: str, base: dict, ticker: str, tab: str, lang: str, currency: 
             continue
         total = total.add(r.usage)
         model_used = r.model
-        check = validate(r.summary, ti.payload, tab, ti.rule_signal)
+        check = validate(r.summary, ti.payload, tab, ti.strengths, ti.risks)
         cost = cost_usd(r.usage, r.model)
         TOTALS["calls"] += 1
         TOTALS["tokens"] += r.usage.total

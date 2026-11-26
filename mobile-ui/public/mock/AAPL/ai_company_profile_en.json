@@ -1,6 +1,6 @@
 {
  "ticker": "AAPL",
- "generated_at": "2026-11-25T10:42:50+00:00",
+ "generated_at": "2026-11-26T07:11:03+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,58 +9,54 @@
   "ticker": "AAPL",
   "tab": "company_profile",
   "lang": "en",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Not applicable",
-  "as_of": "2026-11-25T10:42:50+00:00",
+  "as_of": "2026-11-26T07:11:03+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Not applicable",
-   "headline": "Device maker that also earns from apps, subscriptions and payments",
-   "takeaway": "Apple makes money by selling devices such as iPhone, Mac, iPad and Apple Watch, plus services like the App Store, subscriptions, AppleCare, advertising and payments. The data does not show how much each part brings in.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Market value (total price of all shares) is about $5.15 trillion, based on share price times shares outstanding.",
+     "title": "Very large company",
+     "detail": "Market value (share price times number of shares) is about $5.17 trillion, with 167,000 employees, though no peer comparison is given here.",
      "metric_keys": [
-      "market_cap"
-     ]
-    },
-    {
-     "text": "Sells in many regions, including the Americas, Europe, India, China mainland, Japan and Australia, with 167,000 employees.",
-     "metric_keys": [
-      "description",
+      "market_cap",
       "employees"
      ]
     },
     {
-     "text": "Founded in 1976 and listed on Nasdaq since 12 Dec 1980, with headquarters in Cupertino, California.",
+     "title": "Devices plus recurring services",
+     "detail": "Besides iPhone, Mac, iPad and wearables, it earns from the App Store, payments and at least 5 subscription services like Apple Music.",
+     "metric_keys": [
+      "description"
+     ]
+    },
+    {
+     "title": "Wide range of customers",
+     "detail": "Serves 5 customer groups (consumers, small and mid-sized businesses, education, enterprise and government) across the Americas, Europe, Asia, the Middle East and Africa.",
+     "metric_keys": [
+      "description"
+     ]
+    },
+    {
+     "title": "Long operating history",
+     "detail": "Founded in 1976 and listed on the Nasdaq stock exchange since December 1980, so it has many years of public records.",
      "metric_keys": [
       "description",
       "ipo_date",
-      "exchange",
-      "headquarters"
+      "exchange"
      ]
     }
    ],
-   "watch_outs": [
-    {
-     "text": "Market value figure of $5.15 trillion is tagged as demo data, so it may not reflect the live price.",
-     "metric_keys": [
-      "market_cap"
-     ]
-    }
-   ],
-   "what_to_watch_next": [],
-   "ask_yourself": "Do you understand how a company that sells both devices and services makes its money?",
+   "bearish": [],
    "data_gaps": [
-    "No split of sales by product, service or region, so the main source of income is not shown.",
-    "No upcoming earnings date is provided.",
-    "Market value is tagged DEMO_ONLY and may not be current or reliable."
+    "No breakdown of sales by product, service or region, so we cannot tell how much the company depends on any single product such as iPhone or any single country.",
+    "Market value and employee count have no comparison with peers or history in this tab, so their scale is hard to judge.",
+    "No revenue, profit or growth figures are included in this tab, so no data-based risks could be identified here."
    ]
   },
   "model": "claude-opus-5-5",
-  "attempts": 2,
-  "cost_usd": 0.065518,
+  "attempts": 1,
+  "cost_usd": 0.028816,
   "cached": false,
   "disclaimer": "AI-generated from the data on this page. It can make mistakes and is not investment advice.",
   "sample": true

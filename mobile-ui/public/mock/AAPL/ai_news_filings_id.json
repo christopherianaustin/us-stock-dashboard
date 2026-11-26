@@ -1,6 +1,6 @@
 {
  "ticker": "AAPL",
- "generated_at": "2026-11-25T10:42:41+00:00",
+ "generated_at": "2026-11-26T07:10:52+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,19 +9,59 @@
   "ticker": "AAPL",
   "tab": "news_filings",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Not applicable",
-  "as_of": "2026-11-25T10:42:41+00:00",
-  "source": "fallback",
+  "as_of": "2026-11-26T07:10:52+00:00",
+  "source": "ai",
   "summary": {
-   "label": "Ringkasan otomatis",
-   "signal": "Not applicable",
-   "positives": [],
-   "watch_outs": []
+   "bullish": [
+    {
+     "title": "Apple bertahan saat aksi jual",
+     "detail": "Dua judul berita pada 25–26 November 2026 menyebut saham Apple 'kebal' dari aksi jual saham teknologi dan AI yang sedang terjadi.",
+     "metric_keys": [
+      "headlines"
+     ]
+    },
+    {
+     "title": "iPhone tidak kena tarif baru",
+     "detail": "Judul berita 25 November 2026 menyebut chip dan iPhone tidak terkena tarif (pajak impor) baru, walau ada produk lain yang terkena.",
+     "metric_keys": [
+      "headlines"
+     ]
+    }
+   ],
+   "bearish": [
+    {
+     "title": "Sinyal peringatan sejak 2002",
+     "detail": "Judul 26 November 2026 menyebut Michael Burry melakukan short (bertaruh harga turun) dan Apple menunjukkan sinyal peringatan yang terakhir muncul tahun 2002.",
+     "metric_keys": [
+      "headlines"
+     ]
+    },
+    {
+     "title": "Pasar sedang bergejolak",
+     "detail": "Setidaknya 4 judul pada 25–26 November 2026 menyebut pasar 'naik-turun liar', aksi jual saham AI, dan kemungkinan 'dead cat bounce' (kenaikan sesaat saat tren turun).",
+     "metric_keys": [
+      "headlines"
+     ]
+    },
+    {
+     "title": "Polemik saham token 24 jam",
+     "detail": "Judul 25 November 2026 menyebut Apple menolak dibukanya perdagangan saham versi token 24 jam, 7 hari seminggu; dampaknya tidak dijelaskan di judul.",
+     "metric_keys": [
+      "headlines"
+     ]
+    }
+   ],
+   "data_gaps": [
+    "Ringkasan ini hanya memakai kata-kata di judul berita; isi artikel tidak tersedia, jadi konteks lengkapnya tidak diketahui.",
+    "Ada 7 laporan Form 4 (transaksi orang dalam perusahaan) sejak 22 Oktober 2026, tetapi tidak ada data apakah itu pembelian atau penjualan, maupun jumlahnya.",
+    "Isi laporan laba (8-K, 2 November 2026) dan laporan tahunan (10-K, 3 November 2026) tidak tersedia; laporan laba berikutnya dijadwalkan 29 Januari 2027."
+   ]
   },
   "model": "claude-opus-5-5",
-  "cost_usd": 0.088598,
+  "attempts": 1,
+  "cost_usd": 0.047608,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

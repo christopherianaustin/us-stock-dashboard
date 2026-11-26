@@ -1,4 +1,7 @@
-"""Phase 10b review: check every saved sample against the quality list (SPEC 15.10 step 10b). No API calls.
+"""Step 10b review (prompt 2.0, SPEC 16.8): check every saved sample against the quality list. No API calls.
+
+Checks per tab: nothing important missing, no repeated points, both sides considered, every number correct,
+no banned words; plus lengths, plain language, missing-data handling and cost.
 Usage:  .venv\\Scripts\\python scripts/ai_review.py      (reads core/ai_summary/samples/_results.json)
 """
 from __future__ import annotations
@@ -13,111 +16,150 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 sys.stdout.reconfigure(encoding="utf-8")
 
 from core.ai_summary.schema import TabSummary  # noqa: E402
-from core.ai_summary.validator import check_banned, check_numbers, sentences, words  # noqa: E402
+from core.ai_summary.validator import (check_banned, check_numbers, matches, numbers_in_text,  # noqa: E402
+                                       sentences, words)
 
 DATA = json.loads((Path(__file__).resolve().parent.parent / "core/ai_summary/samples/_results.json").read_text(encoding="utf-8"))
 results = [r for r in DATA["results"] if "error" not in r]
 log = DATA["log"]
+ai = [r for r in results if r["source"] == "ai"]
+SIDES = ("bullish", "bearish")
 
 
-def all_text(s: dict) -> list[str]:
-    return ([s["headline"], s["takeaway"], s["ask_yourself"]] + [p["text"] for p in s["positives"] + s["watch_outs"]]
-            + s["what_to_watch_next"])
+def pts(r: dict) -> list[dict]:
+    return [p for k in SIDES for p in r["summary"][k]]
+
+
+def all_text(r: dict) -> str:
+    return " ".join(f"{p['title']}. {p['detail']}" for p in pts(r))
+
+
+def nums(text: str) -> set[float]:
+    out = set()
+    for _, rs in numbers_in_text(text):
+        out |= {x for x in rs if x not in (0.0, 1.0, 100.0)}
+    return out
 
 
 print(f"Summaries: {len(results)} ok, {len(DATA['results']) - len(results)} errors\n")
 
 # ---- 1. sources, retries, failure reasons
 src = Counter(r["source"] for r in results)
-att = Counter(r.get("attempts") for r in results if r["source"] == "ai")
+att = Counter(r.get("attempts") for r in ai)
 print("1. Result:", dict(src), "| AI on attempt:", dict(att))
 fails = Counter()
 for e in log:
     for f in e.get("checks_failed") or []:
-        kind = re.sub(r'".*', "", f).strip()
-        fails[kind] += 1
+        fails[re.sub(r'(\[\d+\])|(".*)|(\d+ words.*)|(\d+ sentences.*)|(\d+ items.*)|(\d+ points.*)', "", f).strip()] += 1
     if e["result"] in ("error", "refused"):
         fails[e["result"] + ": " + e.get("error", "")[:60]] += 1
 print("   check failures on any attempt:", dict(fails.most_common()))
 for e in log:
     for f in e.get("checks_failed") or []:
-        print(f"     - {e['ticker']} {e['tab']} {e['lang']} try {e['attempt']}: {f[:150]}")
+        print(f"     - {e['ticker']} {e['tab']} {e['lang']} try {e['attempt']}: {f[:160]}")
 for r in results:
     if r["source"] == "fallback":
-        print(f"   FALLBACK {r['ticker']} {r['tab']} {r['lang']}: {r.get('reason')}")
+        print(f"   FALLBACK {r['ticker']} {r['tab']} {r['lang']}: {str(r.get('reason'))[:160]}")
 
-ai = [r for r in results if r["source"] == "ai"]
-
-# ---- 2. re-check numbers and banned words on the final outputs (belt and braces)
+# ---- 2. every number correct, no banned words (re-checked on the final outputs)
 bad_num = [(r, f) for r in ai for f in check_numbers(TabSummary.model_validate(r["summary"]), r["payload"])]
 bad_word = [(r, f) for r in ai for f in check_banned(TabSummary.model_validate(r["summary"]), r["tab"])]
 print(f"\n2. Final outputs: numbers not in data = {len(bad_num)}, banned phrases = {len(bad_word)}")
+for r, f in bad_num + bad_word:
+    print(f"     - {r['ticker']} {r['tab']} {r['lang']}: {f}")
 
-# ---- 3. headline length
-hl = [words(r["summary"]["headline"]) for r in ai]
-print(f"\n3. Headline words: max {max(hl)}, average {sum(hl) / len(hl):.1f}; over 12: {sum(h > 12 for h in hl)}")
-
-# ---- 4. balance: watch-outs present when the rule-based scorecard found risks
-missing_watch = [r for r in ai if r["rule_risks"] and not r["summary"]["watch_outs"]]
-no_watch_any = [r for r in ai if not r["summary"]["watch_outs"] and r["tab"] not in ("company_profile",)]
-print(f"\n4. Balance: rule-based risks but no watch-out = {len(missing_watch)}; no watch-outs at all (excl. profile) = {len(no_watch_any)}")
-for r in no_watch_any:
-    print(f"     - {r['ticker']} {r['tab']} {r['lang']}: rule risks {len(r['rule_risks'])}")
-pos_neg = Counter((len(r["summary"]["positives"]), len(r["summary"]["watch_outs"])) for r in ai)
-print("   (positives, watch-outs) counts:", dict(sorted(pos_neg.items())))
-
-# ---- 5. plain language
-long_sent, all_sent = [], 0
+# ---- 3. both sides considered
+sizes = Counter((len(r["summary"]["bullish"]), len(r["summary"]["bearish"])) for r in ai)
+print(f"\n3. Both sides: (bullish, bearish) counts: {dict(sorted(sizes.items()))}")
 for r in ai:
-    for t in all_text(r["summary"]):
-        for s in sentences(t):
-            all_sent += 1
-            if words(s) > 20:
-                long_sent.append((r, s))
+    for side, rule in (("bullish", r["rule_strengths"]), ("bearish", r["rule_risks"])):
+        if not r["summary"][side]:
+            note = f"rule-based {side} points: {len(rule)}" + (" <-- CHECK" if rule else " (rule-based side also empty)")
+            print(f"     - empty {side}: {r['ticker']} {r['tab']} {r['lang']} ({note})")
+
+# ---- 4. nothing important missing: are the rule-based findings (Section 7) covered by the AI points?
+print("\n4. Coverage of the rule-based findings (a finding counts as covered when its main number is in an AI point)")
+cov_total = cov_hit = 0
+missing = []
+for r in ai:
+    text_nums = nums(all_text(r))
+    for kind, items in (("strength", r["rule_strengths"]), ("risk", r["rule_risks"])):
+        for item in items[:4]:
+            n = nums(item) - {8.0}                       # "8 of 8" style counts are too generic to match on
+            if not n:
+                continue
+            cov_total += 1
+            if any(matches(x, text_nums) for x in n):
+                cov_hit += 1
+            else:
+                missing.append((r, kind, item))
+print(f"   covered {cov_hit} of {cov_total} ({cov_hit / max(cov_total, 1):.0%}); not covered by number:")
+for r, kind, item in missing:
+    print(f"     - {r['ticker']} {r['tab']} {r['lang']} {kind}: {item}")
+
+# ---- 5. no repeated points
+print("\n5. Repeated points (same metric keys, or titles sharing most words)")
+
+
+def tokens(t: str) -> set[str]:
+    return {w for w in re.findall(r"[a-zA-Z/]+", t.lower()) if len(w) > 3}
+
+
+BROAD = {"headlines", "returns_pct", "last_quarters", "analyst_estimate_revisions_30d", "recent_filings"}  # one key, many facts
+reps = 0
+for r in ai:
+    ps = [(side, p) for side in SIDES for p in r["summary"][side]]
+    for i in range(len(ps)):
+        for j in range(i + 1, len(ps)):
+            (sa, a), (sb, b) = ps[i], ps[j]
+            same_keys = a["metric_keys"] and set(a["metric_keys"]) == set(b["metric_keys"])                 and not set(a["metric_keys"]) <= BROAD
+            ta, tb = tokens(a["title"]), tokens(b["title"])
+            close = ta and tb and len(ta & tb) / len(ta | tb) >= 0.5
+            if same_keys or close:
+                reps += 1
+                print(f"     - {r['ticker']} {r['tab']} {r['lang']}: [{sa}] {a['title']} | [{sb}] {b['title']}"
+                      f"  ({'same keys ' + str(a['metric_keys']) if same_keys else 'similar titles'})")
+print(f"   possible repeats: {reps}")
+
+# ---- 6. lengths and plain language
+tw = [words(p["title"]) for r in ai for p in pts(r)]
+dw = [words(p["detail"]) for r in ai for p in pts(r)]
+print(f"\n6. Titles: {min(tw)}-{max(tw)} words (avg {sum(tw) / len(tw):.1f}); details: max {max(dw)}, avg "
+      f"{sum(dw) / len(dw):.1f} words; points per card avg {len(tw) / len(ai):.1f}")
+multi = [(r, p) for r in ai for p in pts(r) if len(sentences(p["detail"])) > 1]
+print(f"   details with more than one sentence: {len(multi)}")
 by_lang = defaultdict(list)
 for r in ai:
-    for t in all_text(r["summary"]):
-        by_lang[r["lang"]] += [words(s) for s in sentences(t)]
-print(f"\n5. Plain language: sentences over 20 words = {len(long_sent)} of {all_sent} "
-      + " | ".join(f"{k}: avg {sum(v) / len(v):.1f} words" for k, v in by_lang.items()))
+    by_lang[r["lang"]] += [words(p["detail"]) for p in pts(r)]
+print("   " + " | ".join(f"{k}: avg detail {sum(v) / len(v):.1f} words" for k, v in by_lang.items()))
 jargon = Counter()
 for r in ai:
-    txt = " ".join(all_text(r["summary"]))
-    for term in ("P/E", "EPS", "ROE", "ROIC", "EBITDA", "DCF", "PEG", "RSI", "beta", "Piotroski", "Altman", "free cash flow", "arus kas bebas"):
-        for m in re.finditer(re.escape(term), txt):
-            explained = txt[m.end():m.end() + 3].lstrip().startswith("(")
+    txt = all_text(r)
+    for term in ("P/E", "EPS", "ROE", "ROIC", "EBITDA", "DCF", "PEG", "RSI", "beta", "Beta", "Piotroski", "Altman",
+                 "free cash flow", "arus kas bebas", "short interest"):
+        m = re.search(re.escape(term), txt)
+        if m:
+            explained = txt[m.end():m.end() + 3].lstrip().startswith("(") or "(" in txt[m.end():m.end() + 25][:3]
             jargon[(term, "explained" if explained else "bare")] += 1
-print("   finance terms (first use should be explained in brackets):",
-      {f"{t} {k}": n for (t, k), n in sorted(jargon.items())})
-hype = [r for r in ai if re.search(r"!", " ".join(all_text(r["summary"])))]
-print(f"   exclamation marks: {len(hype)}")
-gap_demo = [r for r in ai if any(re.search(r"(?i)demo", g) for g in r["summary"]["data_gaps"])]
-print(f"   data_gaps mentioning 'demo' license tags: {len(gap_demo)} of {len(ai)}")
+print("   first use of finance terms:", {f"{t} {k}": n for (t, k), n in sorted(jargon.items())})
+print(f"   exclamation marks: {sum('!' in all_text(r) for r in ai)}")
+gap_demo = [r for r in ai if any(re.search(r"(?i)demo|lisensi|license", g) for g in r["summary"]["data_gaps"])]
+print(f"   data_gaps mentioning demo/license tags: {len(gap_demo)} of {len(ai)}; cards with data_gaps: "
+      f"{sum(bool(r['summary']['data_gaps']) for r in ai)}")
 
-# ---- 6. missing data handling
-print("\n6. Missing data")
+# ---- 7. missing data handling
+print("\n7. Missing data")
 for r in results:
     s = r["summary"]
-    if r["ticker"] == "JPM" and r["tab"] in ("financials", "profitability_health"):
-        txt = " ".join(all_text(s) if r["source"] == "ai" else s["positives"] + s["watch_outs"])
-        print(f"   JPM {r['tab']} {r['lang']}: mentions gross margin/profit: {bool(re.search(r'(?i)gross|kotor', txt))} | "
-              f"data_gaps: {s.get('data_gaps')}")
-    if r["ticker"] == "TSLA" and r["tab"] == "dividends":
-        print(f"   TSLA dividends {r['lang']}: [{s.get('signal')}] {s.get('headline')} | {s.get('takeaway', '')[:160]}")
-    if r["ticker"] == "PLUG" and r["tab"] == "valuation":
-        print(f"   PLUG valuation {r['lang']}: [{s.get('signal')}] {s.get('headline')} | gaps: {s.get('data_gaps')}")
-
-# ---- 7. signals vs rule
-moved = [(r["ticker"], r["tab"], r["lang"], r["rule_based_signal"], r["summary"]["signal"]) for r in ai
-         if r["summary"]["signal"] != r["rule_based_signal"]]
-print(f"\n7. Signal moved from the rule-based one: {len(moved)}")
-for m in moved:
-    print("     -", *m)
-en_id = defaultdict(dict)
-for r in ai:
-    en_id[(r["ticker"], r["tab"])][r["lang"]] = r["summary"]["signal"]
-diff = [(k, v) for k, v in en_id.items() if len(v) == 2 and v["en"] != v["id"]]
-print(f"   EN and ID disagree on the signal: {len(diff)}", diff)
+    show = (r["ticker"] == "JPM" and r["tab"] in ("financials", "profitability_health")) or \
+           (r["ticker"] == "TSLA" and r["tab"] == "dividends") or (r["ticker"] == "PLUG" and r["tab"] == "valuation")
+    if not show:
+        continue
+    if r["source"] == "ai":
+        body = " || ".join(f"[{k[:4]}] {p['title']}: {p['detail']}" for k in SIDES for p in s[k])
+    else:
+        body = "FALLBACK " + " || ".join(s["bullish"] + s["bearish"])
+    print(f"   {r['ticker']} {r['tab']} {r['lang']}: {body[:600]}\n      gaps: {s.get('data_gaps')}")
 
 # ---- 8. cost
 print("\n8. Cost and tokens (all attempts)")
@@ -125,16 +167,17 @@ per_t = defaultdict(lambda: [0.0, 0])
 per_tab = defaultdict(lambda: [0.0, 0])
 for r in results:
     c, t = r.get("cost_usd") or 0, (r.get("usage") or {}).get("total", 0)
-    per_t[r["ticker"]][0] += c; per_t[r["ticker"]][1] += t
-    per_tab[r["tab"]][0] += c; per_tab[r["tab"]][1] += t
+    per_t[r["ticker"]][0] += c
+    per_t[r["ticker"]][1] += t
+    per_tab[r["tab"]][0] += c
 for k, (c, t) in per_t.items():
     print(f"   {k}: ${c:.2f} for 20 summaries ({t:,} tokens)")
 n_t = len(per_t)
-for k, (c, t) in per_tab.items():
+for k, (c, _) in per_tab.items():
     print(f"   {k}: avg ${c / (2 * n_t):.3f} per summary")
 ok_logs = [e for e in log if e.get("usage")]
 avg = lambda k: sum(e["usage"][k] for e in ok_logs) / len(ok_logs)  # noqa: E731
-print(f"   per call average: input {avg('input'):.0f}, cache read {avg('cache_read'):.0f}, cache write {avg('cache_write'):.0f}, "
-      f"output {avg('output'):.0f}  | total ${sum(r.get('cost_usd') or 0 for r in results):.2f}")
+print(f"   per call average: input {avg('input'):.0f}, cache read {avg('cache_read'):.0f}, cache write "
+      f"{avg('cache_write'):.0f}, output {avg('output'):.0f}  | total ${sum(r.get('cost_usd') or 0 for r in results):.2f}")
 secs = [r["seconds"] for r in results]
 print(f"   time per summary: avg {sum(secs) / len(secs):.0f} s, max {max(secs):.0f} s")

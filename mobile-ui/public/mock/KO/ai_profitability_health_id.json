@@ -1,6 +1,6 @@
 {
  "ticker": "KO",
- "generated_at": "2026-11-25T10:43:37+00:00",
+ "generated_at": "2026-11-26T07:12:11+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,23 +9,83 @@
   "ticker": "KO",
   "tab": "profitability_health",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Strong",
-  "as_of": "2026-11-25T10:43:37+00:00",
-  "source": "fallback",
+  "as_of": "2026-11-26T07:12:11+00:00",
+  "source": "ai",
   "summary": {
-   "label": "Ringkasan otomatis",
-   "signal": "Strong",
-   "positives": [
-    "Perusahaan mempertahankan 29% dari pendapatannya sebagai laba, margin yang tinggi.",
-    "Perusahaan memiliki kas lebih banyak dari utang (kas bersih $13.5B).",
-    "Imbal hasil ekuitas 43%: perusahaan menghasilkan banyak dari modal pemegang saham."
+   "bullish": [
+    {
+     "title": "Margin laba jauh di atas pesaing",
+     "detail": "Margin bersih (laba dari setiap penjualan) 28.7%, jauh di atas median pesaing 10.5%; margin operasional juga tinggi, 30%.",
+     "metric_keys": [
+      "net_margin",
+      "operating_margin",
+      "gross_margin"
+     ]
+    },
+    {
+     "title": "Modal menghasilkan laba tinggi",
+     "detail": "ROE (laba dibanding modal pemegang saham) 42.6%, di atas median pesaing 28.4%; ROIC (laba dibanding seluruh modal yang dipakai) 53%.",
+     "metric_keys": [
+      "roe",
+      "roic"
+     ]
+    },
+    {
+     "title": "Kas lebih besar dari utang",
+     "detail": "Utang bersih minus Rp247 triliun, artinya kas melebihi utang; kemampuan bayar bunga (interest coverage) 10 kali dari laba.",
+     "metric_keys": [
+      "net_debt",
+      "debt_to_equity",
+      "debt_to_ebitda",
+      "interest_coverage"
+     ]
+    },
+    {
+     "title": "Skor kesehatan keuangan kuat",
+     "detail": "Altman Z-score (uji risiko bangkrut) 5.84, di atas batas aman 3; Piotroski score (9 cek kekuatan keuangan) lulus 7 dari 9.",
+     "metric_keys": [
+      "altman_z",
+      "piotroski",
+      "current_ratio"
+     ]
+    }
    ],
-   "watch_outs": []
+   "bearish": [
+    {
+     "title": "Arus kas di bawah laba",
+     "detail": "Arus kas operasi 7.41 miliar lebih rendah dari laba bersih 13.11 miliar, sehingga satu cek Piotroski tidak lulus.",
+     "metric_keys": [
+      "piotroski"
+     ]
+    },
+    {
+     "title": "ROE terbantu oleh kewajiban",
+     "detail": "Equity multiplier (aset dibanding modal sendiri) 3.12 kali, jadi ROE 42.6% sebagian ditopang dana dari kewajiban, bukan hanya modal sendiri.",
+     "metric_keys": [
+      "equity_multiplier",
+      "roe"
+     ]
+    },
+    {
+     "title": "Perputaran aset rendah dan stagnan",
+     "detail": "Asset turnover (penjualan dibanding total aset) 0.48 kali dan tidak naik dari tahun sebelumnya, sehingga cek Piotroski ini tidak lulus.",
+     "metric_keys": [
+      "asset_turnover",
+      "piotroski"
+     ]
+    }
+   ],
+   "data_gaps": [
+    "Rasio utang sangat kecil (debt to equity 0.007) tetapi interest coverage hanya 10 kali; kedua angka ini tampak tidak sejalan, jadi data utang perlu dibaca hati-hati.",
+    "ROIC, ROA, margin kotor dan margin operasional tidak memiliki pembanding pesaing atau riwayat perusahaan.",
+    "Mata uang untuk angka arus kas dan laba di cek Piotroski (7.41B dan 13.11B) tidak disebutkan."
+   ]
   },
   "model": "claude-opus-5-5",
-  "cost_usd": 0.103506,
+  "attempts": 1,
+  "cost_usd": 0.047484,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

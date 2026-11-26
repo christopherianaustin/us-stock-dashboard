@@ -14,23 +14,22 @@ from core.ai_summary import cache, client as client_mod, service
 from core.ai_summary.client import AIClient, AIRefused, user_message
 from core.ai_summary.input_builder import TABS, build_tab_input, round_sig, rule_signal
 from core.ai_summary.schema import TabSummary
-from core.ai_summary.validator import check_banned, check_lengths, check_numbers, check_signal, validate
+from core.ai_summary.validator import check_banned, check_lengths, check_numbers, validate
 from tests.ai_fixtures import INSIGHTS, pillars, sections
 
 TICKERS = ("AAPL", "KO", "TSLA", "JPM")
 
 
-def make(**kw) -> TabSummary:
-    base = dict(signal="Neutral", headline="Priced above its own history",
-                takeaway="Investors pay more than usual for each dollar of profit.",
-                positives=[], watch_outs=[], what_to_watch_next=[], ask_yourself="Does this fit your goals?",
-                data_gaps=[])
+def pt(detail: str, title: str = "Priced above its history") -> dict:
+    return {"title": title, "detail": detail, "metric_keys": []}
+
+
+def make(text: str | None = None, **kw) -> TabSummary:
+    """A summary; `text` becomes the detail of one bearish point (handy for the word checks)."""
+    base = dict(bullish=[pt("Investors pay more than usual for each dollar of profit.", "Steady profit record")],
+                bearish=[pt(text)] if text is not None else [], data_gaps=[])
     base.update(kw)
     return TabSummary.model_validate(base)
-
-
-def pt(text: str) -> dict:
-    return {"text": text, "metric_keys": []}
 
 
 def tab_input(ticker="AAPL", tab="valuation", **kw):
@@ -44,7 +43,7 @@ def tab_input(ticker="AAPL", tab="valuation", **kw):
     "Sebaiknya Anda menunggu.", "Investors may want to hold.", "It is a sure thing.",
 ])
 def test_banned_phrases_are_caught(text):
-    assert check_banned(make(takeaway=text), "valuation")
+    assert check_banned(make(text), "valuation")
 
 
 @pytest.mark.parametrize("text", [
@@ -52,18 +51,18 @@ def test_banned_phrases_are_caught(text):
     "Penjualan naik 12%.", "The company holds more cash than debt.", "Margins are steady.",
 ])
 def test_ordinary_words_are_not_banned(text):
-    assert check_banned(make(takeaway=text), "valuation") == []
+    assert check_banned(make(text), "valuation") == []
 
 
 def test_analyst_exception_only_in_ownership_and_earnings():
-    s = make(positives=[pt("Wall Street analysts rate it a buy: 30 of 49 analysts.")])
+    s = make(bullish=[pt("Wall Street analysts rate it a buy: 30 of 49 analysts.")])
     assert check_banned(s, "ownership_sentiment") == []
     assert check_banned(s, "earnings") == []
     assert check_banned(s, "valuation")            # same sentence is not allowed in other tabs
-    s_id = make(positives=[pt("Sebanyak 30 dari 49 analis menilai beli.")])
+    s_id = make(bullish=[pt("Sebanyak 30 dari 49 analis menilai beli.")])
     assert check_banned(s_id, "ownership_sentiment") == []
     # the exception covers only the attributed sentence, not the rest
-    s2 = make(takeaway="Analysts rate it a buy. You should buy too.")
+    s2 = make("Analysts rate it a buy. You should buy too.")
     assert check_banned(s2, "ownership_sentiment")
 
 
@@ -81,38 +80,37 @@ PAYLOAD = {"metrics": [{"key": "pe", "value": 39.476, "compare": {"own_5y_percen
     "In Q4 FY26 results improved.", "Keeps $12 of every $100 in sales.",
 ])
 def test_numbers_from_the_data_pass(text):
-    assert check_numbers(make(takeaway=text), PAYLOAD) == []
+    assert check_numbers(make(text), PAYLOAD) == []
 
 
 @pytest.mark.parametrize("text", ["P/E is 40.", "Margin is 57%.", "Price is Rp6.100.000.", "Next report in 2028."])
 def test_numbers_not_in_the_data_fail(text):
-    assert check_numbers(make(takeaway=text), PAYLOAD)
+    assert check_numbers(make(text), PAYLOAD)
 
 
-# =========================================================================== validator: lengths and signal
+# =========================================================================== validator: lengths (SPEC 16.6)
 def test_length_limits():
-    assert check_lengths(make()) == []
-    assert check_lengths(make(headline=" ".join(["word"] * 13)))
-    assert check_lengths(make(takeaway=" ".join(["word"] * 46)))
-    assert check_lengths(make(takeaway="One. Two. Three."))
-    assert check_lengths(make(positives=[pt("a")] * 4))
-    assert check_lengths(make(watch_outs=[pt(" ".join(["w"] * 26))]))
-    assert check_lengths(make(what_to_watch_next=["a", "b", "c"]))
-    assert check_lengths(make(ask_yourself="No question here."))
+    assert check_lengths(make("P/E is 39.5.")) == []
+    assert check_lengths(make(bullish=[pt("a")] * 5))                                   # max 4 per list
+    assert check_lengths(make(bearish=[pt("x", title="Expensive")]))                    # title 2-6 words
+    assert check_lengths(make(bearish=[pt("x", title="one two three four five six seven")]))
+    assert check_lengths(make(" ".join(["w"] * 26)))                                    # detail max 25 words
+    assert check_lengths(make("One sentence. Then another."))                           # detail is one sentence
+    assert check_lengths(make(data_gaps=["a", "b", "c", "d"]))                          # data_gaps max 3
+    assert check_lengths(make(bullish=[], bearish=[])) == []                            # empty lists are allowed
 
 
-def test_signal_moves_at_most_one_step():
-    assert check_signal(make(signal="Neutral"), "Weak") == []
-    assert check_signal(make(signal="Strong"), "Weak")
-    assert check_signal(make(signal="Neutral"), "Not applicable")
-    assert check_signal(make(signal="Not applicable"), "Not applicable") == []
+def test_bullish_and_bearish_words_are_allowed():
+    s = make("Bearish point: P/E is 39.5.", bullish=[pt("Bullish point on margins.", "Bullish margin trend")])
+    assert check_banned(s, "valuation") == []
 
 
 def test_validate_combines_all_checks():
-    good = make(signal="Weak", takeaway="P/E is 39.5, higher than 96% of the last 5 years.")
-    assert validate(good, PAYLOAD, "valuation", "Weak").ok
-    bad = make(signal="Strong", takeaway="Looks undervalued at 41x.")
-    r = validate(bad, PAYLOAD, "valuation", "Weak")
+    good = make("P/E is 39.5, higher than 96% of the last 5 years.")
+    assert validate(good, PAYLOAD, "valuation").ok
+    bad = make("Looks undervalued at 41x, so it is a good time to buy before results come in next quarter and beyond.",
+               bullish=[pt("x", title="Cheap")])
+    r = validate(bad, PAYLOAD, "valuation")
     assert not r.ok and len(r.failures) >= 3
 
 
@@ -211,16 +209,15 @@ def test_cache_key():
 # =========================================================================== prompt and client (fake SDK)
 def test_user_message_follows_the_template():
     ti = tab_input()
-    msg = user_message("valuation", "id", "IDR", ti.rule_signal, ti.payload)
+    msg = user_message("valuation", "id", "IDR", ti.payload)
     for part in ("<request>", "tab: Valuation", "tab_focus: How the price compares", "language: id",
-                 'currency: "IDR"', '"Rp1,234,567"', '"12.5%"', "rule_based_signal: Weak", "<stock_data>", "</stock_data>",
+                 'currency: "IDR"', '"Rp1,234,567"', '"12.5%"', "<stock_data>", "</stock_data>",
                  "Write the summary for this tab."):
         assert part in msg
 
 
-GOOD = make(signal="Weak", headline="Priced well above its own 5-year history",
-            takeaway="P/E is 39.5, higher than 96% of the last 5 years.",
-            watch_outs=[pt("P/E of 39.5 is above the peer median of 20.8.")])
+GOOD = make("P/E (price compared with yearly profit) of 39.5 is higher than 96% of the last 5 years.",
+            bullish=[pt("Peer median P/E is 20.8, compared with 39.5 for this stock.", "Peer comparison available")])
 
 
 class FakeSDK:
@@ -255,7 +252,7 @@ def test_client_request_shape():
     assert kw["output_config"] == {"effort": "medium"}
     assert kw["system"][0]["cache_control"] == {"type": "ephemeral"}
     assert kw["fallbacks"] == "default" and kw["betas"] == ["server-side-fallback-2026-07-01"]
-    assert r.summary.headline == GOOD.headline and r.usage.total == 2900
+    assert r.summary.bearish == GOOD.bearish and r.usage.total == 2900
 
 
 def test_client_raises_on_refusal_and_skips_fallbacks_for_other_models():
@@ -298,7 +295,7 @@ def test_service_ai_result_is_cached_and_logged(tmp_store):
 
 
 def test_service_retries_once_with_a_note(tmp_store):
-    bad = make(signal="Weak", takeaway="The stock is undervalued.")
+    bad = make("The stock is undervalued.")
     sdk = FakeSDK(bad, GOOD)
     out = run(sdk)
     assert out["source"] == "ai" and out["attempts"] == 2
@@ -306,10 +303,10 @@ def test_service_retries_once_with_a_note(tmp_store):
 
 
 def test_service_falls_back_after_two_failures_or_a_refusal(tmp_store):
-    bad = make(signal="Weak", takeaway="You should buy now.")
+    bad = make("You should buy now.")
     out = run(FakeSDK(bad, bad))
     assert out["source"] == "fallback" and out["summary"]["label"] == "Automatic summary"
-    assert out["summary"]["watch_outs"] == ["P/E is higher than 96% of the last 5 years."]
+    assert out["summary"]["bearish"] == ["P/E is higher than 96% of the last 5 years."]
     ti = tab_input("KO")
     out2 = service.get_summary("KO", "valuation", "en", "USD", ti, cfg=cfg(), client=AIClient(cfg(), sdk=FakeSDK("refusal")))
     assert out2["source"] == "fallback"
@@ -365,3 +362,43 @@ def test_api_hides_the_card_when_ai_is_off_and_saves_feedback(tmp_store, monkeyp
     assert c.post("/ai-feedback", json={"ticker": "AAPL", "tab": "nope", "lang": "id", "prompt_version": "1.0",
                                        "vote": "up"}).status_code == 422
     assert settings_mod   # imported only to make sure the real settings module is untouched
+
+
+# =========================================================================== 10b round 2 fixes (prompt 2.1)
+def test_sp500_is_a_name_not_a_number():
+    assert check_numbers(make("Beat the S&P 500 by 39.5%."), PAYLOAD) == []
+    assert check_numbers(make("Beat the S&P 500 by 41%."), PAYLOAD)          # other numbers are still checked
+
+
+def test_named_firm_rating_changes_count_as_analyst_opinions():
+    s = make("China Renaissance raised its rating from Hold to Buy.")
+    assert check_banned(s, "ownership_sentiment") == []
+    assert check_banned(make("Barclays menaikkan peringkat ke beli."), "ownership_sentiment") == []
+    assert check_banned(s, "valuation")                                       # not outside the analyst tabs
+
+
+@pytest.mark.parametrize("text", ["Ada tekanan jual di dekat resistance.", "Hasilnya belum pasti.",
+                                  "Aksi jual di sektor teknologi.", "Arahnya tidak pasti."])
+def test_ordinary_indonesian_phrases_are_allowed(text):
+    assert check_banned(make(text), "price_technicals") == []
+
+
+def test_allowed_phrases_do_not_hide_real_advice():
+    assert check_banned(make("Ada tekanan jual, sebaiknya jual sekarang."), "price_technicals")
+
+
+def test_too_thin_answer_is_retried_but_short_tabs_are_fine():
+    from core.ai_summary.validator import check_completeness
+    rich = {"metrics": [{"key": f"m{i}", "value": i + 2} for i in range(12)]}
+    one = make(bullish=[pt("P/E is 39.5.", "Only one point")])
+    assert check_completeness(one, rich)
+    assert check_completeness(one, {"metrics": []}) == []                     # e.g. no dividend: little data
+    assert check_completeness(make("P/E is 39.5.", bullish=[]), {}, strengths=["Margins are high."])
+    assert check_completeness(make("P/E is 39.5.", bullish=[pt("x y")]), rich, strengths=["s"], risks=["r"]) == []
+
+
+def test_license_tags_are_not_sent_to_the_model():
+    ti = tab_input()
+    assert "license_tag" in json.dumps(ti.payload)                            # still tracked in our code
+    msg = user_message("valuation", "en", "USD", ti.payload)
+    assert "license_tag" not in msg and "DEMO_ONLY" not in msg

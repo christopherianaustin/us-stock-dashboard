@@ -1,6 +1,6 @@
 {
  "ticker": "KO",
- "generated_at": "2026-11-25T10:43:18+00:00",
+ "generated_at": "2026-11-26T07:11:47+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,71 +9,80 @@
   "ticker": "KO",
   "tab": "financials",
   "lang": "en",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "CALCULATED_SAFE",
-  "rule_based_signal": "Neutral",
-  "as_of": "2026-11-25T10:43:18+00:00",
+  "as_of": "2026-11-26T07:11:47+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Neutral",
-   "headline": "Sales and profit margins rising, with more cash than reported debt",
-   "takeaway": "Revenue growth sped up in 2026, and the company keeps a bigger share of sales as profit than in past years. Cash flow mostly backs up the profit, but cash and margins have swung sharply in some quarters.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Revenue grew 7.4% vs the same quarter last year in Q3 FY26. That is faster than its 3-year average growth of 3.7% a year.",
+     "title": "Sales and profit growing faster",
+     "detail": "Sales grew 7.4% and EPS (profit per share) 8.1% over the past year, above the 3-year average sales growth of 3.7%.",
      "metric_keys": [
       "revenue_yoy",
+      "eps_yoy",
       "revenue_cagr_3y"
      ]
     },
     {
-     "text": "Net margin (share of sales kept as profit) rose from 22.6% in FY2024 to 27.3% in FY2025. It reached 30-33% in recent quarters.",
+     "title": "Profit margins higher in 2026",
+     "detail": "Net margin (profit kept from each $100 of sales) was 30% to 33% in 2026 quarters, up from 27.3% for FY2025.",
      "metric_keys": [
-      "annual.net_margin",
-      "quarterly_income.net_margin"
+      "quarterly_income.net_margin",
+      "annual.net_margin"
      ]
     },
     {
-     "text": "Cash conversion (cash from operations compared with profit) is 1.11x, so cash coming in slightly exceeds reported profit.",
+     "title": "Profit backed by cash",
+     "detail": "Cash conversion (cash made compared with reported profit) is 1.11x, meaning cash inflow was slightly above profit.",
      "metric_keys": [
       "cash_conversion"
      ]
+    },
+    {
+     "title": "Cash growing, little debt",
+     "detail": "Cash rose to $13.5 billion in Q3 FY26 from $10.3 billion; debt was only $0.25 billion in Q1 FY26.",
+     "metric_keys": [
+      "balance_sheet.cash",
+      "balance_sheet.total_debt",
+      "balance_sheet.net_debt"
+     ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "Operating cash flow was negative $5.2 billion in Q1 FY25, a sudden swing from $3.95 billion the quarter before.",
+     "title": "Uneven quarterly cash flow",
+     "detail": "Free cash flow (cash left after investments) swung to -$5.51 billion in Q1 FY25, and Q1 FY26 was only $1.75 billion.",
      "metric_keys": [
+      "quarterly_cash_flow.fcf",
       "quarterly_cash_flow.operating_cash_flow"
      ]
     },
     {
-     "text": "Q4 quarters show weaker profit. Operating margin (profit from main business) fell to 15.6% in Q4 FY25, from 32% in Q3 FY25.",
+     "title": "Sudden margin drop in Q4",
+     "detail": "Operating margin (profit from core business) fell to 15.6% in Q4 FY25 from 32% the quarter before, a sudden drop.",
      "metric_keys": [
       "quarterly_income.operating_margin"
      ]
     },
     {
-     "text": "Total debt shows only $0.25 billion in Q1 FY26 and is missing for later quarters, so the debt picture is unclear.",
+     "title": "Slow longer-term growth",
+     "detail": "Growth score is 49, rated Neutral, and yearly sales rose only from $47.1 billion to $47.9 billion in FY2025.",
      "metric_keys": [
-      "balance_sheet.total_debt"
+      "rule_based_pillars.growth",
+      "annual.revenue"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Next earnings report on 9 Feb 2027, covering a Q4 period when margins were lower last year (15.6% operating margin).",
-    "Whether cash, at $13.5 billion in Q3 FY26, keeps rising and whether updated debt figures appear."
-   ],
-   "ask_yourself": "How comfortable are you with a company whose cash flow and margins can swing sharply from one quarter to the next?",
    "data_gaps": [
-    "Total debt and net debt are missing for Q2 FY26 and Q3 FY26, and the reported debt levels look unusually low; they may be incomplete.",
-    "No peer or market comparisons are given for growth, margins or cash flow.",
-    "No explanation is given for the negative operating cash flow in Q1 FY25 or the profit jump in FY2025."
+    "Total debt and net debt are missing for Q2 and Q3 FY26, so the latest cash-versus-debt balance cannot be fully confirmed.",
+    "No peer or S&P 500 comparisons are given for margins, growth or cash flow.",
+    "The data does not explain the sudden Q4 FY25 margin drop or the negative cash flow in Q1 FY25."
    ]
   },
   "model": "claude-opus-5-5",
   "attempts": 2,
-  "cost_usd": 0.080618,
+  "cost_usd": 0.114307,
   "cached": false,
   "disclaimer": "AI-generated from the data on this page. It can make mistakes and is not investment advice.",
   "sample": true

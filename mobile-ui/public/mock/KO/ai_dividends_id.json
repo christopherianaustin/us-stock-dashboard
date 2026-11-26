@@ -1,6 +1,6 @@
 {
  "ticker": "KO",
- "generated_at": "2026-11-25T10:43:55+00:00",
+ "generated_at": "2026-11-26T07:12:22+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,73 +9,70 @@
   "ticker": "KO",
   "tab": "dividends",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Neutral",
-  "as_of": "2026-11-25T10:43:55+00:00",
+  "as_of": "2026-11-26T07:12:22+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Neutral",
-   "headline": "Dividen naik 63 tahun beruntun, tapi yield di bawah rata-rata",
-   "takeaway": "KO punya rekam jejak dividen yang sangat panjang dan tumbuh stabil. Namun yield saat ini lebih rendah dari rata-rata 5 tahunnya, dan sebagian besar laba sudah dibagikan sebagai dividen.",
-   "positives": [
+   "bullish": [
     {
-     "text": "KO sudah menaikkan dividen 63 tahun berturut-turut, dengan pembayaran 4 kali setahun.",
+     "title": "Dividen naik 63 tahun beruntun",
+     "detail": "Dividen sudah dinaikkan 63 tahun berturut-turut, rekam jejak kenaikan dividen yang sangat panjang dan konsisten.",
      "metric_keys": [
-      "growth_streak_years",
-      "frequency_per_year"
+      "growth_streak_years"
      ]
     },
     {
-     "text": "Dividen tumbuh sekitar 5.04% per tahun dalam 3 tahun terakhir, sedikit lebih cepat dari 4.46% per tahun selama 5 tahun.",
+     "title": "Dividen tumbuh stabil tiap tahun",
+     "detail": "Dividen per saham naik dari Rp30,160 (2020) ke Rp37,520 (2025), rata-rata sekitar 4.5% per tahun dalam 5 tahun dan 5% dalam 3 tahun.",
      "metric_keys": [
-      "cagr_3y",
-      "cagr_5y"
+      "dividend_per_share_by_year",
+      "cagr_5y",
+      "cagr_3y"
      ]
     },
     {
-     "text": "Dividen masih tertutup laba dan arus kas bebas (kas sisa setelah belanja usaha): porsinya 76.8% dari laba dan 78.6% dari arus kas bebas.",
+     "title": "Dibayar rutin empat kali setahun",
+     "detail": "Total dividen 12 bulan terakhir Rp38,620 per saham, dibayar 4 kali setahun; tanggal ex-dividen berikutnya 1 Desember 2026.",
      "metric_keys": [
-      "payout_ratio",
-      "fcf_payout"
+      "dps_ttm",
+      "frequency_per_year",
+      "next_ex_dividend_date"
      ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "Dividend yield (dividen setahun dibanding harga saham) 2.15%, lebih rendah dari rata-rata 5 tahunnya 2.84%.",
+     "title": "Yield di bawah rata-rata sendiri",
+     "detail": "Dividend yield (dividen setahun dibanding harga saham) 2.15%, lebih rendah dari rata-rata 5 tahunnya sebesar 2.84%.",
      "metric_keys": [
       "yield_ttm"
      ]
     },
     {
-     "text": "Payout ratio (porsi laba yang dibagikan) 76.8% tergolong tinggi. Jika laba turun, ruang untuk menaikkan dividen jadi lebih sempit.",
+     "title": "Porsi laba untuk dividen tinggi",
+     "detail": "Sekitar 76.8% laba dan 78.6% free cash flow (kas bebas setelah belanja modal) dipakai untuk dividen; masih tertutup, tetapi ruang tambahan terbatas.",
      "metric_keys": [
       "payout_ratio",
       "fcf_payout"
      ]
     },
     {
-     "text": "Dividen Rp38,450 per saham dihitung dengan kurs Rp18,310 per dolar AS, jadi nilainya dalam rupiah ikut berubah bersama kurs.",
+     "title": "Skor dividen netral",
+     "detail": "Skor dividen (penilaian berbasis aturan atas kualitas dividen) adalah 49 dengan level Netral, jadi profil dividennya tidak menonjol secara keseluruhan.",
      "metric_keys": [
-      "dps_ttm"
+      "rule_based_pillars"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Tanggal ex-dividen 1 Desember 2026: investor perlu memiliki saham sebelum tanggal ini untuk berhak atas dividen berikutnya.",
-    "Laporan keuangan berikutnya pada 9 Februari 2027, untuk melihat apakah laba dan arus kas tetap menutup dividen."
-   ],
-   "ask_yourself": "Apakah tujuan Anda lebih ke pendapatan rutin dari dividen, atau ke pertumbuhan nilai saham?",
    "data_gaps": [
-    "Tidak ada perbandingan dividend yield dan payout ratio dengan perusahaan sejenis.",
-    "Tidak ada riwayat payout ratio, sehingga tren porsi laba yang dibagikan tidak bisa dinilai.",
-    "Angka rupiah dikonversi dari dolar AS dengan satu kurs, sehingga perubahan per tahun bisa berbeda dalam dolar."
+    "Tidak ada perbandingan yield, pertumbuhan dividen, atau payout ratio dengan perusahaan sejenis maupun S&P 500.",
+    "Angka rupiah dikonversi dari dolar AS dengan kurs Rp18,390, sehingga perubahan kurs bisa membuat angka dividen dalam rupiah berbeda dari pertumbuhan aslinya."
    ]
   },
   "model": "claude-opus-5-5",
-  "attempts": 2,
-  "cost_usd": 0.098442,
+  "attempts": 1,
+  "cost_usd": 0.042488,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

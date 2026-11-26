@@ -1,6 +1,6 @@
 {
  "ticker": "KO",
- "generated_at": "2026-11-25T10:43:15+00:00",
+ "generated_at": "2026-11-26T07:11:36+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,69 +9,75 @@
   "ticker": "KO",
   "tab": "earnings",
   "lang": "en",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Strong",
-  "as_of": "2026-11-25T10:43:15+00:00",
+  "as_of": "2026-11-26T07:11:36+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Strong",
-   "headline": "Beat profit estimates in all of the last 8 quarters",
-   "takeaway": "Coca-Cola has beaten Wall Street's EPS (earnings per share) estimates every quarter for two years, usually by small margins. Analysts mostly raised this year's estimates, but views on next year are more mixed.",
-   "positives": [
+   "bullish": [
     {
-     "text": "EPS beat analyst estimates in 8 of the last 8 quarters, with surprises from about 2% to 6.4%.",
+     "title": "Beat estimates every quarter",
+     "detail": "EPS (profit per share) beat Wall Street estimates in all 8 of the last 8 quarters, by between about 2% and 6.4%.",
      "metric_keys": [
       "beat_rate_8q",
       "last_quarters"
      ]
     },
     {
-     "text": "In the last 30 days, 23 analysts raised their current fiscal year estimate and none cut it.",
+     "title": "This year's estimates being raised",
+     "detail": "In the last 30 days, analysts raised current fiscal year estimates 23 times with 0 cuts, and current quarter estimates 11 times versus 4 cuts.",
      "metric_keys": [
       "analyst_estimate_revisions_30d"
      ]
     },
     {
-     "text": "For the current quarter, 11 analysts raised estimates while 4 cut them.",
+     "title": "High quality earnings",
+     "detail": "Earnings quality scores 93 (Strong), Piotroski score (9 simple checks of financial strength) is 7/9, and operating cash flow is 1.1× net income.",
      "metric_keys": [
-      "analyst_estimate_revisions_30d"
+      "rule_based_pillars",
+      "rule_based_strengths"
+     ]
+    },
+    {
+     "title": "Analysts expect year-on-year growth",
+     "detail": "For the report on 2027-02-09, 19 Wall Street analysts estimate EPS of $0.61, above $0.58 in the same quarter a year ago.",
+     "metric_keys": [
+      "next_earnings"
      ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "A beat does not always lift the price. After the Q3 FY26 beat, the stock fell 1.6% the next day.",
+     "title": "Further-out estimates being cut",
+     "detail": "In the last 30 days, next quarter estimates had 7 cuts versus 3 raises, and next fiscal year had 12 cuts versus 10 raises.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    },
+    {
+     "title": "Beats do not always lift price",
+     "detail": "Despite beating estimates, the price fell 1.64% after the latest report (Q3 FY26) and 1.49% after Q4 FY25.",
      "metric_keys": [
       "last_quarters"
      ]
     },
     {
-     "text": "For next quarter, 7 analysts cut estimates and 3 raised them. For next fiscal year, 12 cut and 10 raised.",
+     "title": "Price can move after earnings",
+     "detail": "The price typically moves about 2.1% up or down the day after earnings, with moves as large as 5% in recent quarters.",
      "metric_keys": [
-      "analyst_estimate_revisions_30d"
-     ]
-    },
-    {
-     "text": "Beats are mostly small. The Q1 FY25 surprise was only 1.95% above the estimate.",
-     "metric_keys": [
+      "typical_move",
       "last_quarters"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Next earnings on 9 Feb 2027, before market open. 19 analysts estimate EPS of $0.61, versus $0.58 a year ago.",
-    "Wall Street analysts estimate revenue of about $11.3 billion. The typical 1-day price move after earnings is about 2.1%."
-   ],
-   "ask_yourself": "How would you feel if the price fell for a day even after a good earnings report?",
    "data_gaps": [
-    "No history of revenue beats or misses versus estimates.",
-    "Beat rate and typical move metrics are marked as demo data, so they may not be fully reliable."
+    "No history of revenue beats or misses, only EPS results.",
+    "No peer or S&P 500 comparison for the beat rate or typical price move after earnings."
    ]
   },
   "model": "claude-opus-5-5",
   "attempts": 1,
-  "cost_usd": 0.027177,
+  "cost_usd": 0.032016,
   "cached": false,
   "disclaimer": "AI-generated from the data on this page. It can make mistakes and is not investment advice.",
   "sample": true

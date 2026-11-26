@@ -1,6 +1,6 @@
 {
  "ticker": "AAPL",
- "generated_at": "2026-11-25T10:42:33+00:00",
+ "generated_at": "2026-11-26T07:10:43+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,39 +9,46 @@
   "ticker": "AAPL",
   "tab": "ownership_sentiment",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Not applicable",
-  "as_of": "2026-11-25T10:42:33+00:00",
+  "as_of": "2026-11-26T07:10:43+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Not applicable",
-   "headline": "Analis cenderung positif, tapi orang dalam terus menjual saham",
-   "takeaway": "Sebagian besar dari 49 analis Wall Street memberi pandangan positif, dan institusi besar memegang 66.5% saham. Namun harga saat ini sudah di atas target rata-rata analis, dan orang dalam tercatat lebih banyak menjual setiap bulan.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Dari 49 analis Wall Street, 11 memberi rating paling positif dan 19 positif. Hanya 3 negatif dan 1 sangat negatif.",
+     "title": "Mayoritas analis memberi Buy",
+     "detail": "Menurut analis Wall Street, 30 dari 49 analis memberi rating Buy atau Strong Buy, skor rata-rata 2.27 (skala 1 Strong Buy hingga 5 Strong Sell).",
      "metric_keys": [
       "wall_street_analyst_ratings"
      ]
     },
     {
-     "text": "Institusi besar memegang 66.5% saham. Pemegang terbesar adalah BlackRock dengan 7.96%, lalu Vanguard dengan 6.57%.",
+     "title": "Ada kenaikan rating terbaru",
+     "detail": "China Renaissance menaikkan rating dari Hold ke Buy pada 11 November 2026, sementara lima firma lain mempertahankan rating mereka bulan ini.",
+     "metric_keys": [
+      "recent_rating_changes_by_analysts"
+     ]
+    },
+    {
+     "title": "Short interest rendah",
+     "detail": "Hanya 1% saham beredar dijual short (taruhan bahwa harga turun), dan posisi itu bisa ditutup dalam sekitar 3.6 hari perdagangan.",
+     "metric_keys": [
+      "short_interest"
+     ]
+    },
+    {
+     "title": "Banyak dipegang institusi besar",
+     "detail": "Institusi seperti pengelola dana memegang 66.5% saham, termasuk BlackRock 7.96% dan Vanguard 6.57%.",
      "metric_keys": [
       "who_owns_the_shares_pct",
       "top_institutions"
      ]
-    },
-    {
-     "text": "Short interest (saham yang dijual pinjam karena bertaruh harga turun) hanya 1% dari saham beredar per 30 Okt 2026.",
-     "metric_keys": [
-      "short_interest"
-     ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "Harga Rp6,483,000 sudah di atas target rata-rata 12 bulan analis Rp6,329,000. Rentang target analis Rp4,578,000 sampai Rp7,782,000.",
+     "title": "Harga di atas target rata-rata",
+     "detail": "Harga Rp6,539,000 sudah di atas rata-rata target harga 12 bulan analis Wall Street Rp6,356,000; target terendah mereka Rp4,598,000.",
      "metric_keys": [
       "price",
       "analyst_target_mean",
@@ -50,34 +57,29 @@
      ]
     },
     {
-     "text": "Orang dalam (direksi dan eksekutif) lebih banyak menjual daripada membeli saham di setiap bulan tercatat, dari Mei hingga November 2026.",
+     "title": "Orang dalam terus menjual",
+     "detail": "Insider (direksi dan petinggi perusahaan) lebih banyak menjual daripada membeli di keenam bulan yang tercatat, Mei hingga November 2026.",
      "metric_keys": [
       "insider_net_buying_by_month"
      ]
     },
     {
-     "text": "Barclays mempertahankan rating negatif (Underweight) pada 3 Nov 2026, dan 15 analis memberi rating netral.",
+     "title": "Sebagian analis tetap hati-hati",
+     "detail": "15 analis memberi Hold dan 4 memberi Sell atau Strong Sell, sementara Barclays mempertahankan Underweight (di bawah rata-rata pasar) pada 3 November 2026.",
      "metric_keys": [
-      "recent_rating_changes_by_analysts",
-      "wall_street_analyst_ratings"
+      "wall_street_analyst_ratings",
+      "recent_rating_changes_by_analysts"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Laporan laba berikutnya dijadwalkan pada 29 Jan 2027.",
-    "Posisi harga dibanding target rata-rata analis Rp6,329,000."
-   ],
-   "ask_yourself": "Seberapa besar Anda menimbang pendapat analis dibanding aksi jual oleh orang dalam perusahaan?",
    "data_gaps": [
-    "Angka penjualan bersih orang dalam sebesar 627 triliun rupiah pada Juni dan November 2026 tampak tidak wajar dan mungkin keliru.",
-    "Data transaksi orang dalam untuk Juli 2026 tidak tersedia.",
-    "Data short interest per 30 Okt 2026, belum diperbarui.",
-    "Semua data ditandai DEMO_ONLY dan dikonversi dari dolar AS dengan kurs 18,310."
+    "Angka penjualan bersih insider Rp630 triliun pada Juni dan November 2026 tampak sangat besar dibanding bulan lain, sehingga besarnya mungkin tidak akurat; data Juli dan April juga tidak tersedia.",
+    "Tidak ada perbandingan kepemilikan institusi atau short interest dengan perusahaan sejenis maupun riwayat perusahaan sendiri."
    ]
   },
   "model": "claude-opus-5-5",
-  "attempts": 2,
-  "cost_usd": 0.107894,
+  "attempts": 1,
+  "cost_usd": 0.05028,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

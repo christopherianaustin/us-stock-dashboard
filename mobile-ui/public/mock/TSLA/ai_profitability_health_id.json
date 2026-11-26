@@ -1,6 +1,6 @@
 {
  "ticker": "TSLA",
- "generated_at": "2026-11-25T10:45:10+00:00",
+ "generated_at": "2026-11-26T07:14:41+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,72 +9,87 @@
   "ticker": "TSLA",
   "tab": "profitability_health",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Neutral",
-  "as_of": "2026-11-25T10:45:10+00:00",
+  "as_of": "2026-11-26T07:14:41+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Neutral",
-   "headline": "Keuangan sangat kuat, tetapi kemampuan menghasilkan laba masih tipis",
-   "takeaway": "Tesla punya kas lebih banyak dari utangnya dan beban utangnya ringan. Namun laba dari penjualan dan modalnya masih kecil, dan beberapa ukuran efisiensi melemah dibanding tahun sebelumnya.",
-   "positives": [
+   "bullish": [
     {
-     "text": "Utang bersih minus Rp662 triliun, artinya kas lebih besar dari utang. Debt to equity (utang dibanding modal sendiri) hanya 0.104x.",
+     "title": "Kas lebih besar dari utang",
+     "detail": "Kas perusahaan melebihi total utangnya sekitar Rp665 triliun, dan rasio utang terhadap modal hanya 0.10x, tergolong rendah.",
      "metric_keys": [
       "net_debt",
       "debt_to_equity"
      ]
     },
     {
-     "text": "Interest coverage (laba operasional dibanding biaya bunga) 9.96x, jadi laba operasional hampir 10 kali lipat biaya bunganya.",
+     "title": "Risiko bangkrut sangat rendah",
+     "detail": "Altman Z-score (uji risiko kebangkrutan) 14.7, jauh di atas batas zona aman 3; skor kesehatan keuangan 100 (Kuat).",
      "metric_keys": [
-      "interest_coverage"
+      "altman_z"
      ]
     },
     {
-     "text": "ROE (laba dibanding modal pemegang saham) 3.8%, di atas median perusahaan sejenis yang -18.4%.",
+     "title": "Mampu bayar bunga dan tagihan",
+     "detail": "Laba operasi menutup beban bunga sekitar 10 kali, dan current ratio (aset lancar dibanding utang jangka pendek) 1.74x.",
      "metric_keys": [
-      "roe"
+      "interest_coverage",
+      "current_ratio",
+      "quick_ratio",
+      "debt_to_ebitda"
+     ]
+    },
+    {
+     "title": "Lebih untung dibanding pesaing",
+     "detail": "ROE (laba dibanding modal pemegang saham) 3.8%, di atas median pesaing -18.4%; margin laba bersih 3.1% vs median pesaing 0%.",
+     "metric_keys": [
+      "roe",
+      "net_margin"
      ]
     }
    ],
-   "watch_outs": [
+   "bearish": [
     {
-     "text": "Net margin (laba bersih dibanding penjualan) hanya 3.11%. Margin operasional juga tipis, 3.35%, sehingga ruang untuk menahan biaya naik sempit.",
+     "title": "Margin laba sangat tipis",
+     "detail": "Hanya sekitar Rp3 laba bersih dari setiap Rp100 penjualan, dan skor profitabilitas hanya 4.0 (kategori Lemah).",
      "metric_keys": [
       "net_margin",
       "operating_margin"
      ]
     },
     {
-     "text": "ROIC (laba dari seluruh modal yang dipakai) 5.08%, tergolong rendah. Skor pilar profitabilitas hanya 4, level Weak.",
+     "title": "Imbal hasil modal rendah",
+     "detail": "ROIC (laba dari seluruh modal yang ditanam) hanya 5.1% dan ROE 3.8%, tergolong kecil walau lebih baik dari pesaing.",
      "metric_keys": [
-      "roic"
+      "roic",
+      "roe"
      ]
     },
     {
-     "text": "Skor Piotroski (cek kekuatan keuangan) 5 dari 9. ROA turun dari 6.7% ke 3.1%, dan jumlah saham bertambah.",
+     "title": "Efisiensi aset menurun",
+     "detail": "ROA (laba dibanding total aset) turun dari 6.7% ke 3.1%, dan perputaran aset turun dari 0.92x ke 0.78x.",
      "metric_keys": [
-      "piotroski",
-      "roa"
+      "roa",
+      "asset_turnover"
+     ]
+    },
+    {
+     "title": "Skor Piotroski hanya sedang",
+     "detail": "Piotroski score (9 cek sederhana kekuatan keuangan) 5 dari 9; jumlah saham juga naik dari 3.50 miliar ke 3.53 miliar.",
+     "metric_keys": [
+      "piotroski"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Laporan laba berikutnya pada 28 Januari 2027.",
-    "Apakah ROA bisa naik lagi dari 3.1% dan asset turnover pulih dari 0.78."
-   ],
-   "ask_yourself": "Seberapa penting bagi Anda laba yang besar dibanding neraca keuangan yang kuat?",
    "data_gaps": [
-    "Altman Z-score 14.8 ditandai hanya untuk demo, jadi belum bisa dijadikan pegangan.",
-    "Angka di data tidak sama: ROA tertulis 2.21% di metrik tetapi 3.1% di cek Piotroski; current ratio 1.74x versus 2.16.",
-    "Tidak ada data riwayat ROE dan ROIC, serta tidak ada perbandingan dengan perusahaan sejenis untuk ROIC dan rasio utang."
+    "Angka ROA (2.21% vs 3.1%) dan current ratio (1.74x vs 2.16) berbeda antara metrik utama dan cek Piotroski, mungkin karena periode berbeda.",
+    "Tidak ada perbandingan dengan riwayat perusahaan atau S&P 500 untuk sebagian besar metrik, dan perbandingan pesaing hanya untuk ROE dan margin bersih."
    ]
   },
   "model": "claude-opus-5-5",
-  "attempts": 2,
-  "cost_usd": 0.08831,
+  "attempts": 1,
+  "cost_usd": 0.039972,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

@@ -1,6 +1,6 @@
 {
  "ticker": "JPM",
- "generated_at": "2026-11-25T10:46:42+00:00",
+ "generated_at": "2026-11-26T07:17:16+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,69 +9,59 @@
   "ticker": "JPM",
   "tab": "news_filings",
   "lang": "en",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Not applicable",
-  "as_of": "2026-11-25T10:46:42+00:00",
+  "as_of": "2026-11-26T07:17:16+00:00",
   "source": "ai",
   "summary": {
-   "signal": "Not applicable",
-   "headline": "New business moves in headlines, alongside an unexplained Chase outage",
-   "takeaway": "Recent JPMorgan headlines mix new business moves, such as a digital gold trade and a Dallas hub, with an unexplained Chase outage. Filings look routine, including a quarterly report on 3 Nov 2026 and several insider trade reports.",
-   "positives": [
+   "bullish": [
     {
-     "text": "A 24 Nov 2026 headline says JPMorgan and HSBC completed their first digital gold trade.",
+     "title": "Forecast of big AI bond wave",
+     "detail": "Three headlines report JPMorgan projecting $450 billion of AI high-grade debt (top-quality company bonds) issuance in 2027, before a plateau.",
      "metric_keys": [
       "headlines"
      ]
     },
     {
-     "text": "A 24 Nov 2026 headline says a JPMorgan Dallas hub targets private equity firms and hedge funds as clients.",
-     "metric_keys": [
-      "headlines"
-     ]
-    },
-    {
-     "text": "The 10-Q (quarterly report) was filed 3 Nov 2026, and earnings results were filed 13 Oct 2026.",
-     "metric_keys": [
-      "sec_filings"
-     ]
-    }
-   ],
-   "watch_outs": [
-    {
-     "text": "A 24 Nov 2026 headline says Chase still has not explained its outage, a week after it happened.",
-     "metric_keys": [
-      "headlines"
-     ]
-    },
-    {
-     "text": "Form 4 (insider trade) filings appeared on 1 Oct, 15 Oct and 13 Nov 2026. The data does not show buys or sales.",
-     "metric_keys": [
-      "sec_filings"
-     ]
-    },
-    {
-     "text": "Many headlines from 24-25 Nov 2026 mainly cover other companies, such as Meta, Wells Fargo and Bank of America.",
+     "title": "Upbeat JPMorgan market outlook",
+     "detail": "A headline says JPMorgan sees the S&P 500 at 8,200 in 2027, describing the AI supercycle as intact; this is its market view.",
      "metric_keys": [
       "headlines"
      ]
     }
    ],
-   "what_to_watch_next": [
-    "Next earnings report on 14 Jan 2027.",
-    "Whether Chase gives an explanation for the outage reported in the 24 Nov 2026 headline."
+   "bearish": [
+    {
+     "title": "Financial stocks fell recently",
+     "detail": "A 2026-11-25 headline says JPMorgan, Robinhood and other financial stocks slumped amid a broad market rout.",
+     "metric_keys": [
+      "headlines"
+     ]
+    },
+    {
+     "title": "Fed and tariff risks",
+     "detail": "JPMorgan itself names the Fed (US central bank) as the biggest risk to stocks in 2027, and another headline says tariffs are back.",
+     "metric_keys": [
+      "headlines"
+     ]
+    },
+    {
+     "title": "Large investors split evenly",
+     "detail": "A headline says 12 big funds bought JPMorgan Chase last quarter while 12 sold, so large investors showed no clear direction.",
+     "metric_keys": [
+      "headlines"
+     ]
+    }
    ],
-   "ask_yourself": "How much do service problems, like a bank outage, matter to you when following a company?",
    "data_gaps": [
-    "Only headline wording is available, not the full articles.",
-    "Form 4 filings do not show whether insiders bought or sold, or how many shares.",
-    "The content of the 8-K filed on 17 Nov 2026 is not described."
+    "Many headlines are about the wider market or other companies (Oracle, Tesla, Citigroup), not JPMorgan's own business.",
+    "Five insider trade filings (Form 4) are listed, but the data does not say whether insiders bought or sold.",
+    "The contents of the 8-K, earnings (2026-10-13) and 10-Q (2026-11-03) filings are not described; next earnings are on 2027-01-14."
    ]
   },
   "model": "claude-opus-5-5",
   "attempts": 2,
-  "cost_usd": 0.056562,
+  "cost_usd": 0.089175,
   "cached": false,
   "disclaimer": "AI-generated from the data on this page. It can make mistakes and is not investment advice.",
   "sample": true

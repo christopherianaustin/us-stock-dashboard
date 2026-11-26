@@ -1,6 +1,6 @@
 {
  "ticker": "JPM",
- "generated_at": "2026-11-25T10:46:53+00:00",
+ "generated_at": "2026-11-26T07:17:22+00:00",
  "production_safe_mode": false,
  "disclaimer": "This information is for educational purposes only and is not investment advice.",
  "warnings": [],
@@ -9,19 +9,66 @@
   "ticker": "JPM",
   "tab": "news_filings",
   "lang": "id",
-  "prompt_version": "1.0",
+  "prompt_version": "2.1",
   "license_tag": "DEMO_ONLY",
-  "rule_based_signal": "Not applicable",
-  "as_of": "2026-11-25T10:46:53+00:00",
-  "source": "fallback",
+  "as_of": "2026-11-26T07:17:22+00:00",
+  "source": "ai",
   "summary": {
-   "label": "Ringkasan otomatis",
-   "signal": "Not applicable",
-   "positives": [],
-   "watch_outs": []
+   "bullish": [
+    {
+     "title": "Riset JPMorgan banyak dikutip",
+     "detail": "Beberapa judul berita pada 25 November 2026 mengutip proyeksi JPMorgan tentang penerbitan obligasi terkait AI senilai US$450 miliar pada 2027.",
+     "metric_keys": [
+      "headlines"
+     ]
+    },
+    {
+     "title": "Pandangan pasar 2027 cukup positif",
+     "detail": "Menurut judul berita, JPMorgan memperkirakan indeks S&P 500 mencapai 8,200 pada 2027, namun ini prakiraan pasar, bukan tentang saham JPM.",
+     "metric_keys": [
+      "headlines"
+     ]
+    },
+    {
+     "title": "Masih dibeli sebagian dana besar",
+     "detail": "Judul berita menyebut 12 dana besar membeli saham JPMorgan kuartal lalu, tetapi 12 dana lain menjual, jadi pandangan mereka terbelah.",
+     "metric_keys": [
+      "headlines"
+     ]
+    }
+   ],
+   "bearish": [
+    {
+     "title": "Saham ikut turun bersama pasar",
+     "detail": "Judul berita 25 November 2026 menyebut saham JPMorgan, Robinhood, dan saham keuangan lain merosot di tengah aksi jual pasar yang luas.",
+     "metric_keys": [
+      "headlines"
+     ]
+    },
+    {
+     "title": "The Fed disebut risiko utama",
+     "detail": "JPMorgan sendiri menyebut The Fed (bank sentral AS) sebagai risiko terbesar bagi pasar saham pada 2027, menurut judul berita.",
+     "metric_keys": [
+      "headlines"
+     ]
+    },
+    {
+     "title": "Tanda tekanan inflasi dan tarif",
+     "detail": "Judul berita lain menyebut harga naik 3.7% dan tarif kembali diberlakukan, menggambarkan suasana ekonomi yang kurang mendukung.",
+     "metric_keys": [
+      "headlines"
+     ]
+    }
+   ],
+   "data_gaps": [
+    "Ringkasan ini hanya memakai judul berita, bukan isi artikel, dan banyak judul membahas perusahaan lain atau pasar secara umum, bukan JPMorgan langsung.",
+    "Data laporan Form 4 (transaksi orang dalam) tidak menunjukkan apakah orang dalam membeli atau menjual, maupun jumlahnya.",
+    "Isi laporan 8-K, 10-Q dan hasil laba yang diajukan tidak tersedia; laporan laba berikutnya dijadwalkan 2027-01-14."
+   ]
   },
   "model": "claude-opus-5-5",
-  "cost_usd": 0.071406,
+  "attempts": 2,
+  "cost_usd": 0.105951,
   "cached": false,
   "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
   "sample": true

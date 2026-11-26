@@ -1,6 +1,6 @@
 """Phase 10b: generate AI summaries for every tab, test ticker and language, and save them for review.
 
-Spends real money (about 100 calls, ~$5-7). Needs ANTHROPIC_API_KEY in .env.
+Spends real money (about 100 calls, ~$5-7). Prompt version 2.0: bullish and bearish lists (SPEC 16). Needs ANTHROPIC_API_KEY in .env.
 Usage:  .venv\\Scripts\\python scripts/ai_samples.py [TICKER ...]      (default: AAPL KO TSLA JPM PLUG)
 Output: core/ai_summary/samples/<TICKER>.md   (readable)   and   core/ai_summary/samples/_results.json (for checks)
 """
@@ -37,25 +37,21 @@ def one(ticker: str, tab: str, lang: str, cur: str) -> dict:
 def md_block(r: dict) -> list[str]:
     s, lines = r["summary"], []
     u = r.get("usage") or {}
-    meta = (f"source **{r['source']}** · attempts {r.get('attempts', '-')} · rule signal {r['rule_based_signal']} · "
-            f"license {r['license_tag']} · tokens {u.get('total', 0):,} · ${r.get('cost_usd') or 0:.4f} · {r['seconds']} s")
+    meta = (f"source **{r['source']}** · attempts {r.get('attempts', '-')} · license {r['license_tag']} · "
+            f"tokens {u.get('total', 0):,} · ${r.get('cost_usd') or 0:.4f} · {r['seconds']} s")
     lines.append(f"*{meta}*\n")
     if r["source"] == "fallback":
         lines.append(f"> AI not used: {r.get('reason')}\n")
-        lines.append(f"**{s['label']}** · signal {s['signal']}\n")
-        lines += [f"- ✅ {p}" for p in s["positives"]] + [f"- ⚠️ {p}" for p in s["watch_outs"]]
+        lines.append(f"**{s['label']}**\n")
+        lines += ["**Bullish**"] + ([f"- 🟢 {p}" for p in s["bullish"]] or ["- (none)"])
+        lines += ["", "**Bearish**"] + ([f"- 🔴 {p}" for p in s["bearish"]] or ["- (none)"])
         return lines + [""]
-    lines.append(f"**[{s['signal']}] {s['headline']}**\n")
-    lines.append(f"{s['takeaway']}\n")
-    for p in s["positives"]:
-        lines.append(f"- ✅ {p['text']}  `{', '.join(p['metric_keys'])}`")
-    for p in s["watch_outs"]:
-        lines.append(f"- ⚠️ {p['text']}  `{', '.join(p['metric_keys'])}`")
-    for w in s["what_to_watch_next"]:
-        lines.append(f"- 📅 {w}")
-    lines.append(f"- ❓ {s['ask_yourself']}")
+    for kind, icon in (("bullish", "🟢"), ("bearish", "🔴")):
+        lines.append(f"**{kind.capitalize()}**")
+        lines += [f"- {icon} **{p['title']}**: {p['detail']}  `{', '.join(p['metric_keys'])}`" for p in s[kind]] or ["- (none)"]
+        lines.append("")
     if s["data_gaps"]:
-        lines.append(f"- Data gaps: {'; '.join(s['data_gaps'])}")
+        lines.append(f"*Data gaps: {'; '.join(s['data_gaps'])}*")
     return lines + [""]
 
 
@@ -70,7 +66,7 @@ def main() -> None:
     jobs = [(t, tab, lang, cur) for t in tickers for tab in TABS for lang, cur in LANGS]
     results: list[dict] = []
     t0 = time.time()
-    with ThreadPoolExecutor(max_workers=6) as pool:
+    with ThreadPoolExecutor(max_workers=4) as pool:   # 6 caused some connection errors in the first 10b run
         futs = {pool.submit(one, *j): j for j in jobs}
         for i, f in enumerate(as_completed(futs), 1):
             j = futs[f]
