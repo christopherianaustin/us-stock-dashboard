@@ -1,0 +1,75 @@
+{
+ "ticker": "TSLA",
+ "generated_at": "2026-11-25T10:44:49+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "TSLA",
+  "tab": "earnings",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Neutral",
+  "as_of": "2026-11-25T10:44:49+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Neutral",
+   "headline": "Riwayat laba naik-turun, harga saham sering bergerak tajam setelah laporan",
+   "takeaway": "Tesla hanya melampaui estimasi laba di 3 dari 8 kuartal terakhir, dengan beberapa meleset besar. Harga saham biasanya bergerak sekitar 8.5% sehari setelah laporan, naik atau turun.",
+   "positives": [
+    {
+     "text": "EPS (laba per saham) melampaui estimasi di 3 dari 4 kuartal terakhir, termasuk Q3 FY26 dengan selisih 6.4%.",
+     "metric_keys": [
+      "last_quarters"
+     ]
+    },
+    {
+     "text": "Untuk kuartal berjalan, 11 analis menaikkan estimasi dan 9 memangkasnya dalam 30 hari terakhir.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "Hanya 3 dari 8 kuartal di atas estimasi. Q2 FY26 meleset 39.1% dan Q1 FY25 meleset 34.9%.",
+     "metric_keys": [
+      "beat_rate_8q",
+      "last_quarters"
+     ]
+    },
+    {
+     "text": "Rata-rata harga bergerak 8.48% sehari setelah laporan. Setelah Q2 FY26, harga turun 14.5%. Setelah tiga laporan yang melampaui estimasi, harga tetap turun sekitar 3%.",
+     "metric_keys": [
+      "typical_move",
+      "last_quarters"
+     ]
+    },
+    {
+     "text": "Dalam 30 hari, estimasi tahun fiskal ini dipangkas 16 analis vs dinaikkan 12. Tahun fiskal depan: 17 dipangkas, 11 dinaikkan.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan laba berikutnya sekitar 27 Jan 2027 setelah pasar tutup. Wall Street analis (28 orang) mengestimasi EPS Rp9,242, dibanding Rp9,155 setahun lalu.",
+    "Analis mengestimasi pendapatan kuartal tersebut sekitar Rp536 triliun."
+   ],
+   "ask_yourself": "Seberapa nyaman Anda jika harga saham bergerak 8% atau lebih dalam sehari setelah laporan laba?",
+   "data_gaps": [
+    "Tanggal laporan berikutnya berbeda di data: 27 Jan 2027 dan 28 Jan 2027.",
+    "Pemangkasan estimasi 3.9% dalam 90 hari dan rasio arus kas 5.8× tidak didukung data rinci di tab ini.",
+    "Tidak ada data riwayat pendapatan aktual vs estimasi."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 1,
+  "cost_usd": 0.043697,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

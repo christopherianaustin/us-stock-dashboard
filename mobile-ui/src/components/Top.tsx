@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { ColorType, LineSeries, LineType, createChart } from 'lightweight-charts'
 import { dateShort, num, pctAbs, rp } from '../lib/format'
-import { useT } from '../lib/i18n'
+import { useL, useT } from '../lib/i18n'
 import type { Q } from '../lib/data'
 import { BackIcon, Badge, BellIcon, ChangeIcon, HeartIcon, InfoIcon, ShareIcon, Skeleton } from './ui'
 
@@ -20,15 +20,17 @@ export function StatusBar() {
 }
 
 /* ---------- Small header: back + favourite, alert, share (58 px) ---------- */
-export function SmallHeader({ onTap }: { onTap: (msg: string) => void }) {
-  const btn = 'size-6 grid place-items-center bg-transparent border-0 p-0 cursor-pointer'
+export function SmallHeader({ onTap }: { onTap: () => void }) {
+  const L = useL()
+  // 24 px icons with a 44 px tap area
+  const btn = 'size-6 grid place-items-center bg-transparent border-0 p-0 cursor-pointer relative after:absolute after:-inset-2.5'
   return (
     <div className="h-[58px] flex items-center justify-between px-6">
-      <button type="button" className={btn} aria-label="Back" onClick={() => onTap('Prototype only')}><BackIcon /></button>
+      <button type="button" className={btn} aria-label={L('Back', 'Kembali')} onClick={onTap}><BackIcon /></button>
       <div className="flex items-center gap-6">
-        <button type="button" className={btn} aria-label="Favourite" onClick={() => onTap('Prototype only')}><HeartIcon /></button>
-        <button type="button" className={btn} aria-label="Price alert" onClick={() => onTap('Prototype only')}><BellIcon /></button>
-        <button type="button" className={btn} aria-label="Share" onClick={() => onTap('Prototype only')}><ShareIcon /></button>
+        <button type="button" className={btn} aria-label={L('Favourite', 'Favorit')} onClick={onTap}><HeartIcon /></button>
+        <button type="button" className={btn} aria-label={L('Price alert', 'Notifikasi harga')} onClick={onTap}><BellIcon /></button>
+        <button type="button" className={btn} aria-label={L('Share', 'Bagikan')} onClick={onTap}><ShareIcon /></button>
       </div>
     </div>
   )
@@ -58,6 +60,7 @@ export function TopInfo({ h, rate, rateLine, onTicker }: {
   h: Header | null; rate: number; rateLine: string; onTicker: () => void
 }) {
   const t = useT()
+  const L = useL()
   if (!h) return (
     <div className="px-6"><Skeleton h={48} className="w-48" /><Skeleton h={32} className="w-40 mt-2" /><Skeleton h={28} className="w-56 mt-1" /></div>
   )
@@ -73,7 +76,7 @@ export function TopInfo({ h, rate, rateLine, onTicker }: {
       <h1 className="t-title text-dgrey mt-2 mb-0">{h.name}</h1>
       <div className="flex items-center gap-2 mt-1 flex-wrap">
         {h.priceUsd == null ? (
-          <span className="t-label-m text-grey">Price: {h.priceNa ?? 'N/A'}</span>
+          <span className="t-label-m text-grey">{L('Price', 'Harga')}: {h.priceNa ?? 'N/A'}</span>
         ) : (
           <>
             <span className="t-subtitle text-navy">{rp(h.priceUsd, rate)}</span>
@@ -106,6 +109,7 @@ const BARS: Record<Range, number> = { '1D': 2, '1W': 5, '1M': 21, '1Y': 252, All
 type Bar = { date: string; Close: number }
 
 export function PriceChart({ q, rate, onToast }: { q: Q<any>; rate: number; onToast: (m: string) => void }) {
+  const L = useL()
   const [range, setRange] = useState<Range>('1Y')
   const box = useRef<HTMLDivElement>(null)
   const [tip, setTip] = useState<string | null>(null)
@@ -147,14 +151,16 @@ export function PriceChart({ q, rate, onToast }: { q: Q<any>; rate: number; onTo
       </div>
       {q.loading ? <Skeleton h={156} className="mx-6" /> :
         data.length < 2 ? <div className="h-[156px] grid place-items-center t-label-m text-grey px-6 text-center">
-          {q.error ? 'Price history could not be loaded.' : (q.data?.bars?.na_reason ?? 'No price history')}</div> :
+          {q.error ? <span>{L('Price history could not be loaded.', 'Riwayat harga gagal dimuat.')}{' '}
+            <button type="button" onClick={q.retry} className="t-label text-purple bg-transparent border-0 p-0 cursor-pointer">{L('Try again', 'Coba lagi')}</button></span>
+            : (q.data?.bars?.na_reason ?? L('No price history', 'Tidak ada riwayat harga'))}</div> :
           <div ref={box} className="h-[156px] w-full" />}
       <div className="flex justify-center gap-2 mt-[30px]">
         {RANGES.map((r) => (
-          <button key={r} type="button"
-            onClick={() => (r === '1D' ? onToast('Intraday prices need a licensed live feed (not in this demo)') : setRange(r))}
+          <button key={r} type="button" aria-pressed={r === range}
+            onClick={() => (r === '1D' ? onToast(L('Intraday prices need a licensed live feed (not in this demo)', 'Harga intraday butuh data live berlisensi (tidak ada di demo ini)')) : setRange(r))}
             className={`t-label rounded-full px-4 pt-1 pb-0.5 border-0 cursor-pointer ${r === range ? 'bg-chip text-navy' : 'bg-transparent text-grey'}`}>
-            {r}
+            {r === 'All' ? L('All', 'Semua') : r}
           </button>
         ))}
       </div>
@@ -164,11 +170,12 @@ export function PriceChart({ q, rate, onToast }: { q: Q<any>; rate: number; onTo
 
 /* ---------- Buy / Sell: visual only ---------- */
 export function BuySell({ onTap }: { onTap: () => void }) {
+  const L = useL()
   const cls = 'flex-1 h-12 rounded-full bg-ink text-white t-subtitle border-0 cursor-pointer active:opacity-80'
   return (
     <div className="flex gap-[15px] px-6 mt-6">
-      <button type="button" className={cls} onClick={onTap}>Buy</button>
-      <button type="button" className={cls} onClick={onTap}>Sell</button>
+      <button type="button" className={cls} onClick={onTap}>{L('Buy', 'Beli')}</button>
+      <button type="button" className={cls} onClick={onTap}>{L('Sell', 'Jual')}</button>
     </div>
   )
 }

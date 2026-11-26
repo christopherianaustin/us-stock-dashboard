@@ -1,0 +1,78 @@
+{
+ "ticker": "TSLA",
+ "generated_at": "2026-11-25T10:45:41+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "TSLA",
+  "tab": "company_profile",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Not applicable",
+  "as_of": "2026-11-25T10:45:41+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Not applicable",
+   "headline": "Tesla menjual mobil listrik serta produk energi surya dan baterai",
+   "takeaway": "Tesla terutama menghasilkan uang dari mobil listrik, ditambah penjualan sistem penyimpanan energi dan panel surya. Data ini tidak menunjukkan seberapa besar pendapatan dari tiap bisnis.",
+   "positives": [
+    {
+     "text": "Sejak berdiri pada 2003, Tesla menjual mobil listrik sekaligus baterai penyimpanan energi seperti Powerwall dan Megapack, serta panel surya.",
+     "metric_keys": [
+      "description"
+     ]
+    },
+    {
+     "text": "Nilai pasar (harga saham dikali jumlah saham) sekitar Rp27,800 triliun, dengan 134,785 karyawan dan kantor pusat di Austin, Texas.",
+     "metric_keys": [
+      "market_cap",
+      "employees",
+      "headquarters"
+     ]
+    },
+    {
+     "text": "Pendapatan juga datang dari layanan pendukung: Supercharger, servis, asuransi, pembiayaan, sewa, dan upgrade lewat aplikasi. Tercatat di Nasdaq sejak 2010.",
+     "metric_keys": [
+      "description",
+      "ipo_date",
+      "exchange"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "Nilai pasar Rp27,800 triliun dikonversi dengan kurs Rp18,310 per dolar AS. Angka dalam rupiah ikut berubah saat kurs bergerak.",
+     "metric_keys": [
+      "market_cap",
+      "exchange_rate_used"
+     ]
+    },
+    {
+     "text": "Sebagian pendapatan berasal dari penjualan kredit regulasi otomotif (izin emisi yang dijual ke produsen lain). Porsinya tidak ada dalam data per 2025.",
+     "metric_keys": [
+      "description",
+      "fiscal_year_end"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Tahun buku Tesla berakhir 31 Desember; laporan tahunan berikutnya mencakup kinerja hingga akhir 2026."
+   ],
+   "ask_yourself": "Apakah Anda memahami bisnis mana yang paling memengaruhi kinerja Tesla sebelum berinvestasi?",
+   "data_gaps": [
+    "Tidak ada rincian pendapatan per segmen (otomotif vs energi).",
+    "Data nilai pasar berlabel DEMO_ONLY, sehingga keandalannya terbatas.",
+    "Tidak ada tanggal laporan keuangan berikutnya."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.070998,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

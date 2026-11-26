@@ -1,0 +1,82 @@
+{
+ "ticker": "TSLA",
+ "generated_at": "2026-11-25T10:45:10+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "TSLA",
+  "tab": "profitability_health",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Neutral",
+  "as_of": "2026-11-25T10:45:10+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Neutral",
+   "headline": "Keuangan sangat kuat, tetapi kemampuan menghasilkan laba masih tipis",
+   "takeaway": "Tesla punya kas lebih banyak dari utangnya dan beban utangnya ringan. Namun laba dari penjualan dan modalnya masih kecil, dan beberapa ukuran efisiensi melemah dibanding tahun sebelumnya.",
+   "positives": [
+    {
+     "text": "Utang bersih minus Rp662 triliun, artinya kas lebih besar dari utang. Debt to equity (utang dibanding modal sendiri) hanya 0.104x.",
+     "metric_keys": [
+      "net_debt",
+      "debt_to_equity"
+     ]
+    },
+    {
+     "text": "Interest coverage (laba operasional dibanding biaya bunga) 9.96x, jadi laba operasional hampir 10 kali lipat biaya bunganya.",
+     "metric_keys": [
+      "interest_coverage"
+     ]
+    },
+    {
+     "text": "ROE (laba dibanding modal pemegang saham) 3.8%, di atas median perusahaan sejenis yang -18.4%.",
+     "metric_keys": [
+      "roe"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "Net margin (laba bersih dibanding penjualan) hanya 3.11%. Margin operasional juga tipis, 3.35%, sehingga ruang untuk menahan biaya naik sempit.",
+     "metric_keys": [
+      "net_margin",
+      "operating_margin"
+     ]
+    },
+    {
+     "text": "ROIC (laba dari seluruh modal yang dipakai) 5.08%, tergolong rendah. Skor pilar profitabilitas hanya 4, level Weak.",
+     "metric_keys": [
+      "roic"
+     ]
+    },
+    {
+     "text": "Skor Piotroski (cek kekuatan keuangan) 5 dari 9. ROA turun dari 6.7% ke 3.1%, dan jumlah saham bertambah.",
+     "metric_keys": [
+      "piotroski",
+      "roa"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan laba berikutnya pada 28 Januari 2027.",
+    "Apakah ROA bisa naik lagi dari 3.1% dan asset turnover pulih dari 0.78."
+   ],
+   "ask_yourself": "Seberapa penting bagi Anda laba yang besar dibanding neraca keuangan yang kuat?",
+   "data_gaps": [
+    "Altman Z-score 14.8 ditandai hanya untuk demo, jadi belum bisa dijadikan pegangan.",
+    "Angka di data tidak sama: ROA tertulis 2.21% di metrik tetapi 3.1% di cek Piotroski; current ratio 1.74x versus 2.16.",
+    "Tidak ada data riwayat ROE dan ROIC, serta tidak ada perbandingan dengan perusahaan sejenis untuk ROIC dan rasio utang."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.08831,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

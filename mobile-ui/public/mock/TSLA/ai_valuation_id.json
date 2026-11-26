@@ -1,0 +1,77 @@
+{
+ "ticker": "TSLA",
+ "generated_at": "2026-11-25T10:45:02+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "TSLA",
+  "tab": "valuation",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Weak",
+  "as_of": "2026-11-25T10:45:02+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Weak",
+   "headline": "Harga jauh di atas sejarahnya dan perusahaan sejenis, laba turun",
+   "takeaway": "Investor kini membayar jauh lebih banyak untuk setiap rupiah laba Tesla, dibanding biasanya maupun dibanding perusahaan sejenis. Laba justru turun tajam, jadi pertumbuhan saat ini belum menjelaskan harga tersebut.",
+   "positives": [
+    {
+     "text": "Pendapatan hanya turun 0.17% dalam setahun, lebih baik dari median perusahaan sejenis yang turun 2%.",
+     "metric_keys": [
+      "revenue_yoy"
+     ]
+    },
+    {
+     "text": "Analis Wall Street memperkirakan EPS (laba per saham) naik 25.2% tahun depan. Forward P/E (harga dibanding perkiraan laba tahun depan) adalah 178.",
+     "metric_keys": [
+      "peg",
+      "forward_pe"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "P/E (harga dibanding laba setahun) 424, lebih tinggi dari 94% periode 5 tahun terakhir dan jauh di atas median sejenis 22.5.",
+     "metric_keys": [
+      "pe"
+     ]
+    },
+    {
+     "text": "EPS turun 43.6% dalam setahun dan rata-rata turun 33.2% per tahun selama 3 tahun terakhir.",
+     "metric_keys": [
+      "eps_yoy",
+      "eps_cagr_3y"
+     ]
+    },
+    {
+     "text": "Estimasi DCF (nilai dari proyeksi arus kas, berbasis asumsi) Rp516,300 hingga Rp677,900 per saham, jauh di bawah harga Rp7,043,000.",
+     "metric_keys": [
+      "dcf_bear",
+      "dcf_bull",
+      "price"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan laba berikutnya pada 28 Jan 2027.",
+    "Apakah EPS mulai tumbuh sesuai perkiraan analis sebesar 25.2% untuk tahun depan."
+   ],
+   "ask_yourself": "Seberapa nyaman Anda membayar harga tinggi saat laba perusahaan sedang turun?",
+   "data_gaps": [
+    "P/B, P/FCF, Forward P/E dan FCF yield tidak punya pembanding sejarah atau perusahaan sejenis.",
+    "Estimasi DCF memakai asumsi pertumbuhan 20% per tahun, sementara EPS historis justru turun.",
+    "Sebagian besar data bertanda DEMO_ONLY, jadi keandalannya terbatas."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.107074,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

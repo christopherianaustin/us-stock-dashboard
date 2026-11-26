@@ -1,0 +1,39 @@
+# Words and phrases the AI summary must never use as our own call (SPEC 15.8). Matched case-insensitively,
+# as whole words. A sentence that clearly attributes the words to analysts ("analysts", "analis") is allowed
+# in the tabs listed under analyst_exception_tabs.
+en:
+  - buy
+  - sell
+  - hold
+  - you should
+  - recommend
+  - undervalued
+  - overvalued
+  - bargain
+  - guaranteed
+  - will rise
+  - will fall
+  - will go up
+  - will go down
+  - sure
+  - can't lose
+id:
+  - beli
+  - jual
+  - tahan
+  - sebaiknya
+  - rekomendasi
+  - pasti
+  - dijamin
+  - murah
+  - mahal
+
+# Words that mark a sentence as attributed to analysts.
+analyst_words:
+  - analyst
+  - analysts
+  - analis
+
+analyst_exception_tabs:
+  - ownership_sentiment
+  - earnings

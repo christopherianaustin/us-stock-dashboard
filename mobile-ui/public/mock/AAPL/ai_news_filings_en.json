@@ -1,0 +1,73 @@
+{
+ "ticker": "AAPL",
+ "generated_at": "2026-11-25T10:42:37+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "AAPL",
+  "tab": "news_filings",
+  "lang": "en",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Not applicable",
+  "as_of": "2026-11-25T10:42:37+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Not applicable",
+   "headline": "Recent headlines focus on chip costs, AI and Apple's valuation",
+   "takeaway": "Most recent headlines cover the wider tech market, not only Apple. Apple's own filings include its annual report and earnings results in early November 2026, plus several insider trade reports.",
+   "positives": [
+    {
+     "text": "Apple filed its annual report (10-K) on 3 Nov 2026, one day after its earnings results (8-K) on 2 Nov.",
+     "metric_keys": [
+      "sec_filings"
+     ]
+    },
+    {
+     "text": "Headlines on 24 Nov 2026 point to analyst attention, such as 'Top Analyst Reports for Apple, Philip Morris & Intel'.",
+     "metric_keys": [
+      "headlines"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "Chip costs are a repeated theme, including a 24 Nov headline on Trump warning of 'Paying 200 Percent on Chips'.",
+     "metric_keys": [
+      "headlines"
+     ]
+    },
+    {
+     "text": "A 24 Nov headline asks 'Is Apple (AAPL) Above Fair Value', showing debate about its price. The answer is not in the headline.",
+     "metric_keys": [
+      "headlines"
+     ]
+    },
+    {
+     "text": "Insiders filed Form 4 reports (insider trade reports) on 19 Nov, 18 Nov and 12 Nov. The data does not show buys or sells.",
+     "metric_keys": [
+      "sec_filings"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Next earnings report on 29 Jan 2027.",
+    "Further news on chip costs and tariffs, a theme in headlines from 24 to 25 Nov 2026."
+   ],
+   "ask_yourself": "How much do you want news about chip costs and the wider tech market to affect your view of this company?",
+   "data_gaps": [
+    "Only headlines are available, not the article content.",
+    "Form 4 filings do not show whether insiders bought or sold, or how many shares.",
+    "The topic of the 9 Nov 2026 8-K company news report is not given."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 1,
+  "cost_usd": 0.033013,
+  "cached": false,
+  "disclaimer": "AI-generated from the data on this page. It can make mistakes and is not investment advice.",
+  "sample": true
+ }
+}

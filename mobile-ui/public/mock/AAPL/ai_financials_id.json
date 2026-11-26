@@ -1,0 +1,83 @@
+{
+ "ticker": "AAPL",
+ "generated_at": "2026-11-25T10:41:57+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "AAPL",
+  "tab": "financials",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Strong",
+  "as_of": "2026-11-25T10:41:57+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Strong",
+   "headline": "Pendapatan dan laba naik, margin membaik, tapi pertumbuhan kuartal terakhir melambat",
+   "takeaway": "Di FY2026, pendapatan naik 11.7% dan margin laba bersih membaik ke 27.6%, didukung arus kas yang sedikit di atas laba. Namun pertumbuhan kuartal terakhir melambat, dan utang masih lebih besar dari kas.",
+   "positives": [
+    {
+     "text": "Pendapatan setahun naik dari Rp7,620 triliun (FY2025) ke Rp8,770 triliun (FY2026), lebih cepat dari rata-rata 3 tahun 7.7% per tahun.",
+     "metric_keys": [
+      "revenue_yoy",
+      "revenue_cagr_3y",
+      "annual"
+     ]
+    },
+    {
+     "text": "Margin laba bersih (porsi penjualan yang jadi laba) naik dari 24% di FY2024 ke 27.6% di FY2026. EPS (laba per saham) tumbuh 13.6%.",
+     "metric_keys": [
+      "annual",
+      "eps_yoy"
+     ]
+    },
+    {
+     "text": "Cash conversion 1.1x: kas dari operasi sedikit lebih besar dari laba yang dilaporkan, jadi laba didukung uang tunai nyata.",
+     "metric_keys": [
+      "cash_conversion",
+      "quarterly_cash_flow"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "Pertumbuhan pendapatan Q4 FY26 melambat ke 11.7% dari 16.4% di Q3 FY26. Margin kotor juga turun ke 47.9% dari 50.1%.",
+     "metric_keys": [
+      "quarterly_income"
+     ]
+    },
+    {
+     "text": "Total utang Rp1,430 triliun masih lebih besar dari kas Rp665 triliun. Kas turun dari Rp834 triliun di Q2 FY26.",
+     "metric_keys": [
+      "balance_sheet"
+     ]
+    },
+    {
+     "text": "Arus kas bebas (kas setelah belanja modal) melonjak ke Rp944 triliun di Q1 FY26, tapi kembali ke Rp473 triliun di Q4 FY26.",
+     "metric_keys": [
+      "quarterly_cash_flow"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan laba berikutnya pada 29 Jan 2027: apakah pertumbuhan pendapatan bertahan di sekitar 11.7% atau melambat lagi.",
+    "Margin kotor: apakah kembali mendekati 50.1% atau tetap di kisaran 47.9%."
+   ],
+   "ask_yourself": "Seberapa penting bagi Anda bahwa pertumbuhan tetap cepat, bukan hanya stabil?",
+   "data_gaps": [
+    "Angka net debt (Rp392 triliun di Q4 FY26) tidak sama dengan total utang dikurangi kas, kemungkinan ada investasi lain yang tidak ditampilkan.",
+    "Semua angka dikonversi dari dolar AS dengan kurs Rp18,310, sehingga perubahan kurs bisa memengaruhi angka dalam rupiah.",
+    "Tidak ada perbandingan dengan perusahaan sejenis atau S&P 500 untuk margin dan pertumbuhan."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.09785,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

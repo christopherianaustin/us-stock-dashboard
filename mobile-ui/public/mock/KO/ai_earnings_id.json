@@ -1,0 +1,80 @@
+{
+ "ticker": "KO",
+ "generated_at": "2026-11-25T10:43:16+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "KO",
+  "tab": "earnings",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Strong",
+  "as_of": "2026-11-25T10:43:16+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Strong",
+   "headline": "Laba selalu melampaui estimasi analis dalam 8 kuartal terakhir",
+   "takeaway": "KO melampaui estimasi EPS (laba per saham) analis di 8 dari 8 kuartal terakhir, dengan selisih sekitar 2% hingga 6%. Namun, harga saham tidak selalu naik sesudahnya, dan estimasi untuk periode yang lebih jauh lebih banyak dipangkas.",
+   "positives": [
+    {
+     "text": "EPS melampaui estimasi di 8 dari 8 kuartal terakhir. Selisihnya (surprise) antara 1.95% dan 6.38% di atas perkiraan analis.",
+     "metric_keys": [
+      "beat_rate_8q",
+      "last_quarters"
+     ]
+    },
+    {
+     "text": "Dalam 30 hari terakhir, 23 analis menaikkan estimasi laba tahun fiskal berjalan. Tidak ada satu pun yang memangkas.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    },
+    {
+     "text": "Untuk kuartal berjalan, 11 analis menaikkan estimasi dan hanya 4 yang memangkas dalam 30 hari terakhir.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "Harga turun keesokan harinya di 3 dari 8 laporan. Contohnya -1.64% setelah Q3 FY26, padahal laba 3.3% di atas estimasi.",
+     "metric_keys": [
+      "last_quarters"
+     ]
+    },
+    {
+     "text": "Untuk kuartal berikutnya, 7 analis memangkas estimasi dan 3 menaikkan. Untuk tahun fiskal depan, 12 memangkas dan 10 menaikkan.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    },
+    {
+     "text": "Harga rata-rata bergerak 2.13% (naik atau turun) sehari setelah laporan laba. Artinya ada gejolak jangka pendek.",
+     "metric_keys": [
+      "typical_move"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan laba berikutnya pada 9 Feb 2027, sebelum pasar buka. Rata-rata 19 analis mengestimasi EPS Rp11,130, dibanding Rp10,620 setahun lalu.",
+    "Arah revisi estimasi untuk kuartal dan tahun fiskal berikutnya, yang saat ini lebih banyak dipangkas daripada dinaikkan."
+   ],
+   "ask_yourself": "Seberapa nyaman Anda jika harga bergerak sekitar 2% dalam sehari setelah laporan laba?",
+   "data_gaps": [
+    "Angka EPS dikonversi dari dolar AS dengan kurs Rp18,310. Perubahan kurs bisa memengaruhi perbandingan antarkuartal dalam rupiah.",
+    "Tidak ada riwayat hasil pendapatan dibanding estimasi, hanya EPS.",
+    "Data metrik ditandai DEMO_ONLY, sehingga keandalannya mungkin terbatas."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.106978,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

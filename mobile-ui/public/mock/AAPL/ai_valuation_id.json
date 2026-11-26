@@ -1,0 +1,84 @@
+{
+ "ticker": "AAPL",
+ "generated_at": "2026-11-25T10:42:10+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "AAPL",
+  "tab": "valuation",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Weak",
+  "as_of": "2026-11-25T10:42:10+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Weak",
+   "headline": "Harga dekat puncak 5 tahun, jauh di atas perusahaan sejenis",
+   "takeaway": "Investor kini membayar lebih tinggi dari biasanya untuk tiap rupiah laba dan penjualan Apple, dan jauh di atas perusahaan sejenis. Pertumbuhan laba 13.6% hanya menjelaskan sebagian dari harga ini.",
+   "positives": [
+    {
+     "text": "EPS (laba per saham) naik 13.6% dalam setahun terakhir, sama dengan rata-rata pertumbuhan tahunan 3 tahun sebesar 13.6%.",
+     "metric_keys": [
+      "eps_yoy",
+      "eps_cagr_3y"
+     ]
+    },
+    {
+     "text": "Pendapatan tumbuh 11.7% setahun terakhir, lebih cepat dari rata-rata 3 tahun sebesar 7.7% per tahun.",
+     "metric_keys": [
+      "revenue_yoy",
+      "revenue_cagr_3y"
+     ]
+    },
+    {
+     "text": "Forward P/E (harga dibanding estimasi laba tahun depan dari analis) 33.4, lebih rendah dari P/E saat ini 39.5.",
+     "metric_keys": [
+      "forward_pe",
+      "pe"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "P/E (harga dibanding laba setahun) 39.5, lebih tinggi dari 95.9% periode 5 tahun terakhir. Median perusahaan sejenis hanya 20.8.",
+     "metric_keys": [
+      "pe"
+     ]
+    },
+    {
+     "text": "P/S (harga dibanding penjualan) 10.7, di atas median 5 tahun 7.79 dan median sejenis 2.58. Pendapatan tumbuh 11.7%, sejenis 46.6%.",
+     "metric_keys": [
+      "ps",
+      "revenue_yoy"
+     ]
+    },
+    {
+     "text": "Estimasi DCF (nilai dari proyeksi arus kas) skenario dasar Rp3,498,000 per saham, di bawah harga Rp6,483,000. Ini estimasi berbasis asumsi.",
+     "metric_keys": [
+      "dcf_base",
+      "price"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan laba berikutnya pada 29 Januari 2027: apakah pertumbuhan laba sejalan dengan harga yang tinggi.",
+    "Analis Wall Street memperkirakan target harga rata-rata Rp6,329,000, dekat harga sekarang Rp6,483,000."
+   ],
+   "ask_yourself": "Seberapa nyaman Anda membayar harga di atas kebiasaan untuk perusahaan yang pertumbuhannya lebih lambat dari perusahaan sejenis?",
+   "data_gaps": [
+    "P/B, P/FCF, forward P/E, dan FCF yield tidak punya pembanding riwayat 5 tahun atau perusahaan sejenis.",
+    "Sebagian besar data berlabel DEMO_ONLY, jadi mungkin bukan data pasar sebenarnya.",
+    "Nilai rupiah dikonversi dari dolar AS dengan kurs 18310, sehingga ikut dipengaruhi pergerakan kurs."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.08891,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "ticker": "JPM",
+ "generated_at": "2026-11-25T10:46:14+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "JPM",
+  "tab": "financials",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Strong",
+  "as_of": "2026-11-25T10:46:14+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Strong",
+   "headline": "Pendapatan dan laba terus tumbuh, kas jauh melebihi utang",
+   "takeaway": "Pendapatan JPM tumbuh rata-rata 12.3% per tahun selama 3 tahun, dan laba ikut naik. Margin laba bersih naik-turun di sekitar 31%, sementara kas jauh lebih besar dari total utang.",
+   "positives": [
+    {
+     "text": "Pendapatan naik 8.1% dibanding tahun lalu, dan EPS (laba per saham) naik 9.9%. Rata-rata pertumbuhan pendapatan 3 tahun 12.3% per tahun.",
+     "metric_keys": [
+      "revenue_yoy",
+      "eps_yoy",
+      "revenue_cagr_3y"
+     ]
+    },
+    {
+     "text": "Margin laba bersih tahunan naik dari 29.3% (FY2022) menjadi 31.3% (FY2025). Artinya bagian pendapatan yang menjadi laba makin besar.",
+     "metric_keys": [
+      "annual.net_margin"
+     ]
+    },
+    {
+     "text": "Kas Rp5,970 triliun jauh di atas total utang Rp1,310 triliun pada Q3 FY26, sehingga ada kas bersih Rp4,670 triliun.",
+     "metric_keys": [
+      "balance_sheet.cash",
+      "balance_sheet.total_debt",
+      "balance_sheet.net_debt"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "Q2 FY26 melonjak: pendapatan Rp1,050 triliun (naik 27.7%) dan margin 36.9%. Di Q3 FY26 margin kembali ke 30.5%.",
+     "metric_keys": [
+      "quarterly_income.revenue",
+      "quarterly_income.net_margin",
+      "quarterly_income.revenue_yoy"
+     ]
+    },
+    {
+     "text": "Laba bersih FY2025 turun ke Rp1,040 triliun dari Rp1,070 triliun, dan margin turun ke 31.3% dari 32.9% di FY2024.",
+     "metric_keys": [
+      "annual.net_income",
+      "annual.net_margin"
+     ]
+    },
+    {
+     "text": "Arus kas operasi sangat naik-turun, misalnya minus Rp3,880 triliun di Q1 FY26. Bagi bank, angka ini dipengaruhi arus pinjaman dan simpanan.",
+     "metric_keys": [
+      "quarterly_cash_flow.operating_cash_flow"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan keuangan berikutnya pada 14 Jan 2027: apakah margin laba bersih tetap di sekitar 30.5% atau berubah lagi.",
+    "Apakah lonjakan pendapatan seperti Q2 FY26 (Rp1,050 triliun) terulang, atau pendapatan tetap di kisaran Rp919 triliun per kuartal."
+   ],
+   "ask_yourself": "Seberapa nyaman Anda dengan laba kuartalan yang bisa naik-turun cukup tajam?",
+   "data_gaps": [
+    "Gross margin dan operating margin tidak berlaku untuk bank.",
+    "Free cash flow tidak dilaporkan perusahaan.",
+    "Konversi kas (arus kas dibanding laba) tidak bermakna untuk bank, jadi sulit menilai apakah arus kas mendukung laba.",
+    "Tidak ada perbandingan dengan perusahaan sejenis atau indeks pasar di tab ini.",
+    "Angka dikonversi dari dolar AS dengan kurs Rp18,310, sehingga perubahan kurs bisa memengaruhi angka rupiah."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.105818,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

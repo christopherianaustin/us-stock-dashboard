@@ -14,3 +14,5 @@ pydantic==2.12.5
 python-dotenv==1.2.4
 PyYAML==6.0.3
 pytest==9.2.0
+# AI summaries (Phase 10). anthropic 2.x installs httpx2 itself.
+anthropic==2.14.0

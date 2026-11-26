@@ -46,7 +46,7 @@ def test_cors_allows_only_the_local_prototype():
         assert rx.fullmatch(ok), ok
     for bad in ("https://evil.example", "http://127.0.0.1:8501", "http://example.com:5173"):
         assert not rx.fullmatch(bad), bad
-    assert mw[0].kwargs["allow_methods"] == ["GET"]
+    assert mw[0].kwargs["allow_methods"] == ["GET", "POST"]   # POST only for AI Insight feedback (10c)
 
 
 def test_fx_rate_is_hidden_in_safe_mode(monkeypatch):

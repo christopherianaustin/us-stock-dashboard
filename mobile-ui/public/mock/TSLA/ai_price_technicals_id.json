@@ -1,0 +1,83 @@
+{
+ "ticker": "TSLA",
+ "generated_at": "2026-11-25T10:44:40+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "TSLA",
+  "tab": "price_technicals",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Neutral",
+  "as_of": "2026-11-25T10:44:40+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Neutral",
+   "headline": "Tren jangka pendek membaik, tetapi tertinggal dari pasar dalam setahun",
+   "takeaway": "Harga TSLA sedikit di atas rata-rata 50 dan 200 hari, dan unggul dari S&P 500 dalam 3 bulan terakhir. Namun dalam 1 dan 5 tahun saham ini jauh tertinggal, dan pergerakan harganya jauh lebih tajam daripada pasar.",
+   "positives": [
+    {
+     "text": "Dalam 3 bulan, saham naik 10.2%, sementara S&P 500 turun 5.6% dan ETF sektor XLY turun 0.3%.",
+     "metric_keys": [
+      "returns_pct"
+     ]
+    },
+    {
+     "text": "Harga 2.1% di atas rata-rata 50 hari dan 0.9% di atas rata-rata 200 hari (patokan tren jangka panjang).",
+     "metric_keys": [
+      "sma50",
+      "sma200"
+     ]
+    },
+    {
+     "text": "RSI (ukuran seberapa cepat harga bergerak) di 51.8, artinya di zona netral, tidak naik atau turun terlalu cepat.",
+     "metric_keys": [
+      "rsi14"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "Dalam 1 tahun saham turun 7.9%, sementara S&P 500 naik 8.6%. Dalam 5 tahun hanya naik 6.7%, dibanding 67.4%.",
+     "metric_keys": [
+      "returns_pct"
+     ]
+    },
+    {
+     "text": "Beta 1.7 (bergerak sekitar 1.7 kali pasar) dan volatilitas 47.1% per tahun. Penurunan terbesar dalam 5 tahun mencapai 73%.",
+     "metric_keys": [
+      "beta",
+      "volatility_1y",
+      "max_drawdown_5y"
+     ]
+    },
+    {
+     "text": "Harga masih 21.5% di bawah puncak terakhir. MACD (indikator arah momentum) turun di bawah garis sinyalnya pada 5 Nov 2026.",
+     "metric_keys": [
+      "current_drawdown",
+      "recent_signals"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan laba berikutnya dijadwalkan 28 Jan 2027.",
+    "Support terdekat (area harga pernah tertahan turun) Rp6,708,000, 4.8% di bawah harga kini; resistance (area harga pernah tertahan naik) Rp7,449,000, 5.8% di atas."
+   ],
+   "ask_yourself": "Seberapa nyaman Anda memegang saham yang pernah turun 73% dari puncaknya?",
+   "data_gaps": [
+    "Semua data bertanda DEMO_ONLY, jadi angka mungkin bukan data pasar sebenarnya.",
+    "Harga dalam rupiah dikonversi dari dolar AS dengan kurs Rp18,310; perubahan kurs ikut memengaruhi angka.",
+    "Tidak ada data volume perdagangan."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 1,
+  "cost_usd": 0.046601,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

@@ -104,5 +104,8 @@ def render_sidebar(current_cik: str | None = None) -> None:
             st.caption("Connected · yfinance (demo only)")
             st.caption(("Connected" if settings.finnhub_enabled else "Off: no API key") + " · Finnhub (demo only)")
             st.caption(f"Price provider: {settings.price_provider}")
+            from app.components.ai_card import usage_caption   # running AI cost (debug), SPEC 15.9
+            if cap := usage_caption():
+                st.caption(cap)
             st.markdown("<span class='lb lic'>Licensed-safe</span> <span class='lb calc'>Calculated</span> "
                         "<span class='lb demo'>Demo data</span>", unsafe_allow_html=True)

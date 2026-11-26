@@ -1,0 +1,74 @@
+{
+ "ticker": "TSLA",
+ "generated_at": "2026-11-25T10:45:31+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "TSLA",
+  "tab": "news_filings",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Not applicable",
+  "as_of": "2026-11-25T10:45:31+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Not applicable",
+   "headline": "Rencana merger Tesla-SpaceX mendominasi berita terbaru",
+   "takeaway": "Sebagian besar judul berita terbaru membahas kemungkinan merger Tesla dan SpaceX, yang menurut satu judul bernilai sekitar US$3,5 triliun. Tema lain mencakup pemangkasan memori 25% akibat krisis chip, rencana BYD di Eropa, dan pasar saham yang melemah.",
+   "positives": [
+    {
+     "text": "Laporan kuartalan (10-Q) terbaru terbit 22 Okt 2026, sehari setelah rilis hasil laba pada 21 Okt 2026.",
+     "metric_keys": [
+      "sec_filings"
+     ]
+    },
+    {
+     "text": "Dokumen rapat pemegang saham (DEF 14A) terbit 19 Okt 2026, sehingga informasi resmi rapat tersedia bagi pemegang saham.",
+     "metric_keys": [
+      "sec_filings"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "Judul 25 Nov 2026 menyebut Tesla memangkas memori 25% karena krisis chip akibat AI, dan saham TSLA melemah di perdagangan malam.",
+     "metric_keys": [
+      "headlines"
+     ]
+    },
+    {
+     "text": "Merger masih berupa pembicaraan. Judul 24 Nov 2026 menyebut satu kelompok investor punya alasan khawatir, judul lain menyebut ada catatan mengejutkan.",
+     "metric_keys": [
+      "headlines"
+     ]
+    },
+    {
+     "text": "Judul 25 Nov 2026 menyebut BYD berencana memproduksi mobil di Prancis untuk memperkuat dorongannya ke pasar Eropa.",
+     "metric_keys": [
+      "headlines"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan laba Tesla berikutnya dijadwalkan pada 28 Jan 2027.",
+    "Kabar resmi soal merger Tesla-SpaceX: satu judul menyebut kesepakatan bisa datang Desember, sementara RBC memperkirakan pengumuman paling lambat awal 2027."
+   ],
+   "ask_yourself": "Seberapa nyaman Anda jika arah bisnis perusahaan bisa berubah besar akibat merger?",
+   "data_gaps": [
+    "Hanya judul berita yang tersedia, isi artikel tidak ada, sehingga detail dan kebenaran tiap judul tidak bisa dicek.",
+    "Beberapa judul tidak terkait langsung dengan Tesla, misalnya soal AppLovin, Solana, pemasok tenaga surya, dan toko kulit di Stark County.",
+    "Detail transaksi orang dalam (Form 4, 9 Sep 2026 dan 17 Jun 2026) tidak tersedia, termasuk arah dan jumlah transaksinya.",
+    "Isi laporan 8-K tanggal 29 Sep 2026 (berita perusahaan) tidak dijelaskan dalam data."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.104134,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

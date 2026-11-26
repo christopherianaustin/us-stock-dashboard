@@ -1,0 +1,79 @@
+{
+ "ticker": "KO",
+ "generated_at": "2026-11-25T10:43:15+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "KO",
+  "tab": "earnings",
+  "lang": "en",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Strong",
+  "as_of": "2026-11-25T10:43:15+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Strong",
+   "headline": "Beat profit estimates in all of the last 8 quarters",
+   "takeaway": "Coca-Cola has beaten Wall Street's EPS (earnings per share) estimates every quarter for two years, usually by small margins. Analysts mostly raised this year's estimates, but views on next year are more mixed.",
+   "positives": [
+    {
+     "text": "EPS beat analyst estimates in 8 of the last 8 quarters, with surprises from about 2% to 6.4%.",
+     "metric_keys": [
+      "beat_rate_8q",
+      "last_quarters"
+     ]
+    },
+    {
+     "text": "In the last 30 days, 23 analysts raised their current fiscal year estimate and none cut it.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    },
+    {
+     "text": "For the current quarter, 11 analysts raised estimates while 4 cut them.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "A beat does not always lift the price. After the Q3 FY26 beat, the stock fell 1.6% the next day.",
+     "metric_keys": [
+      "last_quarters"
+     ]
+    },
+    {
+     "text": "For next quarter, 7 analysts cut estimates and 3 raised them. For next fiscal year, 12 cut and 10 raised.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    },
+    {
+     "text": "Beats are mostly small. The Q1 FY25 surprise was only 1.95% above the estimate.",
+     "metric_keys": [
+      "last_quarters"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Next earnings on 9 Feb 2027, before market open. 19 analysts estimate EPS of $0.61, versus $0.58 a year ago.",
+    "Wall Street analysts estimate revenue of about $11.3 billion. The typical 1-day price move after earnings is about 2.1%."
+   ],
+   "ask_yourself": "How would you feel if the price fell for a day even after a good earnings report?",
+   "data_gaps": [
+    "No history of revenue beats or misses versus estimates.",
+    "Beat rate and typical move metrics are marked as demo data, so they may not be fully reliable."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 1,
+  "cost_usd": 0.027177,
+  "cached": false,
+  "disclaimer": "AI-generated from the data on this page. It can make mistakes and is not investment advice.",
+  "sample": true
+ }
+}

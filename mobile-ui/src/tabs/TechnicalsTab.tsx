@@ -3,7 +3,7 @@ import { CandlestickSeries, ColorType, CrosshairMode, LineSeries, LineStyle, cre
 import { Bar, BarChart, Cell, Line, LineChart, ReferenceArea, ReferenceLine, XAxis, YAxis } from 'recharts'
 import { ep, useData, useSettings } from '../lib/data'
 import { dateShort, num, pct, pctSigned, rp, rpShort } from '../lib/format'
-import { useT } from '../lib/i18n'
+import { useL, useT } from '../lib/i18n'
 import * as P from '../lib/plain'
 import { C, ChartBox, TapTip, axisTick } from '../components/charts'
 import { Badge, DataCard, NA, Pills, Row, ToneChip } from '../components/ui'
@@ -15,12 +15,13 @@ type Range = keyof typeof RANGES
 
 export function TechnicalsTab({ rate }: { rate: number }) {
   const t = useT()
+  const L = useL()
   const { lang } = useSettings()
   const q = useData<any>(ep.technicals)
 
   return (
     <>
-      <DataCard q={q} title={t('price_chart')} info="price_chart" h={300}>
+      <DataCard q={q} title={t('price_chart')} info="price_chart" h={300} ai="price_technicals">
         {(d) => !d.bars?.available ? <NA reason={d.bars?.na_reason} /> :
           <PriceChart bars={d.bars.items} levels={[...(d.support_resistance?.value?.supports ?? []), ...(d.support_resistance?.value?.resistances ?? [])]} rate={rate} />}
       </DataCard>
@@ -33,7 +34,7 @@ export function TechnicalsTab({ rate }: { rate: number }) {
           return (
             <>
               <div className="grid grid-cols-[1fr_auto_auto] gap-x-3 gap-y-2.5 items-center">
-                <span className="t-action-b text-dgrey">Level</span><span className="t-action-b text-dgrey text-right">From today</span><span className="t-action-b text-dgrey text-right">Strength</span>
+                <span className="t-action-b text-dgrey">{L('Level', 'Level')}</span><span className="t-action-b text-dgrey text-right">{L('From today', 'Dari hari ini')}</span><span className="t-action-b text-dgrey text-right">{L('Strength', 'Kekuatan')}</span>
                 {rows.map((l, i) => (
                   <Lvl key={i} l={l} rate={rate} />
                 ))}
@@ -57,7 +58,7 @@ export function TechnicalsTab({ rate }: { rate: number }) {
           const cols = [stock, spy, sector].filter(Boolean) as string[]
           return (
             <div className="grid gap-x-3 gap-y-2.5 items-center" style={{ gridTemplateColumns: `1fr repeat(${cols.length}, auto)` }}>
-              <span />{cols.map((c) => <span key={c} className="t-action-b text-dgrey text-right">{c === 'SPY' ? 'S&P 500' : c === stock ? c : `Sector (${c})`}</span>)}
+              <span />{cols.map((c) => <span key={c} className="t-action-b text-dgrey text-right">{c === 'SPY' ? 'S&P 500' : c === stock ? c : `${L('Sector', 'Sektor')} (${c})`}</span>)}
               {['1M', '3M', '6M', 'YTD', '1Y', '3Y', '5Y'].filter((p) => r[p]).map((p) => (
                 <Perf key={p} p={p} cols={cols} v={r[p]} />
               ))}
@@ -72,10 +73,10 @@ export function TechnicalsTab({ rate }: { rate: number }) {
           if (!k) return <NA reason={d.risk?.na_reason} />
           const items: [string, string | null, P.Explained][] = [
             ['Beta', k.beta != null ? num(k.beta, 2) : null, P.beta(k.beta, lang)],
-            ['Volatility (1 year)', k.volatility_1y != null ? pct(k.volatility_1y, 1) : null, P.volatility(k.volatility_1y, lang)],
-            ['Biggest drop (1 year)', k.max_drawdown_1y != null ? pct(k.max_drawdown_1y, 1) : null, P.drawdown(k.max_drawdown_1y, lang)],
-            ['Biggest drop (5 years)', k.max_drawdown_5y != null ? pct(k.max_drawdown_5y, 1) : null, P.drawdown(k.max_drawdown_5y, lang)],
-            ['Sharpe ratio (1 year)', k.sharpe_1y != null ? num(k.sharpe_1y, 2) : null, P.sharpe(k.sharpe_1y, lang)],
+            [L('Volatility (1 year)', 'Volatilitas (1 tahun)'), k.volatility_1y != null ? pct(k.volatility_1y, 1) : null, P.volatility(k.volatility_1y, lang)],
+            [L('Biggest drop (1 year)', 'Penurunan terbesar (1 tahun)'), k.max_drawdown_1y != null ? pct(k.max_drawdown_1y, 1) : null, P.drawdown(k.max_drawdown_1y, lang)],
+            [L('Biggest drop (5 years)', 'Penurunan terbesar (5 tahun)'), k.max_drawdown_5y != null ? pct(k.max_drawdown_5y, 1) : null, P.drawdown(k.max_drawdown_5y, lang)],
+            [L('Sharpe ratio (1 year)', 'Rasio Sharpe (1 tahun)'), k.sharpe_1y != null ? num(k.sharpe_1y, 2) : null, P.sharpe(k.sharpe_1y, lang)],
           ]
           return (
             <div className="flex flex-col gap-4">
@@ -90,16 +91,17 @@ export function TechnicalsTab({ rate }: { rate: number }) {
   )
 }
 
-const Lvl = ({ l, rate }: { l: Level; rate: number }) => (
-  <>
+const Lvl = ({ l, rate }: { l: Level; rate: number }) => {
+  const L = useL()
+  return (<>
     <span className="flex items-center gap-2 t-label text-navy">
       <span className={`size-2 rounded-full ${l.kind === 'support' ? 'bg-up' : 'bg-down'}`} />
       {rp(l.price, rate)}
     </span>
     <span className={`t-label-m text-right ${l.distance >= 0 ? 'text-[#048a62]' : 'text-down'}`}>{pctSigned(l.distance * 100, 1)}</span>
-    <span className="t-action text-dgrey text-right whitespace-nowrap">{l.touches} touch{l.touches === 1 ? '' : 'es'}</span>
-  </>
-)
+    <span className="t-action text-dgrey text-right whitespace-nowrap">{L(`${l.touches} touch${l.touches === 1 ? '' : 'es'}`, `${l.touches} sentuhan`)}</span>
+  </>)
+}
 
 const Perf = ({ p, cols, v }: { p: string; cols: string[]; v: Record<string, number | null> }) => (
   <>
@@ -114,6 +116,7 @@ const Perf = ({ p, cols, v }: { p: string; cols: string[]; v: Record<string, num
 
 /* ---------- TradingView Lightweight Charts: line / candles, ranges, averages, support & resistance ---------- */
 function PriceChart({ bars, levels, rate }: { bars: BarRow[]; levels: Level[]; rate: number }) {
+  const L = useL()
   const [range, setRange] = useState<Range>('1Y')
   const [kind, setKind] = useState<'line' | 'candle'>('candle')
   const [ma, setMa] = useState(true)
@@ -163,18 +166,18 @@ function PriceChart({ bars, levels, rate }: { bars: BarRow[]; levels: Level[]; r
   return (
     <>
       <div className="flex items-center justify-between gap-2">
-        <Pills small label="Chart type" value={kind} onChange={setKind} options={[{ key: 'candle', label: 'Candles' }, { key: 'line', label: 'Line' }]} />
-        <span className="t-action-b text-navy">{tip ?? 'Tap the chart for prices'}</span>
+        <Pills small label={L('Chart type', 'Jenis grafik')} value={kind} onChange={setKind} options={[{ key: 'candle', label: L('Candles', 'Candle') }, { key: 'line', label: L('Line', 'Garis') }]} />
+        <span className="t-action-b text-navy">{tip ?? L('Tap the chart for prices', 'Ketuk grafik untuk harga')}</span>
       </div>
       <div ref={box} className="h-[240px] w-full mt-3" />
       <div className="flex justify-between mt-3">
         {(Object.keys(RANGES) as Range[]).map((r) => (
-          <button key={r} type="button" onClick={() => setRange(r)}
+          <button key={r} type="button" onClick={() => setRange(r)} aria-pressed={r === range}
             className={`t-label rounded-full px-3 pt-1 pb-0.5 border-0 cursor-pointer ${r === range ? 'bg-chip text-navy' : 'bg-transparent text-grey'}`}>{r}</button>
         ))}
       </div>
       <div className="flex gap-2 mt-3 flex-wrap">
-        <Toggle on={ma} set={setMa} label="Averages 50 / 200 days" dots={[C.blue, C.amber]} />
+        <Toggle on={ma} set={setMa} label={L('Averages 50 / 200 days', 'Rata-rata 50 / 200 hari')} dots={[C.blue, C.amber]} />
         <Toggle on={sr} set={setSr} label="Support / resistance" dots={[C.green, C.red]} />
       </div>
     </>
@@ -190,13 +193,14 @@ const Toggle = ({ on, set, label, dots }: { on: boolean; set: (b: boolean) => vo
 
 /* ---------- RSI, MACD and the signals list (last 6 months) ---------- */
 function Momentum({ d }: { d: any }) {
+  const L = useL()
   const rows: BarRow[] = (d.bars?.items ?? []).slice(-126)
   const signals = d.signals?.items ?? []
   const rsi = d.snapshot?.value?.rsi14
   const lbl = (s: string) => dateShort(s).replace(/ \d{4}$/, '')
   return (
     <>
-      <div className="flex justify-between"><span className="t-label text-navy">RSI (14 days)</span><span className="t-link text-navy">{rsi != null ? num(rsi, 1) : '—'}</span></div>
+      <div className="flex justify-between"><span className="t-label text-navy">{L('RSI (14 days)', 'RSI (14 hari)')}</span><span className="t-link text-navy">{rsi != null ? num(rsi, 1) : '—'}</span></div>
       <ChartBox h={120}>
         <LineChart data={rows} margin={{ top: 6, right: 4, left: -24, bottom: 0 }}>
           <ReferenceArea y1={70} y2={100} fill={C.red} fillOpacity={0.06} />
@@ -209,7 +213,7 @@ function Momentum({ d }: { d: any }) {
           <Line isAnimationActive={false} dataKey="rsi14" name="RSI" stroke={C.purple} strokeWidth={1.5} dot={false} />
         </LineChart>
       </ChartBox>
-      <p className="t-action text-dgrey mt-1 mb-0">Above 70 = rose fast recently ("overbought"); below 30 = fell fast ("oversold").</p>
+      <p className="t-action text-dgrey mt-1 mb-0">{L('Above 70 = rose fast recently ("overbought"); below 30 = fell fast ("oversold").', 'Di atas 70 = naik cepat belakangan ("overbought"); di bawah 30 = turun cepat ("oversold").')}</p>
 
       <div className="t-label text-navy mt-4">MACD</div>
       <ChartBox h={110}>
@@ -223,7 +227,7 @@ function Momentum({ d }: { d: any }) {
         </BarChart>
       </ChartBox>
 
-      <div className="t-label text-navy mt-4">Signals (facts, not advice)</div>
+      <div className="t-label text-navy mt-4">{L('Signals (facts, not advice)', 'Sinyal (fakta, bukan saran)')}</div>
       <ul className="list-none m-0 p-0 mt-2 flex flex-col gap-2">
         {signals.map((s: any, i: number) => (
           <li key={i} className="flex gap-2 t-label-m text-navy">
@@ -231,7 +235,8 @@ function Momentum({ d }: { d: any }) {
             <span>{s.fact} <span className="text-dgrey t-action">· {dateShort(s.date)}</span></span>
           </li>
         ))}
-        {!signals.length && <NA reason={d.signals?.na_reason} />}
+        {!signals.length && <li className="t-label-m text-dgrey">{L('No new signals in the last 6 months.', 'Tidak ada sinyal baru dalam 6 bulan terakhir.')}</li>}
+
       </ul>
     </>
   )

@@ -1,0 +1,79 @@
+{
+ "ticker": "AAPL",
+ "generated_at": "2026-11-25T10:41:32+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "AAPL",
+  "tab": "earnings",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Strong",
+  "as_of": "2026-11-25T10:41:32+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Strong",
+   "headline": "Selalu melampaui estimasi laba, tetapi harga sering turun setelahnya",
+   "takeaway": "Apple mencetak EPS di atas estimasi analis di 8 dari 8 kuartal terakhir. Namun harga saham sering turun sehari setelah laporan, dan banyak analis memangkas estimasi untuk tahun fiskal ini.",
+   "positives": [
+    {
+     "text": "EPS (laba per saham) melampaui estimasi analis di 8 dari 8 kuartal terakhir.",
+     "metric_keys": [
+      "beat_rate_8q"
+     ]
+    },
+    {
+     "text": "Selisih di atas estimasi berkisar 1.69% hingga 9.48%. Kuartal terakhir (Q4 FY26) lebih tinggi 5.8%.",
+     "metric_keys": [
+      "last_quarters"
+     ]
+    },
+    {
+     "text": "Untuk kuartal berjalan, 11 analis menaikkan estimasi dan hanya 4 yang memangkas dalam 30 hari terakhir.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "Meski selalu melampaui estimasi, harga lebih sering turun keesokan harinya. Contohnya -7.35% setelah Q3 FY26 dan -1.9% setelah Q4 FY26.",
+     "metric_keys": [
+      "last_quarters"
+     ]
+    },
+    {
+     "text": "Untuk tahun fiskal berjalan, 23 analis memangkas estimasi dan hanya 7 yang menaikkan dalam 30 hari terakhir.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    },
+    {
+     "text": "Untuk kuartal berikutnya, 13 analis memangkas estimasi, sementara hanya 2 yang menaikkan.",
+     "metric_keys": [
+      "analyst_estimate_revisions_30d"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan laba berikutnya pada 28 Jan 2027 setelah pasar tutup (sekitar 64 hari lagi).",
+    "25 analis Wall Street memperkirakan EPS Rp53,310, dibanding Rp52,000 setahun lalu. Rata-rata pergerakan harga sehari setelah laporan sekitar 2.4%."
+   ],
+   "ask_yourself": "Apakah Anda nyaman jika harga bergerak tajam sehari setelah laporan laba, bahkan saat hasilnya di atas estimasi?",
+   "data_gaps": [
+    "Tanggal laporan berikutnya tidak konsisten: 28 Jan 2027 di satu bagian, 29 Jan 2027 di bagian lain.",
+    "Tidak ada perbandingan riwayat melampaui estimasi dengan perusahaan sejenis.",
+    "Angka dikonversi dari dolar AS dengan kurs Rp18,310, dan data bertanda DEMO_ONLY sehingga keandalannya terbatas."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.094863,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

@@ -1,0 +1,75 @@
+{
+ "ticker": "KO",
+ "generated_at": "2026-11-25T10:43:26+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "KO",
+  "tab": "valuation",
+  "lang": "en",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Weak",
+  "as_of": "2026-11-25T10:43:26+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Weak",
+   "headline": "Priced near the top of its 5-year range, with modest growth",
+   "takeaway": "Investors pay more than usual for each dollar of Coca-Cola's profit and sales. Its P/E is a bit below peers, but growth is modest, so it only partly explains the higher price.",
+   "positives": [
+    {
+     "text": "P/E (price compared with yearly profit) is 28.7, below the peer median of 32.",
+     "metric_keys": [
+      "pe"
+     ]
+    },
+    {
+     "text": "Profit per share (EPS) grew about 11.6% a year over 3 years, and 8.1% over the past year.",
+     "metric_keys": [
+      "eps_cagr_3y",
+      "eps_yoy"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "P/E of 28.7 is higher than 89% of the last 5 years, above its 5-year median of 26.3.",
+     "metric_keys": [
+      "pe"
+     ]
+    },
+    {
+     "text": "P/S (price compared with yearly sales) is 8.23, near its 5-year high and far above the peer median of 2.27.",
+     "metric_keys": [
+      "ps"
+     ]
+    },
+    {
+     "text": "PEG (P/E compared with growth) is 5.19, as analysts expect only 5.5% EPS growth next year. Revenue grew 7.4%, below peers' 11.2%.",
+     "metric_keys": [
+      "peg",
+      "revenue_yoy"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Next earnings report on 9 Feb 2027.",
+    "Wall Street analysts' price targets range from $88.00 to $112.00, with a mean of $99.64, versus today's $97.62."
+   ],
+   "ask_yourself": "How comfortable are you paying a higher-than-usual price for a company growing at a modest pace?",
+   "data_gaps": [
+    "Fair value estimates (DCF base case $54.70, Graham number $25.77) depend on assumptions and are not predictions.",
+    "P/B, P/FCF, FCF yield and forward P/E have no history or peer comparison.",
+    "Most valuation data is marked demo-only and may not be final."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 1,
+  "cost_usd": 0.030917,
+  "cached": false,
+  "disclaimer": "AI-generated from the data on this page. It can make mistakes and is not investment advice.",
+  "sample": true
+ }
+}

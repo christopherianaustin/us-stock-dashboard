@@ -1,0 +1,80 @@
+{
+ "ticker": "JPM",
+ "generated_at": "2026-11-25T10:45:47+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "JPM",
+  "tab": "summary",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Neutral",
+  "as_of": "2026-11-25T10:45:47+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Neutral",
+   "headline": "Laba sangat kuat, tetapi harganya di atas peer dan riwayatnya",
+   "takeaway": "JPM lebih menguntungkan daripada bank sejenis, dengan ROE dan margin laba di atas median peer. Namun harganya lebih tinggi daripada peer dan riwayat 5 tahunnya, sementara kesehatan keuangan belum bisa dinilai karena datanya kurang.",
+   "positives": [
+    {
+     "text": "ROE (laba dibanding modal pemegang saham) sebesar 18%, jauh di atas median peer 11.1%.",
+     "metric_keys": [
+      "roe"
+     ]
+    },
+    {
+     "text": "Menyimpan sekitar Rp32 dari setiap Rp100 pendapatan sebagai laba (net margin 32.5%), di atas median peer 27.8%.",
+     "metric_keys": [
+      "net_margin"
+     ]
+    },
+    {
+     "text": "Laba melampaui estimasi EPS (laba per saham) di 6 dari 8 kuartal terakhir.",
+     "metric_keys": [
+      "rule_based_strengths"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "P/E (harga dibanding laba setahun) 13.2, di atas median peer 11.3 dan median 5 tahunnya sendiri 11.7.",
+     "metric_keys": [
+      "pe"
+     ]
+    },
+    {
+     "text": "P/S (harga dibanding pendapatan) 4.15, di atas median peer 2.91 dan lebih tinggi dari 69% riwayat 5 tahunnya.",
+     "metric_keys": [
+      "ps"
+     ]
+    },
+    {
+     "text": "Harga 2.5% di bawah rata-rata 200 hari, tanda tren yang lemah. Pertumbuhan pendapatan 8.07%, setara median peer 8.2%.",
+     "metric_keys": [
+      "rule_based_risks",
+      "revenue_yoy"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan laba berikutnya pada 14 Jan 2027.",
+    "Harga Rp5,806,000 berada di antara level terendah 52 minggu Rp5,110,000 dan tertinggi Rp6,711,000."
+   ],
+   "ask_yourself": "Apakah Anda nyaman membayar harga di atas rata-rata peer untuk bank dengan laba yang lebih tinggi?",
+   "data_gaps": [
+    "Pilar kesehatan keuangan tidak punya data (0 dari 5 metrik).",
+    "EV/EBITDA dan rasio utang terhadap ekuitas tidak relevan untuk bank, jadi tidak tersedia.",
+    "Data harga, valuasi, dividen, dan beta berlabel demo dan dikonversi dari dolar AS dengan kurs 18,310."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.09349,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

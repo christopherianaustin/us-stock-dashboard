@@ -13,7 +13,7 @@ pillars:
   dividend: Dividen
 
 pillar_help:
-  valuation: "Seberapa mahal saham dibanding riwayatnya sendiri, perusahaan sejenis, dan kas yang dihasilkan. Kuat = relatif murah."
+  valuation: "Seberapa tinggi harga saham dibanding riwayatnya sendiri, perusahaan sejenis, dan kas yang dihasilkan. Kuat = harga relatif rendah."
   growth: "Seberapa cepat pendapatan dan laba tumbuh, dan apa yang diperkirakan analis."
   profitability: "Seberapa besar laba dari penjualan dan dari modal yang diinvestasikan."
   financial_health: "Seberapa aman neraca: utang, kemampuan membayar tagihan dan bunga, risiko kesulitan keuangan."
@@ -62,7 +62,7 @@ strengths:
   high_margin: "Perusahaan mempertahankan {net_margin_pct} dari pendapatannya sebagai laba, margin yang tinggi."
   high_roe: "Imbal hasil ekuitas {roe_pct}: perusahaan menghasilkan banyak dari modal pemegang saham."
   net_cash: "Perusahaan memiliki kas lebih banyak dari utang (kas bersih {net_cash_money})."
-  cheap_vs_history: "P/E lebih rendah dari {pe_percentile_low_pct} periode 5 tahun terakhir, jadi saham dihargai lebih murah dari biasanya."
+  cheap_vs_history: "P/E lebih rendah dari {pe_percentile_low_pct} periode 5 tahun terakhir, jadi harga saham lebih rendah dari biasanya dibanding labanya."
   cheap_vs_peers: "P/E {pe_vs_peers_discount_pct} di bawah median perusahaan sejenis."
   strong_fscore: "Daftar periksa kekuatan keuangan (Piotroski) bernilai {piotroski_score}/9."
   dividend_streak: "Dividen telah dinaikkan {growth_streak} tahun berturut-turut."
@@ -74,7 +74,7 @@ strengths:
 
 risks:
   losing_money: "Perusahaan merugi dalam 12 bulan terakhir ({net_income_ttm_money})."
-  expensive_vs_history: "P/E lebih tinggi dari {pe_percentile_pct} periode 5 tahun terakhir, jadi saham dihargai lebih mahal dari biasanya."
+  expensive_vs_history: "P/E lebih tinggi dari {pe_percentile_pct} periode 5 tahun terakhir, jadi harga saham lebih tinggi dari biasanya dibanding labanya."
   expensive_vs_peers: "P/E {pe_vs_peers_x} median perusahaan sejenis."
   revenue_decline: "Pendapatan turun {revenue_yoy_abs_pct} dibanding kuartal yang sama tahun lalu."
   eps_decline: "Laba per saham turun {eps_yoy_abs_pct} dibanding kuartal yang sama tahun lalu."

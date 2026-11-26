@@ -1,0 +1,32 @@
+# What readers of each tab care about most (SPEC 15.6.3). Sent to the model as tab_focus.
+# Edit the text freely; changing it changes the cache key, so new summaries are generated.
+summary:
+  name: Summary (overall)
+  focus: The big picture across all pillars - the single biggest strength, the single biggest risk, and how the stock compares overall with its peers and its own history.
+price_technicals:
+  name: Price and Technicals
+  focus: The price trend (vs 50 and 200 day averages), performance vs the S&P 500 and sector, how much the price swings (beta, volatility, biggest drop), and how far the price is from the nearest support and resistance. Price patterns describe the past only.
+earnings:
+  name: Earnings
+  focus: The record of beating or missing estimates and by how much, how the price usually reacts after earnings, whether analysts have been raising or cutting estimates, and the next earnings date.
+financials:
+  name: Financials
+  focus: The trend in revenue and profit, whether margins are getting better or worse, whether cash flow supports the reported profit, and the balance between cash and debt. Point out any sudden change.
+valuation:
+  name: Valuation
+  focus: How the price compares with the company's own history and with peers, and whether growth helps explain it. Fair value numbers are estimates based on assumptions; say so if you mention them.
+profitability_health:
+  name: Profitability and Health
+  focus: How well the company turns money into profit (ROE, ROIC), how safe its debt level is, and what the Piotroski and Altman scores say, in plain words.
+dividends:
+  name: Dividends
+  focus: The dividend yield vs its own history, whether profits and free cash flow cover the dividend, and the dividend growth streak. If there is no dividend, say so simply and mention buybacks only if they are in the data.
+ownership_sentiment:
+  name: Ownership and Sentiment
+  focus: What Wall Street analysts rate the stock (always attributed to them), recent rating changes, insider buying or selling, how much big institutions own, and short interest.
+news_filings:
+  name: News and Filings
+  focus: The main themes in recent headlines and filings, using only the headline wording. Do not guess what the articles say. Use signal "Not applicable".
+company_profile:
+  name: Company Profile
+  focus: What the company does and how it makes money, in plain words, using only the data. Use signal "Not applicable".

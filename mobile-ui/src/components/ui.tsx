@@ -1,8 +1,10 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
+import type React from 'react'
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react'
 import chevronUp from '../assets/figma/chevron-up.svg'
 import infoIcon from '../assets/figma/info.svg'
-import { useSettings, type Q, type V } from '../lib/data'
-import { glossary, glossaryUi, useT } from '../lib/i18n'
+import { errorText, useSettings, type AiTab, type ErrKind, type Q, type V } from '../lib/data'
+import { AIInsight } from './AIInsight'
+import { glossary, glossaryUi, useL, useT } from '../lib/i18n'
 import type { Tone } from '../lib/plain'
 
 /* ---------- Icons (nav icons are drawn to match the Figma style: solid navy, 24 px) ---------- */
@@ -58,7 +60,13 @@ export function SheetProvider({ children }: { children: ReactNode }) {
     } else setC(x)
     requestAnimationFrame(() => setShown(true))
   }
-  const close = () => { setShown(false); setTimeout(() => setC(null), 220) }
+  const close = () => { setShown(false); setDrag(0); setTimeout(() => setC(null), 220) }
+  // swipe the sheet down to close it
+  const [drag, setDrag] = useState(0)
+  const startY = useRef<number | null>(null)
+  const onDown = (e: React.PointerEvent) => { startY.current = e.clientY; (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId) }
+  const onMove = (e: React.PointerEvent) => { if (startY.current != null) setDrag(Math.max(0, e.clientY - startY.current)) }
+  const onUp = () => { if (startY.current == null) return; startY.current = null; drag > 80 ? close() : setDrag(0) }
   useEffect(() => {
     const k = (e: KeyboardEvent) => e.key === 'Escape' && close()
     addEventListener('keydown', k); return () => removeEventListener('keydown', k)
@@ -70,9 +78,12 @@ export function SheetProvider({ children }: { children: ReactNode }) {
       {c && (
         <div className="fixed inset-0 z-40" role="dialog" aria-modal="true" aria-label={c.title}>
           <div onClick={close} className="absolute inset-0 bg-[#082f57]/40 transition-opacity duration-200" style={{ opacity: shown ? 1 : 0 }} />
-          <div className="absolute left-0 right-0 bottom-0 bg-white rounded-t-3xl px-6 pt-3 pb-8 max-h-[80%] overflow-y-auto transition-transform duration-200 ease-out"
-            style={{ transform: shown ? 'none' : 'translateY(100%)' }}>
-            <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-grey2" />
+          <div className={`absolute left-0 right-0 bottom-0 bg-white rounded-t-3xl px-6 pb-8 max-h-[80%] overflow-y-auto ${startY.current == null ? 'transition-transform duration-200 ease-out' : ''}`}
+            style={{ transform: shown ? `translateY(${drag}px)` : 'translateY(100%)' }}>
+            <div onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp}
+              className="-mx-6 pt-3 pb-4 touch-none cursor-grab" aria-hidden>
+              <div className="mx-auto h-1 w-10 rounded-full bg-grey2" />
+            </div>
             <h3 className="t-subtitle text-navy m-0">{c.title}</h3>
             {c.extra && <div className="mt-3">{c.extra}</div>}
             {([['what', c.what], ['how', c.how], ['good_bad', c.good_bad]] as const).map(([k, v]) => v && (
@@ -92,11 +103,12 @@ export function SheetProvider({ children }: { children: ReactNode }) {
 /** Grey "i" circle. 16 px next to the price, 24 px in card titles. Opens the bottom sheet. */
 export function InfoIcon({ size = 24, topic }: { size?: 16 | 24; topic?: string | SheetContent }) {
   const open = useSheet()
+  const L = useL()
   const glyph = size === 24 ? 20 : 14
   const img = <img src={infoIcon} alt="" width={glyph} height={glyph} />
   if (!topic) return <span className="inline-grid place-items-center shrink-0" style={{ width: size, height: size }}>{img}</span>
   return (
-    <button type="button" aria-label="What does this mean?" onClick={(e) => { e.stopPropagation(); open(topic) }}
+    <button type="button" aria-label={L('What does this mean?', 'Apa artinya?')} onClick={(e) => { e.stopPropagation(); open(topic) }}
       className="inline-grid place-items-center shrink-0 bg-transparent border-0 p-0 cursor-pointer relative after:absolute after:-inset-2.5"
       style={{ width: size, height: size }}>
       {img}
@@ -115,17 +127,19 @@ export function Card({ title, info, extra, children, defaultOpen = true, flush =
   flush?: boolean
 }) {
   const [open, setOpen] = useState(defaultOpen)
+  const L = useL()
   return (
     <section className="bg-white rounded-2xl shadow-card overflow-hidden">
-      <div className="flex items-center gap-4 p-4 pb-0">
+      {/* the whole title row toggles the card (bigger tap target than the chevron alone) */}
+      <div className="flex items-center gap-4 p-4 pb-0 cursor-pointer select-none" onClick={() => setOpen(!open)}>
         <div className="flex flex-1 items-center gap-2 min-w-0">
           <h2 className="t-link text-navy m-0">{title}</h2>
           {info && <InfoIcon topic={info} />}
           {extra}
         </div>
         <button
-          type="button" onClick={() => setOpen(!open)} aria-expanded={open}
-          aria-label={open ? 'Collapse' : 'Expand'}
+          type="button" onClick={(e) => { e.stopPropagation(); setOpen(!open) }} aria-expanded={open}
+          aria-label={open ? L('Collapse', 'Tutup') : L('Expand', 'Buka')} data-toggle={open ? 'open' : 'closed'}
           className="size-7 rounded-full bg-lavender grid place-items-center shrink-0 cursor-pointer border-0 p-0 relative after:absolute after:-inset-2"
         >
           <img src={chevronUp} alt="" width={24} height={24}
@@ -219,37 +233,65 @@ export function Val({ v, f }: { v?: V | null; f: (x: any) => ReactNode }) {
 }
 
 /* ---------- Loading / error states ---------- */
-export const Skeleton = ({ h = 120, className = '' }: { h?: number; className?: string }) => (
-  <div className={`rounded-2xl bg-grey2 animate-pulse ${className}`} style={{ height: h }} aria-label="Loading" />
-)
+export function Skeleton({ h = 120, className = '' }: { h?: number; className?: string }) {
+  const L = useL()
+  return <div className={`skeleton rounded-2xl ${className}`} style={{ height: h }} role="status" aria-label={L('Loading', 'Memuat')} data-skeleton />
+}
 
-export function ErrorLine({ onRetry, detail }: { onRetry: () => void; detail?: string }) {
+/** A section that failed: friendly reason + a retry button. The technical detail is shown small and grey. */
+export function ErrorLine({ onRetry, detail, kind }: { onRetry: () => void; detail?: string; kind?: ErrKind }) {
   const t = useT()
+  const L = useL()
+  const { lang, ticker } = useSettings()
+  const e = kind ? errorText(kind, lang, ticker) : null
   return (
-    <button type="button" onClick={onRetry} className="w-full text-left bg-transparent border-0 p-0 cursor-pointer">
-      <span className="t-label-m text-down block">{t('retry')}</span>
-      {detail && <span className="t-action text-grey block mt-1">{detail}</span>}
-    </button>
+    <div className="flex items-start gap-3" data-section-error>
+      <span className="size-8 rounded-full bg-down-bg grid place-items-center shrink-0 text-down font-bold">!</span>
+      <div className="flex-1 min-w-0">
+        <span className="t-label text-navy block">{e?.title ?? t('retry')}</span>
+        {e && <span className="t-action text-dgrey block mt-0.5">{e.body}</span>}
+        {detail && <span className="t-action text-grey block mt-1 break-words">{detail}</span>}
+        <button type="button" onClick={onRetry}
+          className="mt-2 h-8 px-4 rounded-full bg-white border border-grey2 t-action-b text-navy cursor-pointer">{L('Try again', 'Coba lagi')}</button>
+      </div>
+    </div>
   )
 }
 
 /** Card whose content depends on one API section: skeleton while loading, error line on failure. */
-export function DataCard<T>({ q, title, info, children, defaultOpen, flush, h = 140 }: {
+export function DataCard<T>({ q, title, info, children, defaultOpen, flush, h = 140, ai }: {
   q: Q<T>; title: ReactNode; info?: string | SheetContent; children: (d: T) => ReactNode; defaultOpen?: boolean; flush?: boolean; h?: number
+  /** show the AI Insight for this section at the top of the card (generated when the card is open and on screen) */
+  ai?: AiTab
 }) {
   if (q.loading) return (
     <section className="bg-white rounded-2xl shadow-card p-4">
       <div className="t-link text-navy">{title}</div>
-      <Skeleton h={h} className="mt-4" />
+      {defaultOpen === false ? <Skeleton h={12} className="mt-3 w-2/3 !rounded-full" /> : <Skeleton h={h} className="mt-4" />}
     </section>
   )
   return (
-    <Card title={title} info={info} defaultOpen={defaultOpen} flush={flush && !q.error}>
-      {q.error || q.data == null ? <ErrorLine onRetry={q.retry} detail={q.error} /> : children(q.data)}
+    <Card title={title} info={info} defaultOpen={(defaultOpen ?? true) || !!q.error} flush={flush && !q.error}>
+      {q.error || q.data == null ? <ErrorLine onRetry={q.retry} detail={q.error} kind={q.errKind} /> : (
+        <>{ai && <div className={flush ? 'px-4' : undefined}><AIInsight tab={ai} /></div>}{children(q.data)}</>
+      )}
     </Card>
   )
 }
 
-export const Empty = ({ children }: { children: ReactNode }) => (
-  <p className="t-body text-dgrey m-0">{children}</p>
-)
+/* ---------- Empty state: a soft icon and one plain sentence ---------- */
+const EMPTY_ICON: Record<string, ReactNode> = {
+  doc: <path d="M7 3h7l4 4v14H7zM14 3v4h4M10 12h5M10 16h5" />,
+  people: <path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 5.5a3 3 0 0 1 0 5.5M18 14.5c1.8.8 3 2.6 3 4.5" />,
+  chart: <path d="M4 19h16M7 15v-3M12 15V8M17 15v-5" />,
+  news: <path d="M5 5h11v14H6a1 1 0 0 1-1-1zM16 9h3v9a1 1 0 0 1-2 0M8 9h5M8 12h5M8 15h3" />,
+  coin: <><circle cx="12" cy="12" r="8" /><path d="M14.5 9.5c-.5-.8-1.4-1.2-2.5-1.2-1.4 0-2.5.8-2.5 1.8 0 2.4 5 1.2 5 3.7 0 1-1.1 1.9-2.5 1.9-1.1 0-2.1-.5-2.6-1.3M12 7v1.3M12 15.8V17" /></>,
+}
+export const Empty = ({ children, icon }: { children: ReactNode; icon?: keyof typeof EMPTY_ICON }) => icon ? (
+  <div className="flex items-center gap-3" data-empty>
+    <span className="size-10 rounded-full bg-lavender grid place-items-center shrink-0">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#561FA3" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>{EMPTY_ICON[icon]}</svg>
+    </span>
+    <p className="t-label-m text-dgrey m-0">{children}</p>
+  </div>
+) : <p className="t-body text-dgrey m-0" data-empty>{children}</p>

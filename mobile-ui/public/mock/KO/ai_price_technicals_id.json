@@ -1,0 +1,84 @@
+{
+ "ticker": "KO",
+ "generated_at": "2026-11-25T10:43:15+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "KO",
+  "tab": "price_technicals",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Strong",
+  "as_of": "2026-11-25T10:43:15+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Strong",
+   "headline": "Tren harga naik kuat dan mengungguli pasar, dengan ayunan relatif kecil",
+   "takeaway": "Harga KO berada di atas rata-rata 50 dan 200 hari, dan naik 38.1% dalam setahun, jauh di atas S&P 500 (8.6%). Namun harga kini dekat level tertinggi 52 minggu, dan ada sinyal momentum melemah sejak 19 Nov.",
+   "positives": [
+    {
+     "text": "Harga Rp1,787,000 berada 6.0% di atas rata-rata 50 hari dan 16.1% di atas rata-rata 200 hari, tanda tren naik.",
+     "metric_keys": [
+      "price",
+      "sma50",
+      "sma200"
+     ]
+    },
+    {
+     "text": "Naik 38.1% dalam 1 tahun, lebih tinggi dari S&P 500 (8.6%) dan ETF sektor XLP (22.6%).",
+     "metric_keys": [
+      "returns_pct"
+     ]
+    },
+    {
+     "text": "Beta (seberapa besar gerak saham dibanding pasar) hanya 0.10. Penurunan terbesar setahun terakhir hanya 7.9% dari puncak.",
+     "metric_keys": [
+      "beta",
+      "max_drawdown_1y"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "MACD (indikator arah momentum) turun di bawah garis sinyalnya pada 19 Nov 2026, tanda momentum naik mulai melemah.",
+     "metric_keys": [
+      "recent_signals"
+     ]
+    },
+    {
+     "text": "Harga hanya 2.9% di bawah tertinggi 52 minggu. Resistance (area harga pernah tertahan) Rp1,841,000 hanya 3.0% di atas harga sekarang.",
+     "metric_keys": [
+      "from_high_52w",
+      "nearest_resistance"
+     ]
+    },
+    {
+     "text": "Volatilitas setahun 19.1%, dan penurunan terbesar dalam 5 tahun mencapai 17.3%. Beta rendah tidak berarti harga tidak pernah turun.",
+     "metric_keys": [
+      "volatility_1y",
+      "max_drawdown_5y"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan laba berikutnya pada 9 Feb 2027.",
+    "Resistance di Rp1,841,000 (3.0% di atas) dan support (area harga pernah tertahan saat turun) di Rp1,650,000 (7.7% di bawah)."
+   ],
+   "ask_yourself": "Seberapa nyaman Anda jika harga turun ke area support terdekat, sekitar 7.7% di bawah harga sekarang?",
+   "data_gaps": [
+    "Semua data ditandai DEMO_ONLY, jadi mungkin bukan data pasar sebenarnya.",
+    "Harga dikonversi dari USD dengan kurs Rp18,310. Perubahan kurs bisa membuat hasil dalam rupiah berbeda dari angka ini.",
+    "Tidak ada pembanding volatilitas atau beta dengan perusahaan sejenis."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 1,
+  "cost_usd": 0.055713,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

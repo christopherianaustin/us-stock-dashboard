@@ -76,8 +76,8 @@ def percentile_sentence(name: str, st: HistoryStats) -> Optional[str]:
         return None
     p = round(st.percentile * 100)
     if p >= 50:
-        return f"{name} is higher than {p}% of the last 5 years, so the stock is priced more expensively than usual."
-    return f"{name} is lower than {100 - p}% of the last 5 years, so the stock is priced more cheaply than usual."
+        return f"{name} is higher than {p}% of the last 5 years, so the price is higher than usual for what you get."
+    return f"{name} is lower than {100 - p}% of the last 5 years, so the price is lower than usual for what you get."
 
 
 # =========================================================================== DCF

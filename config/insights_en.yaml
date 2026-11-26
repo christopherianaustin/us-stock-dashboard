@@ -14,7 +14,7 @@ pillars:
   dividend: Dividend
 
 pillar_help:
-  valuation: "How expensive the stock is compared with its own history, its peers and the cash it generates. Strong = relatively cheap."
+  valuation: "How high the price is compared with its own history, its peers and the cash it generates. Strong = priced relatively low."
   growth: "How fast revenue and earnings are growing, and what analysts expect next."
   profitability: "How much profit the company makes from its sales and from the money invested in it."
   financial_health: "How safe the balance sheet is: debt, ability to pay bills and interest, distress risk."
@@ -63,7 +63,7 @@ strengths:
   high_margin: "The company keeps {net_margin_pct} of its revenue as profit, a high margin."
   high_roe: "Return on equity is {roe_pct}: the company earns a lot on shareholders' money."
   net_cash: "The company has more cash than debt (net cash of {net_cash_money})."
-  cheap_vs_history: "P/E is lower than {pe_percentile_low_pct} of the last 5 years, so the stock is priced more cheaply than usual."
+  cheap_vs_history: "P/E is lower than {pe_percentile_low_pct} of the last 5 years, so the price is lower than usual compared with profit."
   cheap_vs_peers: "P/E is {pe_vs_peers_discount_pct} below the median of similar companies."
   strong_fscore: "Financial strength checklist (Piotroski) scores {piotroski_score}/9."
   dividend_streak: "The dividend has been raised for {growth_streak} years in a row."
@@ -75,7 +75,7 @@ strengths:
 
 risks:
   losing_money: "The company lost money over the last 12 months ({net_income_ttm_money})."
-  expensive_vs_history: "P/E is higher than {pe_percentile_pct} of the last 5 years, so the stock is priced more expensively than usual."
+  expensive_vs_history: "P/E is higher than {pe_percentile_pct} of the last 5 years, so the price is higher than usual compared with profit."
   expensive_vs_peers: "P/E is {pe_vs_peers_x} the median of similar companies."
   revenue_decline: "Revenue fell {revenue_yoy_abs_pct} compared with the same quarter last year."
   eps_decline: "Earnings per share fell {eps_yoy_abs_pct} compared with the same quarter last year."

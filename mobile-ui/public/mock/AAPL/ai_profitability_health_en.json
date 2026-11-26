@@ -1,0 +1,84 @@
+{
+ "ticker": "AAPL",
+ "generated_at": "2026-11-25T10:42:15+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "AAPL",
+  "tab": "profitability_health",
+  "lang": "en",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Strong",
+  "as_of": "2026-11-25T10:42:15+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Strong",
+   "headline": "Very high profits and all nine financial-strength checks passed",
+   "takeaway": "Apple turns sales and invested money into profit far better than similar companies, and its finances improved on every Piotroski check. Watch the thin short-term cash cushion and the part of ROE that comes from debt.",
+   "positives": [
+    {
+     "text": "Keeps about $27.60 of every $100 in sales as profit (net margin 27.6%), far above the peer median of 7.15%.",
+     "metric_keys": [
+      "net_margin"
+     ]
+    },
+    {
+     "text": "ROE (profit compared with shareholders' money) is 142% versus a peer median of 73.6%. ROIC (return on all invested money) is 98.3%.",
+     "metric_keys": [
+      "roe",
+      "roic"
+     ]
+    },
+    {
+     "text": "Piotroski score (nine checks of financial strength) is 9 of 9. Margins, cash flow and leverage all improved.",
+     "metric_keys": [
+      "piotroski"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "Current ratio (short-term assets compared with bills due within a year) is 1.02, and quick ratio is 0.938. That is a thin cushion.",
+     "metric_keys": [
+      "current_ratio",
+      "quick_ratio"
+     ]
+    },
+    {
+     "text": "Equity multiplier is 4.11x (assets compared with shareholders' money). The very high ROE partly reflects borrowing and a small equity base.",
+     "metric_keys": [
+      "equity_multiplier",
+      "roe"
+     ]
+    },
+    {
+     "text": "Net debt (debt minus cash) is $21.4 billion. Debt to EBITDA (debt compared with yearly operating earnings) is a low 0.456x.",
+     "metric_keys": [
+      "net_debt",
+      "debt_to_ebitda"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Next earnings report on 29 Jan 2027: check whether net margin stays near 27.6%.",
+    "Whether the current ratio keeps rising from 1.02, after improving from 0.89."
+   ],
+   "ask_yourself": "How much does a company's short-term cash cushion matter to you compared with its profit strength?",
+   "data_gaps": [
+    "Altman Z-score (13.09, safe zone) is tagged demo-only, so it is not used here as a confirmed result.",
+    "Interest coverage is not available because no interest expense was reported.",
+    "ROA is shown as 34.6% in the metrics but 36.8% in the Piotroski check details. The two figures may use different periods.",
+    "No history or peer comparison is given for ROIC, debt levels or the current ratio."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 1,
+  "cost_usd": 0.031861,
+  "cached": false,
+  "disclaimer": "AI-generated from the data on this page. It can make mistakes and is not investment advice.",
+  "sample": true
+ }
+}

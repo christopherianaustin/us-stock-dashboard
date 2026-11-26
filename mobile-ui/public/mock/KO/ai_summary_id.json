@@ -1,0 +1,80 @@
+{
+ "ticker": "KO",
+ "generated_at": "2026-11-25T10:42:57+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "KO",
+  "tab": "summary",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Strong",
+  "as_of": "2026-11-25T10:42:57+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Strong",
+   "headline": "Laba dan keuangan sangat kuat, tetapi harga saham di atas biasanya",
+   "takeaway": "KO sangat menguntungkan dan keuangannya kuat, dengan margin laba jauh di atas perusahaan sejenis. Risiko terbesarnya ada di valuasi: harga saham lebih tinggi dari biasanya, sementara pendapatan tumbuh lebih lambat dari pesaing.",
+   "positives": [
+    {
+     "text": "Net margin (laba bersih dibanding penjualan) 28.7%. Dari tiap Rp100 penjualan, sekitar Rp29 menjadi laba. Median pesaing hanya 10.5%.",
+     "metric_keys": [
+      "net_margin"
+     ]
+    },
+    {
+     "text": "ROE (laba dibanding modal pemegang saham) 42.6%, di atas median pesaing 28.4%. Modal dipakai dengan sangat produktif.",
+     "metric_keys": [
+      "roe"
+     ]
+    },
+    {
+     "text": "Laba per saham (EPS) melampaui perkiraan analis di 8 dari 8 kuartal terakhir. Kas perusahaan juga lebih besar dari utangnya.",
+     "metric_keys": [
+      "rule_based_strengths",
+      "debt_to_equity"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "P/E (harga dibanding laba tahunan) 28.7, lebih tinggi dari 89% periode 5 tahun terakhir. Namun masih di bawah median pesaing 32.",
+     "metric_keys": [
+      "pe"
+     ]
+    },
+    {
+     "text": "P/S (harga dibanding penjualan) 8.23, jauh di atas median pesaing 2.27 dan lebih tinggi dari 99.6% periode 5 tahun terakhir.",
+     "metric_keys": [
+      "ps"
+     ]
+    },
+    {
+     "text": "Pendapatan tumbuh 7.43% dalam setahun, lebih lambat dari median pesaing 11.2%. Harga tinggi biasanya berarti ekspektasi pasar juga tinggi.",
+     "metric_keys": [
+      "revenue_yoy"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan laba berikutnya pada 9 Feb 2027.",
+    "Harga Rp1,787,000 dekat titik tertinggi 52 minggu di Rp1,841,000."
+   ],
+   "ask_yourself": "Seberapa penting bagi Anda harga saham dibanding kekuatan laba perusahaannya?",
+   "data_gaps": [
+    "Sebagian besar data harga dan valuasi berlabel DEMO_ONLY, jadi mungkin bukan data pasar terkini.",
+    "Dividend yield 2.15% dan beta 0.101 tidak punya pembanding dengan pesaing atau riwayat sendiri.",
+    "Nilai kas bersih hanya tersedia dalam dolar AS, belum dalam rupiah."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.094422,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

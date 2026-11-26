@@ -1,0 +1,29 @@
+{
+ "ticker": "JPM",
+ "generated_at": "2026-11-25T10:46:53+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "JPM",
+  "tab": "news_filings",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Not applicable",
+  "as_of": "2026-11-25T10:46:53+00:00",
+  "source": "fallback",
+  "summary": {
+   "label": "Ringkasan otomatis",
+   "signal": "Not applicable",
+   "positives": [],
+   "watch_outs": []
+  },
+  "model": "claude-opus-5-5",
+  "cost_usd": 0.071406,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

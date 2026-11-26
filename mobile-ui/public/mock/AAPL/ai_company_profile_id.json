@@ -1,0 +1,60 @@
+{
+ "ticker": "AAPL",
+ "generated_at": "2026-11-25T10:42:50+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "AAPL",
+  "tab": "company_profile",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Not applicable",
+  "as_of": "2026-11-25T10:42:50+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Not applicable",
+   "headline": "Apple menjual perangkat elektronik sekaligus layanan digital berlangganan",
+   "takeaway": "Apple merancang dan menjual iPhone, Mac, iPad serta perangkat wearable, lalu menambah pendapatan dari layanan seperti App Store, iCloud, Apple Music dan Apple Pay. Data ini tidak menunjukkan porsi pendapatan dari tiap bagian bisnis.",
+   "positives": [
+    {
+     "text": "Sumber uang beragam: perangkat keras seperti iPhone dan Mac, plus layanan berlangganan, iklan dan pembayaran. Perusahaan berdiri sejak 1976.",
+     "metric_keys": [
+      "description"
+     ]
+    },
+    {
+     "text": "Nilai pasar (harga saham dikali jumlah saham) sekitar Rp94,200 triliun, dihitung dengan kurs Rp18,310 per dolar AS.",
+     "metric_keys": [
+      "market_cap",
+      "exchange_rate_used"
+     ]
+    },
+    {
+     "text": "Berjualan di banyak wilayah, termasuk Amerika, Eropa, India, China daratan dan Jepang. Sahamnya tercatat di Nasdaq sejak 1980.",
+     "metric_keys": [
+      "description",
+      "ipo_date",
+      "exchange"
+     ]
+    }
+   ],
+   "watch_outs": [],
+   "what_to_watch_next": [],
+   "ask_yourself": "Seberapa paham Anda cara Apple menghasilkan uang dari perangkat dan layanannya?",
+   "data_gaps": [
+    "Tidak ada rincian pendapatan per produk, layanan atau wilayah.",
+    "Tidak ada tanggal laporan keuangan berikutnya.",
+    "Nilai pasar ditandai sebagai data demo dan dikonversi dari dolar AS, jadi bisa berubah mengikuti kurs."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.072246,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

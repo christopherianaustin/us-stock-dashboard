@@ -1,0 +1,81 @@
+{
+ "ticker": "AAPL",
+ "generated_at": "2026-11-25T10:41:32+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "AAPL",
+  "tab": "price_technicals",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Strong",
+  "as_of": "2026-11-25T10:41:32+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Strong",
+   "headline": "Tren naik kuat dan unggul jauh dari pasar serta sektor",
+   "takeaway": "Harga AAPL berada dalam tren naik dan mengungguli S&P 500 serta sektor teknologi di semua periode, dari 1 bulan hingga 5 tahun. Namun harga kini dekat puncak 52 minggu, dan satu indikator momentum mulai melemah.",
+   "positives": [
+    {
+     "text": "Harga 16.5% di atas rata-rata 200 hari dan 3.4% di atas rata-rata 50 hari (harga rata-rata periode itu), tanda tren naik.",
+     "metric_keys": [
+      "sma200",
+      "sma50"
+     ]
+    },
+    {
+     "text": "Naik 28.8% dalam 1 tahun, jauh di atas S&P 500 (8.6%) dan ETF sektor teknologi XLK (12.9%).",
+     "metric_keys": [
+      "returns_pct"
+     ]
+    },
+    {
+     "text": "Dalam 6 bulan naik 14.8%, saat S&P 500 turun 3.1% dan XLK turun 12.7%.",
+     "metric_keys": [
+      "returns_pct"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "Pada 19 Nov 2026, MACD (indikator momentum) turun di bawah garis sinyalnya, tanda pergeseran momentum ke bawah.",
+     "metric_keys": [
+      "recent_signals"
+     ]
+    },
+    {
+     "text": "Harga hanya 1.9% di bawah resistance (area harga yang pernah tertahan) Rp6,607,000 dan 1.9% dari puncak 52 minggu.",
+     "metric_keys": [
+      "nearest_resistance",
+      "from_high_52w"
+     ]
+    },
+    {
+     "text": "Penurunan terbesar dari puncak dalam 5 tahun mencapai 33.4%, dengan volatilitas (ayunan harga khas) 25% setahun.",
+     "metric_keys": [
+      "max_drawdown_5y",
+      "volatility_1y"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan keuangan berikutnya pada 29 Jan 2027.",
+    "Support (area harga yang pernah menahan penurunan) terdekat di Rp6,336,000, sekitar 2.3% di bawah harga saat ini; berikutnya Rp5,841,000 (9.9% di bawah)."
+   ],
+   "ask_yourself": "Apakah Anda siap jika harga saham ini turun sekitar 30% dari puncaknya, seperti yang pernah terjadi dalam 5 tahun terakhir?",
+   "data_gaps": [
+    "Semua data ditandai DEMO_ONLY, jadi angka mungkin bukan data pasar sebenarnya.",
+    "Harga dalam rupiah dikonversi dari dolar AS dengan kurs 18,310; perubahan kurs ikut memengaruhi angka."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.112803,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

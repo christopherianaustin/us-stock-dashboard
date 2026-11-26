@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { ep, useData } from '../lib/data'
 import { ago, dateShort } from '../lib/format'
-import { useT } from '../lib/i18n'
+import { useL, useT } from '../lib/i18n'
 import bloomberg from '../assets/figma/news-bloomberg.svg'
 import cnn from '../assets/figma/news-cnn.svg'
-import { Badge, DataCard, Empty, NA, Pills } from '../components/ui'
+import { Badge, DataCard, Empty, Pills } from '../components/ui'
 
 type News = { datetime: string; headline: string; source: string; url: string; summary?: string }
 type Filing = { form: string; filing_date: string; description?: string; items?: string | null; url: string }
@@ -29,44 +29,45 @@ function SourceAvatar({ name }: { name: string }) {
 }
 
 /** Plain description of an SEC form. 8-K item 2.02 = results of operations (earnings). */
-function formText(f: Filing) {
+function formText(f: Filing, L: (en: string, id: string) => string) {
   const items = f.items ?? ''
   switch (f.form) {
-    case '10-K': return 'Annual report'
-    case '10-Q': return 'Quarterly report'
-    case '8-K': return items.includes('2.02') ? 'Earnings results' : 'Company news (current report)'
-    case '4': return 'Insider trade'
-    case '3': return 'New insider'
-    case 'DEF 14A': return 'Shareholder meeting'
-    case 'SC 13G': case 'SC 13G/A': case 'SCHEDULE 13G': case 'SCHEDULE 13G/A': return 'Large shareholder'
-    case '144': return 'Planned insider sale'
-    case 'S-8': return 'Employee share plan'
-    default: return f.description && f.description !== f.form ? f.description : 'Filing'
+    case '10-K': return L('Annual report', 'Laporan tahunan')
+    case '10-Q': return L('Quarterly report', 'Laporan kuartalan')
+    case '8-K': return items.includes('2.02') ? L('Earnings results', 'Hasil laba') : L('Company news (current report)', 'Berita perusahaan (laporan terkini)')
+    case '4': return L('Insider trade', 'Transaksi orang dalam')
+    case '3': return L('New insider', 'Orang dalam baru')
+    case 'DEF 14A': return L('Shareholder meeting', 'Rapat pemegang saham')
+    case 'SC 13G': case 'SC 13G/A': case 'SCHEDULE 13G': case 'SCHEDULE 13G/A': return L('Large shareholder', 'Pemegang saham besar')
+    case '144': return L('Planned insider sale', 'Rencana penjualan orang dalam')
+    case 'S-8': return L('Employee share plan', 'Program saham karyawan')
+    default: return f.description && f.description !== f.form ? f.description : L('Filing', 'Laporan')
   }
 }
 
 export function NewsTab() {
   const t = useT()
+  const L = useL()
   const q = useData<any>(ep.news)
   const [days, setDays] = useState<'7' | '30'>('7')
   const [shown, setShown] = useState(10)
 
   return (
     <>
-      <DataCard q={q} title={t('latest_news')} info="news" h={300}>
+      <DataCard q={q} title={t('latest_news')} info="news" h={300} ai="news_filings">
         {(d) => {
-          if (!d.news?.available) return <NA reason={d.news?.na_reason ?? 'No news'} />
+          if (!d.news?.available) return <Empty icon="news">{L('News is not available right now.', 'Berita sedang tidak tersedia.')}{d.news?.na_reason ? ` (${d.news.na_reason.replace(/^N\/A\s*\(?|\)$/g, '')})` : ''}</Empty>
           // count back from when the data was fetched (saved data may be a few days old)
           const cutoff = new Date(q.env?.generated_at ?? Date.now()).getTime() - Number(days) * 864e5
           const items: News[] = d.news.items.filter((n: News) => new Date(n.datetime).getTime() >= cutoff)
           return (
             <>
               <div className="flex items-center justify-between">
-                <Pills small label="Period" value={days} onChange={(k) => { setDays(k); setShown(10) }}
-                  options={[{ key: '7', label: '7 days' }, { key: '30', label: '30 days' }]} />
+                <Pills small label={L('Period', 'Periode')} value={days} onChange={(k) => { setDays(k); setShown(10) }}
+                  options={[{ key: '7', label: L('7 days', '7 hari') }, { key: '30', label: L('30 days', '30 hari') }]} />
                 <Badge tag={d.news.license_tag} />
               </div>
-              {!items.length ? <div className="mt-4"><Empty>No news about this stock in the last {days} days.</Empty></div> : (
+              {!items.length ? <div className="mt-4"><Empty icon="news">{L(`No news about this stock in the last ${days} days.`, `Tidak ada berita tentang saham ini dalam ${days} hari terakhir.`)}</Empty></div> : (
                 <ul className="list-none m-0 p-0 mt-4 flex flex-col gap-3">
                   {items.slice(0, shown).map((n, i) => (
                     <li key={i}>
@@ -84,7 +85,7 @@ export function NewsTab() {
                 </ul>
               )}
               {items.length > shown && (
-                <button type="button" onClick={() => setShown(shown + 10)} className="mt-3 t-link text-purple bg-transparent border-0 p-0 cursor-pointer">Show more</button>
+                <button type="button" onClick={() => setShown(shown + 10)} className="mt-3 t-link text-purple bg-transparent border-0 p-0 cursor-pointer">{L(`Show more (${items.length - shown})`, `Tampilkan lagi (${items.length - shown})`)}</button>
               )}
             </>
           )
@@ -92,13 +93,14 @@ export function NewsTab() {
       </DataCard>
 
       <DataCard q={q} title={t('sec_filings')} info="sec_filings" defaultOpen h={200}>
-        {(d) => !d.sec_filings?.items?.length ? <NA reason={d.sec_filings?.na_reason ?? 'No filings'} /> : (
+        {(d) => !d.sec_filings?.items?.length ? <Empty icon="doc">{L('No SEC filings found for this company.', 'Tidak ada laporan SEC untuk perusahaan ini.')}</Empty> : (
           <ul className="list-none m-0 p-0 flex flex-col">
             {d.sec_filings.items.slice(0, 12).map((f: Filing, i: number) => (
               <li key={i} className="border-b border-grey2 last:border-0">
                 <a href={f.url} target="_blank" rel="noreferrer noopener" className="flex items-center gap-3 py-2.5 no-underline">
                   <span className="t-action-b text-purple bg-lavender rounded-md px-1.5 py-0.5 min-w-[44px] text-center">{f.form}</span>
-                  <span className="flex-1 t-label-m text-navy">{formText(f)}</span>
+                  <span className="flex-1 t-label-m text-navy">{formText(f, L)}</span>
+
                   <span className="t-action text-dgrey whitespace-nowrap">{dateShort(f.filing_date)}</span>
                 </a>
               </li>

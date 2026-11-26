@@ -1,0 +1,80 @@
+{
+ "ticker": "JPM",
+ "generated_at": "2026-11-25T10:46:04+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "JPM",
+  "tab": "price_technicals",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Neutral",
+  "as_of": "2026-11-25T10:46:04+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Neutral",
+   "headline": "Harga di bawah rata-rata 50 dan 200 hari, unggul jangka panjang",
+   "takeaway": "Tren jangka pendek melemah karena harga Rp5,806,000 berada di bawah rata-rata 50 dan 200 hari. Namun dalam 3 dan 5 tahun, kenaikan saham ini jauh melampaui S&P 500 dan sektornya.",
+   "positives": [
+    {
+     "text": "Dalam 5 tahun saham naik 122%, jauh di atas S&P 500 (67.4%) dan ETF sektor keuangan XLF (57.7%).",
+     "metric_keys": [
+      "returns_pct"
+     ]
+    },
+    {
+     "text": "Dalam 6 bulan saham naik 4.5% saat S&P 500 turun 3.1%, meski masih di bawah sektor (8.8%).",
+     "metric_keys": [
+      "returns_pct"
+     ]
+    },
+    {
+     "text": "Beta (seberapa besar gerak saham dibanding pasar) 1.08, artinya naik-turunnya hampir sama dengan pasar secara umum.",
+     "metric_keys": [
+      "beta"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "Harga 5.6% di bawah rata-rata 50 hari dan 2.5% di bawah rata-rata 200 hari, tanda tren sedang melemah.",
+     "metric_keys": [
+      "sma50",
+      "sma200"
+     ]
+    },
+    {
+     "text": "Dalam 3 bulan saham turun 10.6%, lebih dalam dari S&P 500 (-5.6%) dan sektor (-3.3%).",
+     "metric_keys": [
+      "returns_pct"
+     ]
+    },
+    {
+     "text": "Penurunan terbesar dari puncak dalam 5 tahun mencapai 37.9%. Saat ini harga 12.7% di bawah puncak terakhir.",
+     "metric_keys": [
+      "max_drawdown_5y",
+      "current_drawdown"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan keuangan berikutnya dijadwalkan 14 Jan 2027.",
+    "Resistance (area harga yang dulu sering tertahan) terdekat Rp5,961,000, sekitar 2.7% di atas harga kini; support (area harga yang dulu sering tertahan saat turun) terdekat Rp5,465,000, sekitar 5.9% di bawah. Ini hanya pola masa lalu, bukan jaminan."
+   ],
+   "ask_yourself": "Apakah Anda nyaman jika harga saham ini turun cukup dalam sebelum kembali pulih?",
+   "data_gaps": [
+    "Data bertanda DEMO_ONLY sehingga mungkin bukan data pasar resmi.",
+    "Harga dikonversi dari dolar AS dengan kurs 18,310 per USD; perubahan kurs ikut memengaruhi angka dalam rupiah."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.089694,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

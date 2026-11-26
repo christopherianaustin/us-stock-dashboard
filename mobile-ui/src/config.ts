@@ -16,6 +16,9 @@ export const API = {
   news: (t: string) => `${API_BASE}/stocks/${t}/news`,
   profile: (t: string) => `${API_BASE}/stocks/${t}/profile`,
   fx: () => `${API_BASE}/fx/usdidr`,
+  ai: (t: string) => `${API_BASE}/stocks/${t}/ai-summary`,
+  aiFeedback: () => `${API_BASE}/ai-feedback`,
+  aiUsage: () => `${API_BASE}/ai/usage`,
 }
 
 /** Saved API answers ("mock data mode"), made by scripts/make_mobile_mocks.py. */

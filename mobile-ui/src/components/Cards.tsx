@@ -1,7 +1,7 @@
 import type React from 'react'
 import { useState } from 'react'
 import { dateShort, num, pctAbs, pctSigned, rp, rpShort } from '../lib/format'
-import { useT } from '../lib/i18n'
+import { useL, useT } from '../lib/i18n'
 import { Badge, Card, ChangeIcon, Row } from './ui'
 import portfolioIcon from '../assets/figma/portfolio-icon.svg'
 import badgeShares from '../assets/figma/badge-shares.svg'
@@ -25,24 +25,25 @@ export function HoldingCard({ priceUsd, rate }: { priceUsd: number; rate: number
   const ret = (priceUsd - avgCostUsd) * shares
   const retPct = (priceUsd / avgCostUsd - 1) * 100
   const up = ret >= 0
+  const L = useL()
   return (
-    <Card title="My Holding"
-      extra={<span className="t-action-b text-dgrey bg-grey2 rounded-full px-2 py-0.5">Example holding</span>}>
+    <Card title={L('My Holding', 'Kepemilikan Saya')}
+      extra={<span className="t-action-b text-dgrey bg-grey2 rounded-full px-2 py-0.5">{L('Example holding', 'Contoh')}</span>}>
       <div className="flex gap-4">
         <span className="relative size-12 shrink-0">
           <img src={portfolioIcon} alt="" className="absolute max-w-none" style={{ left: 4, top: 4, width: 44.4, height: 46.6 }} />
         </span>
         <div>
-          <div className="t-label-m text-dgrey">My Current Portfolio</div>
+          <div className="t-label-m text-dgrey">{L('My Current Portfolio', 'Portofolio Saya Saat Ini')}</div>
           <div className="t-title text-navy mt-0.5">{rp(value, rate)}</div>
         </div>
       </div>
       <div className="flex flex-col gap-4 mt-6">
-        <Row icon={<IconBadge src={badgeShares} />} label="Shares" value={num(shares, 4)} />
-        <Row icon={<IconBadge src={badgeAvg} />} label="Avg. Cost" value={rp(avgCostUsd, rate)} />
-        <Row icon={<IconBadge src={badgeReturn} />} label="Total Return"
+        <Row icon={<IconBadge src={badgeShares} />} label={L('Shares', 'Lembar saham')} value={num(shares, 4)} />
+        <Row icon={<IconBadge src={badgeAvg} />} label={L('Avg. Cost', 'Harga rata-rata')} value={rp(avgCostUsd, rate)} />
+        <Row icon={<IconBadge src={badgeReturn} />} label={L('Total Return', 'Total Imbal Hasil')}
           value={<><ChangeIcon up={up} /><span className="text-dgrey">{rp(Math.abs(ret), rate)}</span></>} />
-        <Row icon={<IconBadge src={badgeReturnPct} />} label="Total Return %"
+        <Row icon={<IconBadge src={badgeReturnPct} />} label={L('Total Return %', 'Total Imbal Hasil %')}
           value={<><ChangeIcon up={up} /><span className="text-dgrey">{pctAbs(retPct)}</span></>} />
       </div>
     </Card>
@@ -55,17 +56,18 @@ export function CompanyCard({ legalName, ticker, description, rows }: {
   legalName: string; ticker: string; description: string; rows: CompanyRow[]
 }) {
   const [more, setMore] = useState(false)
+  const L = useL()
   return (
     <Card title={`${legalName} | ${ticker}`}>
       <div className="relative">
         <p className={`t-body text-navy m-0 ${more ? '' : 'line-clamp-4'}`}>
           {description}
-          {more && <> <button type="button" onClick={() => setMore(false)} className="t-label text-purple bg-transparent border-0 p-0 cursor-pointer">Read less</button></>}
+          {more && <> <button type="button" onClick={() => setMore(false)} className="t-label text-purple bg-transparent border-0 p-0 cursor-pointer">{L('Read less', 'Lebih sedikit')}</button></>}
         </p>
         {!more && (
           <button type="button" onClick={() => setMore(true)}
             className="absolute right-0 bottom-0 bg-white pl-0.5 t-label text-purple border-0 p-0 cursor-pointer h-[26px] flex items-baseline">
-            <span className="t-body text-navy mr-1">..</span>Read more
+            <span className="t-body text-navy mr-1">..</span>{L('Read more', 'Selengkapnya')}
           </button>
         )}
       </div>
@@ -77,11 +79,13 @@ export function CompanyCard({ legalName, ticker, description, rows }: {
 }
 
 /* ---------- Analyst ratings (Wall Street analysts, not Nanovest) ---------- */
-const RATING_LABELS = ['Strong buy', 'Buy', 'Hold', 'Sell', 'Strong sell']
-const AXIS = [['Strong', 'Buy'], ['Buy'], ['Hold'], ['Sell'], ['Strong', 'Sell']]
+const RATING_LABELS = { en: ['Strong buy', 'Buy', 'Hold', 'Sell', 'Strong sell'], id: ['Sangat beli', 'Beli', 'Tahan', 'Jual', 'Sangat jual'] }
+const AXIS = { en: [['Strong', 'Buy'], ['Buy'], ['Hold'], ['Sell'], ['Strong', 'Sell']], id: [['Sangat', 'Beli'], ['Beli'], ['Tahan'], ['Jual'], ['Sangat', 'Jual']] }
 
 export function AnalystCard({ ticker, counts, tag }: { ticker: string; counts: number[]; tag?: string | null }) {
   const t = useT()
+  const L = useL()
+  const lg = L('en', 'id') as 'en' | 'id'
   const total = counts.reduce((a, b) => a + b, 0)
   const mean = counts.reduce((a, c, i) => a + c * (i + 1), 0) / total
   const pos = ((mean - 1) / 4) * 100
@@ -89,7 +93,8 @@ export function AnalystCard({ ticker, counts, tag }: { ticker: string; counts: n
   return (
     <>
       <p className="t-body text-navy m-0">
-        What analysts rate {ticker}’s shares on a scale from 1 (buy) to 3 (hold) to 5 (sell)
+        {L(`What analysts rate ${ticker}’s shares on a scale from 1 (buy) to 3 (hold) to 5 (sell)`,
+          `Penilaian analis untuk saham ${ticker} pada skala 1 (beli), 3 (tahan) sampai 5 (jual)`)}
       </p>
       <p className="t-action text-dgrey mt-1 mb-0">{t('wall_street')} <Badge tag={tag} /></p>
 
@@ -109,7 +114,7 @@ export function AnalystCard({ ticker, counts, tag }: { ticker: string; counts: n
         </div>
       </div>
       <div className="relative h-8 mt-1.5 t-action text-navy">
-        {AXIS.map((lines, i) => (
+        {AXIS[lg].map((lines, i) => (
           <span key={i} className={`absolute top-0 leading-4 ${i === 0 ? 'left-0 text-left' : i === 4 ? 'right-0 text-right' : '-translate-x-1/2 text-center'}`}
             style={i > 0 && i < 4 ? { left: `${i * 25}%` } : undefined}>
             {lines.map((l) => <span key={l} className="block">{l}</span>)}
@@ -117,7 +122,7 @@ export function AnalystCard({ ticker, counts, tag }: { ticker: string; counts: n
         ))}
       </div>
 
-      <p className="t-body text-dgrey mt-6 mb-0">Based on {total} reviews</p>
+      <p className="t-body text-dgrey mt-6 mb-0">{L(`Based on ${total} reviews`, `Berdasarkan ${total} ulasan`)}</p>
       <div className="flex flex-col gap-1 mt-4">
         {counts.map((c, i) => {
           const p = (c / total) * 100
@@ -127,7 +132,7 @@ export function AnalystCard({ ticker, counts, tag }: { ticker: string; counts: n
                 <div className="h-2 rounded-lg bg-purple" style={{ width: `max(8px, ${p}%)` }} />
               </div>
               <span className={`t-label flex-1 text-right whitespace-nowrap ${i === top ? 'text-purple' : 'text-grey'}`}>
-                {num(p)}% {RATING_LABELS[i]}
+                {num(p)}% {RATING_LABELS[lg][i]}
               </span>
             </div>
           )
@@ -150,6 +155,7 @@ export function ForecastCard({ name, cur, lowUsd, meanUsd, highUsd, updated, rat
   name: string; cur: number; lowUsd: number; meanUsd: number; highUsd: number; updated: string; rate: number; tag?: string | null
 }) {
   const [mode, setMode] = useState<'rp' | 'pct'>('rp')
+  const L = useL()
 
   // Axis: 5 evenly spaced ticks that cover low … high (and today's price).
   const lo = Math.min(lowUsd, cur), hi = Math.max(highUsd, cur)
@@ -163,9 +169,9 @@ export function ForecastCard({ name, cur, lowUsd, meanUsd, highUsd, updated, rat
   const tick = (usd: number) => (mode === 'rp' ? rpShort(usd * rate, usd * rate < 1e6 ? 0 : 1).replace('.0 ', ' ') : pctSigned((usd / cur - 1) * 100).replace('.00', ''))
 
   const right: Callout[] = [
-    { key: 'high', title: 'High', usd: highUsd, bg: '#06CB90', line: '#06CB90', dash: '3 3' },
+    { key: 'high', title: L('High', 'Tertinggi'), usd: highUsd, bg: '#06CB90', line: '#06CB90', dash: '3 3' },
     { key: 'target', title: 'Target', usd: meanUsd, bg: '#561FA3', line: '#561FA3', dash: '3 3' },
-    { key: 'low', title: 'Low', usd: lowUsd, bg: '#E11C23', line: '#E11C23', dash: '1.5 3' },
+    { key: 'low', title: L('Low', 'Terendah'), usd: lowUsd, bg: '#E11C23', line: '#E11C23', dash: '1.5 3' },
   ]
   // keep the right-hand labels from overlapping (each is 36 px tall)
   const ys = right.map((c) => y(c.usd))
@@ -178,11 +184,12 @@ export function ForecastCard({ name, cur, lowUsd, meanUsd, highUsd, updated, rat
   return (
     <>
       <p className="t-body text-navy m-0 px-4">
-        Analysts’ estimates of what could happen to {name}’s share price over the next 12 months
+        {L(`Analysts’ estimates of what could happen to ${name}’s share price over the next 12 months`,
+          `Perkiraan analis tentang harga saham ${name} dalam 12 bulan ke depan`)}
       </p>
       <div className="mt-4 pb-4" style={{ background: 'linear-gradient(92.3deg,#F7F3FF 0%,#EEF7FF 96.9%)' }}>
         <div className="flex items-center gap-4 px-4 pt-4">
-          <span className="t-action text-navy flex-1">Updated on {dateShort(updated)} <Badge tag={tag} /></span>
+          <span className="t-action text-navy flex-1">{L('Updated on', 'Diperbarui')} {dateShort(updated)} <Badge tag={tag} /></span>
           <div className="flex gap-2">
             {(['rp', 'pct'] as const).map((k) => (
               <button key={k} type="button" onClick={() => setMode(k)}
@@ -209,7 +216,7 @@ export function ForecastCard({ name, cur, lowUsd, meanUsd, highUsd, updated, rat
             <div className="absolute flex items-center -translate-y-1/2" style={{ left: 48, top: yc }}>
               <div className="rounded px-1 py-0.5 text-white text-[10px] leading-4 font-bold whitespace-nowrap"
                 style={{ background: 'linear-gradient(94.3deg,#B386FF 0%,#52B1FE 96.9%)' }}>
-                <div>Current</div><div>{mode === 'rp' ? rp(cur, rate) : '0%'}</div>
+                <div>{L('Current', 'Saat ini')}</div><div>{mode === 'rp' ? rp(cur, rate) : '0%'}</div>
               </div>
               <span className="w-0 h-0 border-y-4 border-y-transparent border-l-[6px] border-l-[#52B1FE]" />
               <span className="size-2 rounded-full bg-[#7E9BFE] ml-1" />

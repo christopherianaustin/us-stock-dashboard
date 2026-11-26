@@ -1,0 +1,85 @@
+{
+ "ticker": "AAPL",
+ "generated_at": "2026-11-25T10:42:16+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "AAPL",
+  "tab": "profitability_health",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Strong",
+  "as_of": "2026-11-25T10:42:16+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Strong",
+   "headline": "Sangat efisien mencetak laba, utang terkendali, tetapi kas jangka pendek tipis",
+   "takeaway": "Apple mengubah modal dan penjualan menjadi laba jauh lebih baik daripada perusahaan sejenis, dan lolos semua cek kesehatan Piotroski. Catatannya, ROE yang sangat tinggi sebagian didorong utang, dan aset lancarnya hanya sedikit di atas kewajiban jangka pendek.",
+   "positives": [
+    {
+     "text": "ROE (laba dibanding modal pemegang saham) 142%, jauh di atas median perusahaan sejenis 73.6%. ROIC (laba dari seluruh modal yang dipakai) 98.3%.",
+     "metric_keys": [
+      "roe",
+      "roic"
+     ]
+    },
+    {
+     "text": "Dari tiap Rp100 penjualan, sekitar Rp28 menjadi laba bersih (net margin 27.6%), jauh di atas median peer 7.15%.",
+     "metric_keys": [
+      "net_margin"
+     ]
+    },
+    {
+     "text": "Skor Piotroski (cek kekuatan keuangan) 9 dari 9. Altman Z-score (risiko bangkrut) 13.1, di zona aman di atas 3.",
+     "metric_keys": [
+      "piotroski",
+      "altman_z"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "Equity multiplier (aset dibanding modal sendiri) 4.11x. Artinya ROE 142% sebagian terangkat oleh penggunaan utang, bukan hanya oleh efisiensi.",
+     "metric_keys": [
+      "equity_multiplier",
+      "roe"
+     ]
+    },
+    {
+     "text": "Current ratio (aset lancar dibanding utang jangka pendek) 1.02x dan quick ratio 0.938x. Cadangan untuk membayar kewajiban jangka pendek cukup tipis.",
+     "metric_keys": [
+      "current_ratio",
+      "quick_ratio"
+     ]
+    },
+    {
+     "text": "Utang bersih sekitar Rp392 triliun, meski debt to EBITDA (utang dibanding laba operasi tunai) hanya 0.456x, tergolong rendah.",
+     "metric_keys": [
+      "net_debt",
+      "debt_to_ebitda"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan laba berikutnya pada 29 Jan 2027: apakah net margin tetap dekat 27.6%.",
+    "Apakah current ratio tetap di atas 1.02x atau turun kembali ke bawah 1 (tahun lalu 0.89)."
+   ],
+   "ask_yourself": "Seberapa nyaman Anda dengan perusahaan yang labanya tinggi tetapi sebagian ditopang oleh utang?",
+   "data_gaps": [
+    "Interest coverage (kemampuan laba membayar bunga) tidak tersedia karena beban bunga tidak dilaporkan.",
+    "Altman Z-score diberi label DEMO_ONLY, jadi angkanya mungkin belum final.",
+    "ROA dan asset turnover di cek Piotroski (36.8%, 1.33) berbeda dari angka utama (34.6%, 1.25), kemungkinan beda periode hitung.",
+    "Nilai rupiah dikonversi dari dolar AS dengan kurs Rp18,310, sehingga bisa berubah mengikuti kurs."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.090074,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

@@ -125,13 +125,69 @@ Open http://127.0.0.1:5173. On a computer the page shows inside a 390 × 844 pho
 
 - **Pick a stock:** add `?t=KO` to the address, or tap the ticker under the logo **5 times** to open the hidden settings menu
   (stock, language EN / ID, data mode, production-safe mode, data badges).
+- **Language:** add `?lang=id` for Bahasa Indonesia (or switch it in the settings menu). The screen text, dates and the
+  analysis summary are translated. Some explanations that come straight from the API in other tabs (for example the
+  Piotroski checks and technical signals) are still in English.
+- **Open a tab directly:** `?tab=fundamentals` (also `news`, `financials`, `technicals`, `about`).
 - **Without the API:** AAPL, KO, TSLA and JPM also work from saved data (`mobile-ui/public/mock/`), so the prototype still runs if the API
   or the data sources are down during a meeting. Refresh the saved data with `.venv\Scripts\python scripts/make_mobile_mocks.py`.
-- **On a phone (same Wi-Fi):** find your PC's address with `ipconfig` (e.g. 192.168.1.20), then run the API with `--host 0.0.0.0`
-  and the prototype with `npx vite --host 0.0.0.0` after setting `$env:VITE_API_BASE="http://192.168.1.20:8000"`, and open
-  `http://192.168.1.20:5173` on the phone. Windows may ask to allow access on private networks.
 - **Buy / Sell are not real.** They only show "Prototype only".
-- Screenshots of every tab: `node scripts/check-tabs.mjs ../design/phase9c AAPL` (with `npx vite preview` running).
+
+### Open it on your phone (same Wi-Fi)
+
+1. On the PC, find its address: run `ipconfig` and look for **IPv4 Address** under your Wi-Fi adapter (for example `192.168.1.20`).
+2. Terminal 1, in the project folder, start the API so the phone can reach it:
+   ```powershell
+   .venv\Scripts\python -m uvicorn api.main:app --host 0.0.0.0 --port 8000
+   ```
+3. Terminal 2, in the `mobile-ui` folder, tell the prototype where the API is, then start it (use your own address):
+   ```powershell
+   $env:VITE_API_BASE="http://192.168.1.20:8000"
+   npx vite --host 0.0.0.0
+   ```
+4. On the phone, open `http://192.168.1.20:5173`. The page fills the phone screen (no frame).
+
+If the phone can't open it: Windows may ask to allow Python and Node on **private networks** (say yes), and the Wi-Fi must
+be set to *Private* in Windows, not *Public*. Office or guest Wi-Fi often blocks phone-to-PC traffic; a phone hotspot works.
+If the page opens but shows "Can't reach the data service", step 3's address is wrong or the API isn't running with `--host 0.0.0.0`
+(AAPL, KO, TSLA and JPM will still show their saved data).
+
+### Speed
+
+The first time a stock is opened, the API fetches it from the data sources, which can take 5–20 seconds; the page says so
+after 3 seconds. After that the API keeps it for a while and the first screen appears in about 1 second. The browser also keeps
+a copy of the first screen (name, price, chart) for 12 hours, so a repeat visit shows it at once and refreshes it in the background.
+Other tabs load quietly in the background once the first screen is ready. Check the timings with `node scripts/perf.mjs`.
+
+### Screenshots
+
+With `npx vite preview` and the API running, in the `mobile-ui` folder:
+
+- `node scripts/shoot-final.mjs AAPL` saves the presentation set in `design/final/`: every tab in English and Indonesian, plus
+  the loading, error, empty, offline, production-safe and tap states.
+- `node scripts/check-tabs.mjs ../design/phase9c AAPL` screenshots every tab and reports any section that failed to load.
+
+## 4c. AI Insight cards (Phase 10)
+
+Each Streamlit tab, except Coverage, and each main mobile section starts with an **AI Insight**: a plain-language
+explanation of the data on that page, with a signal chip, positives and watch-outs, "More" (what to watch next and
+ask yourself), thumbs up/down, and an "AI-generated, not investment advice" footer.
+
+- **Turn on:** put `ANTHROPIC_API_KEY=...` and `AI_SUMMARIES_ENABLED=true` in `.env`, then restart the API and the
+  dashboard.
+- **Turn off:** set `AI_SUMMARIES_ENABLED=false`. Every card disappears and nothing else changes.
+- **When it's written:** only when you open that tab or scroll to that section. The first time takes about 20–60
+  seconds, with a grey skeleton while it writes. After that it is cached for 24 hours.
+- **If a check fails twice, or the AI can't be reached:** the card shows the rule-based **Automatic summary** instead.
+  If that would be empty, the card is hidden.
+- **Language:** follows the EN/ID switch. The mobile app writes money in Rupiah; Streamlit uses dollars, like its pages.
+- **Logs:** votes go to `logs/ai_feedback.jsonl`, and every AI answer to `logs/ai_summaries.jsonl`.
+- **Running cost:** in the Streamlit sidebar under "Data sources", and in the mobile debug menu (tap the ticker 5 times).
+- **Offline samples:** `python scripts/make_ai_mocks.py` copies the step 10b samples into the mobile saved data.
+  `node scripts/check-ai.mjs AAPL` (in `mobile-ui`) checks that every section shows its card. It uses saved data,
+  so it costs nothing.
+- **Cost:** about $0.06 per card, $1.25 per stock for all tabs in both languages. See
+  [docs/AI_SUMMARIES.md](docs/AI_SUMMARIES.md).
 
 ## 5. Run the tests
 

@@ -53,8 +53,8 @@ def test_insights_text_and_order():
     assert "Revenue grew 20% compared with the same quarter last year." in texts
     assert "The company beat EPS estimates in 7 of the last 8 quarters." in texts
     assert len(strengths) <= 5
-    assert risks[0].text == ("P/E is higher than 85% of the last 5 years, so the stock is priced more "
-                             "expensively than usual.")
+    assert risks[0].text == ("P/E is higher than 85% of the last 5 years, so the price is higher than usual "
+                             "compared with profit.")
     assert [s.priority for s in strengths] == sorted([s.priority for s in strengths], reverse=True)
 
 

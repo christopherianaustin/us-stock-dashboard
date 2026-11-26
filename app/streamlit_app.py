@@ -12,7 +12,7 @@ if str(ROOT) not in sys.path:
 
 import streamlit as st  # noqa: E402
 
-from app.components import ui  # noqa: E402
+from app.components import ai_card, ui  # noqa: E402
 from app.components.coverage_tab import render_coverage_tab  # noqa: E402
 from app.components.dividends_tab import render_dividends_tab  # noqa: E402
 from app.components.earnings_tab import render_earnings_tab  # noqa: E402
@@ -102,6 +102,7 @@ def main() -> None:
             continue
         with tab:
             t0 = time.perf_counter()
+            ai_box = ai_card.start(key)   # AI Insight skeleton at the top; filled after the tab is drawn
             try:
                 renderers[key]()
             except Exception as exc:  # noqa: BLE001 - one tab failing must not break the others
@@ -110,6 +111,7 @@ def main() -> None:
                 with st.expander("Technical details"):
                     st.code(f"{type(exc).__name__}: {exc}")
             log.info("timing | tab %s %.2fs", key, time.perf_counter() - t0)
+            ai_card.finish(ai_box, key, b)
 
 
 try:

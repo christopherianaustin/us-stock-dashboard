@@ -38,13 +38,28 @@
   &::-webkit-scrollbar { display: none; }
 }
 
-html, body { margin: 0; background: #ffffff; color: var(--color-navy); }
+html, body { margin: 0; background: #ffffff; color: var(--color-navy); color-scheme: light; }
 body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+
+/* Tap feedback: everything tappable shrinks a little while pressed (like the native app) */
+button, a, [role="button"] { transition: transform 120ms ease-out, opacity 120ms ease-out, background-color 150ms, color 150ms, border-color 150ms; }
+button:not(:disabled):active, a:active { transform: scale(0.97); }
+button:disabled { opacity: 0.5; cursor: default; }
+/* keyboard users see where they are; finger taps don't leave a ring */
+:focus-visible { outline: 2px solid var(--color-purple); outline-offset: 2px; border-radius: 8px; }
+:focus:not(:focus-visible) { outline: none; }
+
+/* Loading placeholder: soft grey with a light sweep */
+.skeleton { background: linear-gradient(90deg, #eef1f4 25%, #f7f9fb 45%, #eef1f4 65%); background-size: 300% 100%; animation: shimmer 1.4s ease-in-out infinite; }
+@keyframes shimmer { from { background-position: 100% 0; } to { background-position: 0 0; } }
 
 /* Tab content cross-fades in */
 @keyframes tab-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 .tab-fade { animation: tab-fade 180ms ease-out; }
-@media (prefers-reduced-motion: reduce) { .tab-fade { animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .tab-fade, .skeleton { animation: none; }
+  button:not(:disabled):active, a:active { transform: none; }
+}
 
 /* Charts use the app font */
 .recharts-wrapper, .recharts-wrapper text { font-family: var(--font-sans); }

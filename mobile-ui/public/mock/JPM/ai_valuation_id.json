@@ -1,0 +1,82 @@
+{
+ "ticker": "JPM",
+ "generated_at": "2026-11-25T10:46:23+00:00",
+ "production_safe_mode": false,
+ "disclaimer": "This information is for educational purposes only and is not investment advice.",
+ "warnings": [],
+ "data": {
+  "enabled": true,
+  "ticker": "JPM",
+  "tab": "valuation",
+  "lang": "id",
+  "prompt_version": "1.0",
+  "license_tag": "DEMO_ONLY",
+  "rule_based_signal": "Weak",
+  "as_of": "2026-11-25T10:46:23+00:00",
+  "source": "ai",
+  "summary": {
+   "signal": "Weak",
+   "headline": "Valuasi JPM di atas rata-rata 5 tahunnya dan bank sejenis",
+   "takeaway": "Investor kini membayar lebih banyak untuk tiap rupiah laba JPM, dibanding biasanya dan dibanding bank sejenis. Pertumbuhan laba 3 tahun terakhir cukup kuat, tetapi analis memperkirakan pertumbuhan tahun depan lebih pelan.",
+   "positives": [
+    {
+     "text": "EPS (laba per saham) tumbuh rata-rata 18.3% per tahun selama 3 tahun. Ini membantu menjelaskan valuasi yang lebih tinggi.",
+     "metric_keys": [
+      "eps_cagr_3y"
+     ]
+    },
+    {
+     "text": "Forward P/E (harga dibanding estimasi laba tahun depan dari analis) 12.4, sedikit di bawah P/E saat ini 13.2.",
+     "metric_keys": [
+      "forward_pe",
+      "pe"
+     ]
+    },
+    {
+     "text": "Rata-rata target harga analis Wall Street Rp6,838,000, di atas harga saat ini Rp5,806,000. Ini hanya estimasi pihak ketiga.",
+     "metric_keys": [
+      "analyst_target_mean",
+      "price"
+     ]
+    }
+   ],
+   "watch_outs": [
+    {
+     "text": "P/E (harga dibanding laba setahun) 13.2, di atas median 5 tahunnya 11.7 dan median bank sejenis 11.3.",
+     "metric_keys": [
+      "pe"
+     ]
+    },
+    {
+     "text": "P/S (harga dibanding pendapatan) 4.15, lebih tinggi dari median bank sejenis 2.91 dan median 5 tahunnya 3.59.",
+     "metric_keys": [
+      "ps"
+     ]
+    },
+    {
+     "text": "PEG (P/E dibanding pertumbuhan laba) 1.91. Analis memperkirakan EPS hanya tumbuh 6.9% tahun depan, lebih pelan dari 3 tahun terakhir.",
+     "metric_keys": [
+      "peg",
+      "eps_cagr_3y"
+     ]
+    }
+   ],
+   "what_to_watch_next": [
+    "Laporan keuangan berikutnya pada 14 Jan 2027: apakah pertumbuhan laba mendukung valuasi saat ini.",
+    "Harga Rp5,806,000 dekat target terendah analis Rp5,713,000; Graham number (estimasi nilai wajar berbasis asumsi) Rp5,034,000."
+   ],
+   "ask_yourself": "Seberapa nyaman Anda membayar valuasi di atas rata-rata saat pertumbuhan laba diperkirakan melambat?",
+   "data_gaps": [
+    "EV/EBITDA, P/FCF, FCF yield, dan estimasi DCF tidak tersedia karena tidak bermakna untuk bank.",
+    "P/B 2.26 tidak disertai perbandingan dengan riwayat atau bank sejenis.",
+    "Nilai dalam rupiah dikonversi dari dolar AS dengan kurs Rp18,310, sehingga ikut terpengaruh perubahan kurs."
+   ]
+  },
+  "model": "claude-opus-5-5",
+  "attempts": 2,
+  "cost_usd": 0.08903,
+  "cached": false,
+  "disclaimer": "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.",
+  "sample": true
+ }
+}

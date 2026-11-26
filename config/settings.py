@@ -46,10 +46,20 @@ class Settings:
     production_safe_mode: bool = False
     language: str = "en"
     cache_ttl: dict = field(default_factory=lambda: dict(CACHE_TTL))
+    # AI summaries (Phase 10, SPEC Section 15)
+    anthropic_api_key: str = field(default="", repr=False)
+    ai_summaries_enabled: bool = True
+    ai_model: str = "claude-opus-5-5"
+    ai_effort: str = "medium"
 
     @property
     def finnhub_enabled(self) -> bool:
         return bool(self.finnhub_api_key)
+
+    @property
+    def ai_enabled(self) -> bool:
+        """AI cards show only when switched on AND an Anthropic API key is set."""
+        return self.ai_summaries_enabled and bool(self.anthropic_api_key)
 
     @property
     def sec_user_agent_ok(self) -> bool:
@@ -81,6 +91,10 @@ def load_settings() -> Settings:
         price_provider=_get("PRICE_PROVIDER", "yfinance").strip().lower(),
         production_safe_mode=_bool(_get("PRODUCTION_SAFE_MODE") or None, False),
         language=lang if lang in {"en", "id"} else "en",
+        anthropic_api_key=_get("ANTHROPIC_API_KEY", "").strip(),
+        ai_summaries_enabled=_bool(_get("AI_SUMMARIES_ENABLED") or None, True),
+        ai_model=_get("AI_MODEL", "claude-opus-5-5").strip() or "claude-opus-5-5",
+        ai_effort=(_get("AI_EFFORT", "medium").strip().lower() or "medium"),
     )
 
 

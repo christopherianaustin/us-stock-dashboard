@@ -53,7 +53,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origin_regex=r"http://(127\.0\.0\.1|localhost|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+):(5173|4173)",
-    allow_methods=["GET"],
+    allow_methods=["GET", "POST"],   # POST only for AI Insight feedback
     allow_headers=["*"],
 )
 
@@ -448,6 +448,106 @@ def profile(ticker: str = TickerPath, safe_mode: Optional[bool] = SafeQuery):
                               "is_financial_company": p.is_financial_company,
                               **{f: val(getattr(p, f), safe) for f in fields},
                               "shares_outstanding": val(b.header.shares_outstanding, safe)})
+
+
+AI_TAB = Literal["summary", "price_technicals", "earnings", "financials", "valuation", "profitability_health",
+                 "dividends", "ownership_sentiment", "news_filings", "company_profile"]
+
+
+def ai_tab_input(ticker: str, tab: str, lang: str, currency: str, safe: bool):
+    """Collect the API sections a tab needs and build the compact AI input (core/ai_summary/input_builder.py)."""
+    from core.ai_summary.input_builder import TAB_SECTIONS, build_tab_input
+    from core.scorecard import generate_insights
+
+    b = get_bundle(ticker)
+    calls = {
+        "summary": lambda: summary(ticker, safe, lang),
+        "ratios": lambda: ratios(ticker, safe),
+        "valuation": lambda: valuation(ticker, safe, None, 0.10, 0.025),
+        "technicals": lambda: technicals(ticker, safe, "1y", "1y"),
+        "earnings": lambda: earnings(ticker, safe),
+        "dividends": lambda: dividends(ticker, safe),
+        "ownership": lambda: ownership(ticker, safe),
+        "news": lambda: news(ticker, safe, 30),
+        "profile": lambda: profile(ticker, safe),
+        "fin_q_income": lambda: financials(ticker, safe, "quarterly", "income", 8),
+        "fin_q_cashflow": lambda: financials(ticker, safe, "quarterly", "cashflow", 8),
+        "fin_q_balance": lambda: financials(ticker, safe, "quarterly", "balance", 4),
+        "fin_a_income": lambda: financials(ticker, safe, "annual", "income", 4),
+    }
+    sections: dict[str, Any] = {}
+    for name in TAB_SECTIONS[tab]:
+        try:
+            env = calls[name]()
+            sections[name] = {**env.data, "_generated_at": env.generated_at} if name == "summary" else env.data
+        except HTTPException:
+            sections[name] = None   # e.g. no financial statements: the builder lists it under "missing"
+    sc = b.scorecard(lang=lang, safe_mode=safe)
+    pillars, insights = {}, []
+    if sc:
+        pillars = {k: {"score": p.score, "level": p.level} for k, p in sc.pillars.items()}
+        skip = ("dividend",) if sc.pillars["dividend"].level == "not_applicable" else ()
+        strengths, risks = generate_insights(sc.facts, lang, limit=50, skip_pillars=skip)
+        insights = [{"kind": i.kind, "pillar": i.pillar, "text": i.text} for i in strengths + risks]
+    fx, fx_tag = None, None
+    if currency == "IDR" and not safe:
+        try:
+            r = fx_usdidr(False)
+            fx, fx_tag = r.get("value"), r.get("license_tag")
+        except HTTPException:
+            pass
+    return b, build_tab_input(tab, sections, ticker=b.resolved.symbol, pillars=pillars, insights=insights,
+                              lang=lang, currency=currency, fx=fx, fx_tag=fx_tag)
+
+
+@app.get("/stocks/{ticker}/ai-summary", response_model=Envelope, tags=["ai"],
+         summary="AI Insight for one tab: a plain-language explanation of the data (not advice)")
+def ai_summary(ticker: str = TickerPath, safe_mode: Optional[bool] = SafeQuery,
+               tab: AI_TAB = Query("summary", description="Which tab / section to explain"),
+               lang: Literal["en", "id"] = Query("en"),
+               currency: Optional[Literal["USD", "IDR"]] = Query(None, description="Money in the text (default: USD for en, IDR for id)")):
+    """Generated only when asked (one tab at a time) and cached for 24 hours or until the data changes.
+    `enabled: false` means AI summaries are switched off (AI_SUMMARIES_ENABLED=false or no ANTHROPIC_API_KEY):
+    hide the card. `source: "fallback"` means the AI answer failed a check and the rule-based summary is shown."""
+    from core.ai_summary.service import get_summary
+
+    safe = is_safe(safe_mode)
+    if not settings.ai_enabled:
+        return Envelope(ticker=ticker.upper(), generated_at=datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                        production_safe_mode=safe, data={"enabled": False})
+    cur = currency or ("IDR" if lang == "id" else "USD")
+    b, ti = ai_tab_input(ticker, tab, lang, cur, safe)
+    res = get_summary(b.resolved.symbol, tab, lang, cur if (cur == "USD" or "exchange_rate_used" in ti.payload) else "USD", ti)
+    res["disclaimer"] = ("AI-generated from the data on this page. It can make mistakes and is not investment advice."
+                         if lang == "en" else
+                         "Dibuat oleh AI dari data di halaman ini. Bisa keliru dan bukan saran investasi.")
+    return envelope(b, safe, res)
+
+
+class AIFeedback(BaseModel):
+    ticker: str = Field(max_length=12)
+    tab: AI_TAB
+    lang: Literal["en", "id"]
+    prompt_version: str = Field(max_length=20)
+    vote: Literal["up", "down"]
+    source: Literal["ai", "fallback"] = "ai"
+    surface: Literal["mobile", "streamlit", "other"] = "other"
+
+
+@app.post("/ai-feedback", tags=["ai"], summary="Thumbs up / down on an AI Insight card")
+def ai_feedback(fb: AIFeedback):
+    """Saved to logs/ai_feedback.jsonl with ticker, tab, language and prompt version (SPEC 15.7)."""
+    from core.ai_summary.service import save_feedback
+
+    save_feedback(fb.ticker, fb.tab, fb.lang, fb.prompt_version, fb.vote, source=fb.source, surface=fb.surface)
+    return {"saved": True}
+
+
+@app.get("/ai/usage", tags=["ai"], summary="AI calls, tokens and estimated cost since the API started (debug)")
+def ai_usage():
+    from core.ai_summary.service import TOTALS
+
+    return {"enabled": settings.ai_enabled, "model": settings.ai_model, **TOTALS}
 
 
 _fx: dict[str, tuple[float, dict]] = {}

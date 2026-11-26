@@ -19,14 +19,14 @@ await page.locator('h1').waitFor({ timeout: 120000 })
 const firstScreen = Date.now() - t0
 const report = { ticker, mode, firstScreenMs: firstScreen, tabs: {} }
 
-for (const tab of TABS) {
-  await page.getByRole('tab', { name: tab, exact: true }).click()
+for (const [ti, tab] of TABS.entries()) {
+  await page.locator('[role="tab"]').nth(ti).click()
   // wait until no skeletons are left (or 90 s)
-  await page.waitForFunction(() => !document.querySelector('[aria-label="Loading"]'), null, { timeout: 90000 }).catch(() => {})
-  for (let i = 0; i < 12 && await page.getByRole('button', { name: 'Expand', exact: true }).count(); i++) await page.getByRole('button', { name: 'Expand', exact: true }).first().click()
-  await page.waitForFunction(() => !document.querySelector('[aria-label="Loading"]'), null, { timeout: 90000 }).catch(() => {})
+  await page.waitForFunction(() => !document.querySelector('[data-skeleton]'), null, { timeout: 90000 }).catch(() => {})
+  for (let i = 0; i < 12 && await page.locator('[data-toggle="closed"]').count(); i++) await page.locator('[data-toggle="closed"]').first().click()
+  await page.waitForFunction(() => !document.querySelector('[data-skeleton]'), null, { timeout: 90000 }).catch(() => {})
   await page.waitForTimeout(700)
-  const failed = await page.locator("text=Couldn't load this section").count()
+  const failed = await page.locator('[data-section-error]').count()
   const na = await page.locator('text=/^N\\/A/').count()
   report.tabs[tab] = { failedSections: failed, naValues: na }
   const main = page.locator('main')

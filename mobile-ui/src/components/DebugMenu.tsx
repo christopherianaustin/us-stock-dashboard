@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { API_BASE, MOCK_TICKERS, QUICK_TICKERS } from '../config'
+import { useEffect, useState } from 'react'
+import { API, API_BASE, MOCK_TICKERS, QUICK_TICKERS } from '../config'
 import { useSettings, type Mode } from '../lib/data'
 import { Pills } from './ui'
 
@@ -8,6 +8,9 @@ export function DebugMenu({ onClose, src }: { onClose: () => void; src?: string 
   const s = useSettings()
   const [tk, setTk] = useState(s.ticker)
   const go = (t: string) => { s.setTicker(t); onClose() }
+  // running AI total from the API (calls, tokens, estimated cost since the API started)
+  const [ai, setAi] = useState<{ enabled: boolean; model: string; calls: number; tokens: number; cost_usd: number } | null>(null)
+  useEffect(() => { fetch(API.aiUsage()).then((r) => r.json()).then(setAi).catch(() => setAi(null)) }, [])
   const Switch = ({ on, set, label, help }: { on: boolean; set: (b: boolean) => void; label: string; help: string }) => (
     <button type="button" role="switch" aria-checked={on} onClick={() => set(!on)} className="w-full flex items-center gap-3 bg-transparent border-0 p-0 text-left cursor-pointer">
       <span className="flex-1"><span className="t-label text-navy block">{label}</span><span className="t-action text-dgrey block">{help}</span></span>
@@ -53,6 +56,13 @@ export function DebugMenu({ onClose, src }: { onClose: () => void; src?: string 
           <Switch on={s.safe} set={s.setSafe} label="Production-safe mode" help="Hide every value that is not licensed for commercial use." />
           <Switch on={s.badges} set={s.setBadges} label="Data badges" help="Show where each number comes from (green licensed, blue calculated, orange demo)." />
         </div>
+
+        <div className="t-label text-navy mt-5">AI Insight</div>
+        <p className="t-action text-dgrey mt-1 mb-0">
+          {ai == null ? `API not reachable: saved AI samples are shown for ${MOCK_TICKERS.join(', ')}.`
+            : !ai.enabled ? 'Off (AI_SUMMARIES_ENABLED=false or no ANTHROPIC_API_KEY): the AI cards are hidden.'
+            : `${ai.model}: ${ai.calls} calls · ${ai.tokens.toLocaleString('en-US')} tokens · ~$${ai.cost_usd.toFixed(2)} since the API started`}
+        </p>
 
         <button type="button" onClick={onClose} className="mt-6 w-full h-12 rounded-full bg-ink text-white t-link border-0 cursor-pointer">Done</button>
       </div>
